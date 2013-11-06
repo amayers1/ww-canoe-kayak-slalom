@@ -1,0 +1,139 @@
+	K1	Sr	1	Forerunner
+
+	K1	U12	199	Oran Huff			0.00	#REF!
+	K1	Sr	198	Scott Stout			0.00	#REF!
+	K1	Jr	196	Micijah McCurry			0.00	#REF!
+	K1	Jr	194	Kyle Barone			0.00	#REF!
+	K1	Jr	193	Harrison Barone			0.00	#REF!
+	K1	Jr	189	Joshua Joseph			0.00	#REF!
+	K1	Jr	188	Jonathan Morasolono			0.00	#REF!
+	K1	Jr	187	Arnaldo Cespedes Perez			0.00	#REF!
+	K1	Sr	186	Allen Mayers			0.00	#REF!
+	K1	Sr	184	Cameron Wells
+	K1	Sr	183	Tyger Vollrath			0.00	#REF!
+	K1	Sr	180	Tyler Uthus			0.00	#REF!
+	K1	Sr	178	Ethan Van Horn			0.00	#REF!
+	K1	Jr	175	Henry Bergen			0.00	#REF!
+	K1	U23	174	Jordan Sherman			0.00	#REF!
+	K1	U23	173	Simon Ranagan
+	K1	U23	172	Tyler Smith			0.00	#REF!
+	K1	Jr	170	Spencer Huff			0.00	#REF!
+	K1	U23	168	Michael Rudnitsky			0.00	#REF!
+	K1	Sr	167	Jim Wade			0.00	#REF!
+	K1	Sr	166	Scott Mann			0.00	#REF!
+	K1	Sr	165	Richard Powell			0.00	#REF!
+	K1	U23	164	Michal Smolen			0.00	#REF!
+
+	K1W	U14	158	Teagan Moore
+	K1W	U14	157	Sage Donnelly			0.00	#REF!
+	K1W	U12	156	Claire Melton			0.00	#REF!
+	K1W	U12	153	Ariana Stout
+	K1W	U14	149	Evy Liebfarth
+	K1W	U18	148	Avery Davis
+	K1W	Sr	147	Juliet Kastorff
+	K1W	Sr	145	Ashley McEwan
+	K1W	U14	144	Maya Humeau
+	K1W	U23	143	Samantha Cole-Johnson
+	K1W	Sr	142	Catie Vutsich
+	K1W	U18	141	Anna Maria Ifarraguerri
+	K1W	U23	140	Evelyn Van Horn
+	K1W	Jr	139	Ashley Nee
+	K1W	Sr	138	Dana Mann
+	K1W	Sr	136	Chelsea Easley
+
+	C1	Jr	129	Ethan Putnam
+	C1	Jr	128	Ian Soileu
+	C1	U23	127	Sam Davis
+	C1	Sr	126	Michal Smolen
+	C1	U23	125	Richard Powell
+	C1	Sr	124	Bryant Lord
+	C1	U18	121	Gabriel Machado
+	C1	U23	120	Charlie Kieft
+	C1	Jr	118	Will Coggen
+	C1	U16	115	Tyler Smith
+	C1	Sr	114	Devon Mcewan
+	C1	Sr	113	Benn Fraker
+	C1	U23	110	Bug Lokken
+	C1	Sr	108	Casey Eichfeld
+	C1	U23	115	Elliot Bertrand
+
+	C1W	U14	99	Sage Donnelly
+	C1W	U18	93	Chelsea Easley
+	C1W	Sr	90	Catie Vuksich
+	C1W	Sr	88	Colleen Hickey
+
+	C2	Jr	79	Coggen/Machado
+	C2	Sr	78	Fraker/McCleskey
+	C2	U23	77	Rudnicky/Bertrand
+	C2	Sr	75	Eichfeld/McEwan
+
+
+
+
+
+													PREVIOUS ORIGINAL
+
+
+
+
+
+K-1	Sr	1	Fore Runner
+K-1	Sr	2	Allen Mayers													
+K-1 W	U14	3	Ariana Stout			0.00	#REF!									
+C-1	Sr	4	Austin Crane			0.00	#REF!									
+K-1W	U12	5	Avery Davis			0.00	#REF!									
+K-1	Sr	6	Cameron Wells			0.00	#REF!									
+C-1	Sr	7	Casey Eichfeld			0.00	#REF!									
+C-1W	Sr	8	Catie Vuksich			0.00	#REF!									
+K-1W	Sr	9	Catie Vuksich			0.00	#REF!									
+C-1	U23	10	Charlie Kieft			0.00	#REF!									
+C-1W	U18	11	Chelsea Violet			0.00	#REF!									
+K-1W	U18	12	Chelsea Violet													
+K-1W	U14	13	Claire Melton			0.00	#REF!									
+C-1W	Sr	14	Colleen Hickey			0.00	#REF!									
+C-2	Sr	15	Crane/Fogartie													
+K-1 W	Sr	16	Dana Mann			0.00	#REF!									
+C-1	Sr	17	Devin McEwan			0.00	#REF!									
+C-2	Sr	18	Eichfeld/McEwan			0.00	#REF!									
+C-1	U23	19	Elliot Bertrand													
+K-1	U23	20	Ethan Van Horn			0.00	#REF!									
+K-1W	U16	21	Evelyn Van Horn			0.00	#REF!									
+K-1W	U12	22	Evy Leibfarth			0.00	#REF!									
+K-1	U16	23	Harrison Barone			0.00	#REF!									
+K-1	U14	24	Henry Bergen			0.00	#REF!									
+K-1	Sr	25	Jim Wade			0.00	#REF!									
+K-1	U16	26	Jordan Sherman			0.00	#REF!									
+K-1	U12	27	Joshua Joseph			0.00	#REF!									
+K-1W	Sr	28	Juliet Jacobsen Kastorff			0.00	#REF!									
+K-1	U14	29	Kyle Barone			0.00	#REF!									
+K-1W	U14	30	Maya Humeau			0.00	#REF!									
+K-1	U18	31	Michael Rudnitsky													
+C-1	U23	32	Michal Smolen													
+K-1	U23	33	Michal Smolen													
+K-1	U23	34	Miciej Okreglak													
+K-1	U16	35	Micijah McCurry													
+C-1	Sr	36	Richard Powell													
+K-1	Sr	37	Richard Powell													
+C-2	U18	38	Rudnicky/Bertrand													
+C-1W	U14	39	Sage Donnelly													
+K-1W	U14	40	Sage Donnelly													
+C-1	Sr	41	Sam Davis													
+K-1	Sr	42	Scott Mann													
+K-1	Sr	43	Scott Stout													
+K-1	U23	44	Simon Ranagan													
+C-1	U14	45	Tyler Smith													
+K-1	U14	46	Tyler Smith													
+K-1	U18	47	Tyler Uthus													
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																

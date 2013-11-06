@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Testing">
+    <CLASSES>
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/annotations.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/testng-plugin.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/testng.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/resources_en.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mockito-all-1.9.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/mockito-all-1.9.5.jar!/" />
+    </SOURCES>
+  </library>
+</component>

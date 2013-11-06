@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_slalomscoring" default="compile.module.slalomscoring">
+  <dirname property="module.slalomscoring.basedir" file="${ant.file.module_slalomscoring}"/>
+  
+  <property name="module.jdk.home.slalomscoring" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.slalomscoring" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.slalomscoring" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.slalomscoring" value="${compiler.args}"/>
+  
+  <property name="slalomscoring.output.dir" value="${module.slalomscoring.basedir}/out/production/SlalomScoring"/>
+  <property name="slalomscoring.testoutput.dir" value="${module.slalomscoring.basedir}/out/test/SlalomScoring"/>
+  
+  <path id="slalomscoring.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="slalomscoring.module.production.classpath">
+    <path refid="${module.jdk.classpath.slalomscoring}"/>
+    <path refid="library.jgoodies-forms-1.7.classpath"/>
+    <path refid="library.jgoodies-common-1.6.classpath"/>
+    <path refid="library.libintellij.classpath"/>
+    <path refid="library.comm-2.0.classpath"/>
+    <path refid="library.serialcomm.classpath"/>
+  </path>
+  
+  <path id="slalomscoring.runtime.production.module.classpath">
+    <pathelement location="${slalomscoring.output.dir}"/>
+    <path refid="library.jgoodies-forms-1.7.classpath"/>
+    <path refid="library.jgoodies-common-1.6.classpath"/>
+    <path refid="library.libintellij.classpath"/>
+    <path refid="library.comm-2.0.classpath"/>
+    <path refid="library.serialcomm.classpath"/>
+  </path>
+  
+  <path id="slalomscoring.module.classpath">
+    <path refid="${module.jdk.classpath.slalomscoring}"/>
+    <pathelement location="${slalomscoring.output.dir}"/>
+    <path refid="library.jgoodies-forms-1.7.classpath"/>
+    <path refid="library.jgoodies-common-1.6.classpath"/>
+    <path refid="library.libintellij.classpath"/>
+    <path refid="library.comm-2.0.classpath"/>
+    <path refid="library.serialcomm.classpath"/>
+  </path>
+  
+  <path id="slalomscoring.runtime.module.classpath">
+    <pathelement location="${slalomscoring.testoutput.dir}"/>
+    <pathelement location="${slalomscoring.output.dir}"/>
+    <path refid="library.jgoodies-forms-1.7.classpath"/>
+    <path refid="library.jgoodies-common-1.6.classpath"/>
+    <path refid="library.libintellij.classpath"/>
+    <path refid="library.comm-2.0.classpath"/>
+    <path refid="library.serialcomm.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.slalomscoring">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.slalomscoring">
+    <patternset refid="excluded.from.module.slalomscoring"/>
+  </patternset>
+  
+  <path id="slalomscoring.module.sourcepath">
+    <dirset dir="${module.slalomscoring.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.slalomscoring" depends="compile.module.slalomscoring.production,compile.module.slalomscoring.tests" description="Compile module SlalomScoring"/>
+  
+  <target name="compile.module.slalomscoring.production" depends="register.custom.compilers" description="Compile module SlalomScoring; production classes">
+    <mkdir dir="${slalomscoring.output.dir}"/>
+    <javac2 destdir="${slalomscoring.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.slalomscoring}/javac">
+      <compilerarg line="${compiler.args.slalomscoring}"/>
+      <bootclasspath refid="slalomscoring.module.bootclasspath"/>
+      <classpath refid="slalomscoring.module.production.classpath"/>
+      <src refid="slalomscoring.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.slalomscoring"/>
+    </javac2>
+    
+    <copy todir="${slalomscoring.output.dir}">
+      <fileset dir="${module.slalomscoring.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.slalomscoring.tests" depends="register.custom.compilers,compile.module.slalomscoring.production" description="compile module SlalomScoring; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.slalomscoring" description="cleanup module">
+    <delete dir="${slalomscoring.output.dir}"/>
+    <delete dir="${slalomscoring.testoutput.dir}"/>
+  </target>
+</project>
