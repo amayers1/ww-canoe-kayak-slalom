@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.tcay.slalom.UI.RaceTimingUI">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="690" height="545"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="6ce8b" binding="selectRacerPanel" layout-manager="FormLayout">
+        <rowspec value="top:29px:grow"/>
+        <rowspec value="top:6dlu:noGrow"/>
+        <rowspec value="center:32px:noGrow"/>
+        <colspec value="fill:max(d;4px):noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:267px:noGrow"/>
+        <colspec value="left:12dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):noGrow"/>
+        <colspec value="left:51dlu:noGrow"/>
+        <colspec value="fill:85px:noGrow"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="658" height="84"/>
+          </grid>
+        </constraints>
+        <properties>
+          <toolTipText value="Start list contains all boats that are registered and have not yet compoleted the current run in progress"/>
+        </properties>
+        <border type="line" title="Start List"/>
+        <children>
+          <grid id="32444" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="9ef9" class="javax.swing.JButton" binding="newRunButton">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <background awt-color="pink"/>
+                  <opaque value="true"/>
+                  <text value="New Run"/>
+                  <toolTipText value="Select next run e.g. second runs"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="d103d" class="javax.swing.JButton" binding="reRunButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <background awt-color="pink"/>
+              <opaque value="true"/>
+              <text value="Re-Run"/>
+              <toolTipText value="Select a boat to do a Re-run, this Re-Run will replace their existing run "/>
+            </properties>
+          </component>
+          <component id="81bae" class="javax.swing.JButton" binding="startListSelectRacerReadyButton">
+            <constraints>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <background awt-color="green"/>
+              <opaque value="true"/>
+              <text value="Select Racer"/>
+              <toolTipText value="put selected boat from the start list into the starting block (replaces boat currently in starting block)"/>
+              <verticalAlignment value="3"/>
+            </properties>
+          </component>
+          <component id="c40d1" class="javax.swing.JComboBox" binding="startListComboBox" custom-create="true">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="10" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <background awt-color="green"/>
+              <opaque value="true"/>
+              <toolTipText value="List of all boats that have not yet started the current run"/>
+            </properties>
+          </component>
+          <component id="1a410" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <text value="Boats that have not started this run"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="c052f" binding="startPanel" layout-manager="FormLayout">
+        <rowspec value="center:30px:noGrow"/>
+        <rowspec value="top:7dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <colspec value="fill:53px:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:219px:noGrow"/>
+        <colspec value="left:12dlu:noGrow"/>
+        <colspec value="fill:118px:noGrow"/>
+        <colspec value="left:52dlu:noGrow"/>
+        <colspec value="fill:85px:noGrow"/>
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <toolTipText value="Starting block is the boat that is about to begin racing"/>
+        </properties>
+        <border type="line" title="Starting Block"/>
+        <children>
+          <component id="92bb1" class="javax.swing.JButton" binding="startButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <background awt-color="green"/>
+              <opaque value="true"/>
+              <text value="Start"/>
+              <toolTipText value="Start timer for this boat"/>
+            </properties>
+          </component>
+          <component id="1c017" class="javax.swing.JButton" binding="DNSButton">
+            <constraints>
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <background awt-color="pink"/>
+              <opaque value="true"/>
+              <text value="DNS"/>
+              <toolTipText value="Mark boat as DID NOT START"/>
+            </properties>
+          </component>
+          <component id="4001e" class="javax.swing.JLabel" binding="waitingForAFinishLabel">
+            <constraints>
+              <grid row="2" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <foreground awt-color="red"/>
+              <text value="Waiting for a finish or DNF"/>
+            </properties>
+          </component>
+          <component id="43da5" class="javax.swing.JLabel" binding="jRacerInStartGateLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="ccb7c" class="javax.swing.JLabel" binding="bibLabel" custom-create="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="cbec7" class="javax.swing.JLabel" binding="spacerForLayoutManager">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+      <grid id="f6785" binding="finishPanel" layout-manager="FormLayout">
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:3dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:3dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <colspec value="fill:134px:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:48px:noGrow"/>
+        <colspec value="left:8dlu:noGrow"/>
+        <colspec value="fill:179px:noGrow"/>
+        <colspec value="left:5dlu:noGrow"/>
+        <colspec value="fill:117px:noGrow"/>
+        <colspec value="fill:14px:noGrow"/>
+        <colspec value="fill:85px:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):noGrow"/>
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="634" height="155"/>
+          </grid>
+        </constraints>
+        <properties>
+          <toolTipText value="Finish Line shows all boats currently started and on the course"/>
+        </properties>
+        <border type="line" title="Finish Line"/>
+        <children>
+          <grid id="c386f" binding="innerFinishPanel1" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="f8609" binding="innerFinishPanel2" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="8ddcd" binding="innerFinishPanel3" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </grid>
+      <vspacer id="17179">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="80982">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="7b694" binding="statusBarPanel" layout-manager="FormLayout">
+        <rowspec value="center:d:grow"/>
+        <colspec value="fill:d:grow"/>
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="20"/>
+            <preferred-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
+    </children>
+  </grid>
+</form>

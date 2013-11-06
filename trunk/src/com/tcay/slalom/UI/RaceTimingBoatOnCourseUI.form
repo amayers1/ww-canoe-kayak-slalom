@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.tcay.slalom.UI.RaceTimingBoatOnCourseUI">
+  <grid id="f6785" binding="subPanel" layout-manager="FormLayout">
+    <rowspec value="center:d:noGrow"/>
+    <colspec value="fill:134px:noGrow"/>
+    <colspec value="left:4dlu:noGrow"/>
+    <colspec value="fill:48px:noGrow"/>
+    <colspec value="left:8dlu:noGrow"/>
+    <colspec value="fill:179px:noGrow"/>
+    <colspec value="left:5dlu:noGrow"/>
+    <colspec value="fill:117px:noGrow"/>
+    <colspec value="fill:14px:noGrow"/>
+    <colspec value="fill:max(d;4px):noGrow"/>
+    <constraints>
+      <xy x="0" y="0" width="637" height="41"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="55f82" class="javax.swing.JButton" binding="finishButton">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="29"/>
+          </grid>
+          <forms/>
+        </constraints>
+        <properties>
+          <background awt-color="red"/>
+          <opaque value="true"/>
+          <text value="Finish"/>
+          <toolTipText value="Stop timer for this boat"/>
+        </properties>
+      </component>
+      <component id="f9c67" class="javax.swing.JLabel" binding="timerLabel" custom-create="true">
+        <constraints>
+          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="a7428" class="javax.swing.JLabel" binding="bibLabel" custom-create="true">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="dd232" class="javax.swing.JButton" binding="DNFButton">
+        <constraints>
+          <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background awt-color="yellow"/>
+          <opaque value="true"/>
+          <text value="DNF"/>
+          <toolTipText value="Mark boat as DID NOT FINISH"/>
+        </properties>
+      </component>
+      <component id="50e8c" class="javax.swing.JLabel" binding="nameLabel">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="81" height="0"/>
+          </grid>
+          <forms/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
