@@ -150,6 +150,9 @@ public class Log {
                         // Release the lock.
                         lock.release();
                     }
+                    if (level <=LOG_WARN)
+                        System.out.print(new String(bytes));
+
                 } catch (OverlappingFileLockException ofle) {
                     try {
                         // Wait a bit

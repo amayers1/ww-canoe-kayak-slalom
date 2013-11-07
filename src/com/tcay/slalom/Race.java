@@ -1,5 +1,6 @@
 package com.tcay.slalom;
 
+import com.tcay.util.DuplicateBibException;
 import com.tcay.util.Log;
 import com.tcay.RS232.TagHeuerCP520Listener;
 import com.tcay.slalom.UI.JudgingSection;
@@ -413,9 +414,24 @@ public class Race extends RaceResources implements Serializable
         return racers;
     }
 
-    public void addBoat( Racer racer, String boatClass) {
-        racers.add(racer);
-        startList.add(new BoatEntry( racer, boatClass));
+    /**
+     * Add an entry to the StartList rejecting any duplicate Bib assignments in the same race class
+     * It is possible to have the same bib in a different classes in lower levels of races (e.g. C1 and C2)
+     *
+     * @param racer
+     * @param boatClass
+     * @throws DuplicateBibException
+     */
+    public void addBoat( Racer racer, String boatClass) throws DuplicateBibException {
+        if (count(racer.getBibNumber(),boatClass) < 1) {
+           racers.add(racer);
+           startList.add(new BoatEntry( racer, boatClass));
+        }
+        else {
+            log.error("Can't add bib " + racer.getBibNumber() + " for " + boatClass + " " +  racer.getShortName() +
+                    " already used by " + whoIs(racer.getBibNumber(),boatClass) );
+            throw new DuplicateBibException();
+        }
     }
 
 
@@ -475,6 +491,46 @@ public class Race extends RaceResources implements Serializable
     public List<BoatEntry> getRemainingStartList() {
         return startList;
     }
+
+
+    private int count(String bibNbr, String boatClass)  {
+        int count = 0;
+        for (BoatEntry boat:startList) {
+            if (boat.getRacer().getBibNumber().trim().compareTo(bibNbr.trim()) == 0 &&
+                boat.getBoatClass().compareTo(boatClass) == 0  ) {
+                count ++;
+            }
+
+        }
+        return count;
+    }
+
+    private String whoIs(String bibNbr, String boatClass)  {
+        String who  = "";
+        for (BoatEntry boat:startList) {
+            if (boat.getRacer().getBibNumber().trim().compareTo(bibNbr.trim()) == 0 &&
+                    boat.getBoatClass().compareTo(boatClass) == 0  ) {
+                who = boat.getRacer().getBibNumber() + " " + boat.getBoatClass() + " " +  boat.getRacer().getShortName();
+            }
+
+        }
+        return who;
+    }
+
+
+
+    public String lookForDuplicateBibsInTheSameClass() {
+        String returnString = null;
+        for (BoatEntry boat:startList) {
+            if ( count(boat.getRacer().getBibNumber(),boat.getBoatClass()) > 1 ) {
+
+                returnString = "Bib number " + boat.getRacer().getBibNumber() +  " occurs more than once in " + boat.getBoatClass();
+                System.out.println(returnString);
+            }
+        }
+        return(returnString);
+    }
+
 
 
     private XStream initXML() {
@@ -635,11 +691,8 @@ public class Race extends RaceResources implements Serializable
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-
         } catch (FileNotFoundException fnf) {
-
+            ;  // Empty block OK - ignore this exception
         }
 
         // load required transient members
@@ -679,7 +732,7 @@ public class Race extends RaceResources implements Serializable
         return date;
     }
 
-    private void deSerialize(ObjectInputStream in) {
+    private void deSerialize(ObjectInputStream in) throws DuplicateBibException {
         Object o;
         try {
             while ((o = in.readObject()) != null) {
@@ -706,7 +759,14 @@ public class Race extends RaceResources implements Serializable
                 this.currentRunIteration = raceFromSerialized.currentRunIteration;  // are we on 1st runs, or 2nd runs ?
                 this.racers = raceFromSerialized.racers;
             }
-        } catch (EOFException io) {
+
+
+        }
+        catch (InvalidClassException ice) {
+            clearRace();
+            System.out.println("All data cleared, incompatible race object version information");
+        }
+        catch (EOFException io) {
            // io.printStackTrace();
 
         } catch (IOException io) {
@@ -714,7 +774,11 @@ public class Race extends RaceResources implements Serializable
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
-
+        String duplicates = lookForDuplicateBibsInTheSameClass();
+        if (duplicates != null) {
+            log.error(duplicates);
+            throw new DuplicateBibException();
+        }
     }
 
 
