@@ -48,7 +48,8 @@ public class RaceTimingUI {
 
 
     // controls on Start List panel
-    private JComboBox<BoatEntry> startListComboBox;
+//    private JComboBox<BoatEntry> startListComboBox;   //fixme 1.6 java
+    private JComboBox startListComboBox;
     private JButton startListSelectRacerReadyButton;
     private JButton reRunButton;
     private JButton newRunButton;

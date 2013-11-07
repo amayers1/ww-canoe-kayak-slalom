@@ -301,7 +301,7 @@ public class Server implements Runnable {
                             if (req.getRequestCmd() == ClientRequest.REQ_UPDATE_SECTION_ONLINE)  {
                                 Integer section = (Integer)req.getDataList().get(0);
                                 judgingSection = Race.getInstance().updateSectionOnline(section);
-                                //judgingSection = Race.getInstance().getSection(section);
+                                judgingSection = Race.getInstance().getSection(section);
                             }
 
                             writer.addRequest(req);

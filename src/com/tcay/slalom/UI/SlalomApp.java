@@ -1,6 +1,5 @@
 package com.tcay.slalom.UI;
 
-import com.tcay.samples.ImagePanel;
 import com.tcay.slalom.UI.client.ClientRacePenaltiesUIDynamic;
 import com.tcay.slalom.UI.components.StatusBar;
 import com.tcay.slalom.UI.tables.ResultsTable;
@@ -83,11 +82,11 @@ public class SlalomApp {
         appFrame = new JFrame("Slalom Main Menu Frame");
         appFrame.setLayout(new BorderLayout());
         appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         appFrame.setTitle("Slalom Race Organizer's Application");
-        appFrame.setSize(800, 250);
-        appFrame.setPreferredSize(new Dimension(800, 250));
-
+        JLabel picLabel = new JLabel(Race.getInstance().getSlalomBackgroundII());
+        appFrame.add(picLabel, BorderLayout.CENTER);
+        appFrame.setSize(660, 340);
+        appFrame.setPreferredSize(new Dimension(660, 340));
         // set location to middle of screen
         appFrame.setLocationRelativeTo(null);
 
@@ -99,11 +98,6 @@ public class SlalomApp {
         int x = (int) (rect.getMaxX() - appFrame.getWidth());
         int y = 0;//(int) rect.getMaxY() - appFrame.getHeight();
         appFrame.setLocation(x, y);
-        //appFrame.setVisible(true);
-
-        JLabel picLabel = new JLabel(Race.getInstance().getSlalomBackgroundII());
-        appFrame.add(picLabel);
-
 
         JMenuBar menuBar;
         JMenu menu;
@@ -351,7 +345,7 @@ public class SlalomApp {
         menu = new JMenu("Results");
         menu.setMnemonic(KeyEvent.VK_R);
         menuBar.add(menu);
-        menuItem = new JMenuItem("Leaderboard (Real Time)",
+        menuItem = new JMenuItem("Leaderboard",
                 KeyEvent.VK_T);
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "Results dump to console");
@@ -376,7 +370,7 @@ public class SlalomApp {
 
 
 
-        menuItem = new JMenuItem("Leaderboard (Scrolling- Real Time)",
+        menuItem = new JMenuItem("Scrolling Scoreboard",
                 KeyEvent.VK_T);
         menu.add(menuItem);
         menuItem.addActionListener(
@@ -419,22 +413,9 @@ public class SlalomApp {
                         outputResults("", race.getCompletedRuns(), false);
                         outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
                         ScoringBoard scoringBoard = new ScoringBoard();
-                        //try {
-                        //    mainPanel.remove(0);
-                        //} catch (Exception e1) {
-                        //    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                        //}
-                        //mainPanel.add(scoringBoard.$$$getRootComponent$$$());
-                        //mainPanel.setVisible(true);
-
-                        //appFrame.add(scoringBoard.$$$getRootComponent$$$(), BorderLayout.NORTH);
                         appFrame.setContentPane(scoringBoard.$$$getRootComponent$$$());
-//C20131021                        appFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         appFrame.pack();
-                        // setInitialControlFocus didn't work here !!!
-                        //leaderBoard.setInitialControlFocus();
                         appFrame.setVisible(true);
-                        //leaderBoard.setInitialControlFocus();
                     }
                 }
         );
