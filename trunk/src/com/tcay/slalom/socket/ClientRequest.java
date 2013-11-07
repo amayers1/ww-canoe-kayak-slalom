@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * SlalomScoring
+ * Teton Cay Group Inc. 2013
+ * <p/>
  * User: allen
- * Date: 10/23/13
- * Time: 12:45 PM
- * To change this template use File | Settings | File Templates.
+ * Date: 11/6/13
+ * Time: 5:41 PM
+ */
+
+/**
+ * Client Requests to Server for information or to update Server Race data
  */
 public class ClientRequest implements Serializable {
     public static final int REQ_GET_SCORABLE_RUNS = 1;

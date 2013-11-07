@@ -32,6 +32,7 @@ public class RaceResources {
     private transient ImageIcon upstreamTinyII;
     private transient ImageIcon slalomCourseSmall;
     private transient ImageIcon stopWatchII;
+    private transient ImageIcon slalomBackgroundII;
     private transient ImageIcon emptyII = new ImageIcon();  // needed for table cell renderer, can't have null value for cell renderer
 
     private transient ArrayList<Country> countries;
@@ -184,6 +185,14 @@ public class RaceResources {
             imgURL = thisClass.getResource("images/stopWatch25.jpg");     // todo From location of package of Race ???
             if (imgURL!=null)
                 stopWatchII = new ImageIcon(imgURL, "stopWatch");
+
+
+            imgURL = thisClass.getResource("images/SlalomLogoYelCyan.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                slalomBackgroundII = new ImageIcon(imgURL, "slalomBkg");
+
+            //http://vectormagic.com/home - make vector images out of bitmaps
+
         }
         catch (Exception e) {
             log.error("BAD ImageLoad");
@@ -191,6 +200,9 @@ public class RaceResources {
         }
     }
 
+    public ImageIcon getSlalomBackgroundII() {
+        return slalomBackgroundII;
+    }
 
     public ImageIcon getStopWatchII() {
         return stopWatchII;

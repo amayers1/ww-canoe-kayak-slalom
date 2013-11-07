@@ -1,22 +1,15 @@
 package com.tcay.util;
 
-import com.tcay.slalom.BoatEntry;
 import com.tcay.slalom.Race;
-import com.tcay.slalom.RaceRun;
-import com.tcay.slalom.Racer;
-import com.tcay.slalom.UI.JudgingSection;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * SlalomScoring
- * Teton Cay Group Inc. ©2013
+ * Teton Cay Group Inc. 2013
  * <p/>
  * User: allen
  * Date: 11/6/13

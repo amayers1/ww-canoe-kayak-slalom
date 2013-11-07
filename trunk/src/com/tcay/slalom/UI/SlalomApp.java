@@ -1,10 +1,9 @@
 package com.tcay.slalom.UI;
 
-//import com.tcay.TableCellExample;
+import com.tcay.samples.ImagePanel;
 import com.tcay.slalom.UI.client.ClientRacePenaltiesUIDynamic;
 import com.tcay.slalom.UI.components.StatusBar;
 import com.tcay.slalom.UI.tables.ResultsTable;
-import com.tcay.slalom.UI.tables.ResultsTableAutoScroll;
 import com.tcay.util.Log;
 import com.tcay.slalom.*;
 import com.tcay.slalom.socket.Server;
@@ -102,6 +101,8 @@ public class SlalomApp {
         appFrame.setLocation(x, y);
         //appFrame.setVisible(true);
 
+        JLabel picLabel = new JLabel(Race.getInstance().getSlalomBackgroundII());
+        appFrame.add(picLabel);
 
 
         JMenuBar menuBar;

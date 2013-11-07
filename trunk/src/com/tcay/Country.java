@@ -12,6 +12,8 @@ import javax.swing.*;
 
 
 /**
+ * Implementation of the political unit Country - codes, flags, etc.
+ *
  * http://en.wikipedia.org/wiki/List_of_IOC_country_codes
  *
  */
@@ -42,6 +44,4 @@ public class Country {
     public ImageIcon getImageIconTiny() {
         return imageIconTiny;
     }
-
-
 }

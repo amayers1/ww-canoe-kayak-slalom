@@ -4,6 +4,10 @@ import j.extensions.comm.SerialComm;
 
 import java.io.InputStream;
 
+/**
+ * Handle the automatic port detection for attached timing equipment on serial port.
+ *
+ */
 public class CandidateCP520Port {
         SerialComm port;
         boolean canOpen;
@@ -12,32 +16,12 @@ public class CandidateCP520Port {
             return port;
         }
 
-        void setPort(SerialComm port) {
-            this.port = port;
-        }
-
-        boolean isCanOpen() {
-            return canOpen;
-        }
-
         void setCanOpen(boolean canOpen) {
             this.canOpen = canOpen;
         }
 
-        boolean isHadException() {
-            return hadException;
-        }
-
         void setHadException(boolean hadException) {
             this.hadException = hadException;
-        }
-
-        InputStream getInputStream() {
-            return inputStream;
-        }
-
-        void setInputStream(InputStream inputStream) {
-            this.inputStream = inputStream;
         }
 
         boolean hadException;
@@ -64,5 +48,4 @@ public class CandidateCP520Port {
     public String getSystemName() {
         return port.getSystemPortName();
     }
-
 }

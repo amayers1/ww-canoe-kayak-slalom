@@ -605,11 +605,8 @@ public class Race extends RaceResources implements Serializable
 
 
     public void loadSerializedData() {
-        Race x = loadXML();
-
+//fixme        Race x = loadXML();
         //return;
-
-
         //lastRace.getName();
 //        RaceRun run;
         try {
