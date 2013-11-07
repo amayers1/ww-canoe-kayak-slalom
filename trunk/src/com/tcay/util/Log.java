@@ -18,10 +18,11 @@ import java.text.SimpleDateFormat;
  * To change this template use File | Settings | File Templates.
  */
 public class Log {
-    private static Log instance;
+
     private static String fileName;
     private static String newLine = System.getProperty("line.separator");
-    private static SimpleDateFormat fmt = new SimpleDateFormat("YYYYMMdd HH:mm:SS");//.format(new Date())
+    // beware Java 1.6 doesNOT support YYYY, java 1.7 does
+    private static SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HH:mm:SS");//.format(new Date())
 
     private FileOutputStream file;
     private int currentLevel = LOG_INFO;
@@ -71,6 +72,7 @@ public class Log {
         }
     }
 
+    private static Log instance = null;
     public synchronized static Log getInstance() {
         if (instance == null) {
             instance = new Log();

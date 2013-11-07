@@ -3,8 +3,6 @@ package com.tcay.slalom.UI.components;
 
 import com.tcay.slalom.Race;
 import com.tcay.slalom.RaceResources;
-import com.tcay.slalom.UI.JudgingSection;
-import com.tcay.slalom.UI.SlalomApp;
 import com.tcay.util.IpAddress;
 
 import javax.swing.*;
@@ -13,9 +11,6 @@ import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,9 +27,9 @@ public class StatusBar {
     private JLabel runIteration;
     private JLabel sectionsConnected;
 
-    public JPanel getStatusPanel() {
-        return statusPanel;
-    }
+//    public JPanel getStatusPanel() {
+//        return statusPanel;
+//    }
 
 
     public StatusBar() {
@@ -98,12 +93,10 @@ public class StatusBar {
         statusPanel.add(ipLabel);
         statusPanel.add(Box.createRigidArea(new Dimension(10, 0)));     /// add space
 
-
         JLabel statusLabel = new JLabel("Run#");
         statusLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         statusPanel.add(statusLabel);
 
-        //runIteration = new JLabel();
         runIteration.setText(new Integer(Race.getInstance().getCurrentRunIteration()).toString());
         statusPanel.add(runIteration);
         statusPanel.add(Box.createRigidArea(new Dimension(10, 0)));     /// add space
@@ -112,16 +105,12 @@ public class StatusBar {
         statusLabel = new JLabel("Sections online:");
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         statusPanel.add(statusLabel);
-        //statusPanel.add(Box.createRigidArea(new Dimension(5, 0)));     /// add space
-
-//        sectionsConnected = new JLabel();
         sectionsConnected.setText(Race.getInstance().getSectionsConnectedNamesAsString());
         statusPanel.add(sectionsConnected);
 
 
         statusPanel.add(Box.createRigidArea(new Dimension(30, 0)));     /// add space
 
-        //tagHeuerStatusLabelImageIcon = new JLabel(RaceResources.getInstance().getTagHeuerII());
         statusPanel.add(tagHeuerStatusLabelImageIcon);
         tagHeuerStatusLabelImageIcon.setEnabled(false);
 
@@ -140,8 +129,7 @@ public class StatusBar {
     public JPanel getPanel(JFrame parent)///JFrame frame)
     {
         statusPanel.setPreferredSize(new Dimension(parent.getWidth(), 24));
+        statusPanel.setMinimumSize(new Dimension(parent.getWidth(), 24));
         return (statusPanel);
     }
-
-
 }

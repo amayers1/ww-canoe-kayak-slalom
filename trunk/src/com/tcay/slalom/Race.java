@@ -88,13 +88,13 @@ public class Race extends RaceResources implements Serializable
         this.tagHeuerConnected = tagHeuerConnected;
     }
 
-    public Thread getPhotoCellThread() {
-        return photoCellThread;
-    }
+//    public Thread getPhotoCellThread() {
+//        return photoCellThread;
+//    }
 
-    public void setPhotoCellThread(Thread photoCellThread) {
-        this.photoCellThread = photoCellThread;
-    }
+//    public void setPhotoCellThread(Thread photoCellThread) {
+//        this.photoCellThread = photoCellThread;
+//    }
 
 
     public JudgingSection updateSectionOnline(Integer section) {
@@ -327,16 +327,16 @@ public class Race extends RaceResources implements Serializable
     }
 
 
-    //public JudgingSection getSection(int section) {
-    //    JudgingSection judgingSection = null;
-    //    for (JudgingSection s:judgingSections) {
-    //        if (s.getClientDeviceAttached())  {
-    //            judgingSection = s;
-    //            break;
-    //        }
-    //    }
-    //    return judgingSection;
-    //}
+    public JudgingSection getSection(int section) {
+        JudgingSection judgingSection = null;
+        for (JudgingSection s:judgingSections) {
+            if (s.getClientDeviceAttached())  {
+                judgingSection = s;
+                break;
+            }
+        }
+        return judgingSection;
+    }
 
 
     public boolean isGateInSection(int iGate, int section)  {
@@ -518,7 +518,7 @@ public class Race extends RaceResources implements Serializable
 
 
         String xml = xstream.toXML(this);
-        System.out.println(xml);
+ //       System.out.println(xml);
     }
 
     private Race loadXML() {
@@ -578,6 +578,7 @@ public class Race extends RaceResources implements Serializable
 
 
 
+    //fixme todo change all to XML serialization, so class versions are NOT an issue !
     public void saveSerializedData() {
 
         saveXML();
@@ -705,6 +706,9 @@ public class Race extends RaceResources implements Serializable
                 this.currentRunIteration = raceFromSerialized.currentRunIteration;  // are we on 1st runs, or 2nd runs ?
                 this.racers = raceFromSerialized.racers;
             }
+        } catch (EOFException io) {
+           // io.printStackTrace();
+
         } catch (IOException io) {
             io.printStackTrace();
         } catch (ClassNotFoundException cnfe) {

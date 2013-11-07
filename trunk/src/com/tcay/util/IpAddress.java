@@ -20,6 +20,7 @@ public class IpAddress {
             while (interfaces.hasMoreElements()) {
                 NetworkInterface iface = interfaces.nextElement();
                 // filters out 127.0.0.1 and inactive interfaces
+
                 if (iface.isLoopback() || !iface.isUp())
                     continue;
 
@@ -28,7 +29,9 @@ public class IpAddress {
                     InetAddress addr = addresses.nextElement();
                     ip = addr.getHostAddress();
                     Log.getInstance().info(iface.getDisplayName() + " " + ip);
-                    if (!ip.contains(":")) {
+
+                    // 169.xxx.xxx.xxx is self assigned, do not use
+                    if (!ip.contains(":") && ip.substring(0,3).compareTo("169")!=0) {
                         return(ip);
                     }
                 }
