@@ -12,24 +12,26 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * SlalomScoring
+ * Teton Cay Group Inc. 2013
+ * <p/>
  * User: allen
- * Date: 10/22/13
- * Time: 7:43 PM
- * To change this template use File | Settings | File Templates.
+ * Date: 11/6/13
+ * Time: 5:41 PM
+ */
+
+
+/**
+ * Server listens for clients to connect via socket,then after connection services Requests which are primarily
+ * data 'pulls', but also can be 'pushes' to update the race for things such as JudgingSection input.
+ *
+ * Handle the socket on the server end. When a connection is requested, it spawns a new thread to do the servicing
+ * and immediately returns to listening.  The server keeps a unique client number for each  client that connects
+ * just to show interesting logging messages.  It is certainly not necessary to do this.
  */
 public class Server implements Runnable {
 
-    /**
-     * Application method to run the server runs in an infinite loop
-     * listening on port 9898.  When a connection is requested, it
-     * spawns a new thread to do the servicing and immediately returns
-     * to listening.  The server keeps a unique client number for each
-     * client that connects just to show interesting logging
-     * messages.  It is certainly not necessary to do this.
-     */
-
-
+    protected static final int SOCKET_PORT = 9898;
     private static ArrayList<ObjectServerReader> readers = new ArrayList<ObjectServerReader>();
 
     private ObjectServerWriter osw;
@@ -55,7 +57,7 @@ public class Server implements Runnable {
         log.info("Server is running.");
         int clientNumber = 0;
         try {
-            ServerSocket listener = new ServerSocket(9898);    /// fixme 2nd invocation of app
+            ServerSocket listener = new ServerSocket(SOCKET_PORT);    /// fixme 2nd invocation of app
             try {
 
                 while (true) {

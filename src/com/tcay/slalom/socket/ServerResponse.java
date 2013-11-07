@@ -4,11 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * SlalomScoring
+ * Teton Cay Group Inc. 2013
+ * <p/>
  * User: allen
- * Date: 10/23/13
- * Time: 2:35 PM
- * To change this template use File | Settings | File Templates.
+ * Date: 11/6/13
+ * Time: 5:41 PM
+ */
+
+
+/**
+ * Server Response for Client Requests
  */
 public class ServerResponse implements Serializable {
     private ArrayList<Object> responseList;

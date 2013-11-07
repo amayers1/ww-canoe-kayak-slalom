@@ -9,27 +9,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * SlalomScoring
+ * Teton Cay Group Inc. 2013
+ * <p/>
  * User: allen
- * Date: 10/23/13
- * Time: 12:12 PM
- * To change this template use File | Settings | File Templates.
+ * Date: 11/6/13
+ * Time: 5:41 PM
  */
 
-
 /**
- * Used to route through socket for remote client, or direct shared memory when appropriate
+ * Used to route through socket for remote client, or allow direct shared memory when appropriate
+ * (e.g. when the objects are running in the same application memory space)
  */
 public class Proxy {
     Race race;
     Log log;
-    //boolean standAlone = true;    // default
 
     public boolean isStandAlone() {
-        return clientSocket != null;//standAlone;
+        return clientSocket != null;
     }
 
-    Client clientSocket;       // needed for remote
+    Client clientSocket;
 
 
     {
@@ -55,17 +55,17 @@ public class Proxy {
     }
 
     public ArrayList<RaceRun> getScorableRuns() {
-        ClientRequest clientRequest;
+        ClientRequest request;
         if (isStandAlone() == true) {
-            clientRequest = new ClientRequest(ClientRequest.REQ_GET_SCORABLE_RUNS);
-            clientSocket.send(clientRequest);
-            ServerResponse serverResponse = clientSocket.retrieveResponse(clientRequest);
+            request = new ClientRequest(ClientRequest.REQ_GET_SCORABLE_RUNS);
+            clientSocket.send(request);
+            ServerResponse response = clientSocket.getResponse(request);
 
             // this list has to be a copy for each window, as they are potentially all on separate devices
             ArrayList<RaceRun> returnList = new ArrayList<RaceRun>();
-            if ( serverResponse.getRequestType() == ClientRequest.REQ_GET_SCORABLE_RUNS ) {
+            if ( response.getRequestType() == ClientRequest.REQ_GET_SCORABLE_RUNS ) {
                 int i=0;
-                for (Object o:serverResponse.getResponseList()) {
+                for (Object o:response.getResponseList()) {
                     ((RaceRun)o).setLog(log);
                     returnList.add( (RaceRun)o );
                     i++;
@@ -83,9 +83,9 @@ public class Proxy {
 
     public void updateSectionOnline(Integer section) {
         if (isStandAlone() == true) {
-            ClientRequest clientRequest = new ClientRequest(ClientRequest.REQ_UPDATE_SECTION_ONLINE);
-            clientRequest.addObject(section);
-            clientSocket.send(clientRequest);
+            ClientRequest request = new ClientRequest(ClientRequest.REQ_UPDATE_SECTION_ONLINE);
+            request.addObject(section);
+            clientSocket.send(request);
         }
         else {
             race.updateSectionOnline(section);
@@ -106,12 +106,12 @@ public class Proxy {
      * @param run
      */
     public void updateResults(RaceRun run) {
-        ClientRequest clientRequest = new ClientRequest(ClientRequest.REQ_UPDATE_PENALTIES);
+        ClientRequest request = new ClientRequest(ClientRequest.REQ_UPDATE_PENALTIES);
 
         if (isStandAlone() == true) {
-            clientRequest.addObject(run);
-            clientRequest.addObject(run.getPenaltyList());
-            clientSocket.send(clientRequest);
+            request.addObject(run);
+            request.addObject(run.getPenaltyList());
+            clientSocket.send(request);
         }
         else {
             race.updateResults();
@@ -123,13 +123,13 @@ public class Proxy {
 
 
     public boolean isGateInSection(int iGate, int section)  {
-        ClientRequest clientRequest;
+        ClientRequest request;
         if (isStandAlone() == true) {
-            clientRequest = new ClientRequest(ClientRequest.REQ_IS_GATE_IN_SECTION, iGate, section);
-            clientSocket.send(clientRequest);
-            ServerResponse serverResponse = clientSocket.retrieveResponse(clientRequest);
-            if (serverResponse.getRequestType() == ClientRequest.REQ_IS_GATE_IN_SECTION) {
-                Boolean rc = (Boolean)serverResponse.getResponseList().get(0);
+            request = new ClientRequest(ClientRequest.REQ_IS_GATE_IN_SECTION, iGate, section);
+            clientSocket.send(request);
+            ServerResponse response = clientSocket.getResponse(request);
+            if (response.getRequestType() == ClientRequest.REQ_IS_GATE_IN_SECTION) {
+                Boolean rc = (Boolean)response.getResponseList().get(0);
                 return rc;
             }
             return(true); //fixme - shouldn't get here
@@ -141,13 +141,13 @@ public class Proxy {
 
 
     public boolean isFirstGateInSection(int iGate, int section) {
-        ClientRequest clientRequest;
+        ClientRequest request;
         if (isStandAlone() == true) {
-            clientRequest = new ClientRequest(ClientRequest.REQ_IS_FIRST_GATE_IN_SECTION, iGate, section);
-            clientSocket.send(clientRequest);
-            ServerResponse serverResponse = clientSocket.retrieveResponse(clientRequest);
-            if (serverResponse.getRequestType() == ClientRequest.REQ_IS_FIRST_GATE_IN_SECTION) {
-                Boolean rc = (Boolean)serverResponse.getResponseList().get(0);
+            request = new ClientRequest(ClientRequest.REQ_IS_FIRST_GATE_IN_SECTION, iGate, section);
+            clientSocket.send(request);
+            ServerResponse response = clientSocket.getResponse(request);
+            if (response.getRequestType() == ClientRequest.REQ_IS_FIRST_GATE_IN_SECTION) {
+                Boolean rc = (Boolean)response.getResponseList().get(0);
                 return rc;
             }
             return false;
@@ -159,14 +159,14 @@ public class Proxy {
     }
 
     public ArrayList<JudgingSection> getSections() {
-        ClientRequest clientRequest;
+        ClientRequest request;
         if (isStandAlone() == true) {
             ArrayList<JudgingSection> sections = new ArrayList<JudgingSection>();
-            clientRequest = new ClientRequest(ClientRequest.REQ_GET_SECTIONS);
-            clientSocket.send(clientRequest);
-            ServerResponse serverResponse = clientSocket.retrieveResponse(clientRequest);
-            if (serverResponse.getRequestType() == ClientRequest.REQ_GET_SECTIONS) {
-                for (Object o:serverResponse.getResponseList()) {
+            request = new ClientRequest(ClientRequest.REQ_GET_SECTIONS);
+            clientSocket.send(request);
+            ServerResponse response = clientSocket.getResponse(request);
+            if (response.getRequestType() == ClientRequest.REQ_GET_SECTIONS) {
+                for (Object o:response.getResponseList()) {
                     sections.add( (JudgingSection)o );
                 }
             }
@@ -180,13 +180,13 @@ public class Proxy {
 
     public int getNbrGates() {
         Integer nbrGates = 1;
-        ClientRequest clientRequest;
+        ClientRequest request;
         if (isStandAlone() == true) {
-            clientRequest = new ClientRequest(ClientRequest.REQ_GET_NBR_GATES);
-            clientSocket.send(clientRequest);
-            ServerResponse serverResponse = clientSocket.retrieveResponse(clientRequest);
-            if (serverResponse.getRequestType() == ClientRequest.REQ_GET_NBR_GATES) {
-                nbrGates = (Integer)serverResponse.getResponseList().get(0);
+            request = new ClientRequest(ClientRequest.REQ_GET_NBR_GATES);
+            clientSocket.send(request);
+            ServerResponse response = clientSocket.getResponse(request);
+            if (response.getRequestType() == ClientRequest.REQ_GET_NBR_GATES) {
+                nbrGates = (Integer)response.getResponseList().get(0);
             }
             return nbrGates;
         }
@@ -196,14 +196,14 @@ public class Proxy {
     }
 
     public long getRunsStartedOrCompletedCnt() {
-        ClientRequest clientRequest;
+        ClientRequest request;
         if (isStandAlone() == true) {
-            clientRequest = new ClientRequest(ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED);
-            clientSocket.send(clientRequest);
+            request = new ClientRequest(ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED);
+            clientSocket.send(request);
 
-            ServerResponse serverResponse = clientSocket.retrieveResponse(clientRequest);
-            if ( serverResponse.getRequestType() == ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED ) {
-                return(serverResponse.getRunsStartedOrCompletedCnt());
+            ServerResponse response = clientSocket.getResponse(request);
+            if ( response.getRequestType() == ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED ) {
+                return(response.getRunsStartedOrCompletedCnt());
             }
             return 0L;
         }
@@ -215,14 +215,14 @@ public class Proxy {
     }
 
     public boolean isUpstream(int iGate) {
-        ClientRequest clientRequest;
+        ClientRequest request;
         if (isStandAlone() == true) {
-            clientRequest = new ClientRequest(ClientRequest.REQ_IS_UPSTREAM, iGate);
-            clientSocket.send(clientRequest);
+            request = new ClientRequest(ClientRequest.REQ_IS_UPSTREAM, iGate);
+            clientSocket.send(request);
 
-            ServerResponse serverResponse = clientSocket.retrieveResponse(clientRequest);
-            if (serverResponse.getRequestType() == ClientRequest.REQ_IS_UPSTREAM) {
-                Boolean rc = (Boolean)serverResponse.getResponseList().get(0);
+            ServerResponse response = clientSocket.getResponse(request);
+            if (response.getRequestType() == ClientRequest.REQ_IS_UPSTREAM) {
+                Boolean rc = (Boolean)response.getResponseList().get(0);
                 return rc;
             }
             return false;

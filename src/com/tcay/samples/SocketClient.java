@@ -7,6 +7,8 @@ package com.tcay.samples;
  * Time: 6:18 PM
  * To change this template use File | Settings | File Templates.
  */
+import com.tcay.slalom.socket.Server;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;

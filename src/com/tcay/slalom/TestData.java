@@ -23,15 +23,16 @@ public class TestData {
         race.clearRace();
 
         String boatClass = "K1W";
-        race.addBoat( new Racer("29",  "LIEBFARTH",  "Evy",     "F", "USA"), boatClass);
-        race.addBoat( new Racer("30",  "DAVIS",      "Avery",   "F", "USA"), boatClass);
+        race.addBoat( new Racer("27",  "LIEBFARTH",  "Evy",     "F", "USA"), boatClass);
+        race.addBoat( new Racer("38",  "DAVIS",      "Avery",   "F", "USA"), boatClass);
+        race.addBoat( new Racer("29",  "VANHA",      "Zuzana",  "F", "USA"), boatClass);
+        race.addBoat( new Racer("30",  "HILGERTOVA", "Stepanka","F", "CZE"), boatClass);
         race.addBoat( new Racer("31",  "FER",        "Emilie",  "F", "FRA"), boatClass);
         race.addBoat( new Racer("32",  "CHOURRAUT",  "Maialen", "F", "ESP"), boatClass);
         race.addBoat( new Racer("33",  "DUKATOVA",   "Jana",    "F", "SVK"), boatClass);
         race.addBoat( new Racer("34",  "FOX",        "Jessica", "F", "AUS"), boatClass);
         race.addBoat( new Racer("35",  "KUHNLE",     "Corinna", "F", "AUT"), boatClass);
         race.addBoat( new Racer("36",  "KUDEJOVA",   "Katerina","F", "CZE"), boatClass);
-        race.addBoat( new Racer("37",  "HILGERTOVA", "Stepanka","F", "CZE"), boatClass);
         race.addBoat( new Racer("38",  "KRAGELJ",    "Ursa",    "F", "SLO"), boatClass);
         race.addBoat( new Racer("39",  "POESCHEL",   "Cindy",   "F", "GER"), boatClass);
         race.addBoat( new Racer("40",  "TERCELJ",    "Eva",     "F", "SLO"), boatClass);

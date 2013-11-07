@@ -5,7 +5,7 @@ import javax.swing.text.AbstractDocument;
 
 /**
  * SlalomScoring
- * Teton Cay Group Inc. ©2013
+ * Teton Cay Group Inc. 2013
  * <p/>
  * User: allen
  * Date: 11/4/13

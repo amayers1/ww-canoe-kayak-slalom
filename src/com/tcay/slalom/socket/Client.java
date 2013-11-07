@@ -12,11 +12,17 @@ import java.net.SocketException;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * SlalomScoring
+ * Teton Cay Group Inc. 2013
+ * <p/>
  * User: allen
- * Date: 10/22/13
- * Time: 7:54 PM
- * To change this template use File | Settings | File Templates.
+ * Date: 11/6/13
+ * Time: 5:41 PM
+ */
+
+
+/**
+ * Client for remote devices.  Initially these are only Scoring Stations for Section Judges.
  */
 public class Client {
     // fixme If you start client, and server has no race, then no gate buttons show up, but racers runs appear
@@ -55,9 +61,6 @@ public class Client {
         messageArea.setEditable(false);
         frame.getContentPane().add(dataField, "North");
         frame.getContentPane().add(new JScrollPane(messageArea), "Center");
-//        requests= new ArrayList<ClientRequest>();
-//        responses = new ArrayList<ServerResponse>();
-
     }
 
     public void send (ClientRequest req) {
@@ -85,7 +88,7 @@ public class Client {
         }
     }
 
-    public ServerResponse retrieveResponse(ClientRequest request) {
+    public ServerResponse getResponse(ClientRequest request) {
         ServerResponse response = null;
 
         log.trace("   Waiting for response @1");
@@ -138,7 +141,7 @@ public class Client {
             log.trace("Trying Socket");
             connected = false;
             try {
-                socket = new Socket(serverAddress, 9898);
+                socket = new Socket(serverAddress, Server.SOCKET_PORT);
                 slalomAppServerIsLocal = true;
                 connected = true;
                 log.trace("Local Socket found");
@@ -160,7 +163,7 @@ public class Client {
                     serverAddress = "127.0.0.1";
 
                 try {
-                    socket = new Socket(serverAddress, 9898);   /// fixme - handle if no server is running ... wit
+                    socket = new Socket(serverAddress, Server.SOCKET_PORT);   /// fixme - handle if no server is running ... wit
                     connected = true;
                 }  catch(ConnectException ce) {
 
