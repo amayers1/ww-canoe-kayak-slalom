@@ -3,6 +3,7 @@
 This application is designed to simplify the Race Organizers and Volunteers job of running a race.  It has simple features for use in Division 3/4 racing, and more advanced features for Division 2 through Premier Division racing. 
 
 Features:
+  * Simple User interface - Dynamic and Context Sensitive
   * Integration of electronic timing equipment (TagHeuer)
   * Realtime results
   * Automatic configuration for timing equipment hardware interface
@@ -10,8 +11,9 @@ Features:
   * Manual backup or primary timing for up to 3 racers on course simultaneously
   * Start list import
   * Internationalization - National Language Support
+  * Section Judging input from multiple remote stations or a single station 
   * Configuration of all race parameters
-    # Sections
+    # Judging Sections
     # Indication of upstream gates
     # ICF Penalty diagrams and codes
 
