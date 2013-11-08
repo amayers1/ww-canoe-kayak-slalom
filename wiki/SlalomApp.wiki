@@ -2,7 +2,7 @@
 
 This application is designed to simplify the Race Organizers and Volunteers job of running a race.  It has simple features for use in Division 3/4 racing, and more advanced features for Division 2 through Premier Division racing. 
 
-Features:
+==Features==
   * Simple User interface - Dynamic and Context Sensitive
   * Integration of electronic timing equipment - Tag Heuer CP520/540
   * Realtime results
@@ -74,6 +74,14 @@ The picklist shows Boats that have been scored fro the section with a red backgr
 http://tcay.com/SlalomApp/SlalomAppICFMissedGateCodes.png
 
 _Screen shot from Section Judging ICF Missed Gate codes_
+
+
+----
+
+===Internationalization===
+
+http://tcay.com/SlalomApp/SlalomAppConfigurationi18n.png
+
 
 
 
