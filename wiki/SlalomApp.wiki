@@ -10,9 +10,8 @@ Currently pre release code is available here:
 
 
 ==Requirements==
-PC - Windows XP or better,  Mac - OS X 10.5 or better,  or any Linux
-
-Java 1.6 JVM or better
+  * PC - Windows XP or better,  Mac - OS X 10.5 or better,  or any Linux
+  * Java 1.6 JVM or better
 
 Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloads/jre6-downloads-1637595.html Java version 6 Java Runtime Environment]
 
