@@ -14,6 +14,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Teton Cay Group, Inc.
@@ -53,12 +54,16 @@ public class SlalomApp {
 
     private static SlalomApp instance = null;
     private Log log;
+    private Race race;
+
 
     //Constructor must be protected or private to prevent creating new object
     protected SlalomApp() {
 
+        Locale.setDefault(new Locale("de", "DE"));
+
         log = Log.getInstance();
-        Race race = Race.getInstance();
+        race = Race.getInstance();
         race.loadSerializedData();
 
 
@@ -185,7 +190,7 @@ public class SlalomApp {
 
 
         // Classes Config
-        menuItem = new JMenuItem("TBD - Boat Classes Configuration", new ImageIcon("images/kayakSmall.jpg"));
+        menuItem = new JMenuItem("TBD - Boat Classes Configuration", race.getKayakSmall());
         menuItem.setMnemonic(KeyEvent.VK_B);
         menu.add(menuItem);
 
@@ -196,7 +201,7 @@ public class SlalomApp {
                 "Register Racers");
         menuBar.add(menu);
 
-        menuItem = new JMenuItem("TBD - Register Racer", new ImageIcon("images/racer.jpg"));
+        menuItem = new JMenuItem("TBD - Register Racer", race.getRacerImg());
         menu.add(menuItem);
         menuItem.addActionListener(
                 new ActionListener() {
@@ -210,7 +215,7 @@ public class SlalomApp {
                 }
         );
 
-        menuItem = new JMenuItem("TBD - Assign Bibs", new ImageIcon("images/raceBibSmall.jpg"));
+        menuItem = new JMenuItem("TBD - Assign Bibs", race.getRaceBibSmall());
         menuItem.setMnemonic(KeyEvent.VK_D);
         menu.add(menuItem);
 
@@ -536,4 +541,5 @@ public class SlalomApp {
             }
         });
     }
+
 }
