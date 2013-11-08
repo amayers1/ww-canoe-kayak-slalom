@@ -1,6 +1,12 @@
 =Whitewater Canoe Kayak Slalom Application=
 
+http://tcay.com/SlalomApp/SlalomAppConfigurationScreen.png
+_Screen shot Race Configuration Screen_
+
+
 http://tcay.com/SlalomApp/SlalomAppTimingScreen.png
+_Screen shot from Timing Screen_
+
 
 <wiki:comment>
 
