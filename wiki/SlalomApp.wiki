@@ -49,7 +49,7 @@ http://tcay.com/SlalomApp/SlalomAppSectionJudging.png
 
 _Screen shot from Section Judging Screen_
 
-With the Advanced Option for ICF codes, penalties will be marked with appropriate codes for 50s and diagrams for touches.  See the Letter in parenthesis next to the 50.  This is selected from the screen below.
+With the Advanced Option for ICF codes, penalties will be marked with appropriate codes for 50s and diagrams for touches.  See the Letter in parenthesis next to the 50.  This is selected from [SlalomApp#ICF Missed_Gate_Codes].
 
 
 ----
@@ -63,7 +63,7 @@ The picklist shows Boats that have been scored fro the section with a red backgr
 
 ----
 
-
+===ICF Missed Gate Codes===
 
 http://tcay.com/SlalomApp/SlalomAppICFMissedGateCodes.png
 
