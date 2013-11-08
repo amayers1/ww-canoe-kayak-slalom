@@ -4,7 +4,7 @@ This application is designed to simplify the Race Organizers and Volunteers job 
 
 Features:
   * Simple User interface - Dynamic and Context Sensitive
-  * Integration of electronic timing equipment (TagHeuer)
+  * Integration of electronic timing equipment - TagHeuer CP520/540
   * Realtime results
   * Automatic configuration for timing equipment hardware interface
   * Output to spectator / competitor scoreboard
