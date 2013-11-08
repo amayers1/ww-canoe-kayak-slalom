@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 
 /**
@@ -27,12 +28,10 @@ public class RaceConfigUI {
     private JPanel panelLower;
     private JPanel panelSectionConfig;
 
-    //  private JTextField raceDate;
     private JTextField raceName;
     private JTextField raceVenue;
     private JTextField nbrGates;
     private JTextField upstreamGates;
-    private JCheckBox tagHeuerEmulation;
     private JButton doneButton;
     private JSpinner dateSpinner1;
     private JTextField sectionEndingGates;
@@ -74,7 +73,6 @@ public class RaceConfigUI {
                 sectionConfig.updateSectionEndingGatesIfNeeded(gateCount);
             }
         });
-        tagHeuerEmulation.setSelected(race.isTagHeuerEmulation());
     }
 
 
@@ -94,8 +92,6 @@ public class RaceConfigUI {
         String gates = nbrGates.getText();
         race.setNbrGates(new Integer(gates.trim())); // THIS MUST HAPPEN BEFORE sectionConfig save
         sectionConfig.saveConfig();
-        race.setTagHeuerEmulation(tagHeuerEmulation.isSelected());
-        race.saveSerializedData();
     }
 
     //  public JTextField getRaceDate() {
@@ -181,18 +177,18 @@ public class RaceConfigUI {
     private void $$$setupUI$$$() {
         createUIComponents();
         panel1 = new JPanel();
-        panel1.setLayout(new FormLayout("fill:127px:noGrow,left:max(m;10px):noGrow,left:max(m;200px):grow,fill:max(d;4px):noGrow,fill:max(d;4px):noGrow", "center:d:noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:d:grow,top:3dlu:noGrow,center:max(d;4px):noGrow"));
+        panel1.setLayout(new FormLayout("fill:127px:noGrow,left:max(m;10px):noGrow,left:max(m;200px):grow,fill:max(d;4px):noGrow,fill:max(d;4px):noGrow", "center:d:noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:d:grow,top:3dlu:noGrow,center:max(d;4px):noGrow"));
         final JLabel label1 = new JLabel();
-        label1.setText("Race Name");
+        this.$$$loadLabelText$$$(label1, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("race.name"));
         CellConstraints cc = new CellConstraints();
         panel1.add(label1, cc.xy(1, 1));
         raceName = new JTextField();
         panel1.add(raceName, cc.xyw(3, 1, 3, CellConstraints.FILL, CellConstraints.DEFAULT));
         final JLabel label2 = new JLabel();
-        label2.setText("Race Date");
+        this.$$$loadLabelText$$$(label2, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("race.date"));
         panel1.add(label2, cc.xy(1, 3));
         final JLabel label3 = new JLabel();
-        label3.setText("Venue/Location");
+        this.$$$loadLabelText$$$(label3, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("race.location"));
         panel1.add(label3, cc.xy(1, 5));
         raceVenue = new JTextField();
         raceVenue.setMinimumSize(new Dimension(60, 28));
@@ -200,21 +196,43 @@ public class RaceConfigUI {
         panel1.add(raceVenue, cc.xyw(3, 5, 3, CellConstraints.FILL, CellConstraints.DEFAULT));
         panelLower = new JPanel();
         panelLower.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
-        panel1.add(panelLower, cc.xyw(1, 11, 5));
+        panel1.add(panelLower, cc.xyw(1, 9, 5));
         final JLabel label4 = new JLabel();
-        label4.setText("Total Nbr of gates");
+        this.$$$loadLabelText$$$(label4, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("race.config.totalNbrGates"));
         panel1.add(label4, cc.xy(1, 7));
         panel1.add(nbrGates, cc.xyw(3, 7, 3, CellConstraints.FILL, CellConstraints.DEFAULT));
-        panel1.add(panelSectionConfig, cc.xyw(1, 13, 4, CellConstraints.CENTER, CellConstraints.FILL));
+        panel1.add(panelSectionConfig, cc.xyw(1, 11, 4, CellConstraints.CENTER, CellConstraints.FILL));
         doneButton = new JButton();
         doneButton.setText("Done");
-        panel1.add(doneButton, cc.xyw(1, 15, 4));
+        panel1.add(doneButton, cc.xyw(1, 13, 4));
         panel1.add(dateSpinner1, cc.xy(3, 3, CellConstraints.FILL, CellConstraints.DEFAULT));
-        tagHeuerEmulation = new JCheckBox();
-        panel1.add(tagHeuerEmulation, cc.xy(3, 9));
-        final JLabel label5 = new JLabel();
-        label5.setText("Auto Timing Demo");
-        panel1.add(label5, cc.xy(1, 9));
+    }
+
+    /**
+     * @noinspection ALL
+     */
+    private void $$$loadLabelText$$$(JLabel component, String text) {
+        StringBuffer result = new StringBuffer();
+        boolean haveMnemonic = false;
+        char mnemonic = '\0';
+        int mnemonicIndex = -1;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '&') {
+                i++;
+                if (i == text.length()) break;
+                if (!haveMnemonic && text.charAt(i) != '&') {
+                    haveMnemonic = true;
+                    mnemonic = text.charAt(i);
+                    mnemonicIndex = result.length();
+                }
+            }
+            result.append(text.charAt(i));
+        }
+        component.setText(result.toString());
+        if (haveMnemonic) {
+            component.setDisplayedMnemonic(mnemonic);
+            component.setDisplayedMnemonicIndex(mnemonicIndex);
+        }
     }
 
     /**

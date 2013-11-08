@@ -11,8 +11,6 @@
     <rowspec value="top:3dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:3dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="top:3dlu:noGrow"/>
     <rowspec value="center:d:grow"/>
     <rowspec value="top:3dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
@@ -33,7 +31,7 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Race Name"/>
+          <text resource-bundle="resources/SlalomAppMessages" key="race.name"/>
         </properties>
       </component>
       <component id="b84cc" class="javax.swing.JTextField" binding="raceName">
@@ -51,7 +49,7 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Race Date"/>
+          <text resource-bundle="resources/SlalomAppMessages" key="race.date"/>
         </properties>
       </component>
       <component id="26f05" class="javax.swing.JLabel">
@@ -60,7 +58,7 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Venue/Location"/>
+          <text resource-bundle="resources/SlalomAppMessages" key="race.location"/>
         </properties>
       </component>
       <component id="863ea" class="javax.swing.JTextField" binding="raceVenue">
@@ -78,7 +76,7 @@
       <grid id="15bb3" binding="panelLower" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="10" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties/>
@@ -91,7 +89,7 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Total Nbr of gates"/>
+          <text resource-bundle="resources/SlalomAppMessages" key="race.config.totalNbrGates"/>
         </properties>
       </component>
       <component id="ed012" class="javax.swing.JTextField" binding="nbrGates" custom-create="true">
@@ -105,7 +103,7 @@
       </component>
       <grid id="5f92c" binding="panelSectionConfig" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints>
-          <grid row="12" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <grid row="10" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
             <preferred-size width="0" height="23"/>
           </grid>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -116,7 +114,7 @@
       </grid>
       <component id="ae712" class="javax.swing.JButton" binding="doneButton" default-binding="true">
         <constraints>
-          <grid row="14" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="12" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="77" height="16"/>
           </grid>
           <forms/>
@@ -131,22 +129,6 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties/>
-      </component>
-      <component id="c6403" class="javax.swing.JCheckBox" binding="tagHeuerEmulation">
-        <constraints>
-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="5c773" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <text value="Auto Timing Demo"/>
-        </properties>
       </component>
     </children>
   </grid>

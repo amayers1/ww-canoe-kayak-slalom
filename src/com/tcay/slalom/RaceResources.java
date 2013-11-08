@@ -33,6 +33,22 @@ public class RaceResources {
     private transient ImageIcon slalomCourseSmall;
     private transient ImageIcon stopWatchII;
     private transient ImageIcon slalomBackgroundII;
+    private transient ImageIcon icfPenaltyDescripton;
+    private transient ImageIcon icfPenaltyDiagram;
+
+    private transient ImageIcon icfPenaltyWrongDIrection;
+    private transient ImageIcon icfPenaltyWashedBackThroughGateLine;
+    private transient ImageIcon icfPenaltyUpsideDown;
+    private transient ImageIcon icfPenaltyIntentionallyMovedGate;
+    private transient ImageIcon icfPenaltyHeadAndBoatNotInGateTogether;
+    private transient ImageIcon icfPenaltyDidntGoThroughas1Unit;
+    private transient ImageIcon kayakSmall;
+
+    
+    
+    
+    
+
     private transient ImageIcon emptyII = new ImageIcon();  // needed for table cell renderer, can't have null value for cell renderer
 
     private transient ArrayList<Country> countries;
@@ -191,6 +207,48 @@ public class RaceResources {
             if (imgURL!=null)
                 slalomBackgroundII = new ImageIcon(imgURL, "slalomBkg");
 
+            imgURL = thisClass.getResource("images/ICFPenaltyLegend.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyDescripton = new ImageIcon(imgURL, "slalomBkg");
+
+
+            imgURL = thisClass.getResource("images/ICFPenaltyDiagram.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyDiagram = new ImageIcon(imgURL, "slalomBkg");
+
+
+            imgURL = thisClass.getResource("images/ICFPenaltyWrongDirection.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyWrongDIrection = new ImageIcon(imgURL, "ICFPenaltyWrongDirection");
+
+
+            imgURL = thisClass.getResource("images/ICFPenaltyWashedBackThroughGateLine.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyWashedBackThroughGateLine = new ImageIcon(imgURL, "ICFPenaltyWashedBackThroughGateLine");
+
+            imgURL = thisClass.getResource("images/ICFPenaltyUpsideDown.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyUpsideDown = new ImageIcon(imgURL, "ICFPenaltyUpsideDown");
+
+
+            imgURL = thisClass.getResource("images/ICFPenaltyIntentionallyMovedGate.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyIntentionallyMovedGate = new ImageIcon(imgURL, "ICFPenaltyIntentionallyMovedGate");
+
+
+            imgURL = thisClass.getResource("images/ICFPenaltyHeadAndBoatNotInGateTogether.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyHeadAndBoatNotInGateTogether = new ImageIcon(imgURL, "ICFPenaltyHeadAndBoatNotInGateTogether");
+
+            imgURL = thisClass.getResource("images/ICFPenaltyDidntGoThroughas1Unit.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                icfPenaltyDidntGoThroughas1Unit = new ImageIcon(imgURL, "ICFPenaltyDidntGoThroughas1Unit");
+
+            imgURL = thisClass.getResource("images/kayakSmall.jpg");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                kayakSmall = new ImageIcon(imgURL, "kayakSmall");
+
+
             //http://vectormagic.com/home - make vector images out of bitmaps
 
         }
@@ -198,6 +256,38 @@ public class RaceResources {
             log.error("BAD ImageLoad");
             log.write(e);
         }
+    }
+
+    public ImageIcon getIcfPenaltyWrongDirection() {
+        return icfPenaltyWrongDIrection;
+    }
+
+    public ImageIcon getIcfPenaltyWashedBackThroughGateLine() {
+        return icfPenaltyWashedBackThroughGateLine;
+    }
+
+    public ImageIcon getIcfPenaltyUpsideDown() {
+        return icfPenaltyUpsideDown;
+    }
+
+    public ImageIcon getIcfPenaltyIntentionallyMovedGate() {
+        return icfPenaltyIntentionallyMovedGate;
+    }
+
+    public ImageIcon getIcfPenaltyHeadAndBoatNotInGateTogether() {
+        return icfPenaltyHeadAndBoatNotInGateTogether;
+    }
+
+    public ImageIcon getIcfPenaltyDidntGoThroughas1Unit() {
+        return icfPenaltyDidntGoThroughas1Unit;
+    }
+
+    public ImageIcon getIcfPenaltyDescripton() {
+        return icfPenaltyDescripton;
+    }
+
+    public ImageIcon getIcfPenaltyDiagram() {
+        return icfPenaltyDiagram;
     }
 
     public ImageIcon getSlalomBackgroundII() {
@@ -236,5 +326,9 @@ public class RaceResources {
         // http://upload.wikimedia.org/wikipedia/commons/7/78/Cardiff_International_White_Water_%282012_gates%29.svg
         // use ok per license  http://creativecommons.org/licenses/by-sa/3.0/deed.en
         return slalomCourseSmall;
+    }
+
+    public ImageIcon getKayakSmall() {
+        return kayakSmall;
     }
 }

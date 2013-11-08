@@ -45,6 +45,7 @@ public class Race extends RaceResources implements Serializable
     private ArrayList<JudgingSection> judgingSections;
     private List<Racer> racers;
     private boolean tagHeuerEmulation = false;
+    private boolean icfPenalties = false;
 
 
     // Race Status
@@ -87,6 +88,14 @@ public class Race extends RaceResources implements Serializable
 
     public void setTagHeuerConnected(Boolean tagHeuerConnected) {
         this.tagHeuerConnected = tagHeuerConnected;
+    }
+
+    public boolean isIcfPenalties() {
+        return icfPenalties;
+    }
+
+    public void setIcfPenalties(boolean icfPenalties) {
+        this.icfPenalties = icfPenalties;
     }
 
 //    public Thread getPhotoCellThread() {
@@ -758,6 +767,8 @@ public class Race extends RaceResources implements Serializable
                 this.runsStartedOrCompletedCnt = raceFromSerialized.runsStartedOrCompletedCnt;
                 this.currentRunIteration = raceFromSerialized.currentRunIteration;  // are we on 1st runs, or 2nd runs ?
                 this.racers = raceFromSerialized.racers;
+                this.tagHeuerEmulation = raceFromSerialized.tagHeuerEmulation;
+                this.icfPenalties = raceFromSerialized.icfPenalties;
             }
 
 

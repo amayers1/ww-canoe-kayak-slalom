@@ -29,7 +29,7 @@ public class TestData {
         try {
             race.addBoat( new Racer("27",  "LIEBFARTH",  "Evy",     "F", "USA"), boatClass);
             race.addBoat( new Racer("28",  "DAVIS",      "Avery",   "F", "USA"), boatClass);
-            race.addBoat( new Racer("39",  "VANHA",      "Zuzana",  "F", "USA"), boatClass);
+            race.addBoat( new Racer("29",  "VANHA",      "Zuzana",  "F", "USA"), boatClass);
             race.addBoat( new Racer("30",  "HILGERTOVA", "Stepanka","F", "CZE"), boatClass);
             race.addBoat( new Racer("31",  "FER",        "Emilie",  "F", "FRA"), boatClass);
             race.addBoat( new Racer("32",  "CHOURRAUT",  "Maialen", "F", "ESP"), boatClass);
@@ -72,6 +72,8 @@ public class TestData {
         race.setNbrGates(NBR_GATES);
         race.setUpstreamGates(UPSTREAMS);
         race.setLocation(LOCATION);
+        race.setTagHeuerEmulation(true);
+        race.setIcfPenalties(true);
 
         JudgingSection section = new JudgingSection(1, 1,6);
         race.addSection(section);

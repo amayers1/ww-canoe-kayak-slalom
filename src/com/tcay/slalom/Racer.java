@@ -11,15 +11,18 @@ import java.io.Serializable;
  * Date: Aug 21, 2013
  * Time: 5:03:47 PM
  */
+
+
+/**
+ * Racer is the class representing the person (or persons in C2) that will paddle in the race
+ */
 public class Racer extends Person implements Serializable {
 
-    private String federationNumber;        // Racers Federation membership IDentifier
+    private String federationNumber;        // Racers Federation membership Identifier ICF/USACK/etc.
     private String tShirtSize;
     private String club;
     private String bibNumber;
     private String mobilePhone;
-
-
 
 
 
@@ -95,7 +98,7 @@ public class Racer extends Person implements Serializable {
     }
     public Racer(String bib, String last, String first, String sex, String club) {
         init();
-        bibNumber = bib;                            //todo
+        bibNumber = bib;
         setFirstName(first);
         setLastName(last);
         setSex(sex);
@@ -104,7 +107,7 @@ public class Racer extends Person implements Serializable {
 
     public Racer(String bib, String last, String first, String sex, String club, String ageGroup) {
         init();
-        bibNumber = bib;                            //todo
+        bibNumber = bib;
         setFirstName(first);
         setLastName(last);
         setSex(sex);

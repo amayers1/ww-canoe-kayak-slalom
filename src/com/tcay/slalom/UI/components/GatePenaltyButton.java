@@ -15,6 +15,7 @@ public class GatePenaltyButton extends JButton {
 
     private int penalty;
     private int gate;
+    private String reasonFor50;
 
 
 
@@ -27,8 +28,23 @@ public class GatePenaltyButton extends JButton {
         return penalty;
     }
 
+    public String getReasonFor50() {
+        return reasonFor50;
+    }
+
+    public void setReasonFor50(String code) {
+
+        this.reasonFor50 = code;
+    }
+
     public void setPenalty(int penalty) {
+        setPenalty( penalty, null);
+    }
+
+
+    public void setPenalty(int penalty, String reasonCode) {
         String penaltyText = "";
+        this.reasonFor50 = reasonCode;
         this.penalty = penalty;
         switch (penalty) {
             case 0:
@@ -37,14 +53,14 @@ public class GatePenaltyButton extends JButton {
                 penaltyText = "+2";
                 break;
             case 50:
-                penaltyText = "+50";
+                penaltyText = "+50" + (reasonFor50==null?"":"(" + reasonFor50 + ")");
                 break;
 
             default:
                 break;
         }
 
-        setText( gate + " " + penaltyText);
+        setText( gate + " " + penaltyText );
     }
 
 

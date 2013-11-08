@@ -32,6 +32,10 @@ import java.util.ArrayList;
  */
 public class SlalomApp {
 
+
+    //http://www.loc.gov/standards/iso639-2/php/code_list.php Country Codes
+
+
     public static final Color RED = new Color(255,0,0);
     public static final Color LIGHT_RED = new Color(255,204,204);
     public static final Color LIGHT_GREEN = new Color(153,255,153);
