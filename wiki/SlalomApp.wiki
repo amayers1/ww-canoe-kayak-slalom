@@ -27,12 +27,12 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
 ==Running the Applications==
 There are 2 applications 
 
-  * SlalomApp.jar which is the main program that handles all configuration, timing, etc.
+  * !SlalomApp.jar which is the main program that handles all configuration, timing, etc.
   * JudgingSection.jar which is normally run on other machines by section judges
 
 To run the applications simply double click on the in a file browser, or use the command line syntax:
 
-  * java -jar SlalomApp.jar
+  * java -jar !SlalomApp.jar
   * java -jar JudgingSection.jar
 
 
