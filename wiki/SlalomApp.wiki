@@ -10,7 +10,7 @@ Currently pre release code is available here:
 
 
 ==Requirements==
-PC, Mac or Linux
+PC - Windows XP or better,  Mac - OS X 10.5 or better,  or any Linux
 
 Java 1.6 JVM or better
 
