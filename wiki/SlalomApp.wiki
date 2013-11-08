@@ -10,6 +10,7 @@ Features:
   * Output to spectator / competitor scoreboard
   * Manual backup or primary timing for up to 3 racers on course simultaneously
   * Start list import
+  * Selectable reruns
   * Internationalization - National Language Support
   * Section Judging input from multiple remote stations or a single station 
   * Configuration of all race parameters
