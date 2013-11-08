@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.Vector;
 import java.util.List;
 
@@ -38,6 +39,8 @@ public class SectionConfigUI extends JComponent {
     private JLabel section4Label;
     private JLabel section5Label;
     private JLabel section2Label;
+    private JCheckBox icfPenaltyDiagrams;
+    private JCheckBox tagHeuerEmulation;
     //    private JComboBox comboBoxSelectUpstream;
 //    private JButton addButton;
 
@@ -162,6 +165,8 @@ public class SectionConfigUI extends JComponent {
             }
         }
         Race.getInstance().setSectionEndingGates(sections);
+        Race.getInstance().setIcfPenalties(icfPenaltyDiagrams.isSelected());
+        Race.getInstance().setTagHeuerEmulation(tagHeuerEmulation.isSelected());
     }
 
 
@@ -278,6 +283,10 @@ public class SectionConfigUI extends JComponent {
         comboBoxSection3.setSelectedIndex(nbrGates - 1);
         comboBoxSection4.setSelectedIndex(nbrGates - 1);
         comboBoxSection5.setSelectedIndex(nbrGates - 1);
+        icfPenaltyDiagrams = new JCheckBox();
+        icfPenaltyDiagrams.setSelected(Race.getInstance().isIcfPenalties());
+        tagHeuerEmulation = new JCheckBox();
+        tagHeuerEmulation.setSelected(Race.getInstance().isTagHeuerEmulation());
 
 
         ArrayList<JudgingSection> sections = Race.getInstance().getSectionEndingGates();
@@ -478,44 +487,113 @@ public class SectionConfigUI extends JComponent {
     private void $$$setupUI$$$() {
         createUIComponents();
         panel1 = new JPanel();
-        panel1.setLayout(new FormLayout("fill:d:noGrow,left:4dlu:noGrow,fill:74px:noGrow,left:4dlu:noGrow,fill:74px:noGrow", "center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:257px:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow"));
-        final JLabel label1 = new JLabel();
-        label1.setText("Section Configuration");
+        panel1.setLayout(new FormLayout("fill:247px:noGrow,left:5dlu:noGrow,fill:74px:noGrow,left:4dlu:noGrow,fill:74px:noGrow,left:23dlu:noGrow,fill:max(d;4px):noGrow", "center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:12px:noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:29px:noGrow,top:3dlu:noGrow,top:19dlu:noGrow,center:max(d;4px):noGrow,center:174px:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow"));
         CellConstraints cc = new CellConstraints();
-        panel1.add(label1, cc.xy(1, 1));
-        panel1.add(comboBoxSection1, cc.xy(5, 5));
+        panel1.add(comboBoxSection1, cc.xy(5, 7));
         section1Label = new JLabel();
         section1Label.setText("Section 1");
-        panel1.add(section1Label, cc.xy(3, 5));
+        panel1.add(section1Label, cc.xy(3, 7));
         section2Label = new JLabel();
         section2Label.setText("Section 2");
-        panel1.add(section2Label, cc.xy(3, 7));
-        panel1.add(comboBoxSection2, cc.xy(5, 7));
+        panel1.add(section2Label, cc.xy(3, 10));
+        panel1.add(comboBoxSection2, cc.xy(5, 10));
         section3Label = new JLabel();
         section3Label.setText("Section 3");
-        panel1.add(section3Label, cc.xy(3, 9));
-        panel1.add(comboBoxSection3, cc.xy(5, 9));
+        panel1.add(section3Label, cc.xy(3, 12));
+        panel1.add(comboBoxSection3, cc.xy(5, 12));
         section4Label = new JLabel();
         section4Label.setText("Section 4");
-        panel1.add(section4Label, cc.xy(3, 11));
-        panel1.add(comboBoxSection4, cc.xy(5, 11));
-        final JLabel label2 = new JLabel();
-        label2.setText("Last gate");
-        panel1.add(label2, cc.xy(5, 3));
+        panel1.add(section4Label, cc.xy(3, 14));
+        panel1.add(comboBoxSection4, cc.xy(5, 14));
+        final JLabel label1 = new JLabel();
+        this.$$$loadLabelText$$$(label1, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.lastGate"));
+        panel1.add(label1, cc.xy(5, 3));
         section5Label = new JLabel();
         section5Label.setText("Section 5");
-        panel1.add(section5Label, cc.xy(3, 13));
-        panel1.add(comboBoxSection5, cc.xy(5, 13));
-        final JLabel label3 = new JLabel();
-        label3.setText("Select Upstream Gates");
-        panel1.add(label3, cc.xywh(1, 15, 1, 3));
+        panel1.add(section5Label, cc.xy(3, 16));
+        panel1.add(comboBoxSection5, cc.xy(5, 16));
         final JList list1 = new JList();
-        panel1.add(list1, cc.xy(5, 18, CellConstraints.DEFAULT, CellConstraints.FILL));
+        list1.setToolTipText("Causes diagrams for touches and reason codes for 50s to appear when assessing penalties");
+        panel1.add(list1, cc.xy(5, 21, CellConstraints.DEFAULT, CellConstraints.FILL));
         final JScrollPane scrollPane1 = new JScrollPane();
-        panel1.add(scrollPane1, cc.xywh(5, 15, 1, 3, CellConstraints.DEFAULT, CellConstraints.FILL));
+        panel1.add(scrollPane1, cc.xy(5, 20, CellConstraints.DEFAULT, CellConstraints.FILL));
         scrollPane1.setViewportView(upstreamCheckBoxList);
         doneButton.setText("Done");
-        panel1.add(doneButton, cc.xy(1, 20));
+        panel1.add(doneButton, cc.xy(1, 23));
+        final JLabel label2 = new JLabel();
+        this.$$$loadLabelText$$$(label2, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.sectionConfiguration"));
+        panel1.add(label2, cc.xyw(3, 1, 5, CellConstraints.CENTER, CellConstraints.DEFAULT));
+        final JLabel label3 = new JLabel();
+        this.$$$loadLabelText$$$(label3, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.advancedOptions"));
+        panel1.add(label3, cc.xy(1, 1));
+        final JLabel label4 = new JLabel();
+        this.$$$loadLabelText$$$(label4, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.selectUpstreamGates"));
+        panel1.add(label4, cc.xyw(3, 19, 4, CellConstraints.CENTER, CellConstraints.DEFAULT));
+        final JLabel label5 = new JLabel();
+        label5.setFont(new Font(label5.getFont().getName(), label5.getFont().getStyle(), 8));
+        label5.setText("to be moved to Advanced Options page");
+        panel1.add(label5, cc.xy(1, 3));
+        this.$$$loadButtonText$$$(icfPenaltyDiagrams, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useIcfPenalties"));
+        icfPenaltyDiagrams.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.icfPenaltyDiagrams.tooltip"));
+        panel1.add(icfPenaltyDiagrams, cc.xy(1, 7));
+        tagHeuerEmulation.setLabel("Use Tag Heuer Emulation");
+        this.$$$loadButtonText$$$(tagHeuerEmulation, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation"));
+        tagHeuerEmulation.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation.tooltip"));
+        panel1.add(tagHeuerEmulation, cc.xy(1, 10));
+    }
+
+    /**
+     * @noinspection ALL
+     */
+    private void $$$loadLabelText$$$(JLabel component, String text) {
+        StringBuffer result = new StringBuffer();
+        boolean haveMnemonic = false;
+        char mnemonic = '\0';
+        int mnemonicIndex = -1;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '&') {
+                i++;
+                if (i == text.length()) break;
+                if (!haveMnemonic && text.charAt(i) != '&') {
+                    haveMnemonic = true;
+                    mnemonic = text.charAt(i);
+                    mnemonicIndex = result.length();
+                }
+            }
+            result.append(text.charAt(i));
+        }
+        component.setText(result.toString());
+        if (haveMnemonic) {
+            component.setDisplayedMnemonic(mnemonic);
+            component.setDisplayedMnemonicIndex(mnemonicIndex);
+        }
+    }
+
+    /**
+     * @noinspection ALL
+     */
+    private void $$$loadButtonText$$$(AbstractButton component, String text) {
+        StringBuffer result = new StringBuffer();
+        boolean haveMnemonic = false;
+        char mnemonic = '\0';
+        int mnemonicIndex = -1;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '&') {
+                i++;
+                if (i == text.length()) break;
+                if (!haveMnemonic && text.charAt(i) != '&') {
+                    haveMnemonic = true;
+                    mnemonic = text.charAt(i);
+                    mnemonicIndex = result.length();
+                }
+            }
+            result.append(text.charAt(i));
+        }
+        component.setText(result.toString());
+        if (haveMnemonic) {
+            component.setMnemonic(mnemonic);
+            component.setDisplayedMnemonicIndex(mnemonicIndex);
+        }
     }
 
     /**

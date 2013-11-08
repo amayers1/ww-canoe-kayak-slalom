@@ -5,6 +5,7 @@ package com.tcay.slalom.UI.client;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 import com.tcay.slalom.UI.SlalomApp;
+import com.tcay.slalom.UI.components.ICF_50_ReasonButton;
 import com.tcay.slalom.socket.Client;
 import com.tcay.util.Log;
 import com.tcay.slalom.*;
@@ -40,6 +41,11 @@ public class ClientRacePenaltiesUIDynamic {
     private JLabel raceRunLabel;                      // Name of racer and which run
     private BibLabel bibLabel;
     private JButton doneBtn;
+    //private JLabel penaltyDescriptionLabel;
+    //private JLabel penaltyDiagramLabel;
+
+
+
     private long getRunsStartedOrCompletedCnt = 0;    // current total number of runs (either on course or completed)
     private RaceRun selectedRun = null;               // the run that will be/is displayed in the Penalty UI
     private int onlyThisSection = 0;
@@ -59,6 +65,128 @@ public class ClientRacePenaltiesUIDynamic {
 
 
    static final int ROW_OFFSET = 5;
+
+
+   /*
+    public static int getSelection(JOptionPane optionPane) {
+        int returnValue = JOptionPane.CLOSED_OPTION;
+
+        Object selectedValue = optionPane.getValue();
+        if (selectedValue != null) {
+            Object options[] = optionPane.getOptions();
+            if (options == null) {
+                if (selectedValue instanceof Integer) {
+                    returnValue = ((Integer) selectedValue).intValue();
+                }
+            } else {
+                for (int i = 0, n = options.length; i < n; i++) {
+                    if (options[i].equals(selectedValue)) {
+                        returnValue = i;
+                        break; // out of for loop
+                    }
+                }
+            }
+        }
+        return returnValue;
+    }
+   */
+
+/*
+    private void do50Options(GatePenaltyButton penaltyButton) {
+
+        final GatePenaltyButton thisPenaltyButton = penaltyButton;
+
+        class MyActionListener implements ActionListener {
+            public void actionPerformed(ActionEvent evt) {
+                Window w = SwingUtilities.getWindowAncestor((JButton)evt.getSource());//btn);
+
+                JButton jb = (JButton)evt.getSource();
+                thisPenaltyButton.setIcon(jb.getIcon());
+
+                if (w != null) {
+                    w.setVisible(false);
+                }
+            }
+        }
+
+        //fixme  String values passed in such as "selValues" below will trigger an exit to the Dialog with
+        // a selection,   J Buttons such as fred ... will not   BUMMER !
+        //was
+
+
+        //tryDialog();
+
+
+
+*/
+
+/*  Kind of works with some enhancement
+
+        for (JButton jb:fred) {
+            jb.addActionListener(new MyActionListener());
+        }
+
+        ImageIcon icon = new ImageIcon("blob.gif", "blob");
+        Object[] selValues = { "abc", "def", "ghi" };
+
+         // Shows message, choices appear as buttons
+        int res = JOptionPane.showOptionDialog(null, "Hello!", "Message Title",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, icon,
+               // selValues, selValues[0]);
+                fred, fred[0]);
+
+          System.out.println(res);
+*/
+
+/*
+        JOptionPane optionPane = new JOptionPane();
+        //optionPane.setMessage(fred);
+        optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
+        optionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+        optionPane.setOptions(selValues);
+        //optionPane.setSelectionValues(fred);
+        //optionPane.setOptionType();
+
+        JDialog dialog = optionPane.createDialog(null, "Width 100");
+        dialog.setVisible(true);
+        int selection = getSelection(optionPane);
+        switch (selection) {
+            case JOptionPane.OK_OPTION:
+                System.out.println("OK_OPTION");
+                break;
+            case JOptionPane.CANCEL_OPTION:
+                System.out.println("CANCEL");
+                break;
+            default:
+                System.out.println("Others");
+        }
+
+*/
+
+
+
+
+        //JOptionPane.showOptionDialog
+//( innerPanel,
+//                                      "Assign how 50 occurred",
+//                                      "50 Assessment TItle",
+//                                      JOptionPane.DEFAULT_OPTION,//YES_NO_OPTION,
+//                                      JOptionPane.WARNING_MESSAGE,
+//                null,
+//                fred,
+//                fred[0]
+//                );
+
+//        j.setContentPane();
+
+
+
+//    }
+
+
+    ///
+    ///
+
 
     private int setupPenaltyButtons()
     {
@@ -132,21 +260,32 @@ public class ClientRacePenaltiesUIDynamic {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
                     GatePenaltyButton btn = (GatePenaltyButton)actionEvent.getSource() ;
-
+                    String reasonCode=null;
                     Integer penalty =0;
                     if (btn.getPenalty() == 0) {
                         penalty = 2;
+                        //btn.setReasonFor50(null);
                     }
                     else {
                         penalty = btn.getPenalty();
                         if (penalty == 2)  {
                             penalty = 50;
+                            if (Race.getInstance().isIcfPenalties()) {
+                                ClientRacePenaltyICF50SecondReasonDialog reasonDialog = new ClientRacePenaltyICF50SecondReasonDialog( );
+                                reasonCode = reasonDialog.doDialog(btn, selectedRun.getBoat().toString(), btn.getGate());
+                                //btn.setText(btn.getText() + "(" + btn.getReasonFor50().getReasonCode() + ")");
+                                //do50Options(btn);
+                            }
+
                         }
                         else if (penalty == 50)  {
+                            //btn.setReasonFor50(null);
                             penalty = 0;
                         }
                     }
-                    btn.setPenalty(penalty);                // update the Button
+                    //btn.setReasonFor50(reasonCode);
+                    btn.setPenalty(penalty, reasonCode);
+                                    // update the Button
                 }
             });
         }
@@ -394,6 +533,8 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
         // todo fix kludge ordering here in calls
         int maxRow = setupPenaltyButtons();   // max Row set here
 
+//        innerPanel.add(penaltyDescriptionLabel,      cc.xyw(1, (5 + maxRow * 2), 5));
+//        innerPanel.add(penaltyDiagramLabel,          cc.xyw(1, (7 + maxRow * 2), 5));
 
         doneBtn.setText("Done");
         doneBtn.setBackground( SlalomApp.LIGHT_RED);
@@ -584,7 +725,6 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
             return component;
         }
     }
-
 
 
 }
