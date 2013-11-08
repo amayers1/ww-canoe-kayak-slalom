@@ -1,5 +1,17 @@
 =Whitewater Canoe Kayak Slalom Application=
 
+This application is designed to simplify the Race Organizers and Volunteers job of running a race.  It has simple features for use in Division 3/4 racing, and more advanced features for Division 2 through Premier Division racing. 
+
+Features:
+  *Integration of electronic timing equipment (TagHeuer)
+  *Realtime results
+  *Automatic configuration for timing equipment hardware interface
+  *Output to spectator / competitor scoreboard
+  *Manual backup or primary timing for up to 3 racers on course simultaneously
+  *Start list import
+
+
+
 
 Sample Screen Shots
 ----
