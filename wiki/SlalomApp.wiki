@@ -9,6 +9,11 @@ Features:
   * Output to spectator / competitor scoreboard
   * Manual backup or primary timing for up to 3 racers on course simultaneously
   * Start list import
+  * Internationalization - National Language Support
+  * Configuration of all race parameters
+    # Sections
+    # Indication of upstream gates
+    # ICF Penalty diagrams and codes
 
 
 
