@@ -44,7 +44,7 @@ Normally the Starting block is automatically propagated from the race's start li
 
 ----
 
-http://tcay.com/SlalomApp/SlalomAppSectionJudgingPickList.png
+http://tcay.com/SlalomApp/SlalomAppSectionJudging.png
 
 _Screen shot from Section Judging Screen_
 
