@@ -43,12 +43,8 @@ public class RaceResources {
     private transient ImageIcon icfPenaltyHeadAndBoatNotInGateTogether;
     private transient ImageIcon icfPenaltyDidntGoThroughas1Unit;
     private transient ImageIcon kayakSmall;
-
-    
-    
-    
-    
-
+    private transient ImageIcon racerImg;
+    private transient ImageIcon raceBibSmall;
     private transient ImageIcon emptyII = new ImageIcon();  // needed for table cell renderer, can't have null value for cell renderer
 
     private transient ArrayList<Country> countries;
@@ -183,8 +179,8 @@ public class RaceResources {
             if (imgURL!=null)
                 upstreamSmallII = new ImageIcon(imgURL, "upstreamSmall");
 
-            BufferedImage image = ImageIO.read(new File("images/upstreamGateSmall.jpg"));
-            Icon i = new ImageIcon(image);
+//            BufferedImage image = ImageIO.read(new File("images/upstreamGateSmall.jpg"));
+//            Icon i = new ImageIcon(image);
 
             imgURL = thisClass.getResource("images/upstreamGateTiny.jpg");     // todo From location of package of Race ???
             if (imgURL!=null)
@@ -247,6 +243,19 @@ public class RaceResources {
             imgURL = thisClass.getResource("images/kayakSmall.jpg");     // todo From location of package of Race ???
             if (imgURL!=null)
                 kayakSmall = new ImageIcon(imgURL, "kayakSmall");
+
+
+            imgURL = thisClass.getResource("images/racer.jpg");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                racerImg = new ImageIcon(imgURL, "racer");
+
+            imgURL = thisClass.getResource("images/raceBibSmall.jpg");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                raceBibSmall = new ImageIcon(imgURL, "raceBibSmall");
+
+
+
+
 
 
             //http://vectormagic.com/home - make vector images out of bitmaps
@@ -330,5 +339,15 @@ public class RaceResources {
 
     public ImageIcon getKayakSmall() {
         return kayakSmall;
+    }
+// todo add to test bucket
+
+
+    public ImageIcon getRaceBibSmall() {
+        return raceBibSmall;
+    }
+
+    public ImageIcon getRacerImg() {
+        return racerImg;
     }
 }
