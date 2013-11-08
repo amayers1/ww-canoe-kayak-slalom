@@ -6,7 +6,7 @@ This application is designed to simplify the Race Organizers and Volunteers job 
 
 Currently pre release code is available here:
 
-[https://drive.google.com/folderview?id=0B0uX48lguh9aZkZTQzFsVFM4cjg&usp=sharing Downloads]
+[https://drive.google.com/folderview?id=0B0uX48lguh9aSmpVbnlNbDF1d1E&usp=sharing Downloads]
 
 
 ==Features==
