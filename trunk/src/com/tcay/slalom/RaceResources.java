@@ -179,9 +179,6 @@ public class RaceResources {
             if (imgURL!=null)
                 upstreamSmallII = new ImageIcon(imgURL, "upstreamSmall");
 
-//            BufferedImage image = ImageIO.read(new File("images/upstreamGateSmall.jpg"));
-//            Icon i = new ImageIcon(image);
-
             imgURL = thisClass.getResource("images/upstreamGateTiny.jpg");     // todo From location of package of Race ???
             if (imgURL!=null)
                 upstreamTinyII = new ImageIcon(imgURL, "upstreamSmall");

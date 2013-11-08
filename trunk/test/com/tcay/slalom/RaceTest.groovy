@@ -1,9 +1,11 @@
 package com.tcay.slalom
 
+import com.tcay.util.DuplicateBibException
 import org.testng.Assert
 import org.testng.annotations.Test
 
 import javax.swing.Icon
+import javax.swing.ImageIcon
 
 /**
  * Created with IntelliJ IDEA.
@@ -199,6 +201,25 @@ class RaceTest {
 
     }
 
+    @Test(expectedExceptions = DuplicateBibException.class, groups = ["regression", "integration"] )
+    void testAddBoatAddDuplicateBibInAClass() {
+        race = Race.getInstance()
+        System.out.println("Clearing race data");
+        race.clearRace()
+        TestData testData = new TestData()
+        testData.load()
+        System.out.println("Loading test race data");
+
+        // Get the first entry
+        BoatEntry be = (BoatEntry)race.getRemainingStartList().get(0);
+        System.out.println("Attempting to add the first boat as a duplicate");
+        // Attempting to add this should throw an expected DuplicateBibException exception
+        race.addBoat(be.getRacer(),be.boatClass);
+    }
+
+
+
+
     void testAddRun() {
 
     }
@@ -341,4 +362,103 @@ class RaceTest {
         Icon icon = race.getSlalomCourseSmall()
         Assert.assertNotNull(icon)
     }
+
+
+
+
+    @Test(groups = ["unit"])
+    void testGetIcfPenaltyDescripton() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyDescripton()
+        Assert.assertNotNull(icon)
+    }
+
+    @Test(groups = ["unit"])
+    void testGetIcfPenaltyDiagram() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyDiagram()
+        Assert.assertNotNull(icon)
+    }
+
+    @Test(groups = ["unit"])
+    void testGetSlalomBackgroundII() {
+        Race race = Race.getInstance()
+        Icon icon = race.getSlalomBackgroundII()
+        Assert.assertNotNull(icon)
+    }
+
+
+
+    @Test(groups = ["unit"])
+    void testGetIcfPenaltyWrongDIrection() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyWrongDirection()
+        Assert.assertNotNull(icon)
+    }
+
+
+    @Test(groups = ["unit"])
+    void testIcfPenaltyWashedBackThroughGateLine() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyWashedBackThroughGateLine()
+        Assert.assertNotNull(icon)
+    }
+
+
+    @Test(groups = ["unit"])
+    void testGetIcfPenaltyUpsideDown() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyUpsideDown()
+        Assert.assertNotNull(icon)
+    }
+
+    @Test(groups = ["unit"])
+    void testGetIcfPenaltyIntentionallyMovedGate() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyIntentionallyMovedGate()
+        Assert.assertNotNull(icon)
+    }
+
+    @Test(groups = ["unit"])
+    void testGetIcfPenaltyHeadAndBoatNotInGateTogether() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyHeadAndBoatNotInGateTogether()
+        Assert.assertNotNull(icon)
+    }
+
+    @Test(groups = ["unit"])
+    void testGetIcfPenaltyDidntGoThroughas1Unit() {
+        Race race = Race.getInstance()
+        Icon icon = race.getIcfPenaltyDidntGoThroughas1Unit()
+        Assert.assertNotNull(icon)
+    }
+
+    @Test(groups = ["unit"])
+    void testGetKayakSmall() {
+        Race race = Race.getInstance()
+        Icon icon = race.getKayakSmall()
+        Assert.assertNotNull(icon)
+    }
+
+
+    @Test(groups = ["unit"])
+    void testGetRacerImg() {
+        Race race = Race.getInstance()
+        Icon icon = race.getRacerImg()
+        Assert.assertNotNull(icon)
+    }
+
+
+    @Test(groups = ["unit"])
+    void testGetRaceBibSmall() {
+        Race race = Race.getInstance()
+        Icon icon = race.getRaceBibSmall()
+        Assert.assertNotNull(icon)
+    }
+
+
+
+
+
+
 }
