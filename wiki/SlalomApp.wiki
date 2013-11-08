@@ -17,6 +17,17 @@ _Screen shot from Timing Screen_
 
 ----
 
+http://tcay.com/SlalomApp/SlalomAppTimingScreenPickList.png
+
+_Screen shot from Timing Screen - Pick List for Entry to be placed in starting gate_
+
+Normally the Starting block is automatically propagated from the race's start list once a racer in the starting block starts.  This picklist allows for starting racers out of order without DNSing them.  This is useful in Division 3 and 4 races where it is not critical if racers start in order.
+
+
+
+----
+
+
 <wiki:comment>
 
 = Introduction =
