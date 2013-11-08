@@ -2,6 +2,13 @@
 
 This application is designed to simplify the Race Organizers and Volunteers job of running a race.  It has simple features for use in Division 3/4 racing, and more advanced features for Division 2 through Premier Division racing. 
 
+==Releases==
+
+Currently pre release code is available here:
+
+[https://drive.google.com/folderview?id=0B0uX48lguh9aZkZTQzFsVFM4cjg&usp=sharing Downloads]
+
+
 ==Features==
   * Simple User interface - Dynamic and Context Sensitive
   * Integration of electronic timing equipment - Tag Heuer CP520/540
