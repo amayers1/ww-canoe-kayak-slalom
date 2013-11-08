@@ -19,7 +19,7 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
 ==Installation==
   # Click on the download link at the top of the page
   # Click on the link that says Downloads for Slalom App
-  # Right click on the _CurrentStableRelease_ link and select Download from the properties menu
+  # Right click on the _Current Stable Release_ link and select Download from the properties menu
   # It should get unzipped automatically
   # You may move and rename the folder where ever you like
   # Installation is complete
