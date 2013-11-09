@@ -52,16 +52,6 @@ public class RunScoringTableModel extends AbstractTableModel
         }
     }
 
-
-    // todo problem when assigning penalties after race results are sorted - not dynamic
-
-    // SAMPLE OF HOW TO UPDATE TABLE UI ON MODEL CHANGE
-//    public void removeStock(int row) {
-//        stocks.remove(row);
-//        fireTableDataChanged();
-//    }
-
-
     public void updateResults() {
         fireTableDataChanged();
     }
@@ -69,12 +59,6 @@ public class RunScoringTableModel extends AbstractTableModel
 
     public Class getColumnClass( int column )
     {
-
-//        String s=null;
-//        //lie about column 10, with custom image renderer
-//        if (column == 10)
-//            return(s.getClass());
-
         return getValueAt(0, column).getClass();
     }
     public int getColumnCount()
@@ -97,31 +81,6 @@ public class RunScoringTableModel extends AbstractTableModel
 
     public Object getValueAt( int row, int column )
     {
-
-
-        row--;
-        if (row < 0 ) {
-            /*
-            /// do the gate images
-            if (column > RunScoringTable.COL_TOTAL) {
-                int gate = column - RunScoringTable.COL_TOTAL;
-                if (Race.getInstance().isUpstream(gate)) {
-                    Icon  ii = Race.getInstance().getUpstreamTinyII();
-                    //return(new JLabel(ii));
-                    return(ii);
-                }
-                else {
-                    Icon  ii = Race.getInstance().getDownstreamTinyII();
-                    //return(new JLabel(ii));
-                    return(ii);
-                }
-            }
-            */
-            return " ";
-        }
-
-
-
         ArrayList<Result> sortedResults = Race.getInstance().getTempResults();
         Object o = "..";
         int originalRow = row;
@@ -148,38 +107,38 @@ public class RunScoringTableModel extends AbstractTableModel
                 }
 
                 switch (column) {
-                    case RunScoringTable.COL_BOATCLASS:        // class
+                    case RunScoringTable.COL_BOATCLASS:
                         o = "";
-                        if (originalRow%2==0) {// name {
-                            o = (Object)r.getBoat().getBoatClass();
+                        if (originalRow%2==0) {
+                            o = r.getBoat().getBoatClass();
                         }
                         break;
-                    case RunScoringTable.COL_BIB:        // bib
+                    case RunScoringTable.COL_BIB:
                         o = "";
-                        if (originalRow%2==0) {// name {
+                        if (originalRow%2==0) {
 
-                            o = (Object)r.getBoat().getRacer().getBibNumber();
+                            o = r.getBoat().getRacer().getBibNumber();
                         }
                         break;
                     case RunScoringTable.COL_RACERNAME:
                         o = "";
-                        if (originalRow%2==0) {// name {
-                            o = (Object)r.getBoat().getRacer().getShortName();
+                        if (originalRow%2==0) {
+                            o = r.getBoat().getRacer().getShortName();
                         }
                         break;
 
                     case RunScoringTable.COL_RUN_NBR:
-                        o = (Object)runNbr;
+                        o = runNbr;
                         break;
 
-                    case RunScoringTable.COL_RAW:        // run 1 raw
+                    case RunScoringTable.COL_RAW:
                         if (run!= null) {
-                            o = (Object)run.getResultString();//getElapsed();
+                            o = run.getResultString();;
                         }
                         break;
                     case RunScoringTable.COL_TOTAL:
                         if (run!= null) {
-                           o = (Object)run.getTotalTimeString();
+                           o = run.getTotalTimeString();
                         }
                         break;
                     default:
