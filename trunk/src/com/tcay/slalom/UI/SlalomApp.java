@@ -25,11 +25,9 @@ import java.util.Locale;
 
 
 
-
 /**
- * Create the GUI and show it.  For thread safety,
- * this method should be invoked from the
- * event-dispatching thread.
+ * The main entry point for the application  Create the GUI and show it.
+ *
  */
 public class SlalomApp {
 
@@ -117,14 +115,12 @@ public class SlalomApp {
 
         //Build the Race Setup Menu
         menu = new JMenu("Setup/Configuration");
-        menu.setMnemonic(KeyEvent.VK_A);
         menu.getAccessibleContext().setAccessibleDescription(
                 "Race Configuration, Registration, Scoring, Results, etc.");
         menuBar.add(menu);
 
         //
-        menuItem = new JMenuItem("Race Configuration / Setup",
-                                 KeyEvent.VK_T);
+        menuItem = new JMenuItem("Race Configuration / Setup");
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "TBD");
         menu.add(menuItem);
@@ -191,12 +187,10 @@ public class SlalomApp {
 
         // Classes Config
         menuItem = new JMenuItem("TBD - Boat Classes Configuration", race.getKayakSmall());
-        menuItem.setMnemonic(KeyEvent.VK_B);
         menu.add(menuItem);
 
         // Build the Registration Menu
         menu = new JMenu("Registration");
-        menu.setMnemonic(KeyEvent.VK_N);
         menu.getAccessibleContext().setAccessibleDescription(
                 "Register Racers");
         menuBar.add(menu);
@@ -216,12 +210,10 @@ public class SlalomApp {
         );
 
         menuItem = new JMenuItem("TBD - Assign Bibs", race.getRaceBibSmall());
-        menuItem.setMnemonic(KeyEvent.VK_D);
         menu.add(menuItem);
 
         // Build the Scoring/Penalties Menu
         menu = new JMenu("Section Scoring");
-        menu.setMnemonic(KeyEvent.VK_N);
         menu.getAccessibleContext().setAccessibleDescription("This menu does penalty scoring");
         menuBar.add(menu);
 
@@ -316,14 +308,12 @@ public class SlalomApp {
 
         // Build the Timing Menu
         menu = new JMenu("Timing");
-        menu.setMnemonic(KeyEvent.VK_T);
         menu.getAccessibleContext().setAccessibleDescription(
                 "Race Run Start and Finish Timing");
         menuBar.add(menu);
 
 
-        menuItem = new JMenuItem("Race Start/Stop Timing",
-                KeyEvent.VK_T);
+        menuItem = new JMenuItem("Race Start/Stop Timing");
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "Start and Finish Race Runs - Timers");
         menu.add(menuItem);
@@ -352,10 +342,8 @@ public class SlalomApp {
 
 
         menu = new JMenu("Results");
-        menu.setMnemonic(KeyEvent.VK_R);
         menuBar.add(menu);
-        menuItem = new JMenuItem("Leaderboard",
-                KeyEvent.VK_T);
+        menuItem = new JMenuItem("Leaderboard");
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "Results dump to console");
         menu.add(menuItem);
@@ -379,8 +367,7 @@ public class SlalomApp {
 
 
 
-        menuItem = new JMenuItem("Scrolling Scoreboard",
-                KeyEvent.VK_T);
+        menuItem = new JMenuItem("Scrolling Scoreboard");
         menu.add(menuItem);
         menuItem.addActionListener(
                 new ActionListener() {
@@ -408,8 +395,7 @@ public class SlalomApp {
 
 
 
-        menuItem = new JMenuItem("Penalties - Virtual Scoring Sheet",
-                KeyEvent.VK_T);
+        menuItem = new JMenuItem("Penalties - Virtual Scoring Sheet");
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "ZZZZ Results dump to console");
         menu.add(menuItem);
@@ -429,7 +415,7 @@ public class SlalomApp {
                 }
         );
 
-        appFrame.setJMenuBar(menuBar);    //theJMenuBar);
+        appFrame.setJMenuBar(menuBar);
         JPanel statusBar = new StatusBar().getPanel(appFrame);
         appFrame.add(statusBar, BorderLayout.SOUTH);
 
