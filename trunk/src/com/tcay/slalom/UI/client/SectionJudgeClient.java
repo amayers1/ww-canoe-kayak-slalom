@@ -43,7 +43,7 @@ public class SectionJudgeClient {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 close();
-                frame.setContentPane(new ClientRacePenaltiesUIDynamic(comboBoxJudgingSection.getSelectedIndex() + 1, true, proxy).getRootComponent());
+                frame.setContentPane(new ClientRacePenaltiesUIDynamic(comboBoxJudgingSection.getSelectedIndex() + 1, proxy).getRootComponent());
                 frame.pack();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
