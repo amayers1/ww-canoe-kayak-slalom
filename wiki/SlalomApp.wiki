@@ -117,7 +117,11 @@ http://tcay.com/SlalomApp/SlalomAppSectionJudging.png
 
 _Screen shot from Section Judging Screen_
 
-With the Advanced Option for ICF codes, penalties will be marked with appropriate codes for 50s and diagrams for touches.  See the Letter in parenthesis next to the 50.  This is selected from [SlalomApp#ICF_Missed_Gate_Codes ICF Missed Gate Codes].
+*Section Judge* screen is designed to be used on-station at the section, but can also be used from a central *Race Control* station.  In the latter case each section can have a window to allow selecting of penalties as they are called in (sometime out of sequence), or all sections can be scored at once in a single window. The former method makes it easier to track when all gates have scored for a boat. 
+
+With the Advanced Option for *Use ICF Penalties* is enabled, penalties will be marked with appropriate codes for 50s and diagrams for touches *TBD - WIP*.  See the Letter in parenthesis next to the 50.  This is selected from [SlalomApp#ICF_Missed_Gate_Codes *ICF Missed Gate Codes*].
+
+
 
 
 ----
@@ -127,7 +131,7 @@ http://tcay.com/SlalomApp/SlalomAppSectionJudgingPickList.png
 _Screen shot from Section Judging Screen Boat Selection Pick List_
 
 
-The picklist shows Boats that have been scored fro the section with a red background, and those that remain to be scored with a green background.  The boat selection list will default to the first boat in the section that has not been scored.  
+The picklist shows Boats that have already been scored from the section with a red background, and those that remain to be scored with a green background.  The boat selection list will default to the first boat in the section that has not been scored.  
 
 ----
 
