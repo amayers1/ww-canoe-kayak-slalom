@@ -3,6 +3,8 @@ package com.tcay.slalom.UI;
 import com.tcay.slalom.UI.client.ClientRacePenaltiesUIDynamic;
 import com.tcay.slalom.UI.components.StatusBar;
 import com.tcay.slalom.UI.tables.ResultsTable;
+import com.tcay.slalom.socket.Client;
+import com.tcay.slalom.socket.Proxy;
 import com.tcay.util.Log;
 import com.tcay.slalom.*;
 import com.tcay.slalom.socket.Server;
@@ -255,8 +257,10 @@ public class SlalomApp {
                                 }
 
                             });
+                            Proxy proxy = new Proxy(new Client());
+
                             //frame.setContentPane(new ClientRacePenaltiesUIDynamic(i+1).getRootComponent());
-                            f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, false,null).getRootComponent());
+                            f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, proxy).getRootComponent());
                             f.pack();
                             f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
                             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -277,8 +281,10 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
+                        Proxy proxy = new Proxy(new Client());
+
                         JFrame frame = new JFrame("Race Penalty Scoring");
-                        frame.setContentPane(new ClientRacePenaltiesUIDynamic().getRootComponent());
+                        frame.setContentPane(new ClientRacePenaltiesUIDynamic(0, proxy).getRootComponent());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
                         frame.setVisible(true);

@@ -41,10 +41,6 @@ public class ClientRacePenaltiesUIDynamic {
     private JLabel raceRunLabel;                      // Name of racer and which run
     private BibLabel bibLabel;
     private JButton doneBtn;
-    //private JLabel penaltyDescriptionLabel;
-    //private JLabel penaltyDiagramLabel;
-
-
 
     private long getRunsStartedOrCompletedCnt = 0;    // current total number of runs (either on course or completed)
     private RaceRun selectedRun = null;               // the run that will be/is displayed in the Penalty UI
@@ -56,136 +52,14 @@ public class ClientRacePenaltiesUIDynamic {
 
     //  Cannot use Race.getInstance()  !!!
     Race Race = null;  /// todo this is a track to avoid Race.getInstance() calls
-    // Cannot use Race.getInstance() in this class, must use Proxy as we may share memory with the
-   // * other classes in SlalomApp, OR we may be remote and not have access to Race singleton data/
+    // Cannot use Race.getInstance() in this class, must use Proxy as we may NOT share memory with the
+    // * other classes in SlalomApp, OR we may be remote and not have access to Race singleton data/
 
 
 
     private ArrayList<GatePenaltyButton> penaltyButtons;
 
-
-   static final int ROW_OFFSET = 5;
-
-
-   /*
-    public static int getSelection(JOptionPane optionPane) {
-        int returnValue = JOptionPane.CLOSED_OPTION;
-
-        Object selectedValue = optionPane.getValue();
-        if (selectedValue != null) {
-            Object options[] = optionPane.getOptions();
-            if (options == null) {
-                if (selectedValue instanceof Integer) {
-                    returnValue = ((Integer) selectedValue).intValue();
-                }
-            } else {
-                for (int i = 0, n = options.length; i < n; i++) {
-                    if (options[i].equals(selectedValue)) {
-                        returnValue = i;
-                        break; // out of for loop
-                    }
-                }
-            }
-        }
-        return returnValue;
-    }
-   */
-
-/*
-    private void do50Options(GatePenaltyButton penaltyButton) {
-
-        final GatePenaltyButton thisPenaltyButton = penaltyButton;
-
-        class MyActionListener implements ActionListener {
-            public void actionPerformed(ActionEvent evt) {
-                Window w = SwingUtilities.getWindowAncestor((JButton)evt.getSource());//btn);
-
-                JButton jb = (JButton)evt.getSource();
-                thisPenaltyButton.setIcon(jb.getIcon());
-
-                if (w != null) {
-                    w.setVisible(false);
-                }
-            }
-        }
-
-        //fixme  String values passed in such as "selValues" below will trigger an exit to the Dialog with
-        // a selection,   J Buttons such as fred ... will not   BUMMER !
-        //was
-
-
-        //tryDialog();
-
-
-
-*/
-
-/*  Kind of works with some enhancement
-
-        for (JButton jb:fred) {
-            jb.addActionListener(new MyActionListener());
-        }
-
-        ImageIcon icon = new ImageIcon("blob.gif", "blob");
-        Object[] selValues = { "abc", "def", "ghi" };
-
-         // Shows message, choices appear as buttons
-        int res = JOptionPane.showOptionDialog(null, "Hello!", "Message Title",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, icon,
-               // selValues, selValues[0]);
-                fred, fred[0]);
-
-          System.out.println(res);
-*/
-
-/*
-        JOptionPane optionPane = new JOptionPane();
-        //optionPane.setMessage(fred);
-        optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
-        optionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
-        optionPane.setOptions(selValues);
-        //optionPane.setSelectionValues(fred);
-        //optionPane.setOptionType();
-
-        JDialog dialog = optionPane.createDialog(null, "Width 100");
-        dialog.setVisible(true);
-        int selection = getSelection(optionPane);
-        switch (selection) {
-            case JOptionPane.OK_OPTION:
-                System.out.println("OK_OPTION");
-                break;
-            case JOptionPane.CANCEL_OPTION:
-                System.out.println("CANCEL");
-                break;
-            default:
-                System.out.println("Others");
-        }
-
-*/
-
-
-
-
-        //JOptionPane.showOptionDialog
-//( innerPanel,
-//                                      "Assign how 50 occurred",
-//                                      "50 Assessment TItle",
-//                                      JOptionPane.DEFAULT_OPTION,//YES_NO_OPTION,
-//                                      JOptionPane.WARNING_MESSAGE,
-//                null,
-//                fred,
-//                fred[0]
-//                );
-
-//        j.setContentPane();
-
-
-
-//    }
-
-
-    ///
-    ///
+    static final int ROW_OFFSET = 5;
 
 
     private int setupPenaltyButtons()
@@ -324,9 +198,9 @@ public class ClientRacePenaltiesUIDynamic {
     }
 
 
-    public ClientRacePenaltiesUIDynamic(int section, boolean standAlone, Proxy proxy) {
+    public ClientRacePenaltiesUIDynamic(int section, Proxy proxy) {
         if (proxy == null) {
-            raceProxy = new Proxy(standAlone==true?new Client():null);
+            raceProxy = new Proxy(new Client());//standAlone==true?new Client():null);
         }
         else {
             raceProxy = proxy;
@@ -335,18 +209,23 @@ public class ClientRacePenaltiesUIDynamic {
         setupUI(section);
     }
 
+    public ClientRacePenaltiesUIDynamic(int section) {
+    }
 
+
+
+/*
     public ClientRacePenaltiesUIDynamic() { //Proxy proxy) {
 //        raceProxy = new Proxy(false);
         //if (proxy == null) {
-            raceProxy = new Proxy(null);
+            raceProxy = new Proxy(null);     //fixme can't pass NULL   131109
         //}
         //else {
         //    raceProxy = proxy;
         //}
         setupUI();
     }
-
+*/
 
     private ComboBoxModel updateComboBoxModel() {
         log.trace("updateComboBoxModel::Requesting new SCORABLE RUNS !");
@@ -414,7 +293,7 @@ public class ClientRacePenaltiesUIDynamic {
 //        }
 
         Proxy proxy = new Proxy(new Client());
-        ClientRacePenaltiesUIDynamic racePenaltiesUI = new ClientRacePenaltiesUIDynamic(1,true, proxy); ///fixme section 1 should be dynamic
+        ClientRacePenaltiesUIDynamic racePenaltiesUI = new ClientRacePenaltiesUIDynamic(1, proxy); ///fixme section 1 should be dynamic
         frame.setContentPane(racePenaltiesUI.innerPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
