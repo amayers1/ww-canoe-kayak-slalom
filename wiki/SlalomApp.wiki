@@ -70,6 +70,11 @@ You can help by supporting us here:
 
 http://tcay.com/SlalomApp/SlalomAppConfigurationScreen.png
 
+The *Race Configuration* screen has typical information about a race, Name, Date, Location and total number of gates. It also has course configuration information about sections which is used to allocate gates to a section so that *Section Judges* are able to score only the gates assigned to them.   *Upstream Gates* are selected in order to give the penalty result screens UI proper gate icons.
+
+*Advanced Options* are those used either for demo purposes or for top tier races.  They are  described with _tool tips_ popups when the user _hovers_ over the control.
+
+
 _Screen shot Race Configuration Screen_
 
 
