@@ -293,12 +293,14 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
      */
     public float getElapsed() {
 
-        float result;//= (float)0.0;
-        if (tagHeuerRaceRun != null && tagHeuerRaceRun.getElapsedTime() != 0) {
-            result = (float)tagHeuerRaceRun.getElapsedTime();
-        }
-        else {
-            result = stopWatch.getElapsed();
+        float result = (float)9999999.0;
+        if (!dnf) {
+            if (tagHeuerRaceRun != null && tagHeuerRaceRun.getElapsedTime() != 0) {
+                result = (float)tagHeuerRaceRun.getElapsedTime();
+            }
+            else {
+                result = stopWatch.getElapsed();
+            }
         }
 
         return result; //stopWatch.getElapsed();
@@ -367,7 +369,10 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     @Override
     public int compareTo(RaceRun r) {                         /// sort by run#, class and total time
 
-       float j = (this.getBoat().getBoatClass().compareTo(r.getBoat().getBoatClass())) * 10000;
+
+
+
+        float j = (this.getBoat().getBoatClass().compareTo(r.getBoat().getBoatClass())) * 10000;
 
         float i = (int)( (  (this.getElapsed()+this.getTotalPenalties()) -
                           ( r.getElapsed()+r.getTotalPenalties() )) * 100.0 );
