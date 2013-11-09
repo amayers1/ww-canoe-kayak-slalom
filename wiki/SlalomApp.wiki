@@ -39,10 +39,10 @@ To run the applications simply double click on them in a file browser, or use th
 ==Support==
 
 We will do our best to support you at:
-[https://groups.google.com/forum/#!forum/ww-canoe-kayak-slalom-discuss]
+[https://groups.google.com/forum/#!forum/ww-canoe-kayak-slalom-discuss Support You]
 
 You can help by supporting us here:
-[http://tcay.com/SlalomApp/PayPalDonationForSlalomApp.html]
+[http://tcay.com/SlalomApp/PayPalDonationForSlalomApp.html Support US]
 
 
 ==Features==
