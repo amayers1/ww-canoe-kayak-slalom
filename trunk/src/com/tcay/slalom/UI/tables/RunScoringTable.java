@@ -1,5 +1,6 @@
 package com.tcay.slalom.UI.tables;
 
+import com.tcay.slalom.UI.components.GateLabelSmall;
 import com.tcay.slalom.UI.components.TableHeaderRenderer;
 import com.tcay.util.Log;
 
@@ -65,6 +66,10 @@ public class RunScoringTable {                                    // TODO custom
                     column.setMinWidth(20);
                     break;
                 default:
+                    // Set column headers to display to display gate labels
+                    TableColumn tc = table.getColumnModel().getColumn(i);
+                    tc.setHeaderRenderer(new GateLabelSmall());
+
                     column.setPreferredWidth(25);
                     column.setMinWidth(20);
                     break;

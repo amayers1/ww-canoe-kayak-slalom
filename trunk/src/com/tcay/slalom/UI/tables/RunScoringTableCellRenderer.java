@@ -54,22 +54,22 @@ public class RunScoringTableCellRenderer extends DefaultTableCellRenderer
         // Penalties < 50 == yellow background > 50 = red
         setIcon(null);
         if (column > RunScoringTable.COL_TOTAL) {
-            if (row==0) {
-                int gate = column - RunScoringTable.COL_TOTAL;
-                if (Race.getInstance().isUpstream(gate)) {
-                    setIcon(Race.getInstance().getUpstreamTinyII());
-                    setText("");
-                    //setHorizontalAlignment(JLabel.CENTER);
-                }
-                else {
-                    setIcon(Race.getInstance().getDownstreamTinyII());
-                    setText("");
-                }
-            }
-            else {
-                setIcon(null);
-                setText(value.toString());
-            }
+//            if (row==0) {
+//                int gate = column - RunScoringTable.COL_TOTAL;
+//                if (Race.getInstance().isUpstream(gate)) {
+//                    setIcon(Race.getInstance().getUpstreamTinyII());
+//                    setText("");
+//                    //setHorizontalAlignment(JLabel.CENTER);
+//                }
+//                else {
+//                    setIcon(Race.getInstance().getDownstreamTinyII());
+//                    setText("");
+//                }
+//            }
+//           else {
+//                setIcon(null);
+//                setText(value.toString());
+//            }
 
 
             if (row%2 == 1) {
