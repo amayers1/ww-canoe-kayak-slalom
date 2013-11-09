@@ -81,6 +81,20 @@ http://tcay.com/SlalomApp/SlalomAppTimingScreen.png
 
 _Screen shot from Timing Screen_
 
+
+The timing screen is divided into 3 sections plus a status bar at the bottom:
+  * *Start List* - which has a picklist of all the entries that have not yet started the run.  The first boat on the  start list that has not yet started is automatically _promoted_ to the Starting Block.  This can be overridden by choosing from the *Pick List Combo Box* and pressing the *Select Racer* button 
+
+  * *Starting Block* has only 2 controls, *Start* button that starts the clock for the racer leaving the *Starting Block* and the *DNS* button indicating the racer Did Not Start (will not start this run).
+
+  * *Finish Line* handles 3 racers simultaneously on the course and has 2 controls for each boat that has not yet crossed the finish, *Finish* which stops the clock for that associated boat, and *DNF* indicating the boat Did Not Finish. These buttons do not show for a boat once they have finished or DNF.ed.
+
+  * *Status Bar* shows : 
+    * IP address of the computer/device
+    * Which run number is currently taking place 
+    * Indicators for *Section Judging* stations that are currently communicating via the network
+    * An indicator for electronic timing equipment status (Tag Heuer CP 5xx series is currently supported) 
+
 ----
 
 http://tcay.com/SlalomApp/SlalomAppTimingScreenPickList.png
