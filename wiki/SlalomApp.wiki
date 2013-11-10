@@ -28,13 +28,15 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
 ==Running the Applications==
 There are 2 applications 
 
-  * !SlalomApp.jar which is the main program that handles all configuration, timing, etc.
-  * !JudgingSection.jar which is normally run on other machines by section judges
+  * !SlalomApp.jar contains both programs, the main *Application* which handles all configuration, timing, etc., and the remote *SectionJudge Application*  which handles scoring of penalties.
+ 
+To run the main *SlalomApp* Application simply double click on SlalomApp.jar.  If this doesn't work in your environment try the command line:
 
-To run the applications simply double click on them in a file browser, or use the command line syntax:
+{{{java -jar SlalomApp.jar}}}
 
-  * java -jar !SlalomApp.jar
-  * java -jar !JudgingSection.jar
+To run a section judging stand alone application, use the SectionJudge.command (Mac OS X or Linux) or cut and paste this command line.
+
+{{{java -cp SlalomApp.jar com.tcay.slalom.UI.client.SectionJudgeClient}}}
 
 ==Support==
 
