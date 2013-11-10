@@ -26,7 +26,7 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
   # Installation is complete
 
 ==Running the Applications==
-There are 2 applications, !SlalomApp.jar contains both programs, the main application which handles all configuration, timing, etc., and the remote *!SectionJudge* application  which handles scoring of penalties.
+There are 2 applications, !SlalomApp.jar contains both programs, the main application which handles all configuration, timing, etc., and the remote *!SectionJudge* application  which handles scoring of penalties.  *!SectionJudge* functions can be done from *!SlalomApp* for lower level races or where section judges do not have suitable hardware to run the *!SectionJudge* application.
  
 To run the main *!SlalomApp* application simply double click on !SlalomApp.jar.  If this doesn't work in your environment try the command line:
 
