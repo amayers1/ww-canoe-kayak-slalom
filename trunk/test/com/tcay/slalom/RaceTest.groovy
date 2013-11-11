@@ -5,7 +5,6 @@ import org.testng.Assert
 import org.testng.annotations.Test
 
 import javax.swing.Icon
-import javax.swing.ImageIcon
 
 /**
  * Created with IntelliJ IDEA.
@@ -456,9 +455,24 @@ class RaceTest {
         Assert.assertNotNull(icon)
     }
 
+    @Test(groups = ["unit"])
+    void testGetMedalGoldSmall() {
+        Race race = Race.getInstance()
+        Icon icon = race.getMedalGoldSmall()
+        Assert.assertNotNull(icon)
+    }
 
+    @Test(groups = ["unit"])
+    void testGetMedalSilverSmall() {
+        Race race = Race.getInstance()
+        Icon icon = race.getMedalSilverSmall()
+        Assert.assertNotNull(icon)
+    }
 
-
-
-
+    @Test(groups = ["unit"])
+    void testGetMedalBronzeSmall() {
+        Race race = Race.getInstance()
+        Icon icon = race.getMedalBronzeSmall()
+        Assert.assertNotNull(icon)
+    }
 }
