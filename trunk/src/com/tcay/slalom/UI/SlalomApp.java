@@ -1,8 +1,27 @@
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import com.tcay.slalom.UI.client.ClientRacePenaltiesUIDynamic;
 import com.tcay.slalom.UI.components.StatusBar;
 import com.tcay.slalom.UI.tables.ResultsTable;
+import com.tcay.slalom.UI.tables.ResultsTableSpectator;
 import com.tcay.slalom.socket.Client;
 import com.tcay.slalom.socket.Proxy;
 import com.tcay.util.Log;
@@ -60,7 +79,7 @@ public class SlalomApp {
     //Constructor must be protected or private to prevent creating new object
     protected SlalomApp() {
 
-        Locale.setDefault(new Locale("de", "DE"));
+        // Sample German - Locale.setDefault(new Locale("de", "DE"));
 
         log = Log.getInstance();
         race = Race.getInstance();
@@ -94,8 +113,8 @@ public class SlalomApp {
         appFrame.setTitle("Slalom Race Organizer's Application");
         JLabel picLabel = new JLabel(Race.getInstance().getSlalomBackgroundII());
         appFrame.add(picLabel, BorderLayout.CENTER);
-        appFrame.setSize(660, 340);
-        appFrame.setPreferredSize(new Dimension(660, 340));
+        appFrame.setSize(760, 340);
+        appFrame.setPreferredSize(new Dimension(760, 340));
         // set location to middle of screen
         appFrame.setLocationRelativeTo(null);
 
@@ -257,7 +276,12 @@ public class SlalomApp {
                                 }
 
                             });
-                            Proxy proxy = new Proxy(new Client());
+                            Proxy proxy = null;
+                            try {
+                                proxy = new Proxy(new Client());
+                            } catch (InvalidArgumentException e1) {
+                                e1.printStackTrace();
+                            }
 
                             //frame.setContentPane(new ClientRacePenaltiesUIDynamic(i+1).getRootComponent());
                             f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, proxy).getRootComponent());
@@ -281,7 +305,12 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        Proxy proxy = new Proxy(new Client());
+                        Proxy proxy = null;
+                        try {
+                            proxy = new Proxy(new Client());
+                        } catch (InvalidArgumentException e1) {
+                            e1.printStackTrace();
+                        }
 
                         JFrame frame = new JFrame("Race Penalty Scoring");
                         frame.setContentPane(new ClientRacePenaltiesUIDynamic(0, proxy).getRootComponent());
@@ -370,6 +399,32 @@ public class SlalomApp {
                     }
                 }
         );
+
+        menuItem = new JMenuItem("Spectator Leaderboard");
+        menuItem.getAccessibleContext().setAccessibleDescription(
+                "Results dump to console");
+        menu.add(menuItem);
+
+        menuItem.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        Race race = Race.getInstance();
+                        // are the next lines needed, other than forcing the sort, it too shuld not be needed
+                        outputResults("", race.getCompletedRuns(), false);
+                        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
+                        ResultsTable rt = new ResultsTableSpectator();
+                        LeaderBoard leaderBoard = new LeaderBoard(rt);
+                        ((ResultsTableSpectator)rt).removeDetailColumns();
+
+                        JFrame frame = new JFrame();
+                        frame.setContentPane(leaderBoard.$$$getRootComponent$$$());
+                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        frame.pack();
+                        frame.setVisible(true);
+                    }
+                }
+        );
+
 
 
 

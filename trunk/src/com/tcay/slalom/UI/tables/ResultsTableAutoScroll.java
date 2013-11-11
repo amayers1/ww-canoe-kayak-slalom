@@ -1,3 +1,37 @@
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI.tables;
 
 import com.tcay.slalom.Race;
@@ -17,17 +51,22 @@ import java.util.ArrayList;
  * Date: 11/4/13
  * Time: 7:06 PM
  */
-public class ResultsTableAutoScroll extends ResultsTable {
+public class ResultsTableAutoScroll extends ResultsTableSpectator {
 
     int scrollPosition=0;
 
 
     @Override
     public JTable createTable() {
-        tableModel = new ResultsTableModelAutoScroll();  /// fixme    .getInstance();
-        JTable table = new JTable( tableModel );
-        setupColumns(table);
-        setupRenderers(table);
+        JTable table = super.createTable();
+
+        //tableModel = new ResultsTableModelAutoScroll();  /// fixme    .getInstance();
+        //JTable table = new JTable( tableModel );
+        //setupColumns(table);
+        //setupRenderers(table);
+
+        table.setModel(new ResultsTableModelAutoScroll());
+        removeDetailColumns();
         return(table);
 
     }
