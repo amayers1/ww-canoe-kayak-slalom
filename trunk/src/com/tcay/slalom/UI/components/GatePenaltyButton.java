@@ -21,11 +21,15 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/15/13
  * Time: 3:01 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class GatePenaltyButton extends JButton {
     static final Font f = new Font("Dialog", Font.PLAIN, 16);

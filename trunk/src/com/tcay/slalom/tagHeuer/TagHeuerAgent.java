@@ -25,7 +25,11 @@ import com.tcay.util.Log;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/10/13
  * Time: 5:26 PM

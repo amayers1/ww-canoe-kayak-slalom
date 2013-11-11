@@ -43,11 +43,15 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 9/28/13
  * Time: 7:43 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class ResultsTableModel extends AbstractTableModel
 {

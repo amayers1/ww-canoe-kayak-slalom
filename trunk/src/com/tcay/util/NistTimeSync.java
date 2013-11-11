@@ -25,11 +25,15 @@ import java.util.logging.*;
 import java.util.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 11/3/13
  * Time: 8:27 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class NistTimeSync {
 

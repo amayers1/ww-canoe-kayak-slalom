@@ -23,7 +23,11 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/31/13
  * Time: 7:24 AM

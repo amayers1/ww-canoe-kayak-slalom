@@ -1,0 +1,9 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="/**&#10; * &amp;#36;{PROJECT_NAME}&#10; *&#10; * &amp;#36;{COPYRIGHT}&#10; * &#10; * Teton Cay Group Inc. &amp;#36;{YEAR}&#10; * &#10; * User: &amp;#36;{USER}&#10; * Date: &amp;#36;{DATE}&#10; * Time: &amp;#36;{TIME}&#10; */" />
+    <option name="keyword" value="Copyright" />
+    <option name="allowReplaceKeyword" value="" />
+    <option name="myName" value="FileHeaderTemplate" />
+    <option name="myLocal" value="true" />
+  </copyright>
+</component>

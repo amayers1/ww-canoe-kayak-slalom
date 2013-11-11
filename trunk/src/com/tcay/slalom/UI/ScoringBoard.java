@@ -25,11 +25,15 @@ import com.tcay.slalom.UI.tables.RunScoringTable;
 import javax.swing.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 9/28/13
  * Time: 6:28 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class ScoringBoard {
     private JPanel panel1;

@@ -45,11 +45,15 @@ import javax.swing.table.TableColumn;
 import javax.swing.JLabel;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/17/13
  * Time: 8:41 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class RunScoringTable {                                    // TODO customize for Runs and not Results
 

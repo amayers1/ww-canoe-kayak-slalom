@@ -28,11 +28,15 @@ import java.nio.channels.OverlappingFileLockException;
 import java.text.SimpleDateFormat;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/25/13
  * Time: 5:19 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class Log {
 

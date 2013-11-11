@@ -21,11 +21,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 9/26/13
  * Time: 5:05 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class Result implements Comparable {
     public Racer getRacer() {

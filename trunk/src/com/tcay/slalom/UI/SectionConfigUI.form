@@ -213,7 +213,6 @@
           <forms/>
         </constraints>
         <properties>
-          <label value="Use Tag Heuer Emulation"/>
           <text resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTagHeuerEmulation"/>
           <toolTipText resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTagHeuerEmulation.tooltip"/>
         </properties>
