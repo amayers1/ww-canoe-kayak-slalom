@@ -1,5 +1,7 @@
 package com.tcay.slalom.socket
 
+import com.sun.javaws.exceptions.InvalidArgumentException
+import com.tcay.util.DuplicateBibException
 import org.mockito.Mockito
 import org.mockito.invocation.InvocationOnMock
 import org.mockito.stubbing.Answer
@@ -48,10 +50,9 @@ class ProxyTest {
     }
 
 
-    @Test
+    @Test(expectedExceptions = InvalidArgumentException.class)
     public void isNotStandAlone() {
-        proxy = new Proxy(null);
-        Assert.assertEquals(proxy.isStandAlone(), false);
+        proxy = new Proxy(null);     // no longer legal to call with null - throws exception
     }
 
 
