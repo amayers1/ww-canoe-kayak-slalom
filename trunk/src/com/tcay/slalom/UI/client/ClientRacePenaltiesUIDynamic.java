@@ -88,7 +88,7 @@ public class ClientRacePenaltiesUIDynamic {
                 if (onlyThisSection==0) {// || onlyThisSection ==section  ) {
                     col+=2;
                     // Add Section Title
-                    log.trace("New Section #" + section + " at Gate #" + iGate);
+                    //log.trace("New Section #" + section + " at Gate #" + iGate);
                     // Need a INTELLIJ JAR todo eliminating jars   Spacer spacer1 = new Spacer();
                     //innerPanel.add(spacer1, cc.xy(col,( ROW_OFFSET+ (row * 2)), CellConstraints.DEFAULT, CellConstraints.FILL));
                     innerPanel.add(new JLabel("Section " + section), cc.xy(col,+(ROW_OFFSET + (row * 2))));
@@ -228,7 +228,7 @@ public class ClientRacePenaltiesUIDynamic {
 */
 
     private ComboBoxModel updateComboBoxModel() {
-        log.trace("updateComboBoxModel::Requesting new SCORABLE RUNS !");
+        //log.trace("updateComboBoxModel::Requesting new SCORABLE RUNS !");
         // this list has to be a copy for each window, as they are potentially all on separate devices
         ArrayList<RaceRun> scorableList = raceProxy.getScorableRuns();
         ComboBoxModel model = new DefaultComboBoxModel(scorableList.toArray()) {
@@ -261,7 +261,8 @@ public class ClientRacePenaltiesUIDynamic {
                         // don't change comboBox contents if it has focus - confuses the user
                         while (activeOrRecentRunsComboBox == null) {
                             try {
-                                Thread.sleep(100);
+                                //Thread.sleep(100);
+                                Thread.sleep(250);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                             }
@@ -521,17 +522,17 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
         for (i=0; i<activeOrRecentRunsComboBox.getItemCount() && hasPenalties; i++ )  {
             r = (RaceRun)activeOrRecentRunsComboBox.getItemAt(i);
             hasPenalties = false;
-            log.trace("Checking Run" + r);
+            //log.trace("Checking Run" + r);
 
             for (Penalty p:r.getPenaltyList()) {
                 if (raceProxy.isGateInSection(p.getGate(), onlyThisSection)) {
                     hasPenalties = true;
-                    log.trace("Penalty Found at gate " + p.getGate() + "In section" + onlyThisSection + "  for " + r);
+                    //log.trace("Penalty Found at gate " + p.getGate() + "In section" + onlyThisSection + "  for " + r);
                     break;
                 }
             }
             if (!hasPenalties) {
-                log.trace("No Penalties " + r);
+               // log.trace("No Penalties " + r);
                 break;
             }
         }
