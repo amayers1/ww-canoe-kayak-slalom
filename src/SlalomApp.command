@@ -1,8 +1,8 @@
 #!/bin/sh
 cd "`dirname "$0"`"
-java -jar SlalomScoring.jar >> SlalomApp.log
+java -jar SlalomApp.jar >> SlalomApp.log
 
-#& disown %1
-#exit
+& disown %1
+exit
 
 
