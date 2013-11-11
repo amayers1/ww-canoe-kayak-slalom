@@ -29,7 +29,11 @@ public class TagHeuerCP520Listener implements Runnable {
 
     @Override
     public void run() {
-        listenAndProcessPortOutput(9999999);
+        // fixme Don't run under Windoze, automatic port detection blows up  (Issue #7)
+        String os =   System.getProperty("os.name");
+        if (os.contains("OS X")){
+           listenAndProcessPortOutput(9999999);
+        }
     }
 
     TagHeuerAgent agent = new TagHeuerAgent();
