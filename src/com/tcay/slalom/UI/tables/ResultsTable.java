@@ -1,3 +1,37 @@
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI.tables;
 
 import com.tcay.Singleton;
@@ -9,37 +43,47 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
+ *
+ *
+ *
  * Created with IntelliJ IDEA.
  * User: allen
  * Date: 9/28/13
  * Time: 9:13 PM
  * To change this template use File | Settings | File Templates.
  */
-public class ResultsTable extends Singleton {
+public class ResultsTable {// extends Singleton {
 
 
+    protected boolean isOpaque = false;
     // These are 0 Origin indices into the columns
     static public final int COL_BOATCLASS=0;
-    static public final int COL_BIB=1;
-    static public final int COL_CLUB_OR_COUNTRY=2;
-    static public final int COL_RACERNAME=3;
-    static public final int COL_RAW1=4;
-    static public final int COL_TIMIMGMODE1=5;
-    static public final int COL_PEN1=6;
+    static public final int COL_POSITION=1;
+    static public final int COL_BIB=2;
+
+    static public final int COL_CLUB_OR_COUNTRY=3;
+    static public final int COL_RACERNAME=4;
+    static public final int COL_RAW1=5;
+    static public final int COL_TIMIMGMODE1=6;
+    static public final int COL_PEN1=7;
 
 
-    static public final int COL_RAW2=7;
-    static public final int COL_TIMIMGMODE2=8;
-    static public final int COL_PEN2=9;
+    static public final int COL_RAW2=8;
+    static public final int COL_TIMIMGMODE2=9;
+    static public final int COL_PEN2=10;
 
-    static public final int COL_BESTRUN_TOTAL=10;
-    static public final int COL_TIMINGMODE_BEST=11;
+    static public final int COL_BESTRUN_TOTAL=11;
+    static public final int COL_TIMINGMODE_BEST=12;
 
 
     static public final String TIMINGMODE_MANUAL="m";
     static public final String TIMINGMODE_AUTOMATIC="*";
 
     ResultsTableModel tableModel;
+
+    public boolean isOpaque() {
+        return isOpaque;
+    }
 
     protected void setupColumns (JTable table) {
 
@@ -60,7 +104,7 @@ public class ResultsTable extends Singleton {
                 column.setMaxWidth(25);
                 column.setMinWidth(25);
 
-            } else if (i==COL_BIB || i==COL_CLUB_OR_COUNTRY ) {
+            } else if (i==COL_BIB || i==COL_CLUB_OR_COUNTRY || i == COL_POSITION ) {
                 column.setPreferredWidth(30);
                 column.setMaxWidth(30);
                 column.setMinWidth(20);
@@ -108,6 +152,7 @@ public class ResultsTable extends Singleton {
 
         setupColumns(table);
         setupRenderers(table);
+
         return(table);
 
     }

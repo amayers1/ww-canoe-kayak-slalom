@@ -1,3 +1,37 @@
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI.tables;
 
 import com.tcay.slalom.UI.components.GateLabelSmall;
@@ -32,7 +66,9 @@ public class RunScoringTable {                                    // TODO custom
 
         JTable table = new JTable( model );
         JTableHeader header = table.getTableHeader();
-        header.setDefaultRenderer(new TableHeaderRenderer(table, JLabel.CENTER));
+
+        TableHeaderRenderer thRenderer = new TableHeaderRenderer(table, JLabel.CENTER);
+        header.setDefaultRenderer(thRenderer);
 
         TableCellRenderer renderer = new RunScoringTableCellRenderer();
 
@@ -42,12 +78,14 @@ public class RunScoringTable {                                    // TODO custom
             switch(i) {
                 case COL_BOATCLASS:
                     column.setMinWidth(30);
-                    column.setPreferredWidth(50);
+                    column.setPreferredWidth(40);
+                    column.setMaxWidth(50);
+
                     break;
                 case COL_RUN_NBR:
-                    column.setPreferredWidth(34);
-                    column.setMinWidth(25);
-                    column.setMaxWidth(34);
+                    column.setPreferredWidth(30);
+                    column.setMinWidth(20);
+                    column.setMaxWidth(30);
                     break;
                 case COL_RACERNAME:
                     column.setPreferredWidth(140);
@@ -55,15 +93,19 @@ public class RunScoringTable {                                    // TODO custom
                     break;
                 case COL_RAW:
                      column.setMinWidth(20);
+                     column.setMaxWidth(80);
+                     column.setPreferredWidth(80);
                      /// missing break intentional ... we want to fall through to COL_TOTAL !
                 case COL_TOTAL:
-                    column.setMinWidth(100);
-                    column.setMaxWidth(140);
-                    column.setPreferredWidth(140);
+                    column.setMinWidth(80);
+                    column.setMaxWidth(100);
+                    column.setPreferredWidth(80);
                     break;
                 case COL_BIB:
                     column.setPreferredWidth(30);
                     column.setMinWidth(20);
+                    column.setMaxWidth(40);
+
                     break;
                 default:
                     // Set column headers to display to display gate labels
@@ -72,12 +114,15 @@ public class RunScoringTable {                                    // TODO custom
 
                     column.setPreferredWidth(25);
                     column.setMinWidth(20);
+                    column.setMaxWidth(30);
                     break;
             }
         }
 
         try
         {
+//D131110(ajm)            table.setDefaultRenderer( Class.forName( "javax.swing.JLabel" ), thRenderer );
+
             table.setDefaultRenderer( Class.forName( "java.lang.Integer" ), renderer );
             table.setDefaultRenderer( Class.forName( "java.lang.String" ), renderer );
             table.setDefaultRenderer( Class.forName( "java.lang.Float" ), renderer );

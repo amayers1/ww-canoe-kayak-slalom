@@ -1,3 +1,37 @@
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI.tables;
 
 import com.tcay.slalom.Race;
@@ -30,7 +64,7 @@ public class ResultsTableModel extends AbstractTableModel
     Race race;
     Log log;
 
-    private final String[] columnNames = { "Class", "Bib", "Club", "Name", "Run1 Raw", "tm", "Pen",  "Run2 Raw", "tm", "Pen", "Best Run Total", "tm" };
+    private final String[] columnNames = { "Class", "Pos", "Bib", "Club", "Name", "Run1 Raw", "tm", "Pen",  "Run2 Raw", "tm", "Pen", "Best Run Total", "tm" };
 
     /* protected and not private ONLY to be used by subclass ResultsTableModelAutoScroll */
     protected ResultsTableModel() {
@@ -100,6 +134,9 @@ public class ResultsTableModel extends AbstractTableModel
                 switch (column) {
                     case ResultsTable.COL_BOATCLASS:        // class
                         o = (Object)r.getBoat().getBoatClass();
+                        break;
+                    case ResultsTable.COL_POSITION:        // bib
+                        o = (Object)r.getBestRun().getPlaceInClass();
                         break;
                     case ResultsTable.COL_BIB:        // bib
                         o = (Object)r.getBoat().getRacer().getBibNumber();
