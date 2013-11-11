@@ -83,7 +83,7 @@ public class Client {
     public void queue(ServerResponse res) {
         //log.trace("Waiting for sync ... response");
         synchronized (responses) {
-            log.trace("Queued response type " + res.getRequestType());
+            //log.trace("Queued response type " + res.getRequestType());
             responses.add(res);
         }
     }
@@ -91,11 +91,11 @@ public class Client {
     public ServerResponse getResponse(ClientRequest request) {
         ServerResponse response = null;
 
-        log.trace("   Waiting for response @1");
+        //log.trace("   Waiting for response @1");
         while (response == null) {
             while (responses.size() == 0) {
                 try {
-                    Thread.sleep(2);//5);//0);
+                    Thread.sleep(0);//5);//0);
                 } catch (InterruptedException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
@@ -112,7 +112,7 @@ public class Client {
                         }
                     }
                 }
-                log.trace("   Returning response @2");
+                //log.trace("   Returning response @2");
                 if (response != null) {
                     return response;
                 }
@@ -214,7 +214,7 @@ public class Client {
                 while (true) {
                     for (request = sosc.retrieveRequest();request!= null;request = sosc.retrieveRequest() ) {
                         oos.writeObject(request);
-                        log.trace("Wrote requestCmd type " + request.getRequestCmd());
+                        //log.trace("Wrote requestCmd type " + request.getRequestCmd());
                     }
                     //Thread.sleep(500);
                 }
