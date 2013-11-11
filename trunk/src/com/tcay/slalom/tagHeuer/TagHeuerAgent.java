@@ -100,6 +100,7 @@ public class TagHeuerAgent {
         String delims = "[ ]+";
         String[] tokens;// = s.split(delims);
 
+        log.info("Tag Heuer CP 520:" + s);
         Character c = s.charAt(0);
         switch (c) {
 
