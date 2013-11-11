@@ -22,11 +22,15 @@ import com.tcay.util.Log;
 import java.io.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/20/13
  * Time: 3:19 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class LastRace implements Serializable {
     private String name;

@@ -36,11 +36,14 @@ import java.util.List;
 import java.awt.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ * <p/>
+ * Teton Cay Group Inc. ${YEAR}
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 8/29/13
  * Time: 9:15 PM
- * To change this template use File | Settings | File Templates.
  */
 public class SectionConfigUI extends JComponent {
     private JPanel panel1;
@@ -553,7 +556,6 @@ public class SectionConfigUI extends JComponent {
         this.$$$loadButtonText$$$(icfPenaltyDiagrams, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useIcfPenalties"));
         icfPenaltyDiagrams.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.icfPenaltyDiagrams.tooltip"));
         panel1.add(icfPenaltyDiagrams, cc.xy(1, 7));
-        tagHeuerEmulation.setLabel("Use Tag Heuer Emulation");
         this.$$$loadButtonText$$$(tagHeuerEmulation, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation"));
         tagHeuerEmulation.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation.tooltip"));
         panel1.add(tagHeuerEmulation, cc.xy(1, 10));

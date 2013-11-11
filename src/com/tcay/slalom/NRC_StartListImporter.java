@@ -25,11 +25,15 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 9/27/13
  * Time: 8:47 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class NRC_StartListImporter {
 

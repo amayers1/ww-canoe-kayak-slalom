@@ -20,11 +20,14 @@ package com.tcay;
 import javax.swing.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
  * User: allen
  * Date: 10/30/13
  * Time: 10:34 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 
 

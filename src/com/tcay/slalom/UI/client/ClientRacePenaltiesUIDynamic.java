@@ -38,11 +38,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 8/29/13
  * Time: 10:25 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 
 /**

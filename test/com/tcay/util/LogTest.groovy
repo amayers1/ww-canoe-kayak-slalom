@@ -4,11 +4,15 @@ import org.testng.Assert
 import org.testng.annotations.Test
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 11/3/13
  * Time: 7:38 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 class LogTest {
     void setUp() {

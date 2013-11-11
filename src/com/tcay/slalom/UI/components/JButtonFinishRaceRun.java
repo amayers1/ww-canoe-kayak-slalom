@@ -22,11 +22,15 @@ import com.tcay.slalom.RaceRun;
 import javax.swing.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/29/13
  * Time: 11:03 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 @Deprecated
 public class JButtonFinishRaceRun extends JButton {

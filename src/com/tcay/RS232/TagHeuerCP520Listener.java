@@ -18,11 +18,15 @@
 package com.tcay.RS232;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/11/13
  * Time: 6:07 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 
 

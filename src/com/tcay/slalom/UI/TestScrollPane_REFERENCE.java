@@ -23,11 +23,15 @@ import com.jgoodies.forms.layout.FormLayout;
 import javax.swing.*;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/13/13
  * Time: 8:53 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class TestScrollPane_REFERENCE {
     private JPanel panel1;

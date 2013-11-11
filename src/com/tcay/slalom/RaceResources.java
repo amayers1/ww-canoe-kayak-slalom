@@ -28,7 +28,11 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/23/13
  * Time: 12:25 PM

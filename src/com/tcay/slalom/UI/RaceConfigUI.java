@@ -34,11 +34,15 @@ import java.util.ResourceBundle;
 
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 8/29/13
  * Time: 7:51 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class RaceConfigUI {
     private JPanel panel1;

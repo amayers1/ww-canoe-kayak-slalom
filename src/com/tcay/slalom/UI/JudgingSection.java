@@ -20,11 +20,15 @@ package com.tcay.slalom.UI;
 import java.io.Serializable;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 8/31/13
  * Time: 10:37 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class JudgingSection implements Serializable {
     private int firstGate;    // 1st gate in the section

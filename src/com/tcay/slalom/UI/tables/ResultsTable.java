@@ -46,11 +46,15 @@ import java.awt.event.WindowEvent;
  *
  *
  *
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 9/28/13
  * Time: 9:13 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class ResultsTable {// extends Singleton {
 

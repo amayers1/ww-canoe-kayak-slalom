@@ -18,11 +18,15 @@
 package com.tcay;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/11/13
  * Time: 6:37 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class Singleton {
 

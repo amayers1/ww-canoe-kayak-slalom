@@ -33,11 +33,15 @@ import java.util.Vector;
 // with icons here https://forums.oracle.com/thread/2552746
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/12/13
  * Time: 3:34 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class JCheckBoxGateList extends JList
 {

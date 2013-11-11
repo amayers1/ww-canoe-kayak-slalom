@@ -32,11 +32,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 10/30/13
  * Time: 7:21 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class RaceTimingBoatOnCourseUI {
     private JPanel subPanel;

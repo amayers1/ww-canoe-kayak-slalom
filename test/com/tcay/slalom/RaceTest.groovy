@@ -7,11 +7,15 @@ import org.testng.annotations.Test
 import javax.swing.Icon
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 11/3/13
  * Time: 12:51 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 class RaceTest {
 

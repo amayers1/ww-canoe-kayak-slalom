@@ -19,11 +19,15 @@ package com.tcay.util;
 
 
 /**
- * Created with IntelliJ IDEA.
+ * ${PROJECT_NAME}
+ *
+ * Teton Cay Group Inc. ${YEAR}
+ *
+
  * User: allen
  * Date: 11/3/13
  * Time: 10:56 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 
 /**
