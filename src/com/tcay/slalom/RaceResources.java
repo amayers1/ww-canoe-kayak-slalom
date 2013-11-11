@@ -45,6 +45,12 @@ public class RaceResources {
     private transient ImageIcon kayakSmall;
     private transient ImageIcon racerImg;
     private transient ImageIcon raceBibSmall;
+
+    private transient ImageIcon medalGoldSmall;
+    private transient ImageIcon medalSilverSmall;
+    private transient ImageIcon medalBronzeSmall;
+
+    //fixme Need empty and blank ??? Consolidate !!!
     private transient ImageIcon emptyII = new ImageIcon();  // needed for table cell renderer, can't have null value for cell renderer
 
     private transient ArrayList<Country> countries;
@@ -251,10 +257,19 @@ public class RaceResources {
                 raceBibSmall = new ImageIcon(imgURL, "raceBibSmall");
 
 
+            imgURL = thisClass.getResource("images/medalGold.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                medalGoldSmall = new ImageIcon(imgURL, "medalGoldSmall");
 
+            imgURL = thisClass.getResource("images/medalSilver.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                medalSilverSmall = new ImageIcon(imgURL, "medalSilverSmall");
 
+            imgURL = thisClass.getResource("images/medalBronze.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                medalBronzeSmall = new ImageIcon(imgURL, "medalBronzeSmall");
 
-
+            // todo implement Mediamanager lazy load
             //http://vectormagic.com/home - make vector images out of bitmaps
 
         }
@@ -347,4 +362,17 @@ public class RaceResources {
     public ImageIcon getRacerImg() {
         return racerImg;
     }
+
+    public ImageIcon getMedalGoldSmall() {
+        return medalGoldSmall;
+    }
+
+    public ImageIcon getMedalSilverSmall() {
+        return medalSilverSmall;
+    }
+
+    public ImageIcon getMedalBronzeSmall() {
+        return medalBronzeSmall;
+    }
+
 }
