@@ -2,6 +2,7 @@ package com.tcay.slalom.UI.client;
 
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import com.tcay.slalom.socket.Client;
 import com.tcay.slalom.socket.Proxy;
 
@@ -58,9 +59,11 @@ public class SectionJudgeClient {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
-
-        proxy = new Proxy(new Client());
+        try {
+            proxy = new Proxy(new Client());
+        } catch (InvalidArgumentException e) {
+            e.printStackTrace();
+        }
 
 
         comboBoxJudgingSection = new JComboBox();

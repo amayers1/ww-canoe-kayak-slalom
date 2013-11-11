@@ -4,6 +4,7 @@ package com.tcay.slalom.UI.client;
 //import com.intellij.uiDesigner.core.Spacer;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import com.tcay.slalom.UI.SlalomApp;
 import com.tcay.slalom.UI.components.ICF_50_ReasonButton;
 import com.tcay.slalom.socket.Client;
@@ -200,7 +201,12 @@ public class ClientRacePenaltiesUIDynamic {
 
     public ClientRacePenaltiesUIDynamic(int section, Proxy proxy) {
         if (proxy == null) {
-            raceProxy = new Proxy(new Client());//standAlone==true?new Client():null);
+
+            try {
+                raceProxy = new Proxy(new Client());
+            } catch (InvalidArgumentException e) {
+                e.printStackTrace();
+            }
         }
         else {
             raceProxy = proxy;
@@ -285,15 +291,18 @@ public class ClientRacePenaltiesUIDynamic {
        // if run standalone, this app will talk to SlalomApp via socket
         JFrame frame = new JFrame("Race Penalties UI");
 
-
-
 //        try {
 //            clientSocket.connectToServer();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 
-        Proxy proxy = new Proxy(new Client());
+        Proxy proxy = null;
+        try {
+            proxy = new Proxy(new Client());
+        } catch (InvalidArgumentException e) {
+            e.printStackTrace();
+        }
         ClientRacePenaltiesUIDynamic racePenaltiesUI = new ClientRacePenaltiesUIDynamic(1, proxy); ///fixme section 1 should be dynamic
         frame.setContentPane(racePenaltiesUI.innerPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
