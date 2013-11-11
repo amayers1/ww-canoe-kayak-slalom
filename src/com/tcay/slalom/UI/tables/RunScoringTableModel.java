@@ -3,8 +3,10 @@ package com.tcay.slalom.UI.tables;
 import com.tcay.slalom.Race;
 import com.tcay.slalom.RaceRun;
 import com.tcay.slalom.Result;
+import com.tcay.slalom.UI.components.GateLabelSmall;
 import com.tcay.util.Log;
 
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
@@ -108,9 +110,29 @@ public class RunScoringTableModel extends AbstractTableModel
 
                 switch (column) {
                     case RunScoringTable.COL_BOATCLASS:
-                        o = "";
+
                         if (originalRow%2==0) {
-                            o = r.getBoat().getBoatClass();
+                            //o = r.getBoat().getBoatClass();
+
+                            Icon icon = null;
+                            /*
+                            if (run.isGold()) {
+                                icon = Race.getInstance().getMedalGoldSmall();
+                            }
+                            else if (run.isSilver()) {
+                                icon = Race.getInstance().getMedalSilverSmall();
+
+                            }
+                            else if (run.isBronze()) {
+                                icon = Race.getInstance().getMedalBronzeSmall();
+                            }
+                            */
+                            o = icon;
+
+                            if (o==null) {
+                                 o = run.getPlaceInClass();
+                            }
+
                         }
                         break;
                     case RunScoringTable.COL_BIB:
