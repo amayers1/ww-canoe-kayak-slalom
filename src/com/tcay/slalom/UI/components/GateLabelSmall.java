@@ -52,6 +52,7 @@ public class GateLabelSmall extends JLabel implements TableCellRenderer {
         rendererComponent.setIcon(race.isUpstream(gate) ?
                                        race.getUpstreamTinyII() :
                                        race.getDownstreamTinyII());
+        rendererComponent.setHorizontalAlignment(JLabel.CENTER);
         rendererComponent.setHorizontalTextPosition(JLabel.CENTER);
         rendererComponent.setVerticalTextPosition(JLabel.TOP);
 
