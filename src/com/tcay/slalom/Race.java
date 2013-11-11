@@ -1013,6 +1013,46 @@ public class Race extends RaceResources implements Serializable
 
         ArrayList<Result>sorted = Result.getResultsByClassTime(results);
         results = sorted;  //A10112013
+
+        String lastBoatClass="";
+        int place = 1;
+
+        for (Result r:sorted) {
+            r.getRun1().setGold(false);
+            r.getRun1().setSilver(false);
+            r.getRun1().setBronze(false);
+
+            try {
+                r.getRun2().setGold(false);
+                r.getRun2().setSilver(false);
+                r.getRun2().setBronze(false);
+            } catch (NullPointerException e) {
+                // Intentionally empty exception block
+            }
+
+
+            if (lastBoatClass.compareTo(r.getBoat().getBoatClass()) != 0 ) {
+                lastBoatClass = r.getBoat().getBoatClass();
+                place = 1;
+            }
+            switch (place) {
+                case 1:
+                    r.getBestRun().setGold(true);
+                    break;
+                case 2:
+                    r.getBestRun().setSilver(true);
+                    break;
+                case 3:
+                    r.getBestRun().setBronze(true);
+                    break;
+                default:
+                    break;
+            }
+            r.getBestRun().setPlaceInClass(place++);
+        }
+
+
+
         return(sorted);
 
     }

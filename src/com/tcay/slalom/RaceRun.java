@@ -31,6 +31,20 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     private boolean dnf = false;
     private boolean dns = false;
     private int runNumber;
+    private boolean gold;
+    private boolean silver;
+    private boolean bronze;
+
+    public int getPlaceInClass() {
+        return placeInClass;
+    }
+
+    public void setPlaceInClass(int placeInClass) {
+        this.placeInClass = placeInClass;
+    }
+
+    private int placeInClass;
+
 
 
     private transient TagHeuerRaceRun tagHeuerRaceRun;
@@ -293,7 +307,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
      */
     public float getElapsed() {
 
-        float result = (float)9999999.0;
+        float result = (float)9999.0;
         if (!dnf) {
             if (tagHeuerRaceRun != null && tagHeuerRaceRun.getElapsedTime() != 0) {
                 result = (float)tagHeuerRaceRun.getElapsedTime();
@@ -372,7 +386,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
 
 
-        float j = (this.getBoat().getBoatClass().compareTo(r.getBoat().getBoatClass())) * 10000;
+        float j = (this.getBoat().getBoatClass().compareTo(r.getBoat().getBoatClass())) * 1000000;
 
         float i = (int)( (  (this.getElapsed()+this.getTotalPenalties()) -
                           ( r.getElapsed()+r.getTotalPenalties() )) * 100.0 );
@@ -441,5 +455,29 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 //            sb.append( "         ");        todo handle null Runs at caller?
 //        }
         return( sb.toString());
+    }
+
+    public boolean isGold() {
+        return gold;
+    }
+
+    public void setGold(boolean gold) {
+        this.gold = gold;
+    }
+
+    public boolean isSilver() {
+        return silver;
+    }
+
+    public void setSilver(boolean silver) {
+        this.silver = silver;
+    }
+
+    public boolean isBronze() {
+        return bronze;
+    }
+
+    public void setBronze(boolean bronze) {
+        this.bronze = bronze;
     }
 }
