@@ -146,16 +146,14 @@ public class ListPorts {
     static public void main(String[] args)
     {
         SerialComm[] ports = SerialComm.getCommPorts();
-       log.info("Ports:");
+        log.info("Identifying possible serial ports for timing equipment interface:");
         for (int i = 0; i < ports.length; ++i)
            log.info("   " + ports[i].getSystemPortName() + ": " + ports[i].getDescriptivePortName());
         SerialComm ubxPort = ports[4];
 
 
-
-
         byte[] readBuffer = new byte[2048];
-       log.info("Opening " + ubxPort.getDescriptivePortName() + ": " + ubxPort.openPort());
+        log.info("Opening " + ubxPort.getDescriptivePortName() + ": " + ubxPort.openPort());
         ubxPort.setComPortTimeouts(1000/*TIMEOUT_READ_BLOCKING*/, 1000, 0);
         InputStream in = ubxPort.getInputStream();
         try

@@ -39,6 +39,7 @@ import com.tcay.slalom.Result;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -70,6 +71,52 @@ public class ResultsTableAutoScroll extends ResultsTableSpectator {
         return(table);
 
     }
+
+/*
+    protected void setupColumns (JTable table) {
+
+        TableColumn column = null;
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            column = table.getColumnModel().getColumn(i);
+
+
+            if ( i==COL_BOATCLASS || i == COL_RAW1 || i == COL_RAW2  ||
+                    i == COL_PEN1  || i == COL_PEN2 || i == COL_BESTRUN_TOTAL  ) {
+                column.setPreferredWidth(50);
+            }
+            else if (i==COL_TIMIMGMODE1 || i==COL_TIMIMGMODE2 || i==COL_TIMINGMODE_BEST) {
+                column.setPreferredWidth(22);
+                column.setMaxWidth(22);
+            } else if (i==COL_CLUB_OR_COUNTRY ) {
+                column.setPreferredWidth(25);
+                column.setMaxWidth(25);
+                column.setMinWidth(25);
+
+            } else if (i==COL_BIB || i==COL_CLUB_OR_COUNTRY || i == COL_POSITION ) {
+                column.setPreferredWidth(30);
+                column.setMaxWidth(30);
+                column.setMinWidth(20);
+            } else if (i==COL_RACERNAME ) {
+                column.setPreferredWidth(200);
+                column.setMinWidth(30);
+            }
+            else {
+                column.setPreferredWidth(100);
+            }
+
+            // Always want to see this
+            if (i == COL_BESTRUN_TOTAL) {
+                column.setMinWidth(70);
+            }
+            if (i==COL_BOATCLASS ) {
+                column.setMinWidth(50);
+            }
+        }
+
+
+    }
+*/
+
 
     protected class ResultsTableModelAutoScroll extends ResultsTableModel {
 

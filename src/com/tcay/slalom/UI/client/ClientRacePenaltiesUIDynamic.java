@@ -223,11 +223,11 @@ public class ClientRacePenaltiesUIDynamic {
     public ClientRacePenaltiesUIDynamic(int section, Proxy proxy) {
         if (proxy == null) {
 
-            try {
+            //try {
                 raceProxy = new Proxy(new Client());
-            } catch (InvalidArgumentException e) {
-                e.printStackTrace();
-            }
+            //} catch (InvalidArgumentException e) {
+            //    e.printStackTrace();
+            //}
         }
         else {
             raceProxy = proxy;
@@ -319,11 +319,11 @@ public class ClientRacePenaltiesUIDynamic {
 //        }
 
         Proxy proxy = null;
-        try {
+//        try {
             proxy = new Proxy(new Client());
-        } catch (InvalidArgumentException e) {
-            e.printStackTrace();
-        }
+//        } catch (InvalidArgumentException e) {
+//            e.printStackTrace();
+//        }
         ClientRacePenaltiesUIDynamic racePenaltiesUI = new ClientRacePenaltiesUIDynamic(1, proxy); ///fixme section 1 should be dynamic
         frame.setContentPane(racePenaltiesUI.innerPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -489,52 +489,13 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
         selectRaceRun.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                selectedRun = (RaceRun) activeOrRecentRunsComboBox.getSelectedItem();
-                if (selectedRun!= null) {
-                    raceRunLabel.setText(selectedRun.toString());       // todo null pointer here when scoring window up without any events to trigger list populate
-                    bibLabel.setText(selectedRun.getBoat().getRacer().getBibNumber());
-
-                    selectRaceRun.setEnabled(false);
-                    selectRaceRun.setVisible(false);
-                    activeOrRecentRunsComboBox.setEnabled(false);
-
-                    loadPenalties(selectedRun);
-                    updateButtonVisibility();
-                }
+                selectRaceRunButtonHandler();
             }
         });
         doneBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo Done action handler
-
-//                if (raceProxy.isStandAlone() == true) {
-//                    selectedRun.clearPenaltyList();   /// todo  check if this is ok,  how to get unjudged entry if penalties cleared
-//                }
-
-                selectedRun.clearPenaltyList();                //fixme A131028 (ajm) problems resetting penalties
-
-                for (GatePenaltyButton pb:penaltyButtons) {
-                    selectedRun.setPenalty( pb.getGate(), pb.getPenalty(), true );
-                }
-                raceProxy.updateResults(selectedRun);
-
-
-
-                selectedRun = null;
-                selectRaceRun.setEnabled(true);
-                selectRaceRun.setVisible(true);
-
-
-///todo A131026 is this ok, does it update correctly?
-//refreshComboModelIfAppropriate();
-                activeOrRecentRunsComboBox.setSelectedIndex(getFirstUnJudgedEntry());
-                activeOrRecentRunsComboBox.setEnabled(true);
-                raceRunLabel.setText(null);
-                bibLabel.setText(null);
-                clearPenaltyBtns();
-                updateButtonVisibility();
-//M20131024                raceProxy.updateResults();
+                doneButtonActionHandler();
             }
         });
 
@@ -636,5 +597,52 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
         }
     }
 
+    public void selectRaceRunButtonHandler() {
+        selectedRun = (RaceRun) activeOrRecentRunsComboBox.getSelectedItem();
+        if (selectedRun!= null) {
+            raceRunLabel.setText(selectedRun.toString());       // todo null pointer here when scoring window up without any events to trigger list populate
+            bibLabel.setText(selectedRun.getBoat().getRacer().getBibNumber());
+
+            selectRaceRun.setEnabled(false);
+            selectRaceRun.setVisible(false);
+            activeOrRecentRunsComboBox.setEnabled(false);
+
+            loadPenalties(selectedRun);
+            updateButtonVisibility();
+        }
+
+    }
+
+    public void doneButtonActionHandler() {
+        //todo Done action handler
+//                if (raceProxy.isStandAlone() == true) {
+//                    selectedRun.clearPenaltyList();   /// todo  check if this is ok,  how to get unjudged entry if penalties cleared
+//                }
+
+        selectedRun.clearPenaltyList();                //fixme A131028 (ajm) problems resetting penalties
+
+        for (GatePenaltyButton pb:penaltyButtons) {
+            selectedRun.setPenalty( pb.getGate(), pb.getPenalty(), true );
+        }
+        raceProxy.updateResults(selectedRun);
+
+
+
+        selectedRun = null;
+        selectRaceRun.setEnabled(true);
+        selectRaceRun.setVisible(true);
+
+
+///todo A131026 is this ok, does it update correctly?
+//refreshComboModelIfAppropriate();
+        activeOrRecentRunsComboBox.setSelectedIndex(getFirstUnJudgedEntry());
+        activeOrRecentRunsComboBox.setEnabled(true);
+        raceRunLabel.setText(null);
+        bibLabel.setText(null);
+        clearPenaltyBtns();
+        updateButtonVisibility();
+//M20131024                raceProxy.updateResults();
+
+    }
 
 }

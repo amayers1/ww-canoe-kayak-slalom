@@ -149,7 +149,7 @@ public class Server implements Runnable {
                 for (RaceRun run:Race.getInstance().getScorableRuns()){
                     response.add(run);
                 }
-                log.trace("Wrote Scorable run response");
+                log.debug("Wrote Scorable run response");
             }
 
             if (request.getRequestCmd() == ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED) {

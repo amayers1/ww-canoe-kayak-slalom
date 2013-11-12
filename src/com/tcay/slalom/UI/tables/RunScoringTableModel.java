@@ -99,7 +99,7 @@ public class RunScoringTableModel extends AbstractTableModel
 
     public Class getColumnClass( int column )
     {
-        return getValueAt(0, column).getClass();
+        return getValueAt(0, column).getClass();                             // crash in simulation java.lang.NullPointerException
     }
     public int getColumnCount()
     {
@@ -168,7 +168,8 @@ public class RunScoringTableModel extends AbstractTableModel
                             o = icon;
 
                             if (o==null) {
-                                 o = run.getPlaceInClass();
+                                o = run.getBoat().getBoatClass();
+                                 //o = run.getPlaceInClass();                        // crash on simulation       java.lang.NullPointerException
                             }
 
                         }

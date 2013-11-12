@@ -68,7 +68,26 @@ public class ResultsTableModel extends AbstractTableModel
     Race race;
     Log log;
 
-    private final String[] columnNames = { "Class", "Pos", "Bib", "Club", "Name", "Run1 Raw", "tm", "Pen",  "Run2 Raw", "tm", "Pen", "Best Run Total", "tm" };
+    private final String[] columnNames = {// "Class", "Pos", "Bib", "Club", "Name", "Run1 Raw", "tm1", "Pen",  "Run2 Raw", "tm2", "Pen", "Best Run Total", "tmb" };
+
+        ResultsTable.COL_BOATCLASS_NAME,
+        ResultsTable.COL_POSITION_NAME,
+        ResultsTable.COL_BIB_NAME,
+
+        ResultsTable.COL_CLUB_OR_COUNTRY_NAME,
+        ResultsTable.COL_RACERNAME_NAME,
+        ResultsTable.COL_RAW1_NAME,
+        ResultsTable.COL_TIMIMGMODE1_NAME,
+        ResultsTable.COL_PEN1_NAME,
+
+
+        ResultsTable.COL_RAW2_NAME,
+        ResultsTable.COL_TIMIMGMODE2_NAME,
+        ResultsTable.COL_PEN2_NAME,
+
+        ResultsTable.COL_BESTRUN_TOTAL_NAME,
+        ResultsTable.COL_TIMINGMODE_BEST_NAME
+    };
 
     /* protected and not private ONLY to be used by subclass ResultsTableModelAutoScroll */
     protected ResultsTableModel() {
@@ -137,56 +156,57 @@ public class ResultsTableModel extends AbstractTableModel
 
                 switch (column) {
                     case ResultsTable.COL_BOATCLASS:        // class
-                        o = (Object)r.getBoat().getBoatClass();
+                        o = r.getBoat().getBoatClass();
                         break;
                     case ResultsTable.COL_POSITION:        // bib
-                        o = (Object)r.getBestRun().getPlaceInClass();
+                        o = r.getBestRun().getPlaceInClass();
                         break;
                     case ResultsTable.COL_BIB:        // bib
-                        o = (Object)r.getBoat().getRacer().getBibNumber();
+                        o = r.getBoat().getRacer().getBibNumber();
                         break;
                     case ResultsTable.COL_CLUB_OR_COUNTRY:        // get Flag or club logo
-                        o = (Object)r.getBoat().getImageIcon();
+                        icon = r.getBoat().getImageIcon();
+                        o = icon;
                         break;
                     case ResultsTable.COL_RACERNAME:        // name
-                        o = (Object)r.getBoat().getRacer().getShortName();
+                        o = r.getBoat().getRacer().getShortName();
                         break;
                     case ResultsTable.COL_RAW1:        // run 1 raw
-                        o = (Object)r.getRun1().getResultString();
+                        o = r.getRun1().getResultString();
                         break;
                     case ResultsTable.COL_TIMIMGMODE1:        // run 1 timing mode
                         icon =  Race.getInstance().getTagHeuerTinyII();
                         if (r.getRun1().getTagHeuerRaceRun()==null) {
                             icon = Race.getInstance().getStopWatchII();
                         }
-                        o = (Object)icon;
+                        o = icon;
                                      //ResultsTable.TIMINGMODE_MANUAL:ResultsTable.TIMINGMODE_AUTOMATIC;
                         break;
                     case ResultsTable.COL_PEN1:        // run 1 penalties
-                        o = (Object)r.getRun1().getTotalPenalties();
+                        o = r.getRun1().getTotalPenalties();
                         break;
                     case ResultsTable.COL_RAW2:        // run 2
-                        o = (Object)r.getRun2().getResultString();
+                        o = r.getRun2().getResultString();
                         break;
                     case ResultsTable.COL_TIMIMGMODE2:
                         icon =  Race.getInstance().getTagHeuerTinyII();
                         if (r.getRun2().getTagHeuerRaceRun()==null) {
                             icon = Race.getInstance().getStopWatchII();
                         }
-                        o = (Object)icon;
+                        o = icon;
                         break;
                     case ResultsTable.COL_PEN2:        // run2 penalties
-                        o = (Object)r.getRun2().getTotalPenalties();
+                        o = r.getRun2().getTotalPenalties();
                         break;
                     case ResultsTable.COL_BESTRUN_TOTAL:        // best time total
-                        o = (Object)r.getBestRun().getTotalTimeString();
+                        o = r.getBestRun().getTotalTimeString();
                         break;
                     case ResultsTable.COL_TIMINGMODE_BEST:
                         icon =  Race.getInstance().getTagHeuerTinyII();
                         if (r.getBestRun().getTagHeuerRaceRun()==null) {
                             icon = Race.getInstance().getStopWatchII();
                         }
-                        o = (Object)icon;
+                        o = icon;
                         break;
                     default:
                         break;

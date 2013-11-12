@@ -80,11 +80,11 @@ public class SectionJudgeClient {
     }
 
     private void createUIComponents() {
-        try {
+     //   try {
             proxy = new Proxy(new Client());
-        } catch (InvalidArgumentException e) {
-            e.printStackTrace();
-        }
+     //   } catch (InvalidArgumentException e) {
+     //       e.printStackTrace();
+     //   }
 
 
         comboBoxJudgingSection = new JComboBox();

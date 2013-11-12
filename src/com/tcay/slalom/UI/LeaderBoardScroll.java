@@ -28,14 +28,13 @@ import java.awt.*;
 
 /**
  * ${PROJECT_NAME}
- *
+ * <p/>
  * Teton Cay Group Inc. ${YEAR}
- *
-
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 9/28/13
  * Time: 6:28 PM
- *
  */
 public class LeaderBoardScroll {
     private JPanel panel1;
@@ -50,7 +49,7 @@ public class LeaderBoardScroll {
     private void createUIComponents() {
         // TODO: place custom component creation code here
 //        resultsTable  = new JBTable();
-            resultsTable = new ResultsTableAutoScroll();
+        resultsTable = new ResultsTableAutoScroll();
 
         table = resultsTable.createTable();
         leaderScrollPane = new JScrollPane();
@@ -82,7 +81,7 @@ public class LeaderBoardScroll {
         createUIComponents();
         panel1 = new JPanel();
         panel1.setLayout(new FormLayout("fill:d:grow", "center:d:grow"));
-        leaderScrollPane.setPreferredSize(new Dimension(800, 600));
+        leaderScrollPane.setPreferredSize(new Dimension(650, 250));
         CellConstraints cc = new CellConstraints();
         panel1.add(leaderScrollPane, cc.xy(1, 1, CellConstraints.FILL, CellConstraints.FILL));
         leaderScrollPane.setViewportView(table);

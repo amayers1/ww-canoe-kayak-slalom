@@ -18,6 +18,7 @@
 package com.tcay.slalom.UI;
 
 import com.sun.javaws.exceptions.InvalidArgumentException;
+import com.tcay.Singleton;
 import com.tcay.slalom.UI.client.ClientRacePenaltiesUIDynamic;
 import com.tcay.slalom.UI.components.StatusBar;
 import com.tcay.slalom.UI.tables.ResultsTable;
@@ -76,6 +77,7 @@ public class SlalomApp {
     private Race race;
 
 
+
     //Constructor must be protected or private to prevent creating new object
     protected SlalomApp() {
 
@@ -91,7 +93,7 @@ public class SlalomApp {
     }
 
 
-    private synchronized static SlalomApp getInstance() {
+    public /*rivate*/ synchronized static SlalomApp getInstance() {
         if (instance==null)
             instance = new SlalomApp();
         return instance;
@@ -115,18 +117,8 @@ public class SlalomApp {
         appFrame.add(picLabel, BorderLayout.CENTER);
         appFrame.setSize(760, 340);
         appFrame.setPreferredSize(new Dimension(760, 340));
-        // set location to middle of screen
-        appFrame.setLocationRelativeTo(null);
 
-
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
-        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-        int x = (int) (rect.getMaxX() - appFrame.getWidth());
-        int y = 0;//(int) rect.getMaxY() - appFrame.getHeight();
-        appFrame.setLocation(x, y);
-
+        setLocationRightTop(appFrame);
         JMenuBar menuBar;
         JMenu menu;
         JMenuItem menuItem;
@@ -150,6 +142,7 @@ public class SlalomApp {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         JFrame frame = new JFrame("Race Configuration");
+
                         frame.setContentPane(new RaceConfigUI().$$$getRootComponent$$$());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
@@ -244,57 +237,7 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        // todo Fix this kludge to get JPAnel for Dialog Box
-                        JFrame f = new JFrame("Dummy");
-
-                        JPanel jp;
-                        f.add(jp = new JPanel() {
-
-                            @Override // placeholder for actual content
-                            public Dimension getPreferredSize() {
-                                return new Dimension(320, 240);
-                            }
-
-                        });
-
-                        if (Race.getInstance().getNbrOfSections() == 0) {
-                            Race.getInstance().askSampleDataIfNoRacersExist(jp);
-                        }
-
-                        String title;
-                        int nbrSections = Race.getInstance().getNbrOfSections();
-                        for (int i = 0; i < nbrSections; i++) {
-                            title = "Section " + (i + 1);
-
-                            //JFrame
-                            f = new JFrame(title + " - " + Race.getInstance().getName());
-                            f.add(new JPanel() {
-
-                                @Override // placeholder for actual content
-                                public Dimension getPreferredSize() {
-                                    return new Dimension(320, 240);
-                                }
-
-                            });
-                            Proxy proxy = null;
-                            try {
-                                proxy = new Proxy(new Client());
-                            } catch (InvalidArgumentException e1) {
-                                e1.printStackTrace();
-                            }
-
-                            //frame.setContentPane(new ClientRacePenaltiesUIDynamic(i+1).getRootComponent());
-                            f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, proxy).getRootComponent());
-                            f.pack();
-                            f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
-                            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                            GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
-                            Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-                            int x = (int) rect.getMaxX() - ((Race.getInstance().getNbrOfSections() - i) * f.getWidth());
-                            int y = (int) rect.getMaxY() - f.getHeight();
-                            f.setLocation(x, y);
-                            f.setVisible(true);
-                        }
+                        menuSectionScoringAction();
                     }
                 }
         );
@@ -306,11 +249,11 @@ public class SlalomApp {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         Proxy proxy = null;
-                        try {
+                        //try {
                             proxy = new Proxy(new Client());
-                        } catch (InvalidArgumentException e1) {
-                            e1.printStackTrace();
-                        }
+                        //} catch (InvalidArgumentException e1) {
+                        //    e1.printStackTrace();
+                        //}
 
                         JFrame frame = new JFrame("Race Penalty Scoring");
                         frame.setContentPane(new ClientRacePenaltiesUIDynamic(0, proxy).getRootComponent());
@@ -356,21 +299,7 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        RaceTimingUI timingUI = RaceTimingUI.getInstance();
-
-                        if (timingFrame1 == null) {                  // fixme ALL Frames except Scoring should be handled like this - singleton
-                            timingFrame1 = new JFrame();
-                            timingFrame1.setLayout(new BorderLayout());
-                            timingFrame1.add(timingUI.$$$getRootComponent$$$(), BorderLayout.NORTH);
-
-                            JPanel statusBar = new StatusBar().getPanel(timingFrame1);
-                            timingFrame1.add(statusBar, BorderLayout.SOUTH );
-                            timingFrame1.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                            timingFrame1.pack();
-                        }
-
-                        timingUI.setTitle(timingFrame1);
-                        timingFrame1.setVisible(true);
+                        createAndDisplayTimingPanel();
                     }
                 }
         );
@@ -391,7 +320,7 @@ public class SlalomApp {
                         outputResults("", race.getCompletedRuns(), false);
                         outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
                         LeaderBoard leaderBoard = new LeaderBoard(null);
-                        JFrame frame = new JFrame();
+                        JFrame frame = new JFrame("Leader Board");
                         frame.setContentPane(leaderBoard.$$$getRootComponent$$$());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
@@ -416,7 +345,7 @@ public class SlalomApp {
                         LeaderBoard leaderBoard = new LeaderBoard(rt);
                         ((ResultsTableSpectator)rt).removeDetailColumns();
 
-                        JFrame frame = new JFrame();
+                        JFrame frame = new JFrame("Spectator Leaderboard");
                         frame.setContentPane(leaderBoard.$$$getRootComponent$$$());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
@@ -433,16 +362,7 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        Race race = Race.getInstance();
-
-                        outputResults("", race.getCompletedRuns(), false);
-                        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
-                        LeaderBoardScroll leaderBoard = new LeaderBoardScroll();
-                        JFrame frame = new JFrame();
-                        frame.setContentPane(leaderBoard.$$$getRootComponent$$$());
-                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        frame.pack();
-                        frame.setVisible(true);
+                        menuScrollingScoreBoardAction();
                     }
                 }
         );
@@ -464,14 +384,7 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        Race race = Race.getInstance();
-
-                        outputResults("", race.getCompletedRuns(), false);
-                        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
-                        ScoringBoard scoringBoard = new ScoringBoard();
-                        appFrame.setContentPane(scoringBoard.$$$getRootComponent$$$());
-                        appFrame.pack();
-                        appFrame.setVisible(true);
+                        menuVirtualScoringSheetAction();
                     }
                 }
         );
@@ -483,6 +396,89 @@ public class SlalomApp {
         //Display the window.
         appFrame.pack();
         appFrame.setVisible(true);
+
+    }
+
+
+    public ArrayList<Proxy> menuSectionScoringAction() {
+        ArrayList<Proxy> proxies = new ArrayList<Proxy>();
+        Proxy proxy = null;
+        // todo Fix this kludge to get JPanel for Dialog Box
+        JFrame f = new JFrame("Dummy");
+
+        JPanel jp;
+        f.add(jp = new JPanel() {
+
+            @Override // placeholder for actual content
+            public Dimension getPreferredSize() {
+                return new Dimension(320, 240);
+            }
+
+        });
+
+        if (Race.getInstance().getNbrOfSections() == 0) {
+            Race.getInstance().askSampleDataIfNoRacersExist(jp);
+        }
+
+        String title;
+        int nbrSections = Race.getInstance().getNbrOfSections();
+        for (int i = 0; i < nbrSections; i++) {
+            title = "Section " + (i + 1) + " Judge";
+
+            //JFrame
+            f = new JFrame(title + " - " + Race.getInstance().getName());
+            f.add(new JPanel() {
+
+                @Override // placeholder for actual content
+                public Dimension getPreferredSize() {
+                    return new Dimension(320, 240);
+                }
+
+            });
+            //Proxy
+            proxy = null;
+            //try {
+                proxy = new Proxy(new Client());
+                proxies.add(proxy);
+           // } catch (InvalidArgumentException e1) {
+           //     e1.printStackTrace();
+           // }
+
+            //frame.setContentPane(new ClientRacePenaltiesUIDynamic(i+1).getRootComponent());
+            f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, proxy).getRootComponent());
+            f.pack();
+            f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+            Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+            int x = (int) rect.getMaxX() - ((Race.getInstance().getNbrOfSections() - i) * f.getWidth());
+            int y = (int) rect.getMaxY() - f.getHeight();
+            f.setLocation(x, y);
+            f.setVisible(true);
+
+        }
+        return(proxies);
+    }
+
+
+    public RaceTimingUI createAndDisplayTimingPanel() {
+
+        RaceTimingUI timingUI = RaceTimingUI.getInstance();
+
+        if (timingFrame1 == null) {                  // fixme ALL Frames except Scoring should be handled like this - singleton
+            timingFrame1 = new JFrame();
+            timingFrame1.setLayout(new BorderLayout());
+            timingFrame1.add(timingUI.$$$getRootComponent$$$(), BorderLayout.NORTH);
+
+            JPanel statusBar = new StatusBar().getPanel(timingFrame1);
+            timingFrame1.add(statusBar, BorderLayout.SOUTH );
+            timingFrame1.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            timingFrame1.pack();
+        }
+
+        timingUI.setTitle(timingFrame1);
+        timingFrame1.setVisible(true);
+        return(timingUI);
 
     }
 
@@ -582,11 +578,89 @@ public class SlalomApp {
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
+        System.out.println("HERE!");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                getInstance().createAndShowGUI();
+                ((SlalomApp)getInstance()).createAndShowGUI();
             }
         });
     }
+
+    public void menuScrollingScoreBoardAction() {
+        Race race = Race.getInstance();
+
+        outputResults("", race.getCompletedRuns(), false);
+        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
+        LeaderBoardScroll leaderBoard = new LeaderBoardScroll();
+        JFrame frame = new JFrame();
+        frame.setTitle("Scrolling Scoreboard");
+        frame.setContentPane(leaderBoard.$$$getRootComponent$$$());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(600,300));
+        frame.setSize(600,300);
+        setLocationRightTop(frame);
+
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+
+    public void menuVirtualScoringSheetAction() {
+        Race race = Race.getInstance();
+
+        outputResults("", race.getCompletedRuns(), false);
+        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
+        ScoringBoard scoringBoard = new ScoringBoard();
+
+        JFrame frame = new JFrame();
+        frame.setTitle("ScoringSheet");
+        frame.setContentPane(scoringBoard.$$$getRootComponent$$$());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        frame.setPreferredSize(new Dimension(700,350));
+        frame.setSize(700,350);
+
+        setLocationBottomLeft(frame);
+        //appFrame.setContentPane(scoringBoard.$$$getRootComponent$$$());
+        //app
+        frame.pack();
+        //app
+        frame.setVisible(true);
+
+    }
+
+    private void setLocationRightTop(JFrame frame) {
+        // set location to middle of screen
+        frame.setLocationRelativeTo(null);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+        int x = (int) (rect.getMaxX() - frame.getWidth());
+        int y = 0;//(int) rect.getMaxY() - appFrame.getHeight();
+        System.out.println(frame.getTitle() +" width=" +frame.getWidth() + " Putting Window RightTop at " + x + ", " + y);
+        log.warn(frame.getTitle() +" width=" +frame.getWidth() + " Putting Window RightTop at " + x + ", " + y);
+
+
+        frame.setLocation(x, y);
+
+
+    }
+
+    private void setLocationBottomLeft(JFrame frame) {
+        // set location to middle of screen
+        frame.setLocationRelativeTo(null);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+
+        int x = 0;//(int) (rect.getMaxX() - frame.getWidth());
+        int y = (int) rect.getMaxY() - frame.getHeight();
+        System.out.println(frame.getTitle() + " width=" +frame.getWidth() +" Putting Window BottomLeft at " + x + ", " + y);
+        log.warn(frame.getTitle() + " width=" +frame.getWidth() +" Putting Window BottomLeft at " + x + ", " + y);
+        frame.setLocation(x, y);
+    }
+
 
 }

@@ -17,6 +17,8 @@
 
 package com.tcay.slalom;
 
+import com.tcay.util.Log;
+
 import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -134,11 +136,10 @@ public class BoatEntry implements Serializable{
     }
 
     public ImageIcon getImageIcon() {
-        return Race.getInstance().getImageIcon(getRacer().getClub());
+        ImageIcon ii = Race.getInstance().getImageIcon(getRacer().getClub());
+        return ii;
     }
     public ImageIcon getImageIconTiny() {
         return Race.getInstance().getImageIconTiny(getRacer().getClub());
     }
-
-
 }

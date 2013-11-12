@@ -83,6 +83,26 @@ public class ResultsTable {// extends Singleton {
     static public final String TIMINGMODE_MANUAL="m";
     static public final String TIMINGMODE_AUTOMATIC="*";
 
+
+    static public final String COL_BOATCLASS_NAME="Class";
+    static public final String COL_POSITION_NAME="Pos";
+    static public final String COL_BIB_NAME="Bib";
+
+    static public final String COL_CLUB_OR_COUNTRY_NAME="Club";
+    static public final String COL_RACERNAME_NAME="Name";
+    static public final String COL_RAW1_NAME="Raw";
+    static public final String COL_TIMIMGMODE1_NAME="tm";
+    static public final String COL_PEN1_NAME="Pen";
+
+
+    static public final String COL_RAW2_NAME="Raw";
+    static public final String COL_TIMIMGMODE2_NAME="tm";
+    static public final String COL_PEN2_NAME="Pen";
+
+    static public final String COL_BESTRUN_TOTAL_NAME="Best";
+    static public final String COL_TIMINGMODE_BEST_NAME="tm";
+
+
     ResultsTableModel tableModel;
 
     public boolean isOpaque() {
@@ -108,7 +128,7 @@ public class ResultsTable {// extends Singleton {
                 column.setMaxWidth(25);
                 column.setMinWidth(25);
 
-            } else if (i==COL_BIB || i==COL_CLUB_OR_COUNTRY || i == COL_POSITION ) {
+            } else if (i==COL_BIB || i == COL_POSITION ) {
                 column.setPreferredWidth(30);
                 column.setMaxWidth(30);
                 column.setMinWidth(20);

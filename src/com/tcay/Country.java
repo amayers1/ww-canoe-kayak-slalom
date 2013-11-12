@@ -17,6 +17,8 @@
 
 package com.tcay;
 
+import com.tcay.util.Log;
+
 import javax.swing.*;
 
 /**

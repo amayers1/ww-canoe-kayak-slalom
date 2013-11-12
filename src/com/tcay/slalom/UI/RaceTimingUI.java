@@ -40,10 +40,10 @@ import java.awt.event.ActionListener;
 
 /**
  * ${PROJECT_NAME}
- *
+ * <p/>
  * Teton Cay Group Inc. ${YEAR}
- *
-
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 10/29/13
  * Time: 7:38 PM
@@ -130,42 +130,7 @@ public class RaceTimingUI {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (boatReadyToStart != null) {
-                    RaceRun run;
-                    if (rerunPending != null) {
-                        run = rerunPending;
-                        rerunPending = null;
-                    } else {
-                        startListComboBox.removeItem(boatReadyToStart);
-
-                        // select the first entry left in the start list, this should be the
-                        // next racer scheduled to start
-                        if (startListComboBox.getItemCount() > 0) {
-                            startListComboBox.setSelectedIndex(0);
-                        }
-
-                        // in a rerun, need to NOT have this  todo, what did I mean with this comment
-                        run = boatReadyToStart.onDeck();   //todo this method needs to be evaluated, instantiates a run .. even if canceled from UI
-                    }
-                    run.start();
-                    // fixme
-                    maybeMakeDUMMYTagHeuerTime(run);
-
-
-                    shuffleActiveRuns(run);
-
-                    racer1UI.updateRun(run1);
-                    if (run2 != null) {
-                        racer2UI.updateRun(run2);
-
-                    }
-                    if (run3 != null) {
-                        racer3UI.updateRun(run3);
-                    }
-
-                    boatReadyToStart = null;
-                    updateButtonVisibility();
-                }
+                startButtonActionHandler();
             }
         });
 
@@ -199,9 +164,8 @@ public class RaceTimingUI {
                         JOptionPane.YES_NO_OPTION);
 
                 if (n == 0) {
-                    Race.getInstance().incrementCurrentRunIteration();
-                    updateWhichRunLabel();
-                    loadStartList();
+                    newRunButtonHandler();
+                    newRunButton.setVisible(false);
                 }
 
             }
@@ -210,32 +174,36 @@ public class RaceTimingUI {
         reRunButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
-                // Create Dialog Box
-                // Select Race Run Boat and Run Number for redo
-                SelectRerun doRerun = new SelectRerun();
-                doRerun.pack();
-                doRerun.setVisible(true);
-
-                RaceRun rerunPending = Race.getInstance().getPendingRerun();
-
-
-                try {
-                    if (rerunPending != null) {
-                        boatReadyToStart = rerunPending.getBoat();
-//                    jRacerInStartGateLabel.setText(boatReadyToStart.getRacer().getShortName());
-                        jRacerInStartGateLabel.setText(boatReadyToStart.toString());
-                        jRacerInStartGateLabel.setIcon(boatReadyToStart.getImageIcon());
-                        //  run = boatReadyToStart.onDeck();   //todo this method needs to be evaluated, instantiates a run .. even if canceled from UI
-                        //  run.start();
-                    }
-                } catch (Exception e) {
-                    log.write(e);
-                }
-                updateButtonVisibility();
+                rerunButtonHandler();
             }
         });
         updateButtonVisibility();
+    }
+
+
+    private void rerunButtonHandler() {
+        // Create Dialog Box
+        // Select Race Run Boat and Run Number for redo
+        SelectRerun doRerun = new SelectRerun();
+        doRerun.pack();
+        doRerun.setVisible(true);
+
+        RaceRun rerunPending = Race.getInstance().getPendingRerun();
+
+
+        try {
+            if (rerunPending != null) {
+                boatReadyToStart = rerunPending.getBoat();
+                jRacerInStartGateLabel.setText(boatReadyToStart.toString());
+                jRacerInStartGateLabel.setIcon(boatReadyToStart.getImageIcon());
+                //  run = boatReadyToStart.onDeck();   //todo this method needs to be evaluated, instantiates a run .. even if canceled from UI
+                //  run.start();
+            }
+        } catch (Exception e) {
+            log.write(e);
+        }
+        updateButtonVisibility();
+
     }
 
 
@@ -250,7 +218,7 @@ public class RaceTimingUI {
         // starting block panel
         bibLabel = new BibLabel();
 
-        Timer screenUpdatetimer = new Timer(100,
+        Timer screenUpdatetimer = new Timer(10,
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
                         updateRunTimers();
@@ -275,6 +243,46 @@ public class RaceTimingUI {
             if (Math.random() * 20 < 16) {
                 run.setTagHeuerRaceRun(new TagHeuerRaceRun(race.getCurrentRunIteration()));
             }
+        }
+
+    }
+
+
+    private void startButtonActionHandler() {
+        if (boatReadyToStart != null) {
+            RaceRun run;
+            if (rerunPending != null) {
+                run = rerunPending;
+                rerunPending = null;
+            } else {
+                startListComboBox.removeItem(boatReadyToStart);
+
+                // select the first entry left in the start list, this should be the
+                // next racer scheduled to start
+                if (startListComboBox.getItemCount() > 0) {
+                    startListComboBox.setSelectedIndex(0);
+                }
+
+                // in a rerun, need to NOT have this  todo, what did I mean with this comment
+                run = boatReadyToStart.onDeck();   //todo this method needs to be evaluated, instantiates a run .. even if canceled from UI
+            }
+            run.start();
+            // fixme
+            maybeMakeDUMMYTagHeuerTime(run);
+
+            shuffleActiveRuns(run);
+
+            racer1UI.updateRun(run1);
+            if (run2 != null) {
+                racer2UI.updateRun(run2);
+
+            }
+            if (run3 != null) {
+                racer3UI.updateRun(run3);
+            }
+
+            boatReadyToStart = null;
+            updateButtonVisibility();
         }
 
     }
@@ -311,10 +319,11 @@ public class RaceTimingUI {
 
             startListComboBox.invalidate();  //todo need this ?
             if (boatReadyToStart != null) {
-                jRacerInStartGateLabel.setText(boatReadyToStart.toString());                 // NUll pointer Exception
-                jRacerInStartGateLabel.setIcon(boatReadyToStart.getImageIcon());
-                bibLabel.setText(boatReadyToStart.getRacer().getBibNumber());
+                ImageIcon ii = boatReadyToStart.getImageIcon();
+                jRacerInStartGateLabel.setIcon(ii);
+                jRacerInStartGateLabel.setText(boatReadyToStart.toString());                 // NUll pointer Exception               bibLabel.setText(boatReadyToStart.getRacer().getBibNumber());
             } else {
+                jRacerInStartGateLabel.setIcon(null);
                 jRacerInStartGateLabel.setText("");
                 bibLabel.setText("");
             }
@@ -322,16 +331,11 @@ public class RaceTimingUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-// D131029       jRacerInStartGateLabel.repaint();
         updateButtonVisibility();
     }
 
 
     protected void updateButtonVisibility() {
-        //racer1UI.updateButtonVisibility();
-        //racer2UI.updateButtonVisibility();
-        //racer3UI.updateButtonVisibility();
-
         startButton.setVisible(false);
         reRunButton.setVisible(false);
 
@@ -343,10 +347,10 @@ public class RaceTimingUI {
 
 
         if (boatReadyToStart == null) {
+            jRacerInStartGateLabel.setIcon(null);
             jRacerInStartGateLabel.setText("no one");
             bibLabel.setText("");
             DNSButton.setVisible(false);
-
         } else {
             DNSButton.setVisible(true);
             if (canDisplayAnotherRealtimeRun()) {
@@ -357,12 +361,12 @@ public class RaceTimingUI {
                 waitingForAFinishLabel.setVisible(true);
             }
         }
-
-        //jRacerInStartGateLabel.repaint();
-
-        // doesn't work here,needed before frame setVisible and after pack()
-        // startButton.requestFocusInWindow();
+        if (startListComboBox.getItemCount() == 0) {
+            reRunButton.setVisible(true);
+        }
     }
+    // doesn't work here,needed before frame setVisible and after pack()
+        // startButton.requestFocusInWindow();
 
 
     private boolean canBump(RaceRun run) {
@@ -426,6 +430,70 @@ public class RaceTimingUI {
     private void updateWhichRunLabel() {
         JFrame frame = (JFrame) SwingUtilities.getRoot(jRacerInStartGateLabel);
         setTitle(frame);
+    }
+
+    private void newRunButtonHandler() {
+        Race.getInstance().incrementCurrentRunIteration();
+        updateWhichRunLabel();
+        loadStartList();
+    }
+
+    static final long FAST_FORWARD_FACTOR = 10;
+    static final long fastestRun = 90;
+
+
+    public void simulateRaceRunDuration() {
+        long slowestRunPercentageFactor = 40;
+        long maxAdditionalTimeOverFastest = slowestRunPercentageFactor * fastestRun / 100;
+        long runLength;
+
+        runLength = fastestRun + (long) (Math.random() * 40);
+
+        try {
+            runLength = fastestRun + (long) (Math.random() * maxAdditionalTimeOverFastest);
+            runLength = runLength * 1000 / FAST_FORWARD_FACTOR;
+            //if (loop < 3) {
+            runLength /= 2;  /// got 2 racers on course  === divide by 2
+            //}
+
+            Thread.sleep(runLength);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void simulateRace() {
+        //..innerFinishPanel1;
+        //innerFinishPanel2;
+        //innerFinishPanel3;
+
+
+        SlalomApp.getInstance().menuSectionScoringAction();
+        SlalomApp.getInstance().menuScrollingScoreBoardAction();
+        SlalomApp.getInstance().menuVirtualScoringSheetAction();
+
+        int loop = 0;
+        int run = 1;
+
+        while (run <= 2) {
+            while (startListComboBox.getItemCount() > 0) {
+                loop++;
+                startButtonActionHandler();
+                if (loop > 2) {
+                    //racer2UI = new RaceTimingBoatOnCourseUI(this);
+                    racer3UI.finishButtonActionHandler();
+                }
+                simulateRaceRunDuration();
+            }
+            racer2UI.finishButtonActionHandler();
+            simulateRaceRunDuration();
+            racer1UI.finishButtonActionHandler();
+            if (race.getCurrentRunIteration() < 2) {
+                newRunButtonHandler();
+            }
+            run++;
+        }
     }
 
     /**
@@ -523,4 +591,13 @@ public class RaceTimingUI {
     public JComponent $$$getRootComponent$$$() {
         return mainPanel;
     }
+
+    /**
+     * Method generated by IntelliJ IDEA GUI Designer
+     * >>> IMPORTANT!! <<<
+     * DO NOT edit this method OR call it in your code!
+     *
+     * @noinspection ALL
+     */
+
 }
