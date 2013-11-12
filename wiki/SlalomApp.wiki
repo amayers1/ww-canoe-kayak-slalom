@@ -21,7 +21,7 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
     # You may either Sign in to a Google Account that you have, then select "Open in Drive" from right side, then use the following instructions at 3. below.  This is simpler and will download the files all at once.
     # Alternatively you may just click the !CurrentStableRelease folder and click on each of the .jar files individually and you will be prompted to download, then skip to 5. below
   # Right click on the _Current Stable Release_ link and select Download from the properties menu
-  # It should get unzipped automatically
+  # It might get unzipped automatically depending on how GoogleDrive is configured for you
   # You may move and rename the folder where ever you like
   # unzip *!SlalomApp.jar.zip* in the same location as the other files in the folder (in place). This should give you a !SlalomApp.jar file
   # Installation is complete
