@@ -23,7 +23,7 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
   # Right click on the _Current Stable Release_ link and select Download from the properties menu
   # It should get unzipped automatically
   # You may move and rename the folder where ever you like
-  # unzip SlalomApp.jar.zip in the same location as the other files in the folder (in place)
+  # unzip *!SlalomApp.jar.zip* in the same location as the other files in the folder (in place). This should give you a !SlalomApp.jar file
   # Installation is complete
 
 ==Running the Applications==
