@@ -15,7 +15,7 @@
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
-          <preferredSize width="800" height="600"/>
+          <preferredSize width="650" height="250"/>
         </properties>
         <border type="none"/>
         <children>

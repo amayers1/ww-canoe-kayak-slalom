@@ -96,12 +96,18 @@ public class RaceResources {
 
     private ImageIcon getImageIconFlag24(String name) {
         ImageIcon ii = blankII;
-        URL imgURL;
-        Class thisClass = getClass();
+//        URL imgURL;
+///        Class thisClass = getClass();
 
-        imgURL = thisClass.getResource("images/flags24/" + name);     // todo From location of package of Race ???
-        if (imgURL!=null)
-            ii = new ImageIcon(imgURL, name);
+        Class thisClass = getClass();
+        // http://upload.wikimedia.org/wikipedia/de/d/de/TAG_Heuer_Logo.svg
+        URL imgURL;
+        String fileName =   "images/Flags24/" + name;
+
+        imgURL = thisClass.getResource(fileName);     // todo From location of package of Race ???
+        if (imgURL!=null) {
+            ii = new ImageIcon(imgURL, fileName);
+        }
         return ii;
 
     }
@@ -109,8 +115,7 @@ public class RaceResources {
         ImageIcon ii = blankII;
         URL imgURL;
         Class thisClass = getClass();
-
-        imgURL = thisClass.getResource("images/flags16/" + name);     // todo From location of package of Race ???
+        imgURL = thisClass.getResource("/images/Flags16/" + name);     // todo From location of package of Race ???
         if (imgURL!=null)
             ii = new ImageIcon(imgURL, name);
         return ii;
@@ -166,6 +171,7 @@ public class RaceResources {
         for (Country c:countries) {
             if (c.getAbbreviation().compareTo(countryAbbreviation) == 0) {
                 ii = c.getImageIcon();
+                break;
             }
         }
         return(ii);
@@ -176,6 +182,8 @@ public class RaceResources {
         for (Country c:countries) {
             if (c.getAbbreviation().compareTo(countryAbbreviation) == 0) {
                 ii = c.getImageIconTiny();
+                break;
+
             }
         }
         return(ii);
@@ -187,8 +195,11 @@ public class RaceResources {
     private void loadImages() {      // todo Load these ONCE !!! not on demand
         try {
             Class thisClass = getClass();
+
+            URL imgURL;
+
             // http://upload.wikimedia.org/wikipedia/de/d/de/TAG_Heuer_Logo.svg
-            URL imgURL = thisClass.getResource("images/TAG_Heuer_Logo16.png");
+            imgURL = thisClass.getResource("images/TAG_Heuer_Logo16.png");
             if (imgURL!=null)  {
                 tagHeuerTinyII = new ImageIcon(imgURL, "TagHeuer");
             }
@@ -206,9 +217,15 @@ public class RaceResources {
             if (imgURL!=null)
                 upstreamSmallII = new ImageIcon(imgURL, "upstreamSmall");
 
+            if (upstreamSmallII==null)
+                log.error("No upstreamSmallII");
+
+
             imgURL = thisClass.getResource("images/upstreamGateTiny.jpg");     // todo From location of package of Race ???
             if (imgURL!=null)
                 upstreamTinyII = new ImageIcon(imgURL, "upstreamSmall");
+            if (upstreamTinyII==null)
+                log.error("No upstreamTinyII");
 
             imgURL = thisClass.getResource("images/downstreamGateSmall.jpg");     // todo From location of package of Race ???
             if (imgURL!=null)

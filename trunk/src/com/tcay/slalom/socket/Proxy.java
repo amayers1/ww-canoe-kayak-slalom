@@ -52,10 +52,10 @@ public class Proxy {
 
     static String[] message = {"Client cannot be null"};
 
-    public Proxy(Client client) throws InvalidArgumentException {//boolean standAlone) {
+    public Proxy(Client client) {//throws InvalidArgumentException {//boolean standAlone) {
         if (client == null) {
             //race = Race.getInstance();     // NO LONGER LEGAL 131110 (ajm) only use race if NOT standalone,
-            throw new InvalidArgumentException(message);
+            //throw new InvalidArgumentException(message);
         }
         else {
             clientSocket = client;

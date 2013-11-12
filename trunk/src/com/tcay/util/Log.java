@@ -46,7 +46,7 @@ public class Log {
     private static SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HH:mm:SS");//.format(new Date())
 
     private FileOutputStream file;
-    private int currentLevel = LOG_TRACE;//INFO;
+    private int currentLevel = LOG_INFO;
 
     protected static final int LOG_TRACE = 6;
     protected static final int LOG_DEBUG = 5;

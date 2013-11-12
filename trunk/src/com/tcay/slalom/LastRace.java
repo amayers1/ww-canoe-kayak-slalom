@@ -67,7 +67,7 @@ public class LastRace implements Serializable {
             out.writeObject(this);
             out.close();
             fileOut.close();
-            log.info("Serialized data is saved in last.ser");
+            log.debug("Serialized data is saved in last.ser");
 
         }
         catch(IOException i)

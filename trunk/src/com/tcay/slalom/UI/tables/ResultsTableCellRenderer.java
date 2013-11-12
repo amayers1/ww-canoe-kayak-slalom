@@ -45,8 +45,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class    ResultsTableCellRenderer extends DefaultTableCellRenderer
 {
-
-
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 //fixme
@@ -73,57 +71,12 @@ public class    ResultsTableCellRenderer extends DefaultTableCellRenderer
                     if ( value == RaceRun.DNS || value == RaceRun.DNF    ) {
                         cell.setBackground(SlalomApp.LIGHT_RED);
                         //cell.setFont();Foreground(Color.WHITE);    /// light red
-
-
                     }
                 }
             }
             else
             {
                 cell.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            }
-
-            if (column == ResultsTable.COL_TIMIMGMODE1 || column == ResultsTable.COL_TIMIMGMODE2) {
-//fix me - research & eliminate this crap
-                JLabel c = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); // params from above );
-                  //      // This...
-                  //      String pathValue = <getYourPathValue>; // Could be value.toString()
-                c.setToolTipText("Timing Mode - *=TagHeuer m=manual");//setToolTip(pathValue);
-
-
-                if (value.getClass() == Class.forName("java.lang.String") ) {
-                    if ( ((String)value).compareTo(ResultsTable.TIMINGMODE_MANUAL) == 0 ) {
-                        cell.setBackground(SlalomApp.LIGHT_RED);    /// light red
-                    }
-                    else if (((String)value).compareTo(ResultsTable.TIMINGMODE_AUTOMATIC) == 0 )  {
-                           cell.setBackground(SlalomApp.LIGHT_GREEN);    /// light red
-                    }
-                }
-            }
-        }
-        catch (Exception e) {
-
-        }
-
-
-
-        try {
-            if (column == ResultsTable.COL_TIMINGMODE_BEST) {
-/*
-                if ( ((String)value).compareTo(ResultsTable.TIMINGMODE_MANUAL_LONG) == 0 ) {
-                    cell.setBackground(SlalomApp.LIGHT_RED);    /// light red
-                }
-                else if (((String)value).compareTo(ResultsTable.TIMINGMODE_AUTOMATIC_LONG) == 0 )  {
-                    cell.setBackground(SlalomApp.LIGHT_GREEN);    /// light red
-                }
-                if (value.getClass() == Class.forName("javax.swing.ImageIcon") )         {
-                    cell.setBackground( SlalomApp.LIGHT_GREEN );
-                }
-                else {
-                    cell.setBackground( SlalomApp.LIGHT_RED );
-                }
-
-*/
             }
         }
         catch (Exception e) {

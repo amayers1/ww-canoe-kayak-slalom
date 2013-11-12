@@ -145,7 +145,8 @@ public class TagHeuerCP520Listener implements Runnable {
     private InputStream lookForTagHeuerCP520Port(int nbrOfCommandToProcess) {
         getPorts();
 
-        log.info("Ports:");
+        log.info("Identifying possible serial ports for timing equipment interface:");
+
         for (CandidateCP520Port p:ourPorts) {
             if (isPortOK(p)) {         // see if it a CP520 is attached
                 readAndProcess(p, nbrOfCommandToProcess);  // Process 1 command

@@ -51,8 +51,12 @@ public class RaceTimingBoatOnCourseUI {
     private JButton DNFButton;
     private JLabel bibLabel;
 
+
+    final RaceTimingUI timingUI;     //fixme sort out if ths move is OK  M131111
+
     protected RaceTimingBoatOnCourseUI(RaceTimingUI raceTimingUI) {
-        final RaceTimingUI timingUI = raceTimingUI;
+        //final RaceTimingUI
+        timingUI = raceTimingUI;
         $$$setupUI$$$();
 
         DNFButton.addActionListener(new ActionListener() {
@@ -68,14 +72,18 @@ public class RaceTimingBoatOnCourseUI {
         finishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (run != null) {
-                    run.finish();
-                }
-                updateButtonVisibility();
-                timingUI.updateButtonVisibility();
+                finishButtonActionHandler();
             }
         });
         updateButtonVisibility();
+    }
+
+    public void finishButtonActionHandler() {
+        if (run != null) {
+            run.finish();
+        }
+        updateButtonVisibility();
+        timingUI.updateButtonVisibility();
     }
 
 

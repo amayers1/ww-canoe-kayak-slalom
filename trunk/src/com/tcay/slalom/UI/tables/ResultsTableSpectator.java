@@ -35,6 +35,8 @@
 package com.tcay.slalom.UI.tables;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 
 /**
@@ -66,6 +68,8 @@ public class ResultsTableSpectator extends ResultsTable {
 
     public/*for now todo*/  void removeDetailColumns()  {
 
+
+
         table.removeColumn(table.getColumnModel().getColumn(COL_TIMINGMODE_BEST));
 
         table.removeColumn(table.getColumnModel().getColumn(COL_PEN2));
@@ -75,5 +79,43 @@ public class ResultsTableSpectator extends ResultsTable {
         table.removeColumn(table.getColumnModel().getColumn(COL_PEN1));
         table.removeColumn(table.getColumnModel().getColumn(COL_TIMIMGMODE1));
         table.removeColumn(table.getColumnModel().getColumn(COL_RAW1));
+
+        // Need to do this by column name as we have deleted columns and can't reliably do it by position !
+        for (int i=0; i<table.getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+
+            System.out.println("Column " + i + "= " +table.getColumnName(i));
+            if (table.getColumnName(i).compareTo(ResultsTable.COL_BOATCLASS_NAME) == 0 ) {
+                column.setPreferredWidth(50);
+                column.setMaxWidth(50);
+                column.setMinWidth(30);
+            }
+            if (table.getColumnName(i).compareTo(ResultsTable.COL_POSITION_NAME) == 0 ) {
+                column.setPreferredWidth(50);
+                column.setMaxWidth(50);
+                column.setMinWidth(20);
+            }
+
+            if (table.getColumnName(i).compareTo(ResultsTable.COL_BIB_NAME) == 0 ) {
+                column.setPreferredWidth(50);
+                column.setMaxWidth(50);
+                column.setMinWidth(20);
+            }
+            if (table.getColumnName(i).compareTo(ResultsTable.COL_CLUB_OR_COUNTRY_NAME) == 0 ) {
+                column.setPreferredWidth(25);
+                column.setMaxWidth(25);
+                column.setMinWidth(25);
+            }
+            if (table.getColumnName(i).compareTo(ResultsTable.COL_RACERNAME_NAME) == 0 ) {
+                column.setPreferredWidth(150);
+                column.setMaxWidth(200);
+                column.setMinWidth(50);
+            }
+            if (table.getColumnName(i).compareTo(ResultsTable.COL_BESTRUN_TOTAL_NAME) == 0 ) {
+                column.setMinWidth(50);
+                column.setPreferredWidth(50);
+                column.setMaxWidth(100);
+            }
+        }
     }
 }
