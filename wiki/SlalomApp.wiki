@@ -4,7 +4,7 @@ This application is designed to simplify the Race Organizers and Volunteers job 
 
 ==Releases==
 
-Currently pre release code is available here:
+Currently BETA release code is available here:
 
 [https://drive.google.com/folderview?id=0B0uX48lguh9aSmpVbnlNbDF1d1E&usp=sharing Downloads]
 
@@ -23,9 +23,12 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
   # Right click on the _Current Stable Release_ link and select Download from the properties menu
   # It should get unzipped automatically
   # You may move and rename the folder where ever you like
+  # unzip SlalomApp.jar.zip in the same location as the other files in the folder (in place)
   # Installation is complete
 
 ==Running the Applications==
+There is a _Demo_ mode that runs a simulated race, this may be the easiest way to see how the system works.   Under Windows run the RaceSimulation.cmd file and under Linux or Mac OS X run RaceSimulation.command.  The _Demo_ race will runs itself with a variety of windows open, and you will still be able to use the controls manually.  The Section Judge windows are strictly under manual control at this time.
+
 There are 2 applications, !SlalomApp.jar contains both programs, the main application which handles all configuration, timing, etc., and the remote *!SectionJudge* application  which handles scoring of penalties.  *!SectionJudge* functions can be done from *!SlalomApp* for lower level races or where section judges do not have suitable hardware to run the *!SectionJudge* application.
  
 To run the main *!SlalomApp* application simply double click on !SlalomApp.jar or double click  !SlalomApp.command (Mac OS X or Linux).  If this doesn't work in your environment try the command line:
