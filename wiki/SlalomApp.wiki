@@ -147,12 +147,22 @@ _Screen shot from Section Judging ICF Missed Gate codes_
 
 ----
 
+===Demo Mode===
+
 http://tcay.com/SlalomApp/SlalomAppDemoRaceDesktop.png
 
 _A Demo Mode Race with all windows running on a laptop_
 
 
 ----
+
+http://tcay.com/SlalomApp/SlalomAppOnXPunderOSX.png
+
+_A Demo Mode Race running under MS Windows (in VirtualBox on MacBook Air)
+
+----
+
+
 
 ===Internationalization===
 
