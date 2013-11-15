@@ -166,6 +166,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
      */
     public void start() {
         stopWatch.start();
+        logTime("START", null);
         Race.getInstance().addRun(this);
         updateResults();
 
@@ -186,6 +187,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     public void dnf() {
         dnf = true;
         //stopWatch.setDNF();
+        logTime("DNF", null);
         Race.getInstance().finishedRun(this);
         updateResults();
 
@@ -193,7 +195,17 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     }
 
 
+    private void logTime(String action, String rawTime) {
+        String formattedBib = String.format("%4s", boat.getRacer().getBibNumber());
+        log.info("TIMER>Bib#" + formattedBib + " RUN#" + runNumber + " " + action + " " +
+                (rawTime == null ? "" : rawTime + " ")
+                + boat.getRacer() );
+    }
+
+
     /**
+     *
+     *
      *
      * @return is this RaceRun a DNF
      */
@@ -204,15 +216,16 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
     public void dns() {
         dns = true;
+        logTime("DNS", null);
         //stopWatch.setDNF();
         Race.getInstance().finishedRun(this);
         updateResults();
-
     }
 
 
     public void finish() {
         stopWatch.stop();
+        logTime("STOP", getResultString());
         Race race = Race.getInstance();
         race.finishedRun(this);
 
@@ -383,7 +396,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
             penalty.setPenaltySeconds(seconds);
             penalty.setFromClient(fromClient);
         }
-        log.info(penalty.getSummary());
+        //log.info(penalty.getSummary());
         //updateResults();  this is done in Proxy no 131028 (ajm)
     }
 

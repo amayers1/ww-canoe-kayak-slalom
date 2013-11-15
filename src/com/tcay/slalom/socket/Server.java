@@ -83,9 +83,13 @@ public class Server implements Runnable {
                     osr = new ObjectServerReader(socket, clientNumber, osw);
 
                     // not here, in run() for osr     xxx readers.add(osr);
+                    Thread thread =  new Thread(osw);
+                    thread.setName("ServerResponseWriterForClient" + clientNumber+1 );
+                    thread.start();
 
-                    new Thread(osw).start();
-                    new Thread(osr).start();
+                    thread = new Thread(osr);
+                    thread.setName("ServerRequestReaderForClient" + clientNumber+1 );
+                    thread.start();
                     clientNumber++;
                 }
             } finally {
@@ -110,7 +114,7 @@ public class Server implements Runnable {
     private static class ObjectServerWriter implements Runnable {
         private Socket socket;
         private int clientNumber;
-        ArrayList<ClientRequest> requests;
+        final ArrayList<ClientRequest> requests;
         private Log log;
 
 
@@ -127,6 +131,9 @@ public class Server implements Runnable {
         public void addRequest(ClientRequest request) {
             synchronized (requests) {
                 requests.add(request) ;
+                log.info("SERVER Notify Requests");
+
+                requests.notifyAll();
             }
         }
 
@@ -213,9 +220,7 @@ public class Server implements Runnable {
 
 
         /**
-         * Services this thread's client by first sending the
-         * client a welcome message then repeatedly reading strings
-         * and sending back the capitalized version of the string.
+         * Services this thread's client
          */
         public void run() {
             try {
@@ -226,17 +231,40 @@ public class Server implements Runnable {
 
                 Race race = Race.getInstance();
                 //Integer i = new Integer(1);
-                oos.writeObject(race);
+                oos.writeObject(race);    /// fixme REALLY ??? Handshake ???
                 ServerResponse response;
                 while (true) {
-                    while (true) {
+                    synchronized (requests) {
+                        try {
+                            log.info("SERVER Wait on Requests to ANSWER" + requests);
+                            requests.wait(60000);
+                            //log.info("SERVER Waiting - Got it !" + requests);
+
+                            for (request = retrieveRequest();request!= null;request = retrieveRequest() ) {
+                                response = composeResponse(request);
+                                if (response != null) {
+                                    log.info("SERVER Writing RESPONSE for CMD " + request.getRequestCmd() + " (REQ#" + response.getRequestNbr() + ")");
+                                    oos.writeObject(response);
+                                }
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                        }
+                    }
+/*                    while (true) {
                         for (request = retrieveRequest();request!= null;request = retrieveRequest() ) {
                             response = composeResponse(request);
                             if (response != null) {
                                 oos.writeObject(response);
                             }
                         }
+                        try {
+                            Thread.sleep(20);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                        }
                     }
+*/
 
                 }
 //            } catch (InterruptedException ie) {
@@ -276,7 +304,7 @@ public class Server implements Runnable {
             this.socket = socket;
             this.clientNumber = clientNumber;
             this.writer = writer;
-            log.trace("New Read connection with client# " + clientNumber + " at " + socket);
+            log.trace("SERVER: New Read connection with client# " + clientNumber + " at " + socket);
         }
 
         private void addPenaltiesFromClient(ClientRequest req) {

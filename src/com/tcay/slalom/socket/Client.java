@@ -17,6 +17,7 @@
 
 package com.tcay.slalom.socket;
 
+import com.tcay.slalom.Race;
 import com.tcay.util.Log;
 import com.tcay.slalom.Penalty;
 import com.tcay.slalom.RaceRun;
@@ -48,7 +49,7 @@ public class Client {
     private static final int RETRY_SOCKET_CONNECTION_DELAY_MS = 3000;
 
     // Need to be final for "synchronized" access
-    final ArrayList<ClientRequest> requests = new ArrayList<ClientRequest>();
+    static final ArrayList<ClientRequest> requests = new ArrayList<ClientRequest>();
     final ArrayList<ServerResponse> responses = new ArrayList<ServerResponse>();
     ObjectClientWriter ocw;
     ObjectClientReader ocr;
@@ -83,6 +84,9 @@ public class Client {
     public void send (ClientRequest req) {
         synchronized (requests) {
            requests.add(req);
+           requests.notifyAll();
+// FIXME !!!! THIS IS IN THE MAIN THREAD
+           log.info("CLIENT Notify requests");
         }
     }
 
@@ -102,6 +106,8 @@ public class Client {
         synchronized (responses) {
             //log.trace("Queued response type " + res.getRequestType());
             responses.add(res);
+            log.info("CLIENT Notify responses (REQ#" + res.getRequestNbr() + ")");
+            responses.notifyAll();
         }
     }
 
@@ -110,24 +116,39 @@ public class Client {
 
         //log.trace("   Waiting for response @1");
         while (response == null) {
-            while (responses.size() == 0) {
-                try {
-                    Thread.sleep(0);//5);//0);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                }
-            }
+            //while (responses.size() == 0) {
+            //    try {
+            //        Thread.sleep(5);//5);//0);
+            //    } catch (InterruptedException e) {
+            //        e.printStackTrace();
+            //    }
+            //}
 
             synchronized (responses) {
+                try {
+                    log.info("CLIENT Waiting on responses" + responses);
+                    responses.wait(50000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 if (responses.size() > 0) {
                     for (ServerResponse possible:responses) {
+
                         if (request.getRequestNbr().intValue() == possible.getRequestNbr().intValue()) {
                             response = possible;
                             //log.trace(possible);
                             responses.remove(possible);
+                            log.info("CLIENT Waiting - Got RESPONSE  CMD " + request.getRequestCmd() + " (REQ#" + possible.getRequestNbr() + ")");
+                            //log.info("Wanted x AND got IT y YEAH" + request.getRequestNbr().intValue() + " " + possible.getRequestNbr().intValue());
                             break;
                         }
+                        //else {
+                        //}
                     }
+                    if (response == null) {
+                        log.error("Wanted x but didn't get it" + request.getRequestNbr().intValue() + ") TYPE="+ request.getRequestCmd());// +  "  (REQ#" + possible.getRequestNbr().intValue() + ") TYPE=" + possible.getRequestType() +")");
+                    }
+
                 }
                 //log.trace("   Returning response @2");
                 if (response != null) {
@@ -196,10 +217,15 @@ public class Client {
         }
 
         /// fixme loop on New Socket call until attached or an interrupt occurs
+        Thread thread;
         ocw = new ObjectClientWriter(socket, this);
         ocr = new ObjectClientReader(socket, this);
-        new Thread(ocw).start();
-        new Thread(ocr).start();
+        thread = new Thread(ocw);
+        thread.setName("Section_"+"X"+"_Requestor");
+        thread.start();
+        thread = new Thread(ocr);
+        thread.setName("Section_"+"X"+"_ResponseListener");
+        thread.start();
 
     }
 
@@ -229,12 +255,35 @@ public class Client {
                 ObjectOutputStream oos = new ObjectOutputStream(os);
                 ClientRequest request;
                 while (true) {
+                    synchronized (requests) {
+                        try {
+                            log.info("CLIENT Waiting on requests to write" + requests);
+                            requests.wait(50000);
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
                     for (request = sosc.retrieveRequest();request!= null;request = sosc.retrieveRequest() ) {
+                        log.info("CLIENT Writing -  CMD " + request.getRequestCmd() + " Writing (REQ#" +request.getRequestNbr() + ")");
                         oos.writeObject(request);
                         //log.trace("Wrote requestCmd type " + request.getRequestCmd());
                     }
-                    //Thread.sleep(500);
                 }
+
+
+//                while (true) {
+//                    for (request = sosc.retrieveRequest();request!= null;request = sosc.retrieveRequest() ) {
+//                        oos.writeObject(request);
+//                        //log.trace("Wrote requestCmd type " + request.getRequestCmd());
+//                    }
+// /                   try {
+//                        Thread.sleep(10);//00);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
             //} catch (InterruptedException e) {
             //    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             } catch (SocketException se) {
@@ -283,16 +332,21 @@ public class Client {
                         if (o.getClass() == ServerResponse.class) {
                             ServerResponse response = (ServerResponse)o;
                             sosc.queue(response);
-
                         }
 
-                        if (o.getClass() == RaceRun.class) {
+                        else if (o.getClass() == RaceRun.class) {
                             RaceRun r = (RaceRun)o;
                             log.trace(r.toString());
                         }
 
-                        if (o.getClass() == Penalty.class) {
+                        else if (o.getClass() == Penalty.class) {
                             log.trace("Socket Read" + o );
+                        }
+                        else if (o.getClass() == Race.class) {
+                            log.trace("Socket Read" + o );
+                        }
+                        else {
+                            log.error("Socket Read" + o );
                         }
 
                     } catch (ClassNotFoundException e) {

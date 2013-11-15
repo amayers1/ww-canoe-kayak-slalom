@@ -88,7 +88,10 @@ public class RaceTimingBoatOnCourseUI {
 
 
     protected void updateTimer() {
-        timerLabel.setText(run.getResultString() + " +" + run.getTotalPenalties());
+        String result = run.getResultString();
+        int totalPenalties = run.getTotalPenalties();
+
+        timerLabel.setText(result + " +" + totalPenalties);   // fixme        NullPointerException DemoMode
         if (run.getTagHeuerRaceRun() != null) {
             timerLabel.setIcon(Race.getInstance().getTagHeuerII());
         } else {

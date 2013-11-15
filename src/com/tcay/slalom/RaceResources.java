@@ -115,7 +115,9 @@ public class RaceResources {
         ImageIcon ii = blankII;
         URL imgURL;
         Class thisClass = getClass();
-        imgURL = thisClass.getResource("/images/Flags16/" + name);     // todo From location of package of Race ???
+        String fileName =   "images/Flags16/" + name;
+
+        imgURL = thisClass.getResource(fileName);     // todo From location of package of Race ???
         if (imgURL!=null)
             ii = new ImageIcon(imgURL, name);
         return ii;

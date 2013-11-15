@@ -17,6 +17,8 @@
 
 package com.tcay.slalom.tagHeuer;
 
+import com.tcay.util.Log;
+
 /**
  * ${PROJECT_NAME}
  *
@@ -30,7 +32,7 @@ package com.tcay.slalom.tagHeuer;
  */
 public class TagHeuerRaceRun {
 
-
+    private static final Log log = Log.getInstance();
 
     public TagHeuerRaceRun(int runNumber) {
       this.runNumber = runNumber;
@@ -38,6 +40,14 @@ public class TagHeuerRaceRun {
 
 
     private int runNumber;
+
+
+    private void logTime(String action, String rawTime) {
+        String formattedBib = String.format("%4s", bibNumber);
+        log.info("eTIMER>Bib#" + formattedBib + " RUN#" + runNumber + " " + action +
+                (rawTime == null? "" : " " + rawTime));
+    }
+
 
     public int getRunNumber() {
         return runNumber;
@@ -58,6 +68,7 @@ public class TagHeuerRaceRun {
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
+        logTime("START", null);
     }
 
     public double getElapsedTime() {
@@ -77,6 +88,8 @@ public class TagHeuerRaceRun {
 
     public void setStopTime(String stopTime) {
         this.stopTime = stopTime;
+        String rawTime = String.format("%8.2f", getElapsedTime());
+        logTime("STOP", rawTime);
     }
 
     private String stopTime;

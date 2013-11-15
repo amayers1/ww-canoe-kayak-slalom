@@ -33,8 +33,7 @@ import com.tcay.slalom.socket.Proxy;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
@@ -71,6 +70,7 @@ public class ClientRacePenaltiesUIDynamic {
 
     private Proxy raceProxy;
     private RaceResources resources;
+    private boolean demoMode;
 
     //  Cannot use Race.getInstance()  !!!
     Race Race = null;  /// todo this is a track to avoid Race.getInstance() calls
@@ -157,10 +157,9 @@ public class ClientRacePenaltiesUIDynamic {
                 public void actionPerformed(ActionEvent actionEvent) {
                     GatePenaltyButton btn = (GatePenaltyButton)actionEvent.getSource() ;
                     String reasonCode=null;
-                    Integer penalty =0;
+                    Integer penalty;// =0;
                     if (btn.getPenalty() == 0) {
                         penalty = 2;
-                        //btn.setReasonFor50(null);
                     }
                     else {
                         penalty = btn.getPenalty();
@@ -169,19 +168,14 @@ public class ClientRacePenaltiesUIDynamic {
                             if (Race.getInstance().isIcfPenalties()) {
                                 ClientRacePenaltyICF50SecondReasonDialog reasonDialog = new ClientRacePenaltyICF50SecondReasonDialog( );
                                 reasonCode = reasonDialog.doDialog(btn, selectedRun.getBoat().toString(), btn.getGate());
-                                //btn.setText(btn.getText() + "(" + btn.getReasonFor50().getReasonCode() + ")");
-                                //do50Options(btn);
                             }
 
                         }
                         else if (penalty == 50)  {
-                            //btn.setReasonFor50(null);
                             penalty = 0;
                         }
                     }
-                    //btn.setReasonFor50(reasonCode);
                     btn.setPenalty(penalty, reasonCode);
-                                    // update the Button
                 }
             });
         }
@@ -220,39 +214,19 @@ public class ClientRacePenaltiesUIDynamic {
     }
 
 
-    public ClientRacePenaltiesUIDynamic(int section, Proxy proxy) {
+    public ClientRacePenaltiesUIDynamic(int section, Proxy proxy, boolean demoMode) throws Exception {
         if (proxy == null) {
-
-            //try {
-                raceProxy = new Proxy(new Client());
-            //} catch (InvalidArgumentException e) {
-            //    e.printStackTrace();
-            //}
+            throw new Exception("Cannot call with null Proxy");
         }
         else {
             raceProxy = proxy;
         }
 
+        this.demoMode = demoMode;
+
         setupUI(section);
     }
 
-    public ClientRacePenaltiesUIDynamic(int section) {
-    }
-
-
-
-/*
-    public ClientRacePenaltiesUIDynamic() { //Proxy proxy) {
-//        raceProxy = new Proxy(false);
-        //if (proxy == null) {
-            raceProxy = new Proxy(null);     //fixme can't pass NULL   131109
-        //}
-        //else {
-        //    raceProxy = proxy;
-        //}
-        setupUI();
-    }
-*/
 
     private ComboBoxModel updateComboBoxModel() {
         //log.trace("updateComboBoxModel::Requesting new SCORABLE RUNS !");
@@ -266,8 +240,10 @@ public class ClientRacePenaltiesUIDynamic {
 
     private void refreshComboModelIfAppropriate() {
         if (!activeOrRecentRunsComboBox.hasFocus()) {
-            if (getRunsStartedOrCompletedCnt != raceProxy.getRunsStartedOrCompletedCnt()) {
-                getRunsStartedOrCompletedCnt = raceProxy.getRunsStartedOrCompletedCnt();
+
+            long serverRunsStartedOrCompletedCnt = raceProxy.getRunsStartedOrCompletedCnt();
+            if (getRunsStartedOrCompletedCnt != serverRunsStartedOrCompletedCnt) {
+                getRunsStartedOrCompletedCnt = serverRunsStartedOrCompletedCnt;
                 activeOrRecentRunsComboBox.setModel(updateComboBoxModel());
                 // D131025 (ajm)
                 //getFirstUnJudgedEntry(); // 131026  todo, is this OK here
@@ -284,7 +260,9 @@ public class ClientRacePenaltiesUIDynamic {
         listCheckForUpdatesTimer
                 = new Timer(500,
                 new ActionListener() {
+                    int iterations = 0;
                     public void actionPerformed(ActionEvent actionEvent) {
+                        iterations++;
                         // don't change comboBox contents if it has focus - confuses the user
                         while (activeOrRecentRunsComboBox == null) {
                             try {
@@ -294,41 +272,52 @@ public class ClientRacePenaltiesUIDynamic {
                                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                             }
                         }
-
+                        if (demoMode && (iterations%50==0)) {
+                            int entry = getFirstUnJudgedEntry();
+                            if (entry > -1 && entry < activeOrRecentRunsComboBox.getItemCount()) {
+                                activeOrRecentRunsComboBox.setSelectedIndex(entry);
+                                selectedRun = (RaceRun)activeOrRecentRunsComboBox.getSelectedItem();
+                                selectRaceRun.doClick();
+                                int howManyPenalties = (int)(Math.random()*1.45);
+                                int whatGate;
+                                for (int i=0;i<howManyPenalties;i++) {
+                                    whatGate = (int)(Math.random()* penaltyButtons.size());
+                                    if (whatGate!=0) {
+                                        /// simulate a penalty
+                                        GatePenaltyButton pb = penaltyButtons.get(whatGate);//.setPenalty(2);
+                                        pb.doClick();
+                                        if (iterations%5000==0)   {
+                                            pb.doClick();   ///  clicks == 50 second penalty
+                                        }
+                                    }
+                                }
+                                doneBtn.doClick();
+                            }
+                        }
                         refreshComboModelIfAppropriate();
                     }
                 });
         listCheckForUpdatesTimer.setInitialDelay(500);
         listCheckForUpdatesTimer.start();
-        // todo use setupPenaltyButtons - refactor
-        // createPenaltyButtons();
-        //updateButtonVisibility();
     }
 
 
     public static void main(String[] args) {
-//        new TestData();
 
-       // if run standalone, this app will talk to SlalomApp via socket
+        // Runs standalone, this app will talk to SlalomApp via socket
         JFrame frame = new JFrame("Race Penalties UI");
 
-//        try {
-//            clientSocket.connectToServer();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-        Proxy proxy = null;
-//        try {
+        Proxy proxy;
+        try {
             proxy = new Proxy(new Client());
-//        } catch (InvalidArgumentException e) {
-//            e.printStackTrace();
-//        }
-        ClientRacePenaltiesUIDynamic racePenaltiesUI = new ClientRacePenaltiesUIDynamic(1, proxy); ///fixme section 1 should be dynamic
-        frame.setContentPane(racePenaltiesUI.innerPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+            ClientRacePenaltiesUIDynamic racePenaltiesUI = new ClientRacePenaltiesUIDynamic(1, proxy, false); ///fixme section 1 should be dynamic
+            frame.setContentPane(racePenaltiesUI.innerPanel);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -429,32 +418,20 @@ public class ClientRacePenaltiesUIDynamic {
         selectRaceRun.setText("Select Boat");
         selectRaceRun.setBackground(SlalomApp.LIGHT_GREEN);
         selectRaceRun.setOpaque(true);
-//        innerPanel.add(selectRaceRun, cc.xy(7, 1));
         innerPanel.add(selectRaceRun, cc.xy(3, 3));   //1,3
-
-
         innerPanel.add(new JLabel("Bib#"),cc.xy(1,3));
-innerPanel.add(bibLabel,cc.xy(1, 5));
-//innerPanel.add(raceRunLabel,cc.xy(3, 5));
+        innerPanel.add(bibLabel,cc.xy(1, 5));
 
         innerPanel.add(raceRunLabel,        cc.xyw(3, 5, 3));
 
 
-        // todo fix kludge ordering here in calls
+        // todo fix kludge ordering here in calls --- FIXME CRASH HER ON 2nd invocation
         int maxRow = setupPenaltyButtons();   // max Row set here
-
-//        innerPanel.add(penaltyDescriptionLabel,      cc.xyw(1, (5 + maxRow * 2), 5));
-//        innerPanel.add(penaltyDiagramLabel,          cc.xyw(1, (7 + maxRow * 2), 5));
 
         doneBtn.setText("Done");
         doneBtn.setBackground( SlalomApp.LIGHT_RED);
         doneBtn.setOpaque(true);
-//        innerPanel.add(doneBtn, cc.xy(1, (maxRow*2) + 5));
-        innerPanel.add(doneBtn, cc.xy(3, 3));//(maxRow*2) + 5));  //1,3
-
-
-
-
+        innerPanel.add(doneBtn, cc.xy(3, 3));
     }
 
 
@@ -480,7 +457,7 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
         final JScrollPane scrollPane1 = new JScrollPane();
         CellConstraints ccOuter = new CellConstraints();
         panelOuter.add(scrollPane1, ccOuter.xy(1, 1, CellConstraints.FILL, CellConstraints.FILL));
-
+        // FIXME CRASH HERE
         setupInnerPanelUI();
         scrollPane1.setViewportView(innerPanel);
 
@@ -513,29 +490,23 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
         for (i=0; i<activeOrRecentRunsComboBox.getItemCount() && hasPenalties; i++ )  {
             r = (RaceRun)activeOrRecentRunsComboBox.getItemAt(i);
             hasPenalties = false;
-            //log.trace("Checking Run" + r);
 
             for (Penalty p:r.getPenaltyList()) {
                 if (raceProxy.isGateInSection(p.getGate(), onlyThisSection)) {
                     hasPenalties = true;
-                    //log.trace("Penalty Found at gate " + p.getGate() + "In section" + onlyThisSection + "  for " + r);
                     break;
                 }
             }
             if (!hasPenalties) {
-               // log.trace("No Penalties " + r);
                 break;
             }
         }
 
         if (i > activeOrRecentRunsComboBox.getItemCount()-1)  {
             // if i = getItemCount todo this should mean that all runs are scored at this section
-           log.warn("Bad INDEX to activeOrRecentRunsComboBox itemcount = " + activeOrRecentRunsComboBox.getItemCount() + " index = " + i);
-           i = activeOrRecentRunsComboBox.getItemCount()-1;
+           //log.warn("Bad INDEX to activeOrRecentRunsComboBox itemcount = " + activeOrRecentRunsComboBox.getItemCount() + " index = " + i);
+           i = -1;//activeOrRecentRunsComboBox.getItemCount()-1;
         }
-
-        //if (i<activeOrRecentRunsComboBox.getItemCount()-1)
-        //    return i+1;;
 
         return i;
 
@@ -619,7 +590,7 @@ innerPanel.add(bibLabel,cc.xy(1, 5));
 //                    selectedRun.clearPenaltyList();   /// todo  check if this is ok,  how to get unjudged entry if penalties cleared
 //                }
 
-        selectedRun.clearPenaltyList();                //fixme A131028 (ajm) problems resetting penalties
+        //selectedRun.clearPenaltyList();                //fixme A131028 (ajm) problems resetting penalties
 
         for (GatePenaltyButton pb:penaltyButtons) {
             selectedRun.setPenalty( pb.getGate(), pb.getPenalty(), true );

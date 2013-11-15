@@ -43,7 +43,7 @@ public class Log {
     private static String fileName;
     private static String newLine = System.getProperty("line.separator");
     // beware Java 1.6 doesNOT support YYYY, java 1.7 does
-    private static SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HH:mm:SS");//.format(new Date())
+    private static SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HH:mm:ss.SSS");//.format(new Date())
 
     private FileOutputStream file;
     private int currentLevel = LOG_INFO;
@@ -144,6 +144,10 @@ public class Log {
         completeMessage.append(prefix);
         completeMessage.append("(t:").append(Thread.currentThread().getId()).append(")");
         completeMessage.append(message);
+
+
+        completeMessage.append(new String(" ="+Thread.currentThread().getName()));
+
         completeMessage.append(newLine);
         return completeMessage.toString();
     }
@@ -163,6 +167,7 @@ public class Log {
                     try {
                         // Write the bytes.
                         file.write(bytes);
+                        //file.write(new String(" ="+Thread.currentThread().getName()).getBytes());
                         file.flush();
                         written = true;
                     } catch (Exception e) {

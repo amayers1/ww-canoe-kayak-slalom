@@ -65,42 +65,44 @@ public class SectionJudgeClient {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 close();
-                frame.setContentPane(new ClientRacePenaltiesUIDynamic(comboBoxJudgingSection.getSelectedIndex() + 1, proxy).getRootComponent());
-                frame.pack();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
-                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
-                Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-                int x = (int) rect.getMaxX() - frame.getWidth();
-                int y = (int) rect.getMaxY() - frame.getHeight();
-                frame.setLocation(x, y);
-                frame.setVisible(true);
+                try {
+                    frame.setContentPane(new ClientRacePenaltiesUIDynamic(comboBoxJudgingSection.getSelectedIndex() + 1, proxy, false).getRootComponent());
+                    frame.pack();
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
+                    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                    GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+                    Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+                    int x = (int) rect.getMaxX() - frame.getWidth();
+                    int y = (int) rect.getMaxY() - frame.getHeight();
+                    frame.setLocation(x, y);
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
     private void createUIComponents() {
-     //   try {
+        try {
             proxy = new Proxy(new Client());
-     //   } catch (InvalidArgumentException e) {
-     //       e.printStackTrace();
-     //   }
+            comboBoxJudgingSection = new JComboBox();
+            comboBoxJudgingSection.setModel(new DefaultComboBoxModel() {
+                @Override
+                public int getSize() {
+                    return proxy.getSections().size();
+                }
 
-
-        comboBoxJudgingSection = new JComboBox();
-        comboBoxJudgingSection.setModel(new DefaultComboBoxModel() {
-            @Override
-            public int getSize() {
-                return proxy.getSections().size();
+                @Override
+                public Object getElementAt(int i) {
+                    return proxy.getSections().get(i);
+                }
+            });
+            if (comboBoxJudgingSection.getItemCount() > 0) {
+                comboBoxJudgingSection.setSelectedIndex(0);       /// OK ?  fix me  out of bounds if server has no data yet
             }
-
-            @Override
-            public Object getElementAt(int i) {
-                return proxy.getSections().get(i);
-            }
-        });
-        if (comboBoxJudgingSection.getItemCount() > 0)  {
-            comboBoxJudgingSection.setSelectedIndex(0);       /// OK ?  fix me  out of bounds if server has no data yet
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
