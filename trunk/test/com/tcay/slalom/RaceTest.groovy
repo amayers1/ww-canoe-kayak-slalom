@@ -1,8 +1,8 @@
 package com.tcay.slalom
 
 import com.tcay.util.DuplicateBibException
-import org.testng.Assert
 import org.testng.annotations.Test
+import org.testng.Assert
 
 import javax.swing.Icon
 
@@ -287,18 +287,18 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getImageIcon("USA")
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
         icon = race.getImageIcon("FRA")
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
         icon = race.getImageIcon("SVK")
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
     }
 
@@ -308,18 +308,18 @@ class RaceTest {
         Icon icon = race.getImageIconTiny("USA")
 
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
         icon = race.getImageIconTiny("FRA")
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
         icon = race.getImageIconTiny("SVK")
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -327,8 +327,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getStopWatchII();
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -336,8 +336,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getDownstreamTinyII()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -345,8 +345,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getUpstreamTinyII()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
 
@@ -355,8 +355,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getUpstreamSmallII();
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -364,8 +364,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getDownstreamSmallII();
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -373,8 +373,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getTagHeuerTinyII();
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -382,8 +382,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getTagHeuerII();
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -391,8 +391,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getSlalomCourseSmall()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
 
@@ -403,8 +403,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyDescripton()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -412,8 +412,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyDiagram()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -421,8 +421,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getSlalomBackgroundII()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
 
@@ -432,8 +432,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyWrongDirection()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
 
@@ -442,8 +442,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyWashedBackThroughGateLine()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
     }
 
@@ -453,8 +453,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyUpsideDown()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
     }
 
@@ -463,8 +463,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyIntentionallyMovedGate()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
 
     }
 
@@ -473,8 +473,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyHeadAndBoatNotInGateTogether()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -482,8 +482,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getIcfPenaltyDidntGoThroughas1Unit()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -491,8 +491,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getKayakSmall()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
 
@@ -501,8 +501,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getRacerImg()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
 
@@ -511,8 +511,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getRaceBibSmall()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -520,8 +520,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getMedalGoldSmall()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -529,8 +529,8 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getMedalSilverSmall()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 
     @Test(groups = ["unit"])
@@ -538,7 +538,7 @@ class RaceTest {
         Race race = Race.getInstance()
         Icon icon = race.getMedalBronzeSmall()
         Assert.assertNotNull(icon)
-        Assert(icon.getIconHeight()>0);
-        Assert(icon.getIconWidth()>0);
+        Assert.assertTrue(icon.getIconHeight()>0);
+        Assert.assertTrue(icon.getIconWidth()>0);
     }
 }

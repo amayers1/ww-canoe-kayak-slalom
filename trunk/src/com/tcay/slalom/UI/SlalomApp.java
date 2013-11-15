@@ -80,6 +80,7 @@ public class SlalomApp {
 
     //Constructor must be protected or private to prevent creating new object
     protected SlalomApp() {
+        Thread socketServer;
 
         // Sample German - Locale.setDefault(new Locale("de", "DE"));
 
@@ -89,7 +90,9 @@ public class SlalomApp {
 
 
         Server soss  = new Server();
-        new Thread(soss).start();
+        socketServer = new Thread(soss);
+        socketServer.setName("ServerSocketListener");
+        socketServer.start();
     }
 
 
@@ -237,7 +240,7 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        menuSectionScoringAction();
+                        menuSectionScoringAction(false);
                     }
                 }
         );
@@ -249,17 +252,17 @@ public class SlalomApp {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         Proxy proxy = null;
-                        //try {
-                            proxy = new Proxy(new Client());
-                        //} catch (InvalidArgumentException e1) {
-                        //    e1.printStackTrace();
-                        //}
+                        try {
+                            proxy = new Proxy(null);//new Client());
+                            JFrame frame = new JFrame("Race Penalty Scoring");
+                            frame.setContentPane(new ClientRacePenaltiesUIDynamic(0, proxy, false).getRootComponent());
+                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            frame.pack();
+                            frame.setVisible(true);
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
 
-                        JFrame frame = new JFrame("Race Penalty Scoring");
-                        frame.setContentPane(new ClientRacePenaltiesUIDynamic(0, proxy).getRootComponent());
-                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        frame.pack();
-                        frame.setVisible(true);
                     }
                 }
         );
@@ -400,30 +403,61 @@ public class SlalomApp {
     }
 
 
-    public ArrayList<Proxy> menuSectionScoringAction() {
-        ArrayList<Proxy> proxies = new ArrayList<Proxy>();
-        Proxy proxy = null;
+    /**
+     * This method need to be threaded as it is simulating individual judging sections that are designed
+     * to communicate via a socket and a quest for each section.   Deadlock will occur if all are run from a
+     * single thread.
+     *
+     * @return
+     */
+    public void menuSectionScoringAction(boolean demoMode) {
         // todo Fix this kludge to get JPanel for Dialog Box
         JFrame f = new JFrame("Dummy");
-
         JPanel jp;
         f.add(jp = new JPanel() {
-
             @Override // placeholder for actual content
             public Dimension getPreferredSize() {
                 return new Dimension(320, 240);
             }
-
         });
 
         if (Race.getInstance().getNbrOfSections() == 0) {
             Race.getInstance().askSampleDataIfNoRacersExist(jp);
         }
 
-        String title;
         int nbrSections = Race.getInstance().getNbrOfSections();
+        //JudgingSectionRunnable section;
+        //Thread thread;
+
         for (int i = 0; i < nbrSections; i++) {
-            title = "Section " + (i + 1) + " Judge";
+            //section = new JudgingSectionRunnable(i+1);
+            //thread = new Thread(section);//.start();
+            //thread.setName("JudgingSection"+i+1);
+            ///thread.start();
+            judgingSection(i+1, demoMode);
+//if (demoMode) {
+//    new Thread(new DemoSectionJudge(i+1)).run();
+//}
+        }
+    }
+
+
+    //class JudgingSectionRunnable implements Runnable
+
+    private void judgingSection (int sectionNbr, boolean demoMode) {
+        Proxy proxy = null;
+        String title;
+        JFrame f;
+        //int sectionNbr;
+
+
+        //private JudgingSectionRunnable(int sectionNbr) {
+        //     this.sectionNbr = sectionNbr;
+        //}
+
+       // @Override
+        //public void run() {
+            title = "Section " + (sectionNbr) + " Judge";
 
             //JFrame
             f = new JFrame(title + " - " + Race.getInstance().getName());
@@ -435,29 +469,30 @@ public class SlalomApp {
                 }
 
             });
-            //Proxy
-            proxy = null;
-            //try {
-                proxy = new Proxy(new Client());
-                proxies.add(proxy);
-           // } catch (InvalidArgumentException e1) {
-           //     e1.printStackTrace();
-           // }
+            try {
+                proxy = new Proxy(null);//new Client());
+                //frame.setContentPane(new ClientRacePenaltiesUIDynamic(i+1).getRootComponent());
 
-            //frame.setContentPane(new ClientRacePenaltiesUIDynamic(i+1).getRootComponent());
-            f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, proxy).getRootComponent());
-            f.pack();
-            f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
-            Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-            int x = (int) rect.getMaxX() - ((Race.getInstance().getNbrOfSections() - i) * f.getWidth());
-            int y = (int) rect.getMaxY() - f.getHeight();
-            f.setLocation(x, y);
-            f.setVisible(true);
+                /// CAN'T HAVE NEW THREAD FOR Swing UI ... only socket communications
 
-        }
-        return(proxies);
+///FIXME DIES HERE - SwingWorker Thread !!!      STILL THREADING ISSUE???
+                ClientRacePenaltiesUIDynamic clientWindow = new ClientRacePenaltiesUIDynamic(sectionNbr, proxy, demoMode);
+                f.setContentPane(clientWindow.getRootComponent());
+                f.pack();
+                f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
+                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+                Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+                int x = (int) rect.getMaxX() - ((Race.getInstance().getNbrOfSections() - sectionNbr + 1) * f.getWidth());
+                int y = (int) rect.getMaxY() - f.getHeight();
+                f.setLocation(x, y);
+                f.setVisible(true);
+            }
+            catch (Exception e1) {
+                 e1.printStackTrace();
+            }
+
+        //}
     }
 
 
@@ -488,14 +523,12 @@ public class SlalomApp {
         log.info("\n" + title + " Results");
         String lastBoatClass = null;
         for (RaceRun r:runs) {
-
-
             float totalTime;
 
             if (breakOnClassChange) {
                 if (lastBoatClass != null) {
                     if (lastBoatClass.compareTo(r.getBoat().getBoatClass()) != 0)
-                        log.info("----");
+                        log.info("****");
                 }
                 lastBoatClass = r.getBoat().getBoatClass();
             }
@@ -589,8 +622,8 @@ public class SlalomApp {
     public void menuScrollingScoreBoardAction() {
         Race race = Race.getInstance();
 
-        outputResults("", race.getCompletedRuns(), false);
-        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
+//        outputResults("", race.getCompletedRuns(), false);
+//        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
         LeaderBoardScroll leaderBoard = new LeaderBoardScroll();
         JFrame frame = new JFrame();
         frame.setTitle("Scrolling Scoreboard");
@@ -608,8 +641,8 @@ public class SlalomApp {
     public void menuVirtualScoringSheetAction() {
         Race race = Race.getInstance();
 
-        outputResults("", race.getCompletedRuns(), false);
-        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
+//        outputResults("", race.getCompletedRuns(), false);
+//        outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
         ScoringBoard scoringBoard = new ScoringBoard();
 
         JFrame frame = new JFrame();
@@ -638,13 +671,7 @@ public class SlalomApp {
         Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
         int x = (int) (rect.getMaxX() - frame.getWidth());
         int y = 0;//(int) rect.getMaxY() - appFrame.getHeight();
-        System.out.println(frame.getTitle() +" width=" +frame.getWidth() + " Putting Window RightTop at " + x + ", " + y);
-        log.warn(frame.getTitle() +" width=" +frame.getWidth() + " Putting Window RightTop at " + x + ", " + y);
-
-
         frame.setLocation(x, y);
-
-
     }
 
     private void setLocationBottomLeft(JFrame frame) {
@@ -657,10 +684,6 @@ public class SlalomApp {
 
         int x = 0;//(int) (rect.getMaxX() - frame.getWidth());
         int y = (int) rect.getMaxY() - frame.getHeight();
-        System.out.println(frame.getTitle() + " width=" +frame.getWidth() +" Putting Window BottomLeft at " + x + ", " + y);
-        log.warn(frame.getTitle() + " width=" +frame.getWidth() +" Putting Window BottomLeft at " + x + ", " + y);
         frame.setLocation(x, y);
     }
-
-
 }

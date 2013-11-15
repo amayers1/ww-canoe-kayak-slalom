@@ -40,7 +40,9 @@ import java.util.ArrayList;
  * (e.g. when the objects are running in the same application memory space)
  */
 public class Proxy {
-    Log log;
+    private Log log;
+    private Race race;
+
 
     Client clientSocket;
 
@@ -50,12 +52,11 @@ public class Proxy {
     }
 
 
-    static String[] message = {"Client cannot be null"};
+    static String message = "Client cannot be null";
 
-    public Proxy(Client client) {//throws InvalidArgumentException {//boolean standAlone) {
+    public Proxy(Client client)  throws Exception {//boolean standAlone) {
         if (client == null) {
-            //race = Race.getInstance();     // NO LONGER LEGAL 131110 (ajm) only use race if NOT standalone,
-            //throw new InvalidArgumentException(message);
+            race = Race.getInstance();     // RESINSTATED 131114 NO LONGER LEGAL 131110 (ajm) only use race if NOT standalone,
         }
         else {
             clientSocket = client;
@@ -72,6 +73,11 @@ public class Proxy {
     public ArrayList<RaceRun> getScorableRuns() {
         ClientRequest request;
         ArrayList<RaceRun> returnList = new ArrayList<RaceRun>();
+
+        if (clientSocket == null) {
+            returnList = race.getScorableRuns();
+        }
+        else {
             request = new ClientRequest(ClientRequest.REQ_GET_SCORABLE_RUNS);
             clientSocket.send(request);
             ServerResponse response = clientSocket.getResponse(request);
@@ -85,13 +91,19 @@ public class Proxy {
                     i++;
                 }
             }
+        }
         return returnList;
     }
 
     public void updateSectionOnline(Integer section) {
+        if (clientSocket == null) {
+            race.updateSectionOnline(section);
+        }
+        else {
             ClientRequest request = new ClientRequest(ClientRequest.REQ_UPDATE_SECTION_ONLINE);
             request.addObject(section);
             clientSocket.send(request);
+        }
     }
 
 
@@ -108,11 +120,17 @@ public class Proxy {
      * @param run
      */
     public void updateResults(RaceRun run) {
+        if (clientSocket == null) {
+            race.updateResults();
+        }
+        else {
+
         ClientRequest request = new ClientRequest(ClientRequest.REQ_UPDATE_PENALTIES);
 
             request.addObject(run);
             request.addObject(run.getPenaltyList());
             clientSocket.send(request);
+        }
     }
 
 
@@ -120,34 +138,49 @@ public class Proxy {
 
 
     public boolean isGateInSection(int iGate, int section)  {
-        ClientRequest request;
         Boolean rc = true;
+        if (clientSocket == null) {
+            rc = race.isGateInSection(iGate, section);
+        }
+        else {
+            ClientRequest request;
             request = new ClientRequest(ClientRequest.REQ_IS_GATE_IN_SECTION, iGate, section);
             clientSocket.send(request);
             ServerResponse response = clientSocket.getResponse(request);
             if (response.getRequestType() == ClientRequest.REQ_IS_GATE_IN_SECTION) {
                 rc = (Boolean)response.getResponseList().get(0);
             }
+        }
         return rc;
-
     }
 
 
     public boolean isFirstGateInSection(int iGate, int section) {
-        ClientRequest request;
         Boolean rc = false;
+        if (clientSocket == null) {
+            rc = race.isFirstGateInSection(iGate);
+        }
+        else {
+
+            ClientRequest request;
             request = new ClientRequest(ClientRequest.REQ_IS_FIRST_GATE_IN_SECTION, iGate, section);
             clientSocket.send(request);
             ServerResponse response = clientSocket.getResponse(request);
             if (response.getRequestType() == ClientRequest.REQ_IS_FIRST_GATE_IN_SECTION) {
                 rc = (Boolean)response.getResponseList().get(0);
             }
+        }
         return rc;
     }
 
     public ArrayList<JudgingSection> getSections() {
-        ClientRequest request;
         ArrayList<JudgingSection> sections = new ArrayList<JudgingSection>();
+        if (clientSocket == null) {
+            sections = race.getSections();
+        }
+        else {
+
+            ClientRequest request;
             request = new ClientRequest(ClientRequest.REQ_GET_SECTIONS);
             clientSocket.send(request);
             ServerResponse response = clientSocket.getResponse(request);
@@ -156,27 +189,40 @@ public class Proxy {
                     sections.add( (JudgingSection)o );
                 }
             }
+        }
         return sections;
 
     }
 
 
     public int getNbrGates() {
+
         Integer nbrGates = 1;
-        ClientRequest request;
+        if (clientSocket == null) {
+            nbrGates = race.getNbrGates();
+        }
+        else {
+
+            ClientRequest request;
             request = new ClientRequest(ClientRequest.REQ_GET_NBR_GATES);
             clientSocket.send(request);
             ServerResponse response = clientSocket.getResponse(request);
             if (response.getRequestType() == ClientRequest.REQ_GET_NBR_GATES) {
                 nbrGates = (Integer)response.getResponseList().get(0);
             }
+        }
         return nbrGates;
 
     }
 
     public long getRunsStartedOrCompletedCnt() {
-        ClientRequest request;
         long rc = 0l;
+        if (clientSocket == null) {
+            rc = race.getRunsStartedOrCompletedCnt();
+        }
+        else {
+
+            ClientRequest request;
             request = new ClientRequest(ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED);
             clientSocket.send(request);
 
@@ -184,12 +230,18 @@ public class Proxy {
             if ( response.getRequestType() == ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED ) {
                 rc = response.getRunsStartedOrCompletedCnt();
             }
+        }
         return rc;
     }
 
     public boolean isUpstream(int iGate) {
-        ClientRequest request;
         Boolean rc = false;
+        if (clientSocket == null) {
+            rc = race.isUpstream(iGate);
+        }
+        else {
+            ClientRequest request;
+
             request = new ClientRequest(ClientRequest.REQ_IS_UPSTREAM, iGate);
             clientSocket.send(request);
 
@@ -197,6 +249,7 @@ public class Proxy {
             if (response.getRequestType() == ClientRequest.REQ_IS_UPSTREAM) {
                 rc = (Boolean)response.getResponseList().get(0);
             }
+        }
         return rc;
     }
 }

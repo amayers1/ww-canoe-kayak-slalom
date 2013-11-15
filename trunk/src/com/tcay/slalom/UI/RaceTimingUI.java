@@ -218,6 +218,7 @@ public class RaceTimingUI {
         // starting block panel
         bibLabel = new BibLabel();
 
+        // update for hundreths of a second for running timers
         Timer screenUpdatetimer = new Timer(10,
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
@@ -366,7 +367,7 @@ public class RaceTimingUI {
         }
     }
     // doesn't work here,needed before frame setVisible and after pack()
-        // startButton.requestFocusInWindow();
+    // startButton.requestFocusInWindow();
 
 
     private boolean canBump(RaceRun run) {
@@ -438,20 +439,22 @@ public class RaceTimingUI {
         loadStartList();
     }
 
-    static final long FAST_FORWARD_FACTOR = 10;
-    static final long fastestRun = 90;
-
 
     public void simulateRaceRunDuration() {
         long slowestRunPercentageFactor = 40;
-        long maxAdditionalTimeOverFastest = slowestRunPercentageFactor * fastestRun / 100;
+        //long maxAdditionalTimeOverFastest = slowestRunPercentageFactor * Race.getInstance().getDemoModeFastestRun();
         long runLength;
 
-        runLength = fastestRun + (long) (Math.random() * 40);
+        runLength = Race.getInstance().getDemoModeFastestRun();
 
+        long extra = (long) (Race.getInstance().getDemoModeFastestRun() * slowestRunPercentageFactor / 100.0);
+        extra = (long) (extra * Math.random());
+
+        runLength += extra;
+        runLength *= 1000;
         try {
-            runLength = fastestRun + (long) (Math.random() * maxAdditionalTimeOverFastest);
-            runLength = runLength * 1000 / FAST_FORWARD_FACTOR;
+            //runLength = fastestRun + (long) (Math.random() * maxAdditionalTimeOverFastest);
+            //runLength = runLength * 1000 / FAST_FORWARD_FACTOR;
             //if (loop < 3) {
             runLength /= 2;  /// got 2 racers on course  === divide by 2
             //}
@@ -464,12 +467,9 @@ public class RaceTimingUI {
 
 
     public void simulateRace() {
-        //..innerFinishPanel1;
-        //innerFinishPanel2;
-        //innerFinishPanel3;
+        Race.getInstance().setIcfPenalties(false); // Too busy for DEMO UI
 
-
-        SlalomApp.getInstance().menuSectionScoringAction();
+        SlalomApp.getInstance().menuSectionScoringAction(true);
         SlalomApp.getInstance().menuScrollingScoreBoardAction();
         SlalomApp.getInstance().menuVirtualScoringSheetAction();
 
@@ -481,7 +481,6 @@ public class RaceTimingUI {
                 loop++;
                 startButtonActionHandler();
                 if (loop > 2) {
-                    //racer2UI = new RaceTimingBoatOnCourseUI(this);
                     racer3UI.finishButtonActionHandler();
                 }
                 simulateRaceRunDuration();

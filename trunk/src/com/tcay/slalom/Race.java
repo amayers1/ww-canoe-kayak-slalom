@@ -26,8 +26,6 @@ import com.tcay.slalom.UI.tables.RunScoringTableModel;
 import com.tcay.slalom.tagHeuer.TagHeuerRaceRun;
 import com.tcay.util.XStreamRaceConverter;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.ErrorWriter;
-import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import javax.swing.*;
@@ -83,12 +81,18 @@ public class Race extends RaceResources implements Serializable
     private transient Log log;
     private transient XStream xstream;
 
+    private transient long demoModeFastestRun = 12;
+
 
     public synchronized static Race getInstance() {
         if (instance==null)  {
             instance = new Race();
         }
         return instance;
+    }
+
+    public long getDemoModeFastestRun() {
+        return demoModeFastestRun;
     }
 
     public boolean isTagHeuerEmulation() {
@@ -137,6 +141,7 @@ public class Race extends RaceResources implements Serializable
 
     }
 
+/*
     public void startTagHeuerListener() {
 
         if (photoCellThread == null) {
@@ -151,7 +156,7 @@ public class Race extends RaceResources implements Serializable
         }
 
     }
-
+*/
 
     public void setUpstreamGates(List<Integer> upstreamGates) {
         this.upstreamGates = upstreamGates;
@@ -246,6 +251,7 @@ public class Race extends RaceResources implements Serializable
 
         // todo set up on timing page to test and then enable CP520
         Thread t = new Thread( tagHeuerListener = new TagHeuerCP520Listener());
+        t.setName("TagHeuerListener");
         t.start();
     }
 
@@ -506,8 +512,10 @@ public class Race extends RaceResources implements Serializable
     public ArrayList<RaceRun> getScorableRuns() {
         ArrayList<RaceRun> scorable = new ArrayList<RaceRun>();
         addaFewCompletedRuns(scorable);
-        for (RaceRun r:activeRuns) {
-            scorable.add(r);
+        synchronized (activeRuns) {
+            for (RaceRun r:activeRuns) {       //fixme fix OK? ConcurrentModificationException when run with DemoMode runs < 2.0 seconds
+                scorable.add(r);
+            }
         }
 
         return scorable;
@@ -594,7 +602,7 @@ public class Race extends RaceResources implements Serializable
             }
         }
 
-        log.debug("Saved serialized data to " + filename);
+        //log.debug("Saved serialized data to " + filename);
 
 
 
@@ -675,7 +683,7 @@ public class Race extends RaceResources implements Serializable
             out.writeObject(this);
             out.close();
             fileOut.close();
-            log.debug("Saved serialized data to " + filename);
+            //log.debug("Saved serialized data to " + filename);
 
         }catch(IOException i)
         {
@@ -709,7 +717,7 @@ public class Race extends RaceResources implements Serializable
             } catch ( InvalidClassException ice) {
                 log.info("Invalid Class from deserialization " + ice.classname);
             } catch (EOFException eof) {
-                log.info("EOF on Serialized data");
+                //log.info("EOF on Serialized data");
             } catch(IOException i) {
                 i.printStackTrace();
             //} catch (ClassNotFoundException cnf) {

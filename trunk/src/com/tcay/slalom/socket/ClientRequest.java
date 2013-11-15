@@ -33,8 +33,8 @@ import java.util.ArrayList;
  * Client Requests to Server for information or to update Server Race data
  */
 public class ClientRequest implements Serializable {
-    public static final int REQ_GET_SCORABLE_RUNS = 1;
-    public static final int REQ_GET_NBR_GATES = 2;
+    public static final int REQ_GET_NBR_GATES = 1;
+    public static final int REQ_GET_SCORABLE_RUNS = 2;
     public static final int REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED = 3;
     public static final int REQ_GET_SECTIONS = 4;
 

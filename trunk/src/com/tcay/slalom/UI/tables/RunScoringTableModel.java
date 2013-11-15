@@ -184,7 +184,7 @@ public class RunScoringTableModel extends AbstractTableModel
                     case RunScoringTable.COL_RACERNAME:
                         o = "";
                         if (originalRow%2==0) {
-                            o = r.getBoat().getRacer().getShortName();
+                            o = r.getBoat().getRacer().getShortName();    /// fixme NULL POinter exception  second fastest time DemoMode
                         }
                         break;
 

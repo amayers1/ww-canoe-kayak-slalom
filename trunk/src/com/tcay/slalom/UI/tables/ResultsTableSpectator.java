@@ -84,7 +84,6 @@ public class ResultsTableSpectator extends ResultsTable {
         for (int i=0; i<table.getColumnCount(); i++) {
             TableColumn column = table.getColumnModel().getColumn(i);
 
-            System.out.println("Column " + i + "= " +table.getColumnName(i));
             if (table.getColumnName(i).compareTo(ResultsTable.COL_BOATCLASS_NAME) == 0 ) {
                 column.setPreferredWidth(50);
                 column.setMaxWidth(50);
