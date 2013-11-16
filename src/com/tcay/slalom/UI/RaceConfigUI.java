@@ -34,9 +34,9 @@ import java.util.ResourceBundle;
 
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  *
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  *
 
  * User: allen

@@ -18,9 +18,9 @@
 package com.tcay.RS232;
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  *
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  *
 
  * User: allen

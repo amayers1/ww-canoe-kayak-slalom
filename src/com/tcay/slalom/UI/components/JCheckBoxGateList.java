@@ -33,9 +33,9 @@ import java.util.Vector;
 // with icons here https://forums.oracle.com/thread/2552746
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  *
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  *
 
  * User: allen

@@ -81,7 +81,7 @@ public class Race extends RaceResources implements Serializable
     private transient Log log;
     private transient XStream xstream;
 
-    private transient long demoModeFastestRun = 12;
+    private transient long demoModeFastestRun = 1;
 
 
     public synchronized static Race getInstance() {

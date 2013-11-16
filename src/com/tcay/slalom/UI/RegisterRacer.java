@@ -33,9 +33,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  *
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  *
 
  * User: allen

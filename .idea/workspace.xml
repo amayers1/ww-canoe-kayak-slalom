@@ -12,27 +12,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="112226d3-d69d-423b-9d4f-4885d1a400c0" name="Default" comment="Removed ... not in version comn">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/temp.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/images/Flags16/United States of America(USA).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SlalomApp.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SlalomApp.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/images/Flags16/United States of America.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/images/upstreamGateTiny.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/socket/Client.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/socket/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/BibLabel.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/BibLabel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/client/ClientRacePenaltiesUIDynamic.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/client/ClientRacePenaltiesUIDynamic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/socket/ClientRequest.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/socket/ClientRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/GatePenaltyButton.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/GatePenaltyButton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/util/IpAddress.java" afterPath="$PROJECT_DIR$/src/com/tcay/util/IpAddress.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/JButtonFinishRaceRun.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/JButtonFinishRaceRun.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/JCheckBoxGateList.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/JCheckBoxGateList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/JudgingSection.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/JudgingSection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/LastRace.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/LastRace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/LeaderBoard.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/LeaderBoard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/LeaderBoardScroll.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/LeaderBoardScroll.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/ListOfRaces.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/ListOfRaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/RS232/ListPorts.java" afterPath="$PROJECT_DIR$/src/com/tcay/RS232/ListPorts.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/util/Log.java" afterPath="$PROJECT_DIR$/src/com/tcay/util/Log.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/socket/Proxy.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/socket/Proxy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/util/LogTestConcurrency.java" afterPath="$PROJECT_DIR$/src/com/tcay/util/LogTestConcurrency.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/NRC_StartListImporter.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/NRC_StartListImporter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/util/NistTimeSync.java" afterPath="$PROJECT_DIR$/src/com/tcay/util/NistTimeSync.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/PenaltyRadioButton.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/PenaltyRadioButton.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/Race.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/Race.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceConfigUI.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceConfigUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RacePenaltiesUIDynamicOrig.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RacePenaltiesUIDynamicOrig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RacePenaltiesUI_REFERENCE.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RacePenaltiesUI_REFERENCE.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/RaceResources.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/RaceResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/RaceRun.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/RaceRun.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/tcay/slalom/RaceTest.groovy" afterPath="$PROJECT_DIR$/test/com/tcay/slalom/RaceTest.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceSelector.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceSelector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingBoatOnCourseUI.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingBoatOnCourseUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingUI.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTableSpectator.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTableSpectator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTableCellRenderer.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTableCellRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RegisterRacer.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/RegisterRacer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/Result.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/Result.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTable.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTableModel.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTableModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTable.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTableModel.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTableModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/ScoringBoard.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/ScoringBoard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/SectionConfigUI.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/SectionConfigUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/client/SectionJudgeClient.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/client/SectionJudgeClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/socket/Server.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/socket/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/SlalomApp.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/SlalomApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/Singleton.java" afterPath="$PROJECT_DIR$/src/com/tcay/Singleton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/StatusBar.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/StatusBar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/TableHeaderRenderer.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/components/TableHeaderRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerAgent.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerAgent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/RS232/TagHeuerCP520Listener.java" afterPath="$PROJECT_DIR$/src/com/tcay/RS232/TagHeuerCP520Listener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerRaceRun.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerRaceRun.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/TestData.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/TestData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tcay/slalom/UI/TestScrollPane_REFERENCE.java" afterPath="$PROJECT_DIR$/src/com/tcay/slalom/UI/TestScrollPane_REFERENCE.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$USER_HOME$/.griffon/" />
@@ -42,6 +68,8 @@
     <ignored path="SROA Test Race 2.xml" />
     <ignored path="SROA Test Race 2.ser" />
     <ignored path="SlalomApp.log" />
+    <ignored path="PositionPaperonUSSlalomRankingsRichKulawiec.html" />
+    <ignored path="SlalomApp1.log" />
     <file path="/Racer.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383860137538" ignored="false" />
     <file path="/RaceConfigUI.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383625568432" ignored="false" />
     <file path="/RealTimeActiveRunsBean.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1377735782571" ignored="false" />
@@ -57,8 +85,8 @@
     <file path="/Race.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384478294682" ignored="false" />
     <file path="/RaceRunsPenaltiesScoring.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1377788864106" ignored="false" />
     <file path="/PenaltyRadioButton.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1378002960395" ignored="false" />
-    <file path="/Dummy.txt" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384559208807" ignored="false" />
-    <file path="/a.dummy" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384559074875" ignored="false" />
+    <file path="/Dummy.txt" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384561793471" ignored="false" />
+    <file path="/a.dummy" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384560680756" ignored="false" />
     <file path="/StopWatch.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1382145331416" ignored="false" />
     <file path="/fragment.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383925055892" ignored="false" />
     <file path="/Global.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1377792527523" ignored="false" />
@@ -127,12 +155,12 @@
     <file path="/PropertyChange.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1382959199230" ignored="false" />
     <file path="/StatusBarModel.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1382999875080" ignored="false" />
     <file path="/ClientRacePenaltiesUIDynamic.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384557554672" ignored="false" />
-    <file path="/IpAddress.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383849120767" ignored="false" />
+    <file path="/IpAddress.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384560130111" ignored="false" />
     <file path="/RaceTimingUI_New.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383106648594" ignored="false" />
     <file path="/JButtonFinishRaceRun.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383130890500" ignored="false" />
     <file path="/RaceTimingUI_OLD.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383130777928" ignored="false" />
     <file path="/RaceTimingBoatOnCourseUI.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384528417425" ignored="false" />
-    <file path="/Country.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384276160920" ignored="false" />
+    <file path="/Country.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384561770398" ignored="false" />
     <file path="/ResultsTableCellRenderer.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384129110222" ignored="false" />
     <file path="/ImagePanel.java" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1383953276649" ignored="false" />
     <file path="/*.regexp" changelist="112226d3-d69d-423b-9d4f-4885d1a400c0" time="1384287792507" ignored="false" />
@@ -645,84 +673,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ClientRacePenaltiesUIDynamic.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/client/ClientRacePenaltiesUIDynamic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="287" column="96" selection-start="10576" selection-end="10576" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TestData.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/TestData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="17" selection-start="1634" selection-end="1634" vertical-scroll-proportion="0.0">
+            <state line="66" column="19" selection-start="2112" selection-end="2112" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RaceTimingUI.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingUI.java">
+      <file leaf-file-name="ListPorts.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tcay/RS232/ListPorts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="453" column="25" selection-start="14245" selection-end="14245" vertical-scroll-proportion="0.0">
+            <state line="75" column="15" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RaceTimingBoatOnCourseUI.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingBoatOnCourseUI.java">
+      <file leaf-file-name="TagHeuerCP520Listener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tcay/RS232/TagHeuerCP520Listener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="24" selection-start="3376" selection-end="3378" vertical-scroll-proportion="-9.5">
+            <state line="116" column="0" selection-start="3429" selection-end="3429" vertical-scroll-proportion="-9.115385">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RaceRun.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/RaceRun.java">
+      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/socket/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="24" selection-start="4587" selection-end="4587" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TagHeuerAgent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerAgent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="18" selection-start="3080" selection-end="3080" vertical-scroll-proportion="0.0">
+            <state line="210" column="20" selection-start="7426" selection-end="7430" vertical-scroll-proportion="-4.8846154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Race.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/Race.java">
+      <file leaf-file-name="StatusBar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/components/StatusBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="49" selection-start="2890" selection-end="2890" vertical-scroll-proportion="0.0">
+            <state line="112" column="60" selection-start="3278" selection-end="3278" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultsTableSpectator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTableSpectator.java">
+      <file leaf-file-name="IpAddress.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tcay/util/IpAddress.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="0" selection-start="3176" selection-end="3176" vertical-scroll-proportion="0.0">
+            <state line="25" column="12" selection-start="881" selection-end="890" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SlalomApp.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/SlalomApp.java">
+      <file leaf-file-name="Country.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/tcay/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="688" column="0" selection-start="24247" selection-end="24247" vertical-scroll-proportion="0.8311897">
+            <state line="28" column="80" selection-start="858" selection-end="858" vertical-scroll-proportion="0.12809917">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SlalomApp.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SlalomApp.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SlalomApp.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SlalomApp.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -731,7 +757,7 @@
       <file leaf-file-name="Proxy.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/socket/Proxy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="20" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.0">
+            <state line="67" column="23" selection-start="1938" selection-end="1943" vertical-scroll-proportion="-9.576923">
               <folding />
             </state>
           </provider>
@@ -747,10 +773,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTableCellRenderer.java" />
-        <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/client/SectionJudgeClient.java" />
-        <option value="$PROJECT_DIR$/src/com/tcay/slalom/TestData.java" />
-        <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingUI.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTableModel.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingBoatOnCourseUI.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/util/Log.java" />
@@ -759,10 +781,14 @@
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/RaceRun.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerRaceRun.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/client/ClientRacePenaltiesUIDynamic.java" />
-        <option value="$PROJECT_DIR$/src/com/tcay/slalom/Race.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTableSpectator.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/socket/Proxy.java" />
         <option value="$PROJECT_DIR$/src/com/tcay/slalom/UI/SlalomApp.java" />
+        <option value="$PROJECT_DIR$/src/com/tcay/slalom/Race.java" />
+        <option value="$PROJECT_DIR$/src/com/tcay/slalom/TestData.java" />
+        <option value="$PROJECT_DIR$/src/com/tcay/RS232/TagHeuerCP520Listener.java" />
+        <option value="$PROJECT_DIR$/src/com/tcay/util/IpAddress.java" />
+        <option value="$PROJECT_DIR$/src/com/tcay/Country.java" />
       </list>
     </option>
   </component>
@@ -849,108 +875,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tcay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tcay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tcay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slalom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SlalomScoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tcay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slalom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tagHeuer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -958,18 +882,18 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/tcay" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="slalomscoring" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="SlalomApp" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -978,7 +902,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="options.lastSelected" value="vcs.Subversion" />
+    <property name="options.lastSelected" value="fileTemplates" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
@@ -1957,6 +1881,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="112226d3-d69d-423b-9d4f-4885d1a400c0" name="Default" comment="" />
+      <changelist id="" name="ImageProblemInSVN" comment="" />
       <created>1377118962304</created>
       <updated>1377118962304</updated>
     </task>
@@ -2116,7 +2041,31 @@
       <created>1384374246101</created>
       <updated>1384374246101</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Numerous changes for DemoMode">
+      <created>1384559379131</created>
+      <updated>1384559379131</updated>
+    </task>
+    <task id="LOCAL-00041" summary="ImageProblemInSVN">
+      <created>1384559631411</created>
+      <updated>1384559631411</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Removed ... not in version comn">
+      <created>1384559813855</created>
+      <updated>1384559813856</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Keyword test, no changes">
+      <created>1384560752100</created>
+      <updated>1384560752101</updated>
+    </task>
+    <task id="LOCAL-00044" summary="$Rev$ keyword test">
+      <created>1384560948100</created>
+      <updated>1384560948100</updated>
+    </task>
+    <task id="LOCAL-00045" summary="keyword expansion test">
+      <created>1384561805101</created>
+      <updated>1384561805101</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2141,14 +2090,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="23" width="1394" height="793" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57057947" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.56463593" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965416" sideWeight="0.5881459" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15022223" sideWeight="0.46121296" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2986627" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29420504" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56315005" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5586924" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.584058" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2425816" sideWeight="0.30906388" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32863188" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -2157,7 +2106,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23473142" sideWeight="0.5851064" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33426377" sideWeight="0.6671368" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22477745" sideWeight="0.43684992" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22477745" sideWeight="0.43536404" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6612184" sideWeight="0.9959547" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24444444" sideWeight="0.46121296" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978974" sideWeight="0.5008347" order="4" side_tool="true" content_ui="tabs" />
@@ -2213,7 +2162,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Numerous changes for DemoMode" />
+    <option name="LAST_COMMIT_MESSAGE" value="keyword expansion test" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2227,10 +2176,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Changed jar name, new xml config file" />
-    <MESSAGE value="Issue 9:&#9;Fixed Running Section Judging in multiple windows on the same box as the Timing Screen causes previous section results to be cleared" />
-    <MESSAGE value="cleanup removed debugging logging statements&#10;" />
-    <MESSAGE value="Added logging of all input from Tag Heuer CP520 device." />
     <MESSAGE value="Issue 7:&#9;Automatic port detection for Automated Timing equipment causes JVM crash on Windows Vista / Java 1.6.  Temporary patch to not run CP 520 ports unless we are on OS X." />
     <MESSAGE value="Added places on race run results" />
     <MESSAGE value="Added medal icons" />
@@ -2248,10 +2193,14 @@
     <MESSAGE value="Added copyright, changes for transparent tables and Spectator Scoreboard." />
     <MESSAGE value="Updated file header." />
     <MESSAGE value="Issues with Windows and images not showing up (case sensitivity that IntelliJ IDEA debugger doesn't care about, but real JRE does!).   Added Demo Mode in TestData.java.  Other minor fixes." />
-    <MESSAGE value="Removed ... not in version comn" />
     <MESSAGE value="Removed ... not in version control" />
     <MESSAGE value="Fixed naming issue with upstreamTiny.jpg" />
     <MESSAGE value="Numerous changes for DemoMode" />
+    <MESSAGE value="ImageProblemInSVN" />
+    <MESSAGE value="Removed ... not in version comn" />
+    <MESSAGE value="Keyword test, no changes" />
+    <MESSAGE value="$Rev$ keyword test" />
+    <MESSAGE value="keyword expansion test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2261,71 +2210,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/Penalty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="29" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/TestData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="17" selection-start="1634" selection-end="1634" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/RaceTimingUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="453" column="25" selection-start="14245" selection-end="14245" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/awt/EventQueue.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="0" selection-start="5350" selection-end="5350" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/javax/swing/RepaintManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="0" selection-start="9520" selection-end="9520" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/RunScoringTableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="0" selection-start="2889" selection-end="2889" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/util/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="82" selection-start="1439" selection-end="1439" vertical-scroll-proportion="-5.923077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/RaceRun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="24" selection-start="4587" selection-end="4587" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="18" selection-start="3080" selection-end="3080" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/tagHeuer/TagHeuerRaceRun.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="20" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.63826364">
@@ -2347,13 +2231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/Race.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="49" selection-start="2890" selection-end="2890" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/tables/ResultsTableSpectator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="0" selection-start="3176" selection-end="3176" vertical-scroll-proportion="0.0">
@@ -2361,16 +2238,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/socket/Proxy.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/SlalomApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="20" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.0">
+        <state line="689" column="13" selection-start="24249" selection-end="24249" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/SlalomApp.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/Race.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="688" column="0" selection-start="24247" selection-end="24247" vertical-scroll-proportion="0.8311897">
+        <state line="72" column="9" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/TestData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="19" selection-start="2112" selection-end="2112" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/RS232/ListPorts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="15" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/RS232/TagHeuerCP520Listener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="0" selection-start="3429" selection-end="3429" vertical-scroll-proportion="-9.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/socket/Proxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="23" selection-start="1938" selection-end="1943" vertical-scroll-proportion="-9.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/socket/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="210" column="20" selection-start="7426" selection-end="7430" vertical-scroll-proportion="-4.8846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/slalom/UI/components/StatusBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="60" selection-start="3278" selection-end="3278" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/util/IpAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="12" selection-start="881" selection-end="890" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SlalomApp.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SlalomApp.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tcay/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="80" selection-start="858" selection-end="858" vertical-scroll-proportion="0.12809917">
           <folding />
         </state>
       </provider>
