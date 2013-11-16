@@ -29,7 +29,7 @@ import javax.swing.*;
  * User: allen
  * Date: 10/30/13
  * Time: 10:34 AM
- * Rev:  $Rev:$
+ * Rev:  $Rev$
  *
  */
 
