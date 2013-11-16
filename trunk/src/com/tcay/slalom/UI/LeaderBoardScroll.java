@@ -27,9 +27,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  * <p/>
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  * <p/>
  * <p/>
  * User: allen

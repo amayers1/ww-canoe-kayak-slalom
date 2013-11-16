@@ -25,9 +25,9 @@ import com.tcay.slalom.UI.tables.RunScoringTable;
 import javax.swing.*;
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  *
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  *
 
  * User: allen

@@ -18,9 +18,9 @@
 package com.tcay.RS232;
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  *
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  *
 
  * User: allen
@@ -114,7 +114,6 @@ public class TagHeuerCP520Listener implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                     ourPort.setHadException(true);
-                    //return false;
                 }
             }
             else {

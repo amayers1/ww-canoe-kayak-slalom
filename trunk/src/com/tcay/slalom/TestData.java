@@ -28,9 +28,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * ${PROJECT_NAME}
+ * SlalomApp
  *
- * Teton Cay Group Inc. ${YEAR}
+ * Teton Cay Group Inc. 2013
  *
 
  * User: allen
@@ -61,37 +61,37 @@ public class TestData {
 
         boatClass = "K1";
         try {
-        race.addBoat( new Racer("1",   "DAILLE",      "Etienne",   "M","FRA"), boatClass);
-    //            race.addBoat( new Racer("2",   "SCHUBERT",    "Sebastian", "M","GER"), boatClass);
-            race.addBoat( new Racer("2",   "HUFF",        "Spencer",   "M","USA"), boatClass);
-            race.addBoat( new Racer("3",   "DOERFLER",    "Fabian",	   "M","GER"), boatClass);
+            race.addBoat( new Racer("1",   "DAILLE",      "Etienne",   "M","FRA"), boatClass);
+            race.addBoat( new Racer("2",   "SCHUBERT",    "Sebastian", "M","GER"), boatClass);
+            race.addBoat( new Racer("3",   "HUFF",        "Spencer",   "M","USA"), boatClass);
+            race.addBoat( new Racer("13",   "DOERFLER",    "Fabian",	   "M","GER"), boatClass);
             race.addBoat( new Racer("4",   "DAVIDSON",    "Drew",      "M","USA"), boatClass);
-    //            race.addBoat( new Racer("5",   "KAUZER",      "Peter",	   "M","SLO"), boatClass);
-            race.addBoat( new Racer("5",   "RUDNITSKI",   "Michael",   "M","USA"), boatClass);
-            //race.addBoat( new Racer("6",   "MOLMENTI",    "Daniele",   "M","ITA"), boatClass);
-            race.addBoat( new Racer("6",   "McEWAN",      "Devin",   "M","USA"), boatClass);
-            race.addBoat( new Racer("7",   "AIGNER",      "Hannes",	   "M","GER"), boatClass);
-            race.addBoat( new Racer("8",   "BOECKELMANN", "Paul",	   "M","GER"), boatClass);
-            race.addBoat( new Racer("9",   "NEVEU",       "Boris",	   "M","FRA"), boatClass);
-            race.addBoat( new Racer("10",  "HRADILEK",    "Vavrinec",  "M","CZE"), boatClass);
+            race.addBoat( new Racer("5",   "KAUZER",      "Peter",	   "M","SLO"), boatClass);
+            race.addBoat( new Racer("6",   "RUDNITSKI",   "Michael",   "M","USA"), boatClass);
+            race.addBoat( new Racer("7",   "MOLMENTI",    "Daniele",   "M","ITA"), boatClass);
+            race.addBoat( new Racer("8",   "McEWAN",      "Devin",   "M","USA"), boatClass);
+            race.addBoat( new Racer("9",   "AIGNER",      "Hannes",	   "M","GER"), boatClass);
+            race.addBoat( new Racer("10",   "BOECKELMANN", "Paul",	   "M","GER"), boatClass);
+            race.addBoat( new Racer("11",   "NEVEU",       "Boris",	   "M","FRA"), boatClass);
+            race.addBoat( new Racer("12",  "HRADILEK",    "Vavrinec",  "M","CZE"), boatClass);
 
             boatClass = "K1W";
-            race.addBoat( new Racer("27",  "LIEBFARTH",  "Evy",     "F", "USA"), boatClass);
-            race.addBoat( new Racer("28",  "DAVIS",      "Avery",   "F", "USA"), boatClass);
-            race.addBoat( new Racer("29",  "VANHA",      "Zuzana",  "F", "USA"), boatClass);
             race.addBoat( new Racer("30",  "HILGERTOVA", "Stepanka","F", "CZE"), boatClass);
             race.addBoat( new Racer("31",  "FER",        "Emilie",  "F", "FRA"), boatClass);
             race.addBoat( new Racer("32",  "CHOURRAUT",  "Maialen", "F", "ESP"), boatClass);
             race.addBoat( new Racer("33",  "DUKATOVA",   "Jana",    "F", "SVK"), boatClass);
             race.addBoat( new Racer("34",  "FOX",        "Jessica", "F", "AUS"), boatClass);
             race.addBoat( new Racer("35",  "KUHNLE",     "Corinna", "F", "AUT"), boatClass);
-/*            race.addBoat( new Racer("36",  "KUDEJOVA",   "Katerina","F", "CZE"), boatClass);
-            race.addBoat( new Racer("38",  "KRAGELJ",    "Ursa",    "F", "SLO"), boatClass);
-            race.addBoat( new Racer("39",  "POESCHEL",   "Cindy",   "F", "GER"), boatClass);
+            race.addBoat( new Racer("37",  "LIEBFARTH",  "Evy",     "F", "USA"), boatClass);
+            race.addBoat( new Racer("38",  "DAVIS",      "Avery",   "F", "USA"), boatClass);
+            race.addBoat( new Racer("39",  "VANHA",      "Zuzana",  "F", "USA"), boatClass);
             race.addBoat( new Racer("40",  "TERCELJ",    "Eva",     "F", "SLO"), boatClass);
             race.addBoat( new Racer("41",  "SCHORNBERG", "Jasmin",  "F", "GER"), boatClass);
             race.addBoat( new Racer("42",  "PFEIFER",    "Melanie", "F", "GER"), boatClass);
-*/
+            race.addBoat( new Racer("43",  "KUDEJOVA",   "Katerina","F", "CZE"), boatClass);
+            race.addBoat( new Racer("44",  "KRAGELJ",    "Ursa",    "F", "SLO"), boatClass);
+            race.addBoat( new Racer("45",  "POESCHEL",   "Cindy",   "F", "GER"), boatClass);
+
 
 
             boatClass = "C1";

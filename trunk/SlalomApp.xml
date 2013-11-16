@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="slalomscoring" default="all">
+  
+  
+  <property file="SlalomApp.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="lib/deploy.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javaws.jar"/>
+      <include name="lib/jce.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/management-agent.jar"/>
+      <include name="lib/plugin.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="../Classes/charsets.jar"/>
+      <include name="../Classes/classes.jar"/>
+      <include name="../Classes/jsse.jar"/>
+      <include name="../Classes/ui.jar"/>
+      <include name="lib/ext/apple_provider.jar"/>
+      <include name="lib/ext/dnsns.jar"/>
+      <include name="lib/ext/localedata.jar"/>
+      <include name="lib/ext/sunjce_provider.jar"/>
+      <include name="lib/ext/sunpkcs11.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.codenameone.classpath">
+    <pathelement location="${basedir}/CodeNameOne/lib/CodenameOne.jar"/>
+  </path>
+  
+  <path id="library.serialcomm.classpath">
+    <pathelement location="${basedir}/lib/SerialComm.jar"/>
+  </path>
+  
+  <path id="library.testing.classpath">
+    <pathelement location="${idea.home}/lib/annotations.jar"/>
+    <pathelement location="${idea.home}/plugins/testng/lib/resources_en.jar"/>
+    <pathelement location="${idea.home}/plugins/testng/lib/testng-plugin.jar"/>
+    <pathelement location="${idea.home}/plugins/testng/lib/testng.jar"/>
+    <pathelement location="${basedir}/lib/mockito-all-1.9.5.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.lib.classpath">
+    <fileset dir="${idea.home}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm4-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+    <property name="grooovyc.task.sdk" value="library.lib.classpath"/>
+    <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="${grooovyc.task.sdk}"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module CodeNameOne -->
+  
+  <dirname property="module.codenameone.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.codenameone" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.codenameone" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.codenameone" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.codenameone" value="${compiler.args}"/>
+  
+  <property name="codenameone.output.dir" value="${module.codenameone.basedir}/out/production/CodeNameOne"/>
+  <property name="codenameone.testoutput.dir" value="${module.codenameone.basedir}/out/test/CodeNameOne"/>
+  
+  <path id="codenameone.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="codenameone.module.production.classpath">
+    <path refid="${module.jdk.classpath.codenameone}"/>
+    <path refid="library.codenameone.classpath"/>
+  </path>
+  
+  <path id="codenameone.runtime.production.module.classpath">
+    <pathelement location="${codenameone.output.dir}"/>
+    <path refid="library.codenameone.classpath"/>
+  </path>
+  
+  <path id="codenameone.module.classpath">
+    <path refid="${module.jdk.classpath.codenameone}"/>
+    <pathelement location="${codenameone.output.dir}"/>
+    <path refid="library.codenameone.classpath"/>
+  </path>
+  
+  <path id="codenameone.runtime.module.classpath">
+    <pathelement location="${codenameone.testoutput.dir}"/>
+    <pathelement location="${codenameone.output.dir}"/>
+    <path refid="library.codenameone.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.codenameone">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.codenameone">
+    <patternset refid="excluded.from.module.codenameone"/>
+  </patternset>
+  
+  <path id="codenameone.module.sourcepath">
+    <dirset dir="${module.codenameone.basedir}/CodeNameOne">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.codenameone" depends="compile.module.codenameone.production,compile.module.codenameone.tests" description="Compile module CodeNameOne"/>
+  
+  <target name="compile.module.codenameone.production" depends="register.custom.compilers" description="Compile module CodeNameOne; production classes">
+    <mkdir dir="${codenameone.output.dir}"/>
+    <javac2 destdir="${codenameone.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.codenameone}/javac">
+      <compilerarg line="${compiler.args.codenameone}"/>
+      <bootclasspath refid="codenameone.module.bootclasspath"/>
+      <classpath refid="codenameone.module.production.classpath"/>
+      <src refid="codenameone.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.codenameone"/>
+    </javac2>
+    
+    <copy todir="${codenameone.output.dir}">
+      <fileset dir="${module.codenameone.basedir}/CodeNameOne/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.codenameone.tests" depends="register.custom.compilers,compile.module.codenameone.production" description="compile module CodeNameOne; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.codenameone" description="cleanup module">
+    <delete dir="${codenameone.output.dir}"/>
+    <delete dir="${codenameone.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module Server -->
+  
+  <dirname property="module.server.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.server" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.server" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.server" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.server" value="${compiler.args}"/>
+  
+  <property name="server.output.dir" value="${module.server.basedir}/out/production/Server"/>
+  <property name="server.testoutput.dir" value="${module.server.basedir}/out/test/Server"/>
+  
+  <path id="server.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="server.module.production.classpath">
+    <path refid="${module.jdk.classpath.server}"/>
+  </path>
+  
+  <path id="server.runtime.production.module.classpath">
+    <pathelement location="${server.output.dir}"/>
+  </path>
+  
+  <path id="server.module.classpath">
+    <path refid="${module.jdk.classpath.server}"/>
+    <pathelement location="${server.output.dir}"/>
+  </path>
+  
+  <path id="server.runtime.module.classpath">
+    <pathelement location="${server.testoutput.dir}"/>
+    <pathelement location="${server.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.server">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.server">
+    <patternset refid="excluded.from.module.server"/>
+  </patternset>
+  
+  <path id="server.module.sourcepath">
+    <dirset dir="${module.server.basedir}/Server">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.server" depends="compile.module.server.production,compile.module.server.tests" description="Compile module Server"/>
+  
+  <target name="compile.module.server.production" depends="register.custom.compilers" description="Compile module Server; production classes">
+    <mkdir dir="${server.output.dir}"/>
+    <javac2 destdir="${server.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.server}/javac">
+      <compilerarg line="${compiler.args.server}"/>
+      <bootclasspath refid="server.module.bootclasspath"/>
+      <classpath refid="server.module.production.classpath"/>
+      <src refid="server.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.server"/>
+    </javac2>
+    
+    <copy todir="${server.output.dir}">
+      <fileset dir="${module.server.basedir}/Server/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.server.tests" depends="register.custom.compilers,compile.module.server.production" description="compile module Server; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.server" description="cleanup module">
+    <delete dir="${server.output.dir}"/>
+    <delete dir="${server.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module SlalomScoring -->
+  
+  <dirname property="module.slalomscoring.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.slalomscoring" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.slalomscoring" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.slalomscoring" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.slalomscoring" value="${compiler.args}"/>
+  
+  <property name="slalomscoring.output.dir" value="${module.slalomscoring.basedir}/out/production/SlalomScoring"/>
+  <property name="slalomscoring.testoutput.dir" value="${module.slalomscoring.basedir}/out/test/SlalomScoring"/>
+  
+  <path id="slalomscoring.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="slalomscoring.module.production.classpath">
+    <path refid="${module.jdk.classpath.slalomscoring}"/>
+    <path refid="library.serialcomm.classpath"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.testing.classpath"/>
+  </path>
+  
+  <path id="slalomscoring.runtime.production.module.classpath">
+    <pathelement location="${slalomscoring.output.dir}"/>
+    <path refid="library.serialcomm.classpath"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.testing.classpath"/>
+  </path>
+  
+  <path id="slalomscoring.module.classpath">
+    <path refid="${module.jdk.classpath.slalomscoring}"/>
+    <pathelement location="${slalomscoring.output.dir}"/>
+    <path refid="library.serialcomm.classpath"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.testing.classpath"/>
+  </path>
+  
+  <path id="slalomscoring.runtime.module.classpath">
+    <pathelement location="${slalomscoring.testoutput.dir}"/>
+    <pathelement location="${slalomscoring.output.dir}"/>
+    <path refid="library.serialcomm.classpath"/>
+    <path refid="library.lib.classpath"/>
+    <path refid="library.testing.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.slalomscoring">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.slalomscoring">
+    <patternset refid="excluded.from.module.slalomscoring"/>
+  </patternset>
+  
+  <path id="slalomscoring.module.sourcepath">
+    <dirset dir="${module.slalomscoring.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="slalomscoring.module.test.sourcepath">
+    <dirset dir="${module.slalomscoring.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.slalomscoring" depends="compile.module.slalomscoring.production,compile.module.slalomscoring.tests" description="Compile module SlalomScoring"/>
+  
+  <target name="compile.module.slalomscoring.production" depends="register.custom.compilers" description="Compile module SlalomScoring; production classes">
+    <mkdir dir="${slalomscoring.output.dir}"/>
+    <groovyc destdir="${slalomscoring.output.dir}" fork="yes">
+      <src refid="slalomscoring.module.sourcepath"/>
+      <classpath refid="slalomscoring.module.production.classpath"/>
+      <patternset refid="excluded.from.compilation.slalomscoring"/>
+      <javac debug="${compiler.debug}">
+        <compilerarg line="${compiler.args.slalomscoring}"/>
+      </javac>
+    </groovyc>
+    <instrumentIdeaExtensions destdir="${slalomscoring.output.dir}">
+      <compilerarg line="${compiler.args.slalomscoring}"/>
+      <bootclasspath refid="slalomscoring.module.bootclasspath"/>
+      <classpath refid="slalomscoring.module.production.classpath"/>
+      <src refid="slalomscoring.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.slalomscoring"/>
+    </instrumentIdeaExtensions>
+    
+    <copy todir="${slalomscoring.output.dir}">
+      <fileset dir="${module.slalomscoring.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.slalomscoring.tests" depends="register.custom.compilers,compile.module.slalomscoring.production" description="compile module SlalomScoring; test classes" unless="skip.tests">
+    <mkdir dir="${slalomscoring.testoutput.dir}"/>
+    <groovyc destdir="${slalomscoring.testoutput.dir}" fork="yes">
+      <src refid="slalomscoring.module.test.sourcepath"/>
+      <classpath refid="slalomscoring.module.classpath"/>
+      <patternset refid="excluded.from.compilation.slalomscoring"/>
+      <javac debug="${compiler.debug}">
+        <compilerarg line="${compiler.args.slalomscoring}"/>
+      </javac>
+    </groovyc>
+    <instrumentIdeaExtensions destdir="${slalomscoring.testoutput.dir}">
+      <compilerarg line="${compiler.args.slalomscoring}"/>
+      <bootclasspath refid="slalomscoring.module.bootclasspath"/>
+      <classpath refid="slalomscoring.module.classpath"/>
+      <src refid="slalomscoring.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.slalomscoring"/>
+    </instrumentIdeaExtensions>
+    
+    <copy todir="${slalomscoring.testoutput.dir}">
+      <fileset dir="${module.slalomscoring.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.slalomscoring" description="cleanup module">
+    <delete dir="${slalomscoring.output.dir}"/>
+    <delete dir="${slalomscoring.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.codenameone, clean.module.server, clean.module.slalomscoring" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.codenameone, compile.module.server, compile.module.slalomscoring" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.slalomapp:jar" value="${basedir}/out/artifacts/SlalomApp_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.SlalomApp.jar" value="${artifacts.temp.dir}/SlalomApp.jar"/>
+  </target>
+  
+  <target name="artifact.slalomapp:jar" depends="init.artifacts, compile.module.slalomscoring" description="Build &#39;SlalomApp:jar&#39; artifact">
+    <property name="artifact.temp.output.slalomapp:jar" value="${artifacts.temp.dir}/SlalomApp_jar"/>
+    <mkdir dir="${artifact.temp.output.slalomapp:jar}"/>
+    <jar destfile="${temp.jar.path.SlalomApp.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${slalomscoring.output.dir}"/>
+      <zipfileset src="${idea.home}/lib/idea_rt.jar"/>
+      <zipfileset src="${basedir}/lib/SerialComm.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-common-1.6.0 2/jgoodies-common-1.6.0.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-common-1.6.0 2/jgoodies-common-1.6.0-tests.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-common-1.6.0 2/jgoodies-common-1.6.0-javadoc.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-common-1.6.0 2/jgoodies-common-1.6.0-sources.jar"/>
+      <zipfileset src="${idea.home}/lib/jh.jar"/>
+      <zipfileset src="${idea.home}/lib/asm.jar"/>
+      <zipfileset src="${idea.home}/lib/jna.jar"/>
+      <zipfileset src="${idea.home}/lib/boot.jar"/>
+      <zipfileset src="${idea.home}/lib/idea.jar"/>
+      <zipfileset src="${idea.home}/lib/jdom.jar"/>
+      <zipfileset src="${idea.home}/lib/jing.jar"/>
+      <zipfileset src="${idea.home}/lib/util.jar"/>
+      <zipfileset src="${idea.home}/lib/icons.jar"/>
+      <zipfileset src="${idea.home}/lib/junit.jar"/>
+      <zipfileset src="${idea.home}/lib/log4j.jar"/>
+      <zipfileset src="${idea.home}/lib/xbean.jar"/>
+      <zipfileset src="${idea.home}/lib/javac2.jar"/>
+      <zipfileset src="${idea.home}/lib/xerces.jar"/>
+      <zipfileset src="${idea.home}/lib/microba.jar"/>
+      <zipfileset src="${idea.home}/lib/openapi.jar"/>
+      <zipfileset src="${idea.home}/lib/trove4j.jar"/>
+      <zipfileset src="${idea.home}/lib/asm4-all.jar"/>
+      <zipfileset src="${idea.home}/lib/forms_rt.jar"/>
+      <zipfileset src="${idea.home}/lib/isorelax.jar"/>
+      <zipfileset src="${idea.home}/lib/resolver.jar"/>
+      <zipfileset src="${idea.home}/lib/velocity.jar"/>
+      <zipfileset src="${idea.home}/lib/automaton.jar"/>
+      <zipfileset src="${idea.home}/lib/bootstrap.jar"/>
+      <zipfileset src="${idea.home}/lib/ecj-4.2.1.jar"/>
+      <zipfileset src="${idea.home}/lib/jna-utils.jar"/>
+      <zipfileset src="${idea.home}/lib/resources.jar"/>
+      <zipfileset src="${idea.home}/lib/extensions.jar"/>
+      <zipfileset src="${idea.home}/lib/gson-2.2.1.jar"/>
+      <zipfileset src="${idea.home}/lib/guava-12.0.jar"/>
+      <zipfileset src="${idea.home}/lib/jps-server.jar"/>
+      <zipfileset src="${idea.home}/lib/junit-4.10.jar"/>
+      <zipfileset src="${idea.home}/lib/oromatcher.jar"/>
+      <zipfileset src="${idea.home}/lib/trang-core.jar"/>
+      <zipfileset src="${idea.home}/lib/xmlrpc-2.0.jar"/>
+      <zipfileset src="${idea.home}/lib/annotations.jar"/>
+      <zipfileset src="${idea.home}/lib/asm-commons.jar"/>
+      <zipfileset src="${idea.home}/lib/cglib-2.2.2.jar"/>
+      <zipfileset src="${idea.home}/lib/jaxen-1.1.3.jar"/>
+      <zipfileset src="${idea.home}/lib/jsch-0.1.49.jar"/>
+      <zipfileset src="${idea.home}/lib/trove4j_src.jar"/>
+      <zipfileset src="${idea.home}/lib/resources_en.jar"/>
+      <zipfileset src="${idea.home}/lib/nanoxml-2.2.3.jar"/>
+      <zipfileset src="${idea.home}/lib/picocontainer.jar"/>
+      <zipfileset src="${idea.home}/lib/xstream-1.4.3.jar"/>
+      <zipfileset src="${idea.home}/lib/cli-parser-1.1.jar"/>
+      <zipfileset src="${idea.home}/lib/jdkAnnotations.jar"/>
+      <zipfileset src="${idea.home}/lib/jgoodies-forms.jar"/>
+      <zipfileset src="${idea.home}/lib/jsr173_1.0_api.jar"/>
+      <zipfileset src="${idea.home}/lib/protobuf-2.4.1.jar"/>
+      <zipfileset src="${idea.home}/lib/rhino-js-1_7R4.jar"/>
+      <zipfileset src="${idea.home}/lib/xpp3-1.1.4-min.jar"/>
+      <zipfileset src="${idea.home}/lib/commons-net-3.1.jar"/>
+      <zipfileset src="${idea.home}/lib/miglayout-swing.jar"/>
+      <zipfileset src="${idea.home}/lib/nekohtml-1.9.14.jar"/>
+      <zipfileset src="${idea.home}/lib/serviceMessages.jar"/>
+      <zipfileset src="${idea.home}/lib/groovy-all-2.0.6.jar"/>
+      <zipfileset src="${idea.home}/lib/jcip-annotations.jar"/>
+      <zipfileset src="${idea.home}/lib/commons-codec-1.3.jar"/>
+      <zipfileset src="${idea.home}/lib/netty-3.6.2.Final.jar"/>
+      <zipfileset src="${idea.home}/lib/swingx-core-1.6.2.jar"/>
+      <zipfileset src="${idea.home}/lib/winp-1.17-patched.jar"/>
+      <zipfileset src="${idea.home}/lib/proxy-vole_20120920.jar"/>
+      <zipfileset src="${idea.home}/lib/snappy-java-1.0.4.1.jar"/>
+      <zipfileset src="${idea.home}/lib/jgoodies-looks-2.4.2.jar"/>
+      <zipfileset src="${idea.home}/lib/optimizedFileManager.jar"/>
+      <zipfileset src="${idea.home}/lib/commons-logging-1.1.1.jar"/>
+      <zipfileset src="${idea.home}/lib/jgoodies-common-1.2.1.jar"/>
+      <zipfileset src="${idea.home}/lib/rngom-20051226-patched.jar"/>
+      <zipfileset src="${idea.home}/lib/sanselan-0.98-snapshot.jar"/>
+      <zipfileset src="${idea.home}/lib/commons-httpclient-3.1-patched.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-forms-1.7.1/jgoodies-forms-1.7.1.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-forms-1.7.1/jgoodies-forms-1.7.1-tests.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-forms-1.7.1/jgoodies-forms-1.7.1-javadoc.jar"/>
+      <zipfileset src="${basedir}/lib/jgoodies-forms-1.7.1/jgoodies-forms-1.7.1-sources.jar"/>
+      <zipfileset dir="${basedir}/src/images"/>
+    </jar>
+    <copy file="${temp.jar.path.SlalomApp.jar}" tofile="${artifact.temp.output.slalomapp:jar}/SlalomApp.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.slalomapp:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.slalomapp:jar}"/>
+    <copy todir="${artifact.output.slalomapp:jar}">
+      <fileset dir="${artifact.temp.output.slalomapp:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
