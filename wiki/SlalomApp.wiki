@@ -16,7 +16,7 @@ Currently BETA release code is available here:
 To check if Java is already installed, go to a command line and type 'java -version'.  If you get a response and the version is at least 1.6, then you meet the java requirement.  Otherwise you can download java from Oracle here [http://www.oracle.com/technetwork/java/javase/downloads/jre6-downloads-1637595.html Java version 6 Java Runtime Environment]
 
 ==Installation==
-  # Click on the download link under [[SlalomApp#Releases] at the top of the page
+  # Click on the download link under [SlalomApp#Releases Releases] at the top of the page
   # Click on the link that says Downloads for Slalom App
   # Right click on the _Current Stable Release_ link and select Download from the properties menu
   # Download the !SlalomApp.jar and all .cmd (Windows) or .command (Mac/Linux) files
