@@ -19,7 +19,7 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
   # Click on the download link at the top of the page
   # Click on the link that says Downloads for Slalom App
   # Right click on the _Current Stable Release_ link and select Download from the properties menu
-  # Download the SlalomApp.jar and all .cmd (Windows) or .command (Mac/Linux) files
+  # Download the !SlalomApp.jar and all .cmd (Windows) or .command (Mac/Linux) files
   # You may move and rename the folder where ever you like
   # Installation is complete
 
