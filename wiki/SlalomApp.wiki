@@ -18,16 +18,13 @@ Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloa
 ==Installation==
   # Click on the download link at the top of the page
   # Click on the link that says Downloads for Slalom App
-    # You may either Sign in to a Google Account that you have, then select "Open in Drive" from right side, then use the following instructions at 3. below.  This is simpler and will download the files all at once.
-    # Alternatively you may just click the !CurrentStableRelease folder and click on each of the .jar files individually and you will be prompted to download, then skip to 5. below
   # Right click on the _Current Stable Release_ link and select Download from the properties menu
-  # It might get unzipped automatically depending on how GoogleDrive is configured for you
+  # Download the SlalomApp.jar and all .cmd (Windows) or .command (Mac/Linux) files
   # You may move and rename the folder where ever you like
-  # unzip *!SlalomApp.jar.zip* in the same location as the other files in the folder (in place). This should give you a !SlalomApp.jar file
   # Installation is complete
 
 ==Running the Applications==
-There is a _Demo_ mode that runs a simulated race, this may be the easiest way to see how the system works.   Under Windows run the RaceSimulation.cmd file and under Linux or Mac OS X run RaceSimulation.command.  The _Demo_ race will runs itself with a variety of windows open, and you will still be able to use the controls manually.  The Section Judge windows are strictly under manual control at this time.
+There is a _Demo_ mode that runs a simulated race, this may be the easiest way to see how the system works.   Under Windows run the RaceSimulation.cmd file and under Linux or Mac OS X run RaceSimulation.command.  The _Demo_ race will runs itself with a variety of windows open, and you will still be able to use the controls manually.  You make interact and use any of the controls while the demo mode race is running.
 
 There are 2 applications, !SlalomApp.jar contains both programs, the main application which handles all configuration, timing, etc., and the remote *!SectionJudge* application  which handles scoring of penalties.  *!SectionJudge* functions can be done from *!SlalomApp* for lower level races or where section judges do not have suitable hardware to run the *!SectionJudge* application.
  
