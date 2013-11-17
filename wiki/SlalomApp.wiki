@@ -13,7 +13,7 @@ Currently BETA release code is available here:
   * PC - Windows XP or better,  Mac - OS X 10.5 or better,  or any Linux
   * Java 1.6 JVM or better
 
-Download from Oracle here [http://www.oracle.com/technetwork/java/javase/downloads/jre6-downloads-1637595.html Java version 6 Java Runtime Environment]
+To check if Java is already installed, go to a command line and type 'java -version'.  If you get a response and the version is at least 1.6, then you meet the java requirement.  Otherwise you can download java from Oracle here [http://www.oracle.com/technetwork/java/javase/downloads/jre6-downloads-1637595.html Java version 6 Java Runtime Environment]
 
 ==Installation==
   # Click on the download link at the top of the page
