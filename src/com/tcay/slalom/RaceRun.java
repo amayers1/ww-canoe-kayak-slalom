@@ -17,8 +17,8 @@
 
 package com.tcay.slalom;
 
+import com.tcay.slalom.timingDevices.PhotoCellRaceRun;
 import com.tcay.slalom.UI.tables.ResultsTable;
-import com.tcay.slalom.tagHeuer.TagHeuerRaceRun;
 import com.tcay.timing.StopWatch;
 import com.tcay.util.Log;
 
@@ -43,9 +43,29 @@ import java.util.ArrayList;
 public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
     private BoatEntry boat;
+
+    /// To support NRC race timer and other trining devices
+    public void setStartMillis(Long startMillis) {    //todo change access to protected or other improvement
+        stopWatch.setPassedInStartTime(startMillis);
+    }
+
+    public void setStopMillis(Long stopMillis) {    //todo change access to protected or other improvement
+        stopWatch.setPassedInStopTime(stopMillis);
+    }
+
+    /// todo fixme TEMPORARY
+    public StopWatch getStopWatch() {
+        return stopWatch;
+    }
+
     private StopWatch stopWatch = null;     /// implement splits in stopWatch
     private ArrayList<Penalty> penaltyList = null;
     private boolean dnf = false;
+
+    public boolean isDns() {
+        return dns;
+    }
+
     private boolean dns = false;
     private int runNumber;
     private boolean gold;
@@ -63,9 +83,36 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     private int placeInClass;
 
 
-
-    private transient TagHeuerRaceRun tagHeuerRaceRun;
+    //
+//    private transient PhotoCellRaceRun photoCellRaceRun;
+    private /* TODO Investigate "transient" */ PhotoCellRaceRun photoCellRaceRun;
     private transient Log log;
+
+
+    /*
+
+        public String getPENLogString() {
+            StringBuffer penaltyLog = new StringBuffer();
+
+            penaltyLog.append("PEN   B=" + getBoat().getRacer().getBibNumber());
+            penaltyLog.append(" r=" + getRunNumber());
+
+            return penaltyLog.toString();
+
+        }
+    */
+    public String getLogString() {
+        StringBuffer penaltyLog = new StringBuffer();
+
+        penaltyLog.append("B=" + getBoat().getRacer().getBibNumber());
+        penaltyLog.append(" r=" + getRunNumber());
+
+        return penaltyLog.toString();
+
+    }
+
+
+
 
 
     public void setLog(Log log) {
@@ -76,19 +123,19 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
      *
      * @return the TagHeuer electronic timing information object for this RaceRun
      */
-    public TagHeuerRaceRun getTagHeuerRaceRun() {
+    public PhotoCellRaceRun getPhotoCellRaceRun() {
 
-        return tagHeuerRaceRun;
+        return photoCellRaceRun;
     }
 
 
     /**
      *
-     * @param tagHeuerRaceRun -the TagHeuer electronic timing information object
+     * @param photoCellRaceRun -the TagHeuer electronic timing information object
      *                        associated with this RaceRun.
      */
-    public void setTagHeuerRaceRun(TagHeuerRaceRun tagHeuerRaceRun) {
-        this.tagHeuerRaceRun = tagHeuerRaceRun;
+    public void setPhotoCellRaceRun(PhotoCellRaceRun photoCellRaceRun) {//PhotoCellRaceRun photoCellRaceRun) {
+        this.photoCellRaceRun = photoCellRaceRun;
         updateResults();
     }
 
@@ -130,7 +177,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     private void init(BoatEntry boat) {
         log = Log.getInstance();
         this.boat = boat;
-        stopWatch = new StopWatch();
+        stopWatch = new StopWatch("Bib#" + boat.getRacer().getBibNumber());
         penaltyList = new ArrayList<Penalty>();
     }
 
@@ -142,6 +189,8 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     public RaceRun(BoatEntry boat) {
         init(boat);
         runNumber = Race.getInstance().getCurrentRunIteration();   // todo verify
+        log.info("NEW RaceRun(b)" + this);
+
     }
 
     /**
@@ -150,14 +199,20 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
      * @param runNumber
      */
     public RaceRun(BoatEntry boat, int runNumber) {
+
         init(boat);
         this.runNumber = runNumber;   // todo verify
+        log.info("NEW RaceRun(b,r)" + this);   /// RERUNS COME HERE  ... WHY DOES Run 1 get Wiped OUT ????
     }
 
 
+    //(ajm) 150519
     public RaceRun() {
 
         log = Log.getInstance();
+
+        init(new BoatEntry(new Racer("String1", "String2","String3","String4"), "TEST"));
+        log.info("NEW RaceRun()" + this);
 
     }
 
@@ -166,7 +221,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
      */
     public void start() {
         stopWatch.start();
-        logTime("START", null);
+        log.info("VSTRT " + getLogString());//getBoat().getRacer().getBibNumber() + " r=" + getRunNumber());
         Race.getInstance().addRun(this);
         updateResults();
 
@@ -187,7 +242,6 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     public void dnf() {
         dnf = true;
         //stopWatch.setDNF();
-        logTime("DNF", null);
         Race.getInstance().finishedRun(this);
         updateResults();
 
@@ -195,17 +249,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     }
 
 
-    private void logTime(String action, String rawTime) {
-        String formattedBib = String.format("%4s", boat.getRacer().getBibNumber());
-        log.info("TIMER>Bib#" + formattedBib + " RUN#" + runNumber + " " + action + " " +
-                (rawTime == null ? "" : rawTime + " ")
-                + boat.getRacer() );
-    }
-
-
     /**
-     *
-     *
      *
      * @return is this RaceRun a DNF
      */
@@ -216,20 +260,28 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
     public void dns() {
         dns = true;
-        logTime("DNS", null);
         //stopWatch.setDNF();
         Race.getInstance().finishedRun(this);
         updateResults();
+
     }
 
 
     public void finish() {
         stopWatch.stop();
-        logTime("STOP", getResultString());
+
+        log.info("VSTOP " + getLogString() //+getBoat().getRacer().getBibNumber() + " " +
+                //"r=" + getRunNumber()
+                        + " rawElapsed=" + getRawElapsedTimeString() + " rawMANUAL=" + getManualRawElapsedTimeString());
+
+
+
+
         Race race = Race.getInstance();
         race.finishedRun(this);
 
         updateResults();
+
 
     }
 
@@ -289,7 +341,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     }
 
 
-    private String getPenaltyString() {
+    public String getPenaltyString() {
         String s = null;
         if (dns || dnf) {
             s = "      ";
@@ -303,13 +355,48 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
         return s;
     }
 
+    public String getPenaltyStringBlankIfNone() {
+        String s = null;
+        if (dns || dnf) {
+            s = "      ";
+        }
+        else {
+            long penalties = getTotalPenalties();
+            if (penalties!=0) {
+                StringBuffer sb = new StringBuffer();
+                sb.append("+").append(penalties);
+                s = String.format("%1$6s", sb);
+            }
+            else {
+                s="";
+            }
+        }
+        return s;
+    }
+
+
+    private String getManualRawElapsedTimeString() {
+
+        StringBuffer sb = new StringBuffer(30);
+        float time = getManualElapsed();
+        sb.append( String.format(" %1$8.2f", time));
+
+        return sb.toString();
+    }
 
 
     private String getRawElapsedTimeString() {
 
         StringBuffer sb = new StringBuffer(30);
         float time = getElapsed();
-        sb.append( String.format(" %1$8.2f", time));
+
+
+        //if (photoCellRaceRun == null || photoCellRaceRun.getElapsedTime() == 0) {
+        //    sb.append("*");
+       // }
+
+
+            sb.append( String.format(" %1$8.2f", time));
 
         return sb.toString();
     }
@@ -339,18 +426,37 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
         float result = (float)9999.0;
         if (!dnf) {
-            if (tagHeuerRaceRun != null && tagHeuerRaceRun.getElapsedTime() != 0) {
-                result = (float)tagHeuerRaceRun.getElapsedTime();
+            if (photoCellRaceRun != null && photoCellRaceRun.getElapsedTime() != 0) {
+                result = (float)photoCellRaceRun.getElapsedTime();
             }
             else {
-                result = stopWatch.getElapsed();
+                result = stopWatch.getElapsed();   /// todo investigate EYE Start with APP FINISH gives stopwatch time until we get EYE finish
+
             }
         }
 
         return result; //stopWatch.getElapsed();
     }
 
+/*
+    public String getElapsedLogString() {
+float eTime=0.0f;
+        String result=null;//(float)9999.0;
+        if (!dnf) {
+            if (photoCellRaceRun != null && photoCellRaceRun.getElapsedTime() != 0) {
+                eTime = (float)photoCellRaceRun.getElapsedTime();
+                result = new String("+"+eTime);
+            }
+            else {
+                result = new String("*" + stopWatch.getElapsed());
+            }
+        }
 
+        return result;
+    }
+
+
+*/
     public String toString() {
 //        return( //boat.getRacer().getBibNumber() +
 //                "run#" + getRunNumber() + " " + boat.getRacer().getShortName() );
@@ -361,7 +467,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
     private String toStringBibRunShortName() {
         return( boat.getRacer().getBibNumber() +
-                "run#" + getRunNumber() + " " + boat.getRacer().getShortName() );
+                "run#" + getRunNumber() + " " + boat.getRacer().getShortName() + (isDnf()?" DNF":"") + (isDns()?" DNS":""));
     }
 
     public String getPenaltyString(int gate) {
@@ -374,30 +480,37 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     }
 
     private Penalty getPenalty(int gate) {
-        Penalty penalty = null;//new Penalty(gate,0);//null;   todo Dummied up for now for ScoringTable
+        Penalty penalty = null;
 
-        for (Penalty p:penaltyList)     {
+        for (Penalty p : penaltyList) {
             if (gate == p.gate) {
                 penalty = p;
                 break;
             }
         }
+        if (penalty==null) {
+            log.trace("setPenalty():"+"Requested penalty for gate (NONE FOUND)" + gate + " on bib#" + boat.getRacer().getBibNumber() + " run#" + runNumber );
+        } else {
+            log.trace("setPenalty():" + "PENALTY RECALLED  (" + penalty.getPenaltySeconds() + ") for gate (FOUND)" + gate + " on bib#" + boat.getRacer().getBibNumber() + " run#" + runNumber );
+
+        }
 
         return penalty;
     }
-
+// called from both server and remote client
     public void setPenalty(int gate, int seconds, boolean fromClient) {
         Penalty penalty = getPenalty(gate);
+        boolean foundIt = false;
+
         if (penalty == null ) {
             penalty = new Penalty(gate, seconds, fromClient);
             penaltyList.add(penalty);
-        }
-        else {
+        } else {
+            foundIt = true;
             penalty.setPenaltySeconds(seconds);
             penalty.setFromClient(fromClient);
         }
-        //log.info(penalty.getSummary());
-        //updateResults();  this is done in Proxy no 131028 (ajm)
+        log.trace("setPenalty("  + (fromClient?"@Client":"@Server")  + "):"+(foundIt?"CHANGE ":"NEW    ") + "RR.SetPenalty bib#" + boat.getRacer().getBibNumber() + " r#" + runNumber + " " + penalty.getSummary());
     }
 
     public int getTotalPenalties() {
@@ -425,7 +538,8 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
 
     private void updateResults() {
-        Race.getInstance().updateResults();
+        Race.getInstance().updateResults(this);
+        //Race.getInstance().updateResults();
     }
 
     public static final String TIME_EXPANDED_FILL = "                        ";
@@ -437,18 +551,13 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
         StringBuffer sbIimes = new StringBuffer();
 
-//        if (run != null) {
-            sb.append( String.format(getResultString()) );
-            sb.append(getPenaltyString());
-            sb.append(getTotalTimeString());
-//        }
-//        else {
-//            sb.append( "                        ");   TODO handle for run==null   at caller ?
-//        }
+        sb.append( String.format(getResultString()) );
+        sb.append(getPenaltyString());
+        sb.append(getTotalTimeString());
 
         String suffix = " ";
-        if (getTagHeuerRaceRun() != null) {
-            suffix = getTagHeuerRaceRun() != null ? ResultsTable.TIMINGMODE_AUTOMATIC: ResultsTable.TIMINGMODE_MANUAL;
+        if (getPhotoCellRaceRun() != null) {
+            suffix = getPhotoCellRaceRun() != null ? ResultsTable.TIMINGMODE_AUTOMATIC: ResultsTable.TIMINGMODE_MANUAL;
         }
         sb.append(suffix);
 
@@ -478,12 +587,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     public String formatTimeTotalOnly() {
         StringBuffer sb = new StringBuffer();
 
-//        if (run != null) {
-            sb.append(getTotalTimeString());
-//        }
-//        else {
-//            sb.append( "         ");        todo handle null Runs at caller?
-//        }
+        sb.append(getTotalTimeString());
         return( sb.toString());
     }
 
@@ -510,4 +614,95 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     public void setBronze(boolean bronze) {
         this.bronze = bronze;
     }
+
+
+    public static String padRight(String s, int n) {
+        String sRet="";
+        if (n > 0 ) {
+            sRet = String.format("%1$-" + n + "s", s);
+        }
+        return sRet;
+    }
+    public void logPenalties(Log reqLog, int section, String source ) {
+
+        String logString = penaltyStringExtended(source,section);
+//        sb.append(source+" ");
+//        sb.append(getLogString());
+//        sb.append(padRight(" ", section * 15));
+
+//        for (Penalty p:getPenaltyList()) {
+//            if ( Race.getInstance().isGateInSection(p.getGate(), section)) {
+//                sb.append(String.format(" %2d", p.getPenaltySeconds()));
+//            }
+ //       }
+
+        reqLog.info(logString);//sb.toString());
+    }
+
+
+    public String penaltyStringExtended(String source, int section)
+    {
+
+        StringBuffer sb = new StringBuffer();
+
+        sb.append(source+" ");
+        sb.append(getLogString());
+        sb.append(padRight(" ", section * 15));
+
+        for (Penalty p:getPenaltyList()) {
+            if ( Race.getInstance().isGateInSection(p.getGate(), section)) {
+                sb.append(String.format(" %2d", p.getPenaltySeconds()));
+            }
+        }
+
+        return sb.toString();
+
+
+    }
+
+    public String penaltyStringExtended()
+    {
+        StringBuffer sb = new StringBuffer();
+        Penalty p;
+
+
+
+        for (int iGate = 1; iGate<=Race.getInstance().getNbrGates(); iGate++) {
+            p = getPenalty(iGate);
+            if (p!=null) {
+                sb.append(String.format(" %2d", p.getPenaltySeconds()));
+            } else {
+                sb.append("   ");
+            }
+
+
+        }
+        return sb.toString();
+    }
+
+
+
+    public String penaltyStringHTMLExtended()
+    {
+        StringBuffer sb = new StringBuffer();
+        Penalty p;
+
+
+
+        for (int iGate = 1; iGate<=Race.getInstance().getNbrGates(); iGate++) {
+            p = getPenalty(iGate);
+            if (p!=null) {
+                sb.append(String.format("<td>%2d</td>", p.getPenaltySeconds()));
+            } else {
+                sb.append("<td></td>");
+            }
+
+
+        }
+        return sb.toString();
+    }
+
+
+
+
 }

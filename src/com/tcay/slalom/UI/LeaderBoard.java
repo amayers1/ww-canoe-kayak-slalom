@@ -26,15 +26,14 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * SlalomApp
- *
- * Teton Cay Group Inc. 2013
- *
-
+ * ${PROJECT_NAME}
+ * <p/>
+ * Teton Cay Group Inc. ${YEAR}
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 9/28/13
  * Time: 6:28 PM
- *
  */
 public class LeaderBoard {
     private JPanel panel1;
@@ -62,22 +61,24 @@ public class LeaderBoard {
         leaderScrollPane = //new JScrollPane();
 
 
+                new JScrollPane(table) {
+                    {
+                        setOpaque(false);
+                        getViewport().setOpaque(false);
+                    }
 
-        new JScrollPane(table) {
-            {
-               setOpaque(false);
-               getViewport().setOpaque(false);
-            }
-            @Override
-            protected void paintComponent(Graphics g) {
-                g.drawImage(Race.getInstance().getSlalomBackgroundII().getImage(), 0, 0, getWidth(), getHeight(), this);
-                super.paintComponent(g);
-            }
+                    @Override//tod drawimage if null .getImage() here throws exception 20151121
+                    protected void paintComponent(Graphics g) {
+                        //g.drawImage(Race.getInstance().getSlalomBackgroundII().getImage(), 0, 0, getWidth(), getHeight(), this);
 
-        };
+                        g.drawImage(Race.getInstance().getBackgroundImage().getImage(), 0, 0, getWidth(), getHeight(), this);
+                        super.paintComponent(g);
+                    }
+
+                };
         table.setOpaque(false);
 
-        Race.getInstance().updateResults();
+        Race.getInstance().updateResults();   // TODO REALLY NEEDED ???
 
     }
 

@@ -101,9 +101,13 @@ public class SelectRerun extends JDialog {
         ArrayList<RaceRun> startList = Race.getInstance().getCompletedRuns();
 
         for (RaceRun rr : startList) {
-            rerunSelection.addItem(rr);
+            // Can ONLY do reruns for the current run Iteration
+            // (e.g. No rereuns for 1st runs once 2nd runs start)   Cause bugs in
+            // photoCellAgent.startRun() and results lists
+            if (rr.getRunNumber() == Race.getInstance().getCurrentRunIteration()) {
+                rerunSelection.addItem(rr);
+            }
         }
-
     }
 
 

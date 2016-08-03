@@ -45,9 +45,9 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -168,7 +168,8 @@ public class RunScoringTableModel extends AbstractTableModel
                             o = icon;
 
                             if (o==null) {
-                                o = run.getBoat().getBoatClass();
+// todo 20151122 Had exception here , no class for a racer ??  also was done on DNS with a RERUN,m problem here ??
+                               o = run.getBoat().getBoatClass();
                                  //o = run.getPlaceInClass();                        // crash on simulation       java.lang.NullPointerException
                             }
 
@@ -184,7 +185,7 @@ public class RunScoringTableModel extends AbstractTableModel
                     case RunScoringTable.COL_RACERNAME:
                         o = "";
                         if (originalRow%2==0) {
-                            o = r.getBoat().getRacer().getShortName();    /// fixme NULL POinter exception  second fastest time DemoMode
+                            o = r.getBoat().getRacer().getShortName();
                         }
                         break;
 
@@ -194,7 +195,7 @@ public class RunScoringTableModel extends AbstractTableModel
 
                     case RunScoringTable.COL_RAW:
                         if (run!= null) {
-                            o = run.getResultString();;
+                            o = run.getResultString();
                         }
                         break;
                     case RunScoringTable.COL_TOTAL:

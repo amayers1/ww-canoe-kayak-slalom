@@ -22,9 +22,9 @@ import com.tcay.util.Log;
 import java.io.*;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -67,7 +67,7 @@ public class LastRace implements Serializable {
             out.writeObject(this);
             out.close();
             fileOut.close();
-            //log.debug("Serialized data is saved in last.ser");
+            log.trace("Serialized data is saved in last.ser");
 
         }
         catch(IOException i)

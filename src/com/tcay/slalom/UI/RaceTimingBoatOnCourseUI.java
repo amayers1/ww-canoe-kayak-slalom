@@ -32,24 +32,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * SlalomApp
- *
- * Teton Cay Group Inc. 2013
- *
-
+ * ${PROJECT_NAME}
+ * <p/>
+ * Teton Cay Group Inc. ${YEAR}
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 10/30/13
  * Time: 7:21 AM
- *
  */
 public class RaceTimingBoatOnCourseUI {
     private JPanel subPanel;
+
+    public RaceRun getRun() {
+        return run;
+    }
+
     private RaceRun run;
     private JLabel nameLabel;
     private JLabel timerLabel;
     private JButton finishButton;
     private JButton DNFButton;
     private JLabel bibLabel;
+    private JButton overtakeButton;
 
 
     final RaceTimingUI timingUI;     //fixme sort out if ths move is OK  M131111
@@ -61,10 +66,13 @@ public class RaceTimingBoatOnCourseUI {
 
         DNFButton.addActionListener(new ActionListener() {
             @Override
+            // TODO Confirmation DialogBox
             public void actionPerformed(ActionEvent actionEvent) {
                 if (run != null) {
                     run.dnf();
                 }
+
+                timingUI.removeDNFrun(run);  /// remove the DNF
                 updateButtonVisibility();
                 timingUI.updateButtonVisibility();
             }
@@ -75,46 +83,117 @@ public class RaceTimingBoatOnCourseUI {
                 finishButtonActionHandler();
             }
         });
+
+        overtakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                overtakeButtonActionHandler();
+            }
+        });
+
+
         updateButtonVisibility();
     }
 
-    public void finishButtonActionHandler() {
+
+    public void finishButtonActionHandler(boolean stopClock) {
+
         if (run != null) {
-            run.finish();
+            if (stopClock) {
+                run.finish();
+            }
         }
-        updateButtonVisibility();
+        updateButtonVisibility();//todo switch order of callse 20160412
+        //timingUI.updateRunsUI();
         timingUI.updateButtonVisibility();
+        //        // Need UI to update other runs button for OverTake button vis
+
+
+    }
+
+
+    public void finishButtonActionHandler() {
+        finishButtonActionHandler(true);
+
+    }
+
+
+    public void overtakeButtonActionHandler() {
+//        updateButtonVisibility();//todo switch order of callse 20160412
+        timingUI.doOvertake(run);
+        updateButtonVisibility();//todo switch order of callse 20160412
+
+        timingUI.updateButtonVisibility();
+        //        // Need UI to update other runs button for OverTake button vis
+
+        System.out.println("SWAPPED FOR OVERTAKE ");
     }
 
 
     protected void updateTimer() {
-        String result = run.getResultString();
-        int totalPenalties = run.getTotalPenalties();
-
-        timerLabel.setText(result + " +" + totalPenalties);   // fixme        NullPointerException DemoMode
-        if (run.getTagHeuerRaceRun() != null) {
-            timerLabel.setIcon(Race.getInstance().getTagHeuerII());
+        if (run == null) {
+            timerLabel.setText("");
+            timerLabel.setIcon(null);
         } else {
-            timerLabel.setIcon(Race.getInstance().getStopWatchII());
+            timerLabel.setText(run.getResultString() + " +" + run.getTotalPenalties());
+            if (run.getPhotoCellRaceRun() != null) {  // todo
+                timerLabel.setIcon(Race.getInstance().getPhotoCellTinyII());//getMicrogateII());//getTagHeuerII());  // TODO
+            } else {
+                timerLabel.setIcon(Race.getInstance().getStopWatchII());
+            }
+
         }
     }
 
     protected void updateRun(RaceRun run) {
         this.run = run;
-        nameLabel.setText(run.getBoat().racerClassClub());
-        nameLabel.setIcon(run.getBoat().getImageIcon());
-        bibLabel.setText(run.getBoat().getRacer().getBibNumber());
+        nameLabel.setText(run == null ? "" : run.getBoat().racerClassClub());
+        nameLabel.setIcon(run == null ? null : run.getBoat().getImageIcon());
+        bibLabel.setText(run == null ? "" : run.getBoat().getRacer().getBibNumber());
         updateButtonVisibility();
+        //return (run);
     }
 
     protected void updateButtonVisibility() {
         boolean visible = false;
+
+        boolean overTakevisible = false;// false;
         if (run != null && !run.isComplete() && !run.isDnf()) {
             visible = true;
+
+            ///qwas run != timingUI.getNextRunToFinish()
         }
+        // if (timingUI.canOvertake(run)) {
+        //     overTakevisible = true;
+        // }
         DNFButton.setVisible(visible);
+
+//20160726        if (Race.getInstance().isPHOTO_EYE_AUTOMATIC()) {/
+//            finishButton.setVisible(visible);
+//            finishButton.setEnabled(false);
+
+
+//        } else {
+        visible = timingUI.finishButtonShouldBeVisible(run);
         finishButton.setVisible(visible);
+//        }
+
+
+        //overtakeButton.setVisible(overTakevisible);//overTakevisible);
+        updateOvertakeButtonVisibility();
     }
+
+
+    protected void updateOvertakeButtonVisibility() {
+        boolean overTakevisible = false;// false;
+        if (timingUI.canOvertake(run)) {
+            overTakevisible = true;
+        }
+        overtakeButton.setVisible(overTakevisible);//overTakevisible);
+
+
+    }
+
 
     private void createUIComponents() {
         bibLabel = new BibLabel();
@@ -131,10 +210,14 @@ public class RaceTimingBoatOnCourseUI {
     private void $$$setupUI$$$() {
         createUIComponents();
         subPanel = new JPanel();
-        subPanel.setLayout(new FormLayout("fill:134px:noGrow,left:4dlu:noGrow,fill:48px:noGrow,left:8dlu:noGrow,fill:179px:noGrow,left:5dlu:noGrow,fill:117px:noGrow,fill:14px:noGrow,fill:max(d;4px):noGrow", "center:d:noGrow"));
+        subPanel.setLayout(new FormLayout("fill:105px:noGrow,left:4dlu:noGrow,fill:58px:noGrow,left:5dlu:noGrow,fill:186px:noGrow,left:4dlu:noGrow,fill:142px:noGrow,fill:8px:noGrow,fill:54px:noGrow,left:4dlu:noGrow,fill:88px:noGrow", "center:64px:noGrow"));
         finishButton = new JButton();
         finishButton.setBackground(Color.red);
+        finishButton.setMargin(new Insets(0, 4, 0, 4));
+        finishButton.setMaximumSize(new Dimension(82, 40));
+        finishButton.setMinimumSize(new Dimension(82, 40));
         finishButton.setOpaque(true);
+        finishButton.setPreferredSize(new Dimension(82, 40));
         finishButton.setText("Finish");
         finishButton.setToolTipText("Stop timer for this boat");
         CellConstraints cc = new CellConstraints();
@@ -149,6 +232,11 @@ public class RaceTimingBoatOnCourseUI {
         subPanel.add(DNFButton, cc.xy(9, 1));
         nameLabel = new JLabel();
         subPanel.add(nameLabel, cc.xy(5, 1));
+        overtakeButton = new JButton();
+        overtakeButton.setBackground(new Color(-52225));
+        overtakeButton.setOpaque(true);
+        overtakeButton.setText("Overtake");
+        subPanel.add(overtakeButton, cc.xy(11, 1));
     }
 
     /**

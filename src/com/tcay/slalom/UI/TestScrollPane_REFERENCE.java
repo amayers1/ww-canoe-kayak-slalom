@@ -23,15 +23,14 @@ import com.jgoodies.forms.layout.FormLayout;
 import javax.swing.*;
 
 /**
- * SlalomApp
- *
- * Teton Cay Group Inc. 2013
- *
-
+ * ${PROJECT_NAME}
+ * <p/>
+ * Teton Cay Group Inc. ${YEAR}
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 10/13/13
  * Time: 8:53 AM
- *
  */
 public class TestScrollPane_REFERENCE {
     private JPanel panel1;
@@ -54,19 +53,11 @@ public class TestScrollPane_REFERENCE {
         panel1 = new JPanel();
         panel1.setLayout(new FormLayout("fill:d:grow", "center:d:noGrow"));
         final JScrollPane scrollPane1 = new JScrollPane();
-
-
-
-
-
         CellConstraints cc = new CellConstraints();
         panel1.add(scrollPane1, cc.xy(1, 1, CellConstraints.FILL, CellConstraints.FILL));
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new FormLayout("fill:d:noGrow", "center:d:noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow"));
         scrollPane1.setViewportView(panel2);
-
-
-
         final JLabel label1 = new JLabel();
         label1.setText("Label");
         panel2.add(label1, cc.xy(1, 1));

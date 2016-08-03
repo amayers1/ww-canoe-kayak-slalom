@@ -34,15 +34,14 @@ import java.util.ResourceBundle;
 
 
 /**
- * SlalomApp
- *
- * Teton Cay Group Inc. 2013
- *
-
+ * ${PROJECT_NAME}
+ * <p/>
+ * Teton Cay Group Inc. ${YEAR}
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 8/29/13
  * Time: 7:51 PM
- *
  */
 public class RaceConfigUI {
     private JPanel panel1;

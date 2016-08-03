@@ -17,7 +17,6 @@
 
 package com.tcay.slalom.socket;
 
-import com.tcay.slalom.Race;
 import com.tcay.util.Log;
 import com.tcay.slalom.Penalty;
 import com.tcay.slalom.RaceRun;
@@ -49,7 +48,7 @@ public class Client {
     private static final int RETRY_SOCKET_CONNECTION_DELAY_MS = 3000;
 
     // Need to be final for "synchronized" access
-    static final ArrayList<ClientRequest> requests = new ArrayList<ClientRequest>();
+    final ArrayList<ClientRequest> requests = new ArrayList<ClientRequest>();
     final ArrayList<ServerResponse> responses = new ArrayList<ServerResponse>();
     ObjectClientWriter ocw;
     ObjectClientReader ocr;
@@ -70,23 +69,20 @@ public class Client {
         client.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         client.frame.pack();
         client.frame.setVisible(true);
-        client.connectToServer();//client.frame);
+        client.connectToServer();
     }
 
     private void init() {
         log = Log.getInstance();
-
+//log.setCurrentLevel(Log.LOG_TRACE);
         messageArea.setEditable(false);
         frame.getContentPane().add(dataField, "North");
         frame.getContentPane().add(new JScrollPane(messageArea), "Center");
     }
 
-    public void send (ClientRequest req) {
+    public void send(ClientRequest req) {
         synchronized (requests) {
-           requests.add(req);
-           requests.notifyAll();
-// FIXME !!!! THIS IS IN THE MAIN THREAD
-           log.info("CLIENT Notify requests");
+            requests.add(req);
         }
     }
 
@@ -102,53 +98,36 @@ public class Client {
     }
 
     public void queue(ServerResponse res) {
-        //log.trace("Waiting for sync ... response");
+        log.trace("Waiting for sync ... response");
         synchronized (responses) {
-            //log.trace("Queued response type " + res.getRequestType());
+            log.trace("Queued response type " + res.getRequestType());
             responses.add(res);
-            log.info("CLIENT Notify responses (REQ#" + res.getRequestNbr() + ")");
-            responses.notifyAll();
         }
     }
 
     public ServerResponse getResponse(ClientRequest request) {
         ServerResponse response = null;
 
-        //log.trace("   Waiting for response @1");
+        log.trace("   Waiting for response @1");
         while (response == null) {
-            //while (responses.size() == 0) {
-            //    try {
-            //        Thread.sleep(5);//5);//0);
-            //    } catch (InterruptedException e) {
-            //        e.printStackTrace();
-            //    }
-            //}
+            while (responses.size() == 0) {
+                try {
+                    Thread.sleep(0);//  C20160731 Changed to 50 with no performance effect, so changed back               0);//5);//0);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+            }
 
             synchronized (responses) {
-                try {
-                    log.info("CLIENT Waiting on responses" + responses);
-                    responses.wait(50000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 if (responses.size() > 0) {
-                    for (ServerResponse possible:responses) {
-
+                    for (ServerResponse possible : responses) {
                         if (request.getRequestNbr().intValue() == possible.getRequestNbr().intValue()) {
                             response = possible;
-                            //log.trace(possible);
+                            //log.trace("Possible>"+possible.toString());
                             responses.remove(possible);
-                            log.info("CLIENT Waiting - Got RESPONSE  CMD " + request.getRequestCmd() + " (REQ#" + possible.getRequestNbr() + ")");
-                            //log.info("Wanted x AND got IT y YEAH" + request.getRequestNbr().intValue() + " " + possible.getRequestNbr().intValue());
                             break;
                         }
-                        //else {
-                        //}
                     }
-                    if (response == null) {
-                        log.error("Wanted x but didn't get it" + request.getRequestNbr().intValue() + ") TYPE="+ request.getRequestCmd());// +  "  (REQ#" + possible.getRequestNbr().intValue() + ") TYPE=" + possible.getRequestType() +")");
-                    }
-
                 }
                 //log.trace("   Returning response @2");
                 if (response != null) {
@@ -158,6 +137,21 @@ public class Client {
         }
         return null;
     }
+
+
+    private Socket tryConnectTo(String serverAddress) {
+        Socket socket=null;
+
+        try {
+            socket = new Socket(serverAddress, Server.SOCKET_PORT);
+        } catch (ConnectException ce) {
+            log.warn(ce.getMessage() + ":Socket@" + serverAddress);
+        } catch (Exception e) {
+            log.warn(e.getMessage() + ":Socket@" + serverAddress);
+        }
+        return socket;
+    }
+
 
     /**
      * Implements the connection logic by prompting the end user for
@@ -170,26 +164,22 @@ public class Client {
 
         // Get the server address from a dialog box.
 
-        boolean slalomAppServerIsLocal = false;
-        boolean connected = false;
+        //boolean slalomAppServerIsLocal = false;
+       // boolean connected = false;
         String serverAddress = "127.0.0.1";
         Socket socket = null;
 
-        while (!connected) {
-            log.trace("Trying Socket");
-            connected = false;
-            try {
-                socket = new Socket(serverAddress, Server.SOCKET_PORT);
-                slalomAppServerIsLocal = true;
-                connected = true;
-                log.trace("Local Socket found");
+        while (socket == null) {
+            serverAddress = "127.0.0.1";
+            log.trace("Trying Socket@"+serverAddress);
+            socket = tryConnectTo(serverAddress);
 
-
-            } catch(ConnectException ce) {
-                slalomAppServerIsLocal = false;
+            if ( socket == null )  {
+                serverAddress = "Slalom.local";
+                socket = tryConnectTo(serverAddress);
             }
 
-            if (!slalomAppServerIsLocal) {
+            if ( socket == null ) {
                 serverAddress = JOptionPane.showInputDialog(
                         frame,
                         "Enter IP Address of the Server or blank for local: ",
@@ -197,35 +187,27 @@ public class Client {
                         JOptionPane.QUESTION_MESSAGE);
 
                 // Make connection and initialize streams
-                if (serverAddress.trim().length() == 0)
-                    serverAddress = "127.0.0.1";
-
-                try {
-                    socket = new Socket(serverAddress, Server.SOCKET_PORT);   /// fixme - handle if no server is running ... wit
-                    connected = true;
-                }  catch(ConnectException ce) {
-
+                if (serverAddress.trim().length() > 0) {
+                    socket = tryConnectTo(serverAddress);
                 }
             }
-            if (!connected) {
-                log.trace("Waiting " + RETRY_SOCKET_CONNECTION_DELAY_MS/1000+ " seconds for retry on Socket");
+
+            /// fixme - handle if no server is running ...
+            if (socket == null){//!connected) {
+                log.trace("Waiting " + RETRY_SOCKET_CONNECTION_DELAY_MS / 1000 + " seconds for retry on Socket");
                 try {
                     Thread.sleep(RETRY_SOCKET_CONNECTION_DELAY_MS);
                 } catch (InterruptedException e) {
                 }
             }
         }
+        log.info("SlalomApp Server Connected @"+serverAddress);
 
         /// fixme loop on New Socket call until attached or an interrupt occurs
-        Thread thread;
         ocw = new ObjectClientWriter(socket, this);
         ocr = new ObjectClientReader(socket, this);
-        thread = new Thread(ocw);
-        thread.setName("Section_"+"X"+"_Requestor");
-        thread.start();
-        thread = new Thread(ocr);
-        thread.setName("Section_"+"X"+"_ResponseListener");
-        thread.start();
+        new Thread(ocw).start();
+        new Thread(ocr).start();
 
     }
 
@@ -233,7 +215,6 @@ public class Client {
         private Socket socket;
         private Client sosc;
         private Log log;
-
 
 
         public ObjectClientWriter(Socket socket, Client sosc) {
@@ -255,39 +236,29 @@ public class Client {
                 ObjectOutputStream oos = new ObjectOutputStream(os);
                 ClientRequest request;
                 while (true) {
-                    synchronized (requests) {
-                        try {
-                            log.info("CLIENT Waiting on requests to write" + requests);
-                            requests.wait(50000);
-
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                    for (request = sosc.retrieveRequest();request!= null;request = sosc.retrieveRequest() ) {
-                        log.info("CLIENT Writing -  CMD " + request.getRequestCmd() + " Writing (REQ#" +request.getRequestNbr() + ")");
+                    for (request = sosc.retrieveRequest(); request != null; request = sosc.retrieveRequest()) {
                         oos.writeObject(request);
+
+// TODO 160731 PERFORMANCE BOTTLENECK HERE ! ????
+                        // WORKAROUND .... retrieveRequest() SHOIULD BLOCK UNTIL a request is queued !!
+try {
+
+Thread.sleep(500);
+} catch (InterruptedException e) {
+e.printStackTrace();
+}
+
+
+
+
                         //log.trace("Wrote requestCmd type " + request.getRequestCmd());
                     }
+                    //Thread.sleep(500);
                 }
-
-
-//                while (true) {
-//                    for (request = sosc.retrieveRequest();request!= null;request = sosc.retrieveRequest() ) {
-//                        oos.writeObject(request);
-//                        //log.trace("Wrote requestCmd type " + request.getRequestCmd());
-//                    }
-// /                   try {
-//                        Thread.sleep(10);//00);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-            //} catch (InterruptedException e) {
-            //    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                //} catch (InterruptedException e) {
+                //    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             } catch (SocketException se) {
-                log.warn("Communication error with server");        // fixme reconnection try
+                log.warn("Communication error with server");  /// Happens when server? or process goes offline      // fixme reconnection try
             } catch (IOException e) {
                 log.error("Error handling server : " + e);
                 log.write(e);
@@ -298,7 +269,7 @@ public class Client {
                     log.error("Couldn't close a socket, what's going on?");
                     log.write(e);
                 }
-                log.info("Connection with server closed");
+                log.info("Connection with server closed"); /// todo - give it a better go than this !!!  Retry
             }
         }
     }
@@ -321,8 +292,10 @@ public class Client {
          * and sending back the capitalized version of the string.
          */
         public void run() {
+            //           while (true) {
+
             try {
-                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+                ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 
                 Object o;
                 while (true) {
@@ -330,23 +303,18 @@ public class Client {
                     try {
                         o = ois.readObject();
                         if (o.getClass() == ServerResponse.class) {
-                            ServerResponse response = (ServerResponse)o;
+                            ServerResponse response = (ServerResponse) o;
                             sosc.queue(response);
+
                         }
 
-                        else if (o.getClass() == RaceRun.class) {
-                            RaceRun r = (RaceRun)o;
-                            log.trace(r.toString());
+                        if (o.getClass() == RaceRun.class) {
+                            RaceRun r = (RaceRun) o;
+                            //log.trace(r.toString());
                         }
 
-                        else if (o.getClass() == Penalty.class) {
-                            log.trace("Socket Read" + o );
-                        }
-                        else if (o.getClass() == Race.class) {
-                            log.trace("Socket Read" + o );
-                        }
-                        else {
-                            log.error("Socket Read" + o );
+                        if (o.getClass() == Penalty.class) {
+                            //log.trace("Socket Read" + o);
                         }
 
                     } catch (ClassNotFoundException e) {
@@ -356,8 +324,10 @@ public class Client {
                 }
 
             } catch (EOFException eof) {
-                log.warn("Problem communicating with SlalomApp server (EOF)");  // fixme reconnectiont try - scenario kill server
+                log.warn("Problem communicating with SlalomApp server (EOF)");  // TODO Handles when process or server offline
+                // fixme reconnectiont try - scenario kill server
 
+/// todo fixme This happens on training app when SlalomApp runs out of startlist racers
             } catch (IOException e) {
                 log.error("Problem communicating with SlalomApp server (I/O)" + e);
                 log.write(e);
@@ -368,7 +338,9 @@ public class Client {
                     log.error("Couldn't close a read socket, what's going on?");
                     log.write(e);
                 }
-                log.info("Connection to SlalomApp server closed");
+                log.info("Connection to SlalomApp server closed");  // TODO - Reach here is SlalomApp closes -
+                                                                    // TODO - Should we try to reconnect socket
+
             }
         }
     }

@@ -20,9 +20,9 @@ package com.tcay.slalom.UI;
 import java.io.Serializable;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen

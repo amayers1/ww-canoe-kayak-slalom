@@ -98,9 +98,8 @@ public class RunScoringTableCellRenderer extends DefaultTableCellRenderer
             if( value instanceof String )
             {
 
-                if (((String)value).trim().isEmpty() == false
-                        && ((String)value).compareTo("..")!= 0
-                        && ((String)value).compareTo("--")!= 0  && ((String)value).compareTo("-")!= 0) {
+                if (!((String)value).trim().isEmpty()
+                    && ((String)value).compareTo("--")!= 0  && ((String)value).compareTo("-")!= 0) {
                     Integer amount =  new Integer(   ((String)value).trim()   );                                  // Simulation ption in thread "AWT-EventQueue-0" java.lang.NumberFormatException: For input string: ".."
                     if( amount > 0 )
                     {

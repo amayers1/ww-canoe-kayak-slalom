@@ -28,9 +28,9 @@ import java.nio.channels.OverlappingFileLockException;
 import java.text.SimpleDateFormat;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -43,19 +43,19 @@ public class Log {
     private static String fileName;
     private static String newLine = System.getProperty("line.separator");
     // beware Java 1.6 doesNOT support YYYY, java 1.7 does
-    private static SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HH:mm:ss.SSS");//.format(new Date())
+    private static SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HH:mm:ss.SSS");//.format(new Date())  //C20160329 HH.mm.SS
 
     private FileOutputStream file;
     private int currentLevel = LOG_INFO;
 
-    protected static final int LOG_TRACE = 6;
-    protected static final int LOG_DEBUG = 5;
-    protected static final int LOG_INFO = 4;
-    protected static final int LOG_WARN = 3;
-    protected static final int LOG_ERROR = 2;
-    protected static final int LOG_FATAL = 1;
-    protected static final int LOG_EXCEPTION = 0;
-    protected static final int HIGHEST_LEVEL = LOG_TRACE;
+    public static final int LOG_TRACE = 6;
+    public static final int LOG_DEBUG = 5;
+    public static final int LOG_INFO = 4;
+    public static final int LOG_WARN = 3;
+    public static final int LOG_ERROR = 2;
+    public static final int LOG_FATAL = 1;
+    public static final int LOG_EXCEPTION = 0;
+    public static final int HIGHEST_LEVEL = LOG_TRACE;
 
     private int getCurrentLevel() {
         return currentLevel;
@@ -66,13 +66,33 @@ public class Log {
     }
 
 
+    private void initialize() {
+        try {
+            file = new FileOutputStream(fileName, true);
+            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                public void run() {
+                    info("Execution ends");
+                    System.out.println("Closing Logger");
+                    try {
+                        file.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     // protected used for testNG which cannot use static methods like getInstance
     protected Log() {
         int start = SlalomApp.class.getName().lastIndexOf(".") + 1;
         String name = SlalomApp.class.getName().substring(start);
         fileName = name + ".log";
 
-        try {
+        initialize();
+/*        try {
             file = new FileOutputStream(fileName, true);
             //ref https://www.securecoding.cert.org/confluence/display/java/FIO14-J.+Perform+proper+cleanup+at+program+termination
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -90,8 +110,37 @@ public class Log {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
     }
+
+
+    /*
+     * Added 20160329
+     */
+    public Log(String name) {
+        fileName = name + ".log";
+        initialize();
+/*        try {
+            file = new FileOutputStream(fileName, true);
+            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                public void run() {
+                    info("Execution ends");
+                    System.out.println("Closing Logger");
+                    try {
+                        file.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        */
+        info("Log " + name + " begins");
+    }
+
+
 
     private static Log instance = null;
     public synchronized static Log getInstance() {
@@ -144,10 +193,6 @@ public class Log {
         completeMessage.append(prefix);
         completeMessage.append("(t:").append(Thread.currentThread().getId()).append(")");
         completeMessage.append(message);
-
-
-        completeMessage.append(new String(" ="+Thread.currentThread().getName()));
-
         completeMessage.append(newLine);
         return completeMessage.toString();
     }
@@ -167,7 +212,6 @@ public class Log {
                     try {
                         // Write the bytes.
                         file.write(bytes);
-                        //file.write(new String(" ="+Thread.currentThread().getName()).getBytes());
                         file.flush();
                         written = true;
                     } catch (Exception e) {

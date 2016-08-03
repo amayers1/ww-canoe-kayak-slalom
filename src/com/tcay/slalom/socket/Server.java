@@ -17,6 +17,9 @@
 
 package com.tcay.slalom.socket;
 
+import com.tcay.SignalSemaphore;
+import com.tcay.slalom.BoatEntry;
+import com.tcay.slalom.UI.RaceTimingUI;
 import com.tcay.util.Log;
 import com.tcay.slalom.Penalty;
 import com.tcay.slalom.Race;
@@ -62,6 +65,7 @@ public class Server implements Runnable {
 
     public Server() {
         log = Log.getInstance();
+        //log.setCurrentLevel(Log.LOG_TRACE);
     }
 
 
@@ -71,6 +75,7 @@ public class Server implements Runnable {
 
     public void listen () {
         Socket socket;
+        SignalSemaphore signalSema;
         log.info("Server is running.");
         int clientNumber = 0;
         try {
@@ -79,24 +84,21 @@ public class Server implements Runnable {
 
                 while (true) {
                     socket = listener.accept();
-                    osw = new ObjectServerWriter(socket, clientNumber);
-                    osr = new ObjectServerReader(socket, clientNumber, osw);
+                    signalSema = new SignalSemaphore();
+                    osw = new ObjectServerWriter(socket, clientNumber, signalSema);
+                    osr = new ObjectServerReader(socket, clientNumber, osw, signalSema);
 
                     // not here, in run() for osr     xxx readers.add(osr);
-                    Thread thread =  new Thread(osw);
-                    thread.setName("ServerResponseWriterForClient" + clientNumber+1 );
-                    thread.start();
 
-                    thread = new Thread(osr);
-                    thread.setName("ServerRequestReaderForClient" + clientNumber+1 );
-                    thread.start();
+                    new Thread(osw).start();
+                    new Thread(osr).start();
                     clientNumber++;
                 }
             } finally {
                 listener.close();
             }
         } catch (IOException e) {
-            log.write(e);
+            log.write(e);///todo THIS Is App already running error or other
         }
 
     }
@@ -114,26 +116,23 @@ public class Server implements Runnable {
     private static class ObjectServerWriter implements Runnable {
         private Socket socket;
         private int clientNumber;
-        final ArrayList<ClientRequest> requests;
+        ArrayList<ClientRequest> requests;
         private Log log;
+        SignalSemaphore wakeupSemaphore;
 
-
-        public ObjectServerWriter(Socket socket, int clientNumber) {
+        public ObjectServerWriter(Socket socket, int clientNumber, SignalSemaphore wakeupSemaphore) {
             log = Log.getInstance();
-
+            this.wakeupSemaphore = wakeupSemaphore;
             this.socket = socket;
             this.clientNumber = clientNumber;
             requests = new  ArrayList<ClientRequest>();
-            log.trace("New connection with client# " + clientNumber + " at " + socket);
+            log.trace("New Client#" + clientNumber + " outbound connection at socket#" + socket);
         }
 
 
         public void addRequest(ClientRequest request) {
             synchronized (requests) {
                 requests.add(request) ;
-                log.info("SERVER Notify Requests");
-
-                requests.notifyAll();
             }
         }
 
@@ -152,18 +151,19 @@ public class Server implements Runnable {
         private ServerResponse composeResponse(ClientRequest request) {
             ServerResponse response = null;
             if (request.getRequestCmd() == ClientRequest.REQ_GET_SCORABLE_RUNS) {
-                response = new ServerResponse(request);//ClientRequest.REQ_GET_SCORABLE_RUNS);
+                response = new ServerResponse(request);
                 for (RaceRun run:Race.getInstance().getScorableRuns()){
                     response.add(run);
                 }
-                log.debug("Wrote Scorable run response");
+                log.trace("Wrote Scorable run response to sec=" + request.getSection());
             }
 
             if (request.getRequestCmd() == ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED) {
+                //System.out.println("RQST ");
                 //log.trace("Processing Get Nbr Runs Completed");
-                response = new ServerResponse(request);//new ServerResponse(ClientRequest.REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED);
+                response = new ServerResponse(request);
                 response.setRunsStartedOrCompletedCnt(Race.getInstance().getRunsStartedOrCompletedCnt());
-                //log.trace("Wrote runs started or completed response");
+                log.trace("Wrote # runs started or completed response");
             }
 
 
@@ -173,7 +173,7 @@ public class Server implements Runnable {
                 Boolean inSection = Race.getInstance().isGateInSection(request.getGate(),request.getSection());
 
                 response.add(inSection);
-                //log.trace("Wrote Is Gate in section response");
+                log.trace("Wrote Is Gate in section response");
             }
 
 
@@ -185,7 +185,7 @@ public class Server implements Runnable {
                 Boolean isUp = Race.getInstance().isUpstream(request.getGate());
 
                 response.add(isUp);
-                //log.trace("Wrote Is Gate upstream # " + request.getGate() + " " + isUp);
+                log.trace("Wrote Is Gate upstream # " + request.getGate() + " " + isUp);
             }
 
             if (request.getRequestCmd() ==  ClientRequest.REQ_GET_NBR_GATES ) {
@@ -195,7 +195,7 @@ public class Server implements Runnable {
                 Integer nbrGates  = Race.getInstance().getNbrGates();
 
                 response.add(nbrGates);
-                //log.trace("Wrote Nbr Gates");
+                log.trace("Wrote Nbr Gates");
             }
             if (request.getRequestCmd() ==  ClientRequest.REQ_GET_SECTIONS ) {
                 //log.trace("Processing  Sections");
@@ -204,8 +204,7 @@ public class Server implements Runnable {
                 for (JudgingSection s :Race.getInstance().getSections()){
                     response.add(s);
                 }
-                //log.trace("Wrote  Sections");
-
+                log.trace("Wrote  Sections");
             }
 
             if (request.getRequestCmd() ==  ClientRequest.REQ_IS_FIRST_GATE_IN_SECTION) {
@@ -213,14 +212,50 @@ public class Server implements Runnable {
                 response = new ServerResponse(request);//new ServerResponse(ClientRequest.REQ_IS_UPSTREAM);
                 rc = Race.getInstance().isFirstGateInSection(request.getGate());
                 response.add(rc);
+                log.trace("Wrote  REQ_IS_FIRST_GATE_IN_SECTION");
 
             }
+
+            if (request.getRequestCmd() ==  ClientRequest.REQ_NRC_EYES_START)     {
+                boolean rc = false;
+                response = new ServerResponse(request);//new ServerResponse(ClientRequest.REQ_IS_UPSTREAM);
+
+                RaceRun run = Race.getInstance().getNewestActiveRun();
+                response.add(run);
+                BoatEntry boatReadyToStart = Race.getInstance().getBoatInStartingBlock();
+                response.add(boatReadyToStart);
+
+            }
+
+            if (request.getRequestCmd() ==  ClientRequest.REQ_NRC_EYES_FINISH)     {
+                //boolean rc = false;
+                response = new ServerResponse(request);//new ServerResponse(ClientRequest.REQ_IS_UPSTREAM);
+
+                Race race = Race.getInstance();
+
+                // todo NRC crash here if we run out of start list and we get a finish from NRC
+
+                RaceRun run = race.getNewestCompletedRun();//OldestActiveRun();   //NewestCompletedRun
+
+
+
+                System.out.println("!!!! "+ run.getBoat().getRacer().getShortName() + " @2 ID=" + run.getStopWatch().getId() + "ServerResponse SERVER IS STOPWATCH STOPPED ?" + run.getStopWatch().isStopped() + " " + run.getBoat().getRacer().getShortName() + " Hash=" +System.identityHashCode(run.getStopWatch()) );
+
+                response.add(run);
+
+            }
+
+
+
+
             return(response);
         }
 
 
         /**
-         * Services this thread's client
+         * Services this thread's client by first sending the
+         * client a welcome message then repeatedly reading strings
+         * and sending back the capitalized version of the string.
          */
         public void run() {
             try {
@@ -231,60 +266,63 @@ public class Server implements Runnable {
 
                 Race race = Race.getInstance();
                 //Integer i = new Integer(1);
-                oos.writeObject(race);    /// fixme REALLY ??? Handshake ???
-                ServerResponse response;
-                while (true) {
-                    synchronized (requests) {
-                        try {
-                            log.info("SERVER Wait on Requests to ANSWER" + requests);
-                            requests.wait(60000);
-                            //log.info("SERVER Waiting - Got it !" + requests);
 
-                            for (request = retrieveRequest();request!= null;request = retrieveRequest() ) {
-                                response = composeResponse(request);
-                                if (response != null) {
-                                    log.info("SERVER Writing RESPONSE for CMD " + request.getRequestCmd() + " (REQ#" + response.getRequestNbr() + ")");
-                                    oos.writeObject(response);
-                                }
-                            }
+                oos.writeObject(race);
+                ServerResponse response;
+                //while (true) {
+                    while (true) {
+                        try {
+                            wakeupSemaphore.release();
                         } catch (InterruptedException e) {
-                            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                            e.printStackTrace();
                         }
-                    }
-/*                    while (true) {
+
+                        //System.out.println("DE QUEING AN OBJECT REQ !!");
+
                         for (request = retrieveRequest();request!= null;request = retrieveRequest() ) {
+                            //System.out.println("MAKING RESPONSE !!");
+
                             response = composeResponse(request);
+                            //System.out.println("MADE RESPONSE !!");
+
                             if (response != null) {
                                 oos.writeObject(response);
                             }
+                            //System.out.println("WROTE RESPONSE !!");
+
                         }
                         try {
-                            Thread.sleep(20);
+                            Thread.sleep(50);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                            e.printStackTrace();
                         }
                     }
-*/
 
-                }
+               // }
 //            } catch (InterruptedException ie) {
 //            } catch (ClassNotFoundException cnfe) {
 //                 ie.printStackTrace();
 
             } catch (IOException e) {
+
+                /// this is a port interrogation of UNKNOWN type - A PORT SCAN maybe
+
                 e.printStackTrace();
-                log.trace("Error handling client# " + clientNumber + ": " + e);
+                log.error("Error handling client# " + clientNumber + ": " + e);
             } finally {
                 try {
                     socket.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    log.trace("Couldn't close a socket, what's going on?");
+                    log.error("Couldn't close a socket, what's going on?");
                 }
-                log.trace("Connection with client# " + clientNumber + " closed");
+                log.info("Connection with client# " + clientNumber + " closed");
             }
         }
     }
+
+
+
 
 
     /**
@@ -296,30 +334,77 @@ public class Server implements Runnable {
         ObjectServerWriter writer;
         private Log log;
         JudgingSection judgingSection;
+        SignalSemaphore queSignale;
 
 
-        public ObjectServerReader(Socket socket, int clientNumber, ObjectServerWriter writer) {
+        public ObjectServerReader(Socket socket, int clientNumber, ObjectServerWriter writer, SignalSemaphore signalSemaphore) {
             log = Log.getInstance();
-
+            this.queSignale = signalSemaphore;
             this.socket = socket;
             this.clientNumber = clientNumber;
             this.writer = writer;
-            log.trace("SERVER: New Read connection with client# " + clientNumber + " at " + socket);
+            log.trace("New Client#" + clientNumber + " inbound connection at socket#" + socket);
         }
+
+
+
+        public static String padRight(String s, int n) {
+            String sRet="";
+            if (n > 0 ) {
+                sRet = String.format("%1$-" + n + "s", s);
+            }
+            return sRet;
+        }
+
+        public static String padLeft(String s, int n) {
+            return String.format("%1$" + n + "s", s);
+        }
+
+
+
+
+
+
 
         private void addPenaltiesFromClient(ClientRequest req) {
             RaceRun clientRun;
             RaceRun run;
-
+            //StringBuffer penaltyLog = new StringBuffer();
             clientRun = (RaceRun)req.getDataList().get(0);
             ArrayList<Penalty> clientPenaltyList = (ArrayList<Penalty>)req.getDataList().get(1);
-
             run       = Race.getInstance().findRun(clientRun);
-            for (Penalty p:clientPenaltyList) {
-                run.setPenalty(p.getGate(), p.getPenaltySeconds(), false);
+
+            //penaltyLog.append("PEN"+run.getLogString());
+            //penaltyLog.append(" s=" + req.getSection());
+
+            /// Todo fix this so that all requests have client section or identifier
+            int reportingSection = req.getSection();// - 1;  //todo 20160405   CHECK THIS CAREFULLY AJM AJM  removed "-1"
+            if (reportingSection<1) {
+                reportingSection = 0;
             }
 
-            Race.getInstance().updateResults();
+
+            //penaltyLog.append(padRight(" ", reportingSection * 15));
+            for (Penalty p:clientPenaltyList) {
+                //   TODO Exception in line below "run.setPenalty(p.getGate(), p.getPenaltySeconds(), false);"
+
+                /*
+                *Exception in thread "Thread-25" java.lang.NullPointerException
+                	at com.tcay.slalom.socket.Server$ObjectServerReader.addPenaltiesFromClient(Server.java:389  )
+                	at com.tcay.slalom.socket.Server$ObjectServerReader.run(Server.java:455)
+                	at java.lang.Thread.run(Thread.java:695)
+
+                 */
+                run.setPenalty(p.getGate(), p.getPenaltySeconds(), false);
+            //    penaltyLog.append(String.format("% 2d", p.getPenaltySeconds()));
+            }
+
+            //log.info(penaltyLog.toString());
+
+            run.logPenalties(log, reportingSection, "SPEN" );
+
+
+            Race.getInstance().updateResults(run);  // TODO REALLY NEEDED ???  YES - BUILD NEW HTML RACER page
         }
 
    /**
@@ -329,19 +414,57 @@ public class Server implements Runnable {
          */
         public void run() {
             try {
-                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+                ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 
                 Object o;
                 while (true) {
 
                     try {
+                        //System.out.println("WAITING ON AN OBJECT REQ !!");
                         o = ois.readObject();
+                        //System.out.println("READ AN OBJECT !!");
                         if (o.getClass() == ClientRequest.class)  {
                             ClientRequest req = (ClientRequest)o;
+// A150519 (ajm) Start
+// todo flush out
+                            if (req.getRequestCmd() == ClientRequest.REQ_NRC_FORCE_NEW_RUN){
+                                RaceTimingUI rtui =   RaceTimingUI.getInstance();
+
+                                 rtui.forceNRCNewRun();
+                            }
+
+                            if (req.getRequestCmd() == ClientRequest.REQ_NRC_EYES_START)  {
+                                Long startMillis = (Long)req.getDataList().get(0);
+                                RaceTimingUI.getInstance().fakeyStart(startMillis); //todo refactor out of UI
+
+                            }
+                            if (req.getRequestCmd() == ClientRequest.REQ_NRC_EYES_FINISH)  {
+
+                                RaceRun rr = Race.getInstance().getOldestActiveRun();//getNewestCompletedRun();
+
+
+
+                                Long startMillis = (Long)req.getDataList().get(0);
+                                Long stopMillis = (Long)req.getDataList().get(1);
+             //todo tghread timing issue with finishing the run and then server send last
+                                RaceTimingUI.getInstance().fakeyFinish(rr, startMillis, stopMillis);
+                                System.out.println("!!!!  @1 SERVER IS STOPWATCH STOPPED ?" + rr.getStopWatch().isStopped() + " From " +
+                                        rr.getStopWatch().getStartTime() + "-" + rr.getStopWatch().getEndTime());
+                                //RaceTimingUI.getInstance().     //todo refactor out of UI
+                                //RaceRun run = Race.getInstance().getNewestCompletedRun();
+                                //run.finish();
+                            }
+
+
+
+// A150519 (ajm) End
+
 
                             if (req.getRequestCmd() == ClientRequest.REQ_UPDATE_PENALTIES)  {
                                 addPenaltiesFromClient(req);
                             }
+
+
 
                             if (req.getRequestCmd() == ClientRequest.REQ_UPDATE_SECTION_ONLINE)  {
                                 Integer section = (Integer)req.getDataList().get(0);
@@ -349,24 +472,32 @@ public class Server implements Runnable {
                                 judgingSection = Race.getInstance().getSection(section);
                             }
 
+                            //System.out.println("QUEING AN OBJECT REQ !!");
+
                             writer.addRequest(req);
+                            queSignale.set();
+                           // System.out.println("QUEUED !!");
                         }
 
                         if (o.getClass() == Penalty.class) {
                             log.trace("Socket Read" + o);
                         }
-
+// THI IS A BUSY LOOP !!!!!!!
                         o = null;
 
 
                     } catch (EOFException eof) {
-                        log.warn("Communication error client ... closing connection");
+
+
+                        //todo update status bar
+                        log.warn("Communication error client ... closing connection c=#" + clientNumber + " s=" + judgingSection.getSectionNbr());
                         socket.close();           // todo code will attempt to close in finally below ... ok for now
                                            ///fixme .. close both ois and iis when disconnecting !!!  thread cleanup
 
 
                         if (judgingSection != null) {
                             judgingSection.setClientDeviceAttached(false);
+
                         }
                         log.info("connection closed");
                         break;
@@ -382,9 +513,9 @@ public class Server implements Runnable {
                 }
             } finally {
                 try {
-                    socket.close();
                     if (judgingSection != null) {
                         judgingSection.setClientDeviceAttached(false);
+                    socket.close();
                     }
                 } catch (IOException e) {
                     log.write(e);

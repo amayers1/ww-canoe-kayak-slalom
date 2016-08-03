@@ -23,9 +23,9 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -46,12 +46,7 @@ public class IpAddress {
                     continue;
 
                 Enumeration<InetAddress> addresses = iface.getInetAddresses();
-                boolean firstTime = true;
                 while(addresses.hasMoreElements()) {
-                    if (firstTime) {
-                        firstTime = false;
-                        Log.getInstance().info("Checking net addresses");
-                    }
                     InetAddress addr = addresses.nextElement();
                     ip = addr.getHostAddress();
                     Log.getInstance().info(iface.getDisplayName() + " " + ip);

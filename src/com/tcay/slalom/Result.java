@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -95,9 +95,16 @@ public class Result implements Comparable {
         int k = (getBoat().getBoatClass().compareTo(res.getBoat().getBoatClass())) * 100000;
 
 
-        double i = res.getBestRun().getElapsed()*100.0 + res.getBestRun().getTotalPenalties()*100.0 ;
+        double i = 0;
+        double j = 0;
+        try {
+            //todo 20151122 Null pointer exception here - 2015 Turkey Trot Day 2
+            i = res.getBestRun().getElapsed()*100.0 + res.getBestRun().getTotalPenalties()*100.0;
 
-        double j = getBestRun().getElapsed()*100.0 + getBestRun().getTotalPenalties()*100.0 ;
+            j = getBestRun().getElapsed()*100.0 + getBestRun().getTotalPenalties()*100.0;
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
 
 
 //        int x = (int)(j-i);

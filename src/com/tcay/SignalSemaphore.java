@@ -18,23 +18,18 @@
 package com.tcay;
 
 /**
- * ${PROJECT_NAME}
- *
- * Teton Cay Group Inc. ${YEAR}
- *
-
- * User: allen
- * Date: 10/11/13
- * Time: 6:37 PM
- *
+ * Created by allen on 4/5/16.
  */
-public class Singleton {
+public class SignalSemaphore {
+        private boolean signal = false;
 
-    static Singleton instance = null;
+        public synchronized void set() {
+            this.signal = true;
+            this.notify();
+        }
 
-    public synchronized static Singleton getInstance() {
-        if (instance==null)
-            instance = new Singleton();
-        return instance;
-    }
+        public synchronized void release() throws InterruptedException{
+            while(!this.signal) wait();
+            this.signal = false;
+        }
 }

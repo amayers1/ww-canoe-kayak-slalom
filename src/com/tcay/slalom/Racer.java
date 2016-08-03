@@ -139,7 +139,7 @@ public class Racer extends Person implements Serializable {
             setTo = "F";
 
         super.setSex(setTo);
-    };
+    }
 
     @Override
     public String getSex() {

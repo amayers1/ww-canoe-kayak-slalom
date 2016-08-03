@@ -43,9 +43,9 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -147,7 +147,7 @@ public class ResultsTableModel extends AbstractTableModel
                 log.warn("Empty result");
 
             try {
-                ImageIcon icon;// =  Race.getInstance().getTagHeuerTinyII();
+                ImageIcon icon;// =  Race.getInstance().getPhotoCellTinyII();
                 //if (row%17==0) {
                 //    icon = Race.getInstance().getStopWatchII();
                 //}
@@ -175,8 +175,8 @@ public class ResultsTableModel extends AbstractTableModel
                         o = r.getRun1().getResultString();
                         break;
                     case ResultsTable.COL_TIMIMGMODE1:        // run 1 timing mode
-                        icon =  Race.getInstance().getTagHeuerTinyII();
-                        if (r.getRun1().getTagHeuerRaceRun()==null) {
+                        icon =  Race.getInstance().getPhotoCellTinyII();
+                        if (r.getRun1().getPhotoCellRaceRun()==null) {
                             icon = Race.getInstance().getStopWatchII();
                         }
                         o = icon;
@@ -189,8 +189,8 @@ public class ResultsTableModel extends AbstractTableModel
                         o = r.getRun2().getResultString();
                         break;
                     case ResultsTable.COL_TIMIMGMODE2:
-                        icon =  Race.getInstance().getTagHeuerTinyII();
-                        if (r.getRun2().getTagHeuerRaceRun()==null) {
+                        icon =  Race.getInstance().getPhotoCellTinyII();
+                        if (r.getRun2().getPhotoCellRaceRun()==null) {
                             icon = Race.getInstance().getStopWatchII();
                         }
                         o = icon;
@@ -202,8 +202,8 @@ public class ResultsTableModel extends AbstractTableModel
                         o = r.getBestRun().getTotalTimeString();
                         break;
                     case ResultsTable.COL_TIMINGMODE_BEST:
-                        icon =  Race.getInstance().getTagHeuerTinyII();
-                        if (r.getBestRun().getTagHeuerRaceRun()==null) {
+                        icon =  Race.getInstance().getPhotoCellTinyII();
+                        if (r.getBestRun().getPhotoCellRaceRun()==null) {
                             icon = Race.getInstance().getStopWatchII();
                         }
                         o = icon;

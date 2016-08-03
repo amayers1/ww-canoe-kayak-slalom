@@ -154,6 +154,55 @@ public class ResultsTableAutoScroll extends ResultsTableSpectator {
             }
 
             i=0;
+
+
+
+            // TODO Priority 1 - THe Concurent exception below is on the immediately following code block "for (Result r:original) {"
+            
+            /*Exception in thread "AWT-EventQueue-0" java.util.ConcurrentModificationException
+	at java.util.AbstractList$Itr.checkForComodification(AbstractList.java:372)
+	at java.util.AbstractList$Itr.next(AbstractList.java:343)
+	at com.tcay.slalom.UI.tables.ResultsTableAutoScroll$ResultsTableModelAutoScroll.getSortedResults(ResultsTableAutoScroll.java:157)
+	at com.tcay.slalom.UI.tables.ResultsTableModel.getValueAt(ResultsTableModel.java:139)
+	at com.tcay.slalom.UI.tables.ResultsTableModel.getColumnClass(ResultsTableModel.java:115)
+	at javax.swing.JTable.getColumnClass(JTable.java:2662)
+	at javax.swing.JTable.getCellRenderer(JTable.java:5669)
+	at javax.swing.plaf.basic.BasicTableUI.paintCell(BasicTableUI.java:2071)
+	at javax.swing.plaf.basic.BasicTableUI.paintCells(BasicTableUI.java:1974)
+	at javax.swing.plaf.basic.BasicTableUI.paint(BasicTableUI.java:1770)
+	at javax.swing.plaf.ComponentUI.update(ComponentUI.java:153)
+	at javax.swing.JComponent.paintComponent(JComponent.java:760)
+	at javax.swing.JComponent.paint(JComponent.java:1037)
+	at javax.swing.JComponent._paintImmediately(JComponent.java:5106)
+	at javax.swing.JComponent.paintImmediately(JComponent.java:4890)
+	at javax.swing.RepaintManager$3.run(RepaintManager.java:814)
+	at javax.swing.RepaintManager$3.run(RepaintManager.java:802)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:86)
+	at javax.swing.RepaintManager.paintDirtyRegions(RepaintManager.java:802)
+	at javax.swing.RepaintManager.paintDirtyRegions(RepaintManager.java:745)
+	at javax.swing.RepaintManager.prePaintDirtyRegions(RepaintManager.java:725)
+	at javax.swing.RepaintManager.access$1000(RepaintManager.java:46)
+	at javax.swing.RepaintManager$ProcessingRunnable.run(RepaintManager.java:1680)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:715)
+	at java.awt.EventQueue.access$400(EventQueue.java:82)
+	at java.awt.EventQueue$2.run(EventQueue.java:676)
+	at java.awt.EventQueue$2.run(EventQueue.java:674)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:86)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:685)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:296)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:211)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:196)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:188)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:122)
+SPEN B=108 r=2                                0  0  0  0  0  0
+SPEN B=82 r=2                                               0  0  0  0  0  0
+NEW RaceRun(b)25run#2 D. Jung
+            */
+
             for (Result r:original) {
                 if (i<scrollPosition ) {
                     newList.add(r);

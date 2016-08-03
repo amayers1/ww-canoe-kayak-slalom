@@ -23,7 +23,7 @@ import com.intellij.uiDesigner.core.Spacer;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
-import com.tcay.slalom.tagHeuer.TagHeuerRaceRun;
+//import com.tcay.slalom.timingDevices.tagHeuer.TagHeuerRaceRun;
 import com.tcay.util.Log;
 import com.tcay.slalom.BoatEntry;
 import com.tcay.slalom.Race;
@@ -39,9 +39,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  * <p/>
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  * <p/>
  * <p/>
  * User: allen
@@ -98,6 +98,7 @@ public class RaceTimingUI {
 
     // State members
     private BoatEntry boatReadyToStart = null;
+    private RaceRun nextRunToFinish = null;
     private RaceRun rerunPending = null;
     private Race race;
 
@@ -218,7 +219,6 @@ public class RaceTimingUI {
         // starting block panel
         bibLabel = new BibLabel();
 
-        // update for hundreths of a second for running timers
         Timer screenUpdatetimer = new Timer(10,
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
@@ -227,6 +227,8 @@ public class RaceTimingUI {
                 });
         screenUpdatetimer.setInitialDelay(500);
         screenUpdatetimer.start();
+
+        //todo figure out how to make overtake Button visible at appropriate times
 
         racer1UI = new RaceTimingBoatOnCourseUI(this);
         racer2UI = new RaceTimingBoatOnCourseUI(this);
@@ -238,20 +240,139 @@ public class RaceTimingUI {
     }
 
     ///fixme
+
+    /* TODO Reimplement
     private void maybeMakeDUMMYTagHeuerTime(RaceRun run) {
         // dummy up
         if (Race.getInstance().isTagHeuerEmulation()) {   //fixme TEMPORARY DEMO
             if (Math.random() * 20 < 16) {
-                run.setTagHeuerRaceRun(new TagHeuerRaceRun(race.getCurrentRunIteration()));
+                run.setPhotoCellRaceRun(new PhotoCellRaceRun(race.getCurrentRunIteration()));
             }
         }
 
     }
+*/
+
+    public void fakeyStart(Long startMillis) {
+
+        startButtonActionHandler(startMillis);
+
+    }
+
+    public void fakeyFinish(RaceRun rr, Long startMillis, Long stopMillis) {
+
+        finishButtonSuperActionHandler(rr, startMillis, stopMillis);
 
 
-    private void startButtonActionHandler() {
+        //racer1UI.finishButtonActionHandler();
+        //finishButtonActionHandler();
+
+    }
+
+
+    // TODO ArrayList these 3 runs and simplify
+    protected void doOvertake(RaceRun run) {
+        RaceRun temp;
+        if (run == run1 && run2 != null) {
+            temp = run2;
+            run2 = run1;
+            run1 = temp;
+
+        } else if (run == run2 && run3 != null) {
+
+            temp = run3;
+            run3 = run2;
+            run2 = temp;
+        }
+        updateRunsUI();
+        updateButtonVisibility();
+    }
+
+    public void finishButtonSuperActionHandler(RaceRun rr, Long startMillis, Long stopMillis) {
+        if (rr != null) {/// todo fix this kludge
+            rr.finish();
+
+//todo add protection            if (rr.getStartMillis() == startMillis) {
+            rr.setStopMillis(stopMillis);
+//            }
+
+
+            if (racer1UI.getRun() == rr) {
+                racer1UI.finishButtonActionHandler(false);
+            } else if (racer2UI.getRun() == rr) {
+                racer2UI.finishButtonActionHandler(false);
+            } else if (racer3UI.getRun() == rr) {
+                racer3UI.finishButtonActionHandler(false);
+            }
+        }
+        updateButtonVisibility();
+
+    }
+
+    // handle training system timing input
+    private void startButtonActionHandler(Long startmillis) {
+        RaceRun run = startButtonActionHandler();
+
+// todo NRC NullPointer this happens NRC when SlalomApp runs out of startlist racers
+
+        try {
+            run.setStartMillis(startmillis);
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        // run.start();
+        //run.
+
+    }
+
+
+    public boolean startButtonActionHandlerFromPhotoEye(String bibNumber) {
+
+        boolean started = false;
+        JFrame frame = (JFrame) SwingUtilities.getRoot(jRacerInStartGateLabel);
+
+        if (SlalomDialogUI.confirmStart(frame, bibNumber)) {
+            startButtonActionHandler();
+            started = true;
+        }
+        return started;
+    }
+
+
+    public boolean stopButtonActionHandlerFromPhotoEye(String bibNumber) {
+
+        boolean stopped = false;
+        JFrame frame = (JFrame) SwingUtilities.getRoot(jRacerInStartGateLabel);
+
+        if (SlalomDialogUI.confirmFinish(frame, bibNumber)) {
+            RaceTimingBoatOnCourseUI thisBoatUI = null;
+
+
+            if (racer1UI.getRun().getBoat().getRacer().getBibNumber().equals(bibNumber)) {
+                thisBoatUI = racer1UI;
+
+            } else if (racer2UI.getRun().getBoat().getRacer().getBibNumber().equals(bibNumber)) {
+                thisBoatUI = racer2UI;
+
+            } else if (racer3UI.getRun().getBoat().getRacer().getBibNumber().equals(bibNumber)) {
+                thisBoatUI = racer3UI;
+
+            }
+
+
+            if (thisBoatUI != null) {
+                thisBoatUI.finishButtonActionHandler();
+                stopped = true;
+            }
+        }
+        return stopped;
+    }
+
+
+    //public // TODO KLUDGE TEMP 20160417
+    private RaceRun startButtonActionHandler() {
+        RaceRun run = null;
         if (boatReadyToStart != null) {
-            RaceRun run;
             if (rerunPending != null) {
                 run = rerunPending;
                 rerunPending = null;
@@ -269,37 +390,98 @@ public class RaceTimingUI {
             }
             run.start();
             // fixme
-            maybeMakeDUMMYTagHeuerTime(run);
+            /// TODO Reimplement maybeMakeDUMMYTagHeuerTime(run);
 
             shuffleActiveRuns(run);
-
-            racer1UI.updateRun(run1);
-            if (run2 != null) {
-                racer2UI.updateRun(run2);
-
-            }
-            if (run3 != null) {
-                racer3UI.updateRun(run3);
-            }
+            setNextRunToFinish();
+            updateRunsUI();
 
             boatReadyToStart = null;
             updateButtonVisibility();
         }
+        return run;
 
     }
 
-
-    private void updateRunTimers() {
-        if (run1 != null) {
-            racer1UI.updateTimer();
-            if (run2 != null) {
-                racer2UI.updateTimer();
-
-                if (run3 != null) {
-                    racer3UI.updateTimer();
-                }
-            }
+    private void setNextRunToFinish() {
+        nextRunToFinish = run1;
+        if (run2 != null) {
+            nextRunToFinish = run2;
         }
+        if (run3 != null) {
+            nextRunToFinish = run3;
+        }
+    }
+
+    protected RaceRun getNextRunToFinish() {
+        return (nextRunToFinish);
+    }
+
+
+    private void updateRunsUI() {
+        racer1UI.updateRun(run1);
+        //if (run2 != null) {
+        racer2UI.updateRun(run2);
+        //}
+        //if (run3 != null) {
+        racer3UI.updateRun(run3);
+        //}
+    }
+
+    // to clear out for null runs 20160412
+    private void updateRunTimers() {
+//        if (run1 != null) {
+        racer1UI.updateTimer();
+        //if (run2 != null) {
+        racer2UI.updateTimer();
+
+        //   if (run3 != null) {
+        racer3UI.updateTimer();
+        //   }
+        //}
+        //      }
+    }
+
+
+    protected boolean finishButtonShouldBeVisible(RaceRun run) {
+        boolean visible = false;
+
+        if (run != null) {
+            if (run == run1 && !run.isComplete() && (run2 == null || run2.isComplete())) {
+                visible = true;
+            }
+
+
+            if (run == run2 && !run.isComplete() && (run3 == null || run3.isComplete())) {
+                visible = true;
+            }
+
+            if (run == run3 && !run.isComplete()) {
+                visible = true;
+            }
+
+        }
+
+
+        return (visible);
+    }
+
+    /*
+    todo validate/consolidate with finishButtonShouldBeVisible
+
+    todo reduce access to protected
+     */
+    public BoatEntry boatReadyToFinish() {
+        BoatEntry boat = null;
+        if (run3 != null && !run3.isComplete()) {
+            boat = run3.getBoat();
+        } else if (run2 != null && !run2.isComplete() && (run3 == null || run3.isComplete())) {
+            boat = run2.getBoat();
+        } else if (run1 != null && !run1.isComplete() && (run2 == null || run2.isComplete())) {
+            boat = run1.getBoat();
+        }
+
+        return (boat);
     }
 
 
@@ -312,6 +494,21 @@ public class RaceTimingUI {
             }
         }
 
+    }
+
+
+    protected boolean canOvertake(RaceRun run) {
+        boolean canOvertake = false;
+
+        if (run == run1 && run2 != null && run2.isComplete() == false) {
+            canOvertake = true;
+        }
+
+        if (run == run2 && run3 != null && run3.isComplete() == false) {
+            canOvertake = true;
+        }
+
+        return canOvertake;
     }
 
     private void nextRacerToStartingBlock() {
@@ -332,6 +529,7 @@ public class RaceTimingUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Race.getInstance().setBoatInStartingBlock(boatReadyToStart);
         updateButtonVisibility();
     }
 
@@ -342,9 +540,20 @@ public class RaceTimingUI {
 
         waitingForAFinishLabel.setVisible(false);
 
-        if (boatReadyToStart == null && startListComboBox.getItemCount() > 0) {
+        if (startListComboBox.getItemCount() > 0) {
+            if (boatReadyToStart == null) {
+                nextRacerToStartingBlock();
+            }
+        } else if (Race.getTrainingMode() == 1) {
+            newRunButtonHandler();
             nextRacerToStartingBlock();
         }
+
+        //     else if (Race.getInstance().getTrainingMode() == 1) {
+        //             newRunButtonHandler();
+        //             boatReadyToStart = (BoatEntry) startListComboBox.getSelectedItem();
+        //             nextRacerToStartingBlock();
+        //     }
 
 
         if (boatReadyToStart == null) {
@@ -356,7 +565,15 @@ public class RaceTimingUI {
             DNSButton.setVisible(true);
             if (canDisplayAnotherRealtimeRun()) {
                 reRunButton.setVisible(true);
-                startButton.setVisible(true);
+                if (Race.getInstance().isPHOTO_EYE_AUTOMATIC()) {
+                    startButton.setEnabled(false);
+                    startButton.setVisible(true);
+                    startButton.setToolTipText("Not used in PHOTO_EYE_AUTOMATIC MODE");
+
+                } else {
+
+                    startButton.setVisible(true);
+                }
 
             } else {
                 waitingForAFinishLabel.setVisible(true);
@@ -365,6 +582,15 @@ public class RaceTimingUI {
         if (startListComboBox.getItemCount() == 0) {
             reRunButton.setVisible(true);
         }
+
+
+        updateRunsUI();
+// TODO fix this kludge to set OverTake Buttons vis after a FinishButtonandler
+        //   racer1UI.updateOvertakeButtonVisibility();
+        //   racer2UI.updateOvertakeButtonVisibility();
+        //   racer3UI.updateOvertakeButtonVisibility();
+
+
     }
     // doesn't work here,needed before frame setVisible and after pack()
     // startButton.requestFocusInWindow();
@@ -405,12 +631,31 @@ public class RaceTimingUI {
     }
 
 
+    protected void removeDNFrun(RaceRun run) {
+
+
+        if (run == run3) {
+            run3 = null;
+        } else if (run == run2) {
+            run2 = run3;
+            run3 = null;
+        } else if (run == run1) {
+            run1 = run2;
+            run2 = run3;
+            run3 = null;
+        } else {
+            log.warn("Can't bump any run from screen");
+        }
+        updateRunsUI();
+    }
+
+
     /**
      * @param frame
      */
     public void setTitle(JFrame frame) {
         String name = Race.getInstance().getName();
-        frame.setTitle("Timing - " + Race.getInstance().getRunTitle() + " " + name);
+        frame.setTitle("Timing - " + Race.getInstance().getRunTitle() + " " + name);  /// todo  RIO Get NULL if no race configured yet
     }
 
     /*
@@ -433,28 +678,33 @@ public class RaceTimingUI {
         setTitle(frame);
     }
 
+    public void forceNRCNewRun() {
+        startListComboBox.removeAllItems();
+        newRunButtonHandler();
+    }
+
+
     private void newRunButtonHandler() {
         Race.getInstance().incrementCurrentRunIteration();
         updateWhichRunLabel();
         loadStartList();
+        nextRacerToStartingBlock();  // A20150521
     }
+
+    static final long FAST_FORWARD_FACTOR = 10;
+    static final long fastestRun = 90;
 
 
     public void simulateRaceRunDuration() {
         long slowestRunPercentageFactor = 40;
-        //long maxAdditionalTimeOverFastest = slowestRunPercentageFactor * Race.getInstance().getDemoModeFastestRun();
+        long maxAdditionalTimeOverFastest = slowestRunPercentageFactor * fastestRun / 100;
         long runLength;
 
-        runLength = Race.getInstance().getDemoModeFastestRun();
+        runLength = fastestRun + (long) (Math.random() * 40);
 
-        long extra = (long) (Race.getInstance().getDemoModeFastestRun() * slowestRunPercentageFactor / 100.0);
-        extra = (long) (extra * Math.random());
-
-        runLength += extra;
-        runLength *= 1000;
         try {
-            //runLength = fastestRun + (long) (Math.random() * maxAdditionalTimeOverFastest);
-            //runLength = runLength * 1000 / FAST_FORWARD_FACTOR;
+            runLength = fastestRun + (long) (Math.random() * maxAdditionalTimeOverFastest);
+            runLength = runLength * 1000 / FAST_FORWARD_FACTOR;
             //if (loop < 3) {
             runLength /= 2;  /// got 2 racers on course  === divide by 2
             //}
@@ -467,20 +717,24 @@ public class RaceTimingUI {
 
 
     public void simulateRace() {
-        Race.getInstance().setIcfPenalties(false); // Too busy for DEMO UI
+        //..innerFinishPanel1;
+        //innerFinishPanel2;
+        //innerFinishPanel3;
 
-        SlalomApp.getInstance().menuSectionScoringAction(true);
+
+        SlalomApp.getInstance().menuSectionScoringAction();
         SlalomApp.getInstance().menuScrollingScoreBoardAction();
         SlalomApp.getInstance().menuVirtualScoringSheetAction();
 
         int loop = 0;
         int run = 1;
 
-        while (run <= 2) {
+        while (run <= Race.getInstance().getMaxRunsAllowed()) {
             while (startListComboBox.getItemCount() > 0) {
                 loop++;
                 startButtonActionHandler();
                 if (loop > 2) {
+                    //racer2UI = new RaceTimingBoatOnCourseUI(this);
                     racer3UI.finishButtonActionHandler();
                 }
                 simulateRaceRunDuration();
@@ -568,7 +822,7 @@ public class RaceTimingUI {
         spacerForLayoutManager = new JLabel();
         startPanel.add(spacerForLayoutManager, cc.xy(3, 3));
         finishPanel = new JPanel();
-        finishPanel.setLayout(new FormLayout("fill:134px:noGrow,left:4dlu:noGrow,fill:48px:noGrow,left:8dlu:noGrow,fill:179px:noGrow,left:5dlu:noGrow,fill:117px:noGrow,fill:14px:noGrow,fill:85px:noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow", "center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow"));
+        finishPanel.setLayout(new FormLayout("fill:134px:noGrow,left:4dlu:noGrow,fill:48px:noGrow,left:8dlu:noGrow,fill:179px:noGrow,left:5dlu:noGrow,fill:117px:noGrow,fill:14px:noGrow,fill:85px:noGrow,left:28dlu:noGrow,fill:max(d;4px):noGrow", "center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow,top:3dlu:noGrow,center:max(d;4px):noGrow"));
         finishPanel.setToolTipText("Finish Line shows all boats currently started and on the course");
         mainPanel.add(finishPanel, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(634, 155), null, 0, false));
         finishPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Finish Line"));

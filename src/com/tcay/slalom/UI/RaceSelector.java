@@ -30,15 +30,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * SlalomApp
- *
- * Teton Cay Group Inc. 2013
- *
-
+ * ${PROJECT_NAME}
+ * <p/>
+ * Teton Cay Group Inc. ${YEAR}
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 10/20/13
  * Time: 5:08 PM
- *
  */
 public class RaceSelector {
     private JComboBox raceChoices;
@@ -68,7 +67,6 @@ public class RaceSelector {
         ((JFrame) c).dispose();
 
     }
-
 
 
     private void createUIComponents() {

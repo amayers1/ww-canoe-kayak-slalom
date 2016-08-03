@@ -30,9 +30,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -44,6 +44,8 @@ public class StatusBar {
     /// todo make class
     //private static StatusBar instance = null;
     private JLabel tagHeuerStatusLabelImageIcon;
+    private JLabel microGateStatusLabelImageIcon;
+
     private JPanel statusPanel;
     private JLabel runIteration;
     private JLabel sectionsConnected;
@@ -76,15 +78,27 @@ public class StatusBar {
         String sectionOnline = Race.getInstance().getSectionsConnectedNamesAsString();
         runIteration.invalidate();
 
-        if (Race.getInstance().isTagHeuerEmulation()) {   // fake out
+        if (Race.getInstance().getTagHeuerEnabled()) { // TODO Reimplement isTagHeuerEmulation()) {   // fake out
             tagHeuerStatusLabelImageIcon.setEnabled(true);
+            tagHeuerStatusLabelImageIcon.setVisible(true);
             tagHeuerStatusLabelImageIcon.invalidate();
 
         }
         else {
             tagHeuerStatusLabelImageIcon.setEnabled(Race.getInstance().getTagHeuerConnected());
             tagHeuerStatusLabelImageIcon.invalidate();
+            if (Race.getInstance().getMicrogateEnabled()){
+                microGateStatusLabelImageIcon.setEnabled(true);
+                microGateStatusLabelImageIcon.setVisible(true);
+
+                microGateStatusLabelImageIcon.invalidate();
+            }
         }
+
+
+// todo ??? HMMM Why?        microGateStatusLabelImageIcon.setRequestFocusEnabled(Race.getInstance().getMicrogateConnected());
+
+
 
         sectionsConnected.setText(sectionOnline);
         sectionsConnected.invalidate();
@@ -98,6 +112,8 @@ public class StatusBar {
         statusPanel = new JPanel();
 
         tagHeuerStatusLabelImageIcon = new JLabel(RaceResources.getInstance().getTagHeuerII());
+        microGateStatusLabelImageIcon = new JLabel(RaceResources.getInstance().getMicrogateII());
+
         runIteration = new JLabel();
         sectionsConnected = new JLabel();
 
@@ -134,7 +150,11 @@ public class StatusBar {
 
         statusPanel.add(tagHeuerStatusLabelImageIcon);
         tagHeuerStatusLabelImageIcon.setEnabled(false);
+        tagHeuerStatusLabelImageIcon.setVisible(false);
 
+        statusPanel.add(microGateStatusLabelImageIcon);
+        microGateStatusLabelImageIcon.setEnabled(false);//true);   //todo
+        microGateStatusLabelImageIcon.setVisible(false);
 
         Timer screenUpdatetimer = new Timer(500,
                 new ActionListener() {

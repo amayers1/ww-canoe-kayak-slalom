@@ -22,19 +22,15 @@ import com.tcay.util.Log;
 import javax.swing.*;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
  * User: allen
  * Date: 10/30/13
  * Time: 10:34 AM
  *
- * Id:   $Id$
- * Rev:  $Rev$
- *
  */
-
 
 
 /**

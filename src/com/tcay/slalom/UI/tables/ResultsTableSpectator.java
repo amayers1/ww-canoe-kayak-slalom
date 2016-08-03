@@ -84,10 +84,11 @@ public class ResultsTableSpectator extends ResultsTable {
         for (int i=0; i<table.getColumnCount(); i++) {
             TableColumn column = table.getColumnModel().getColumn(i);
 
+//            System.out.println("Column " + i + "= " +table.getColumnName(i));
             if (table.getColumnName(i).compareTo(ResultsTable.COL_BOATCLASS_NAME) == 0 ) {
-                column.setPreferredWidth(50);
-                column.setMaxWidth(50);
-                column.setMinWidth(30);
+                column.setPreferredWidth(60);
+                column.setMaxWidth(60);
+                column.setMinWidth(40);
             }
             if (table.getColumnName(i).compareTo(ResultsTable.COL_POSITION_NAME) == 0 ) {
                 column.setPreferredWidth(50);

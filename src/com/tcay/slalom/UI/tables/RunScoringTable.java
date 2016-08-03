@@ -45,9 +45,9 @@ import javax.swing.table.TableColumn;
 import javax.swing.JLabel;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen

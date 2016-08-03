@@ -33,8 +33,8 @@ import java.util.ArrayList;
  * Client Requests to Server for information or to update Server Race data
  */
 public class ClientRequest implements Serializable {
-    public static final int REQ_GET_NBR_GATES = 1;
-    public static final int REQ_GET_SCORABLE_RUNS = 2;
+    public static final int REQ_GET_SCORABLE_RUNS = 1;
+    public static final int REQ_GET_NBR_GATES = 2;
     public static final int REQ_GET_NBR_RUNS_STARTED_OR_COMPLETED = 3;
     public static final int REQ_GET_SECTIONS = 4;
 
@@ -46,6 +46,12 @@ public class ClientRequest implements Serializable {
     // These are data upstream to server
     public static final int REQ_UPDATE_PENALTIES = 20;
     public static final int REQ_UPDATE_SECTION_ONLINE = 21;
+
+
+    // These NEW 20150519 are data upstream to server
+    public static final int REQ_NRC_EYES_START = 50;     // Send a start from the NRC Photo Eye System
+    public static final int REQ_NRC_EYES_FINISH = 51;    // Send a finish from the NRC Photo Eye System
+    public static final int REQ_NRC_FORCE_NEW_RUN =52;   /// force system to reload start list and increment run
 
 
 
@@ -62,6 +68,10 @@ public class ClientRequest implements Serializable {
 
     public Integer getRequestNbr() {
         return requestNbr;
+    }
+
+    public void setSection(int section) {
+        this.section = section;
     }
 
 

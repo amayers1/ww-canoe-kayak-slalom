@@ -17,16 +17,20 @@
 
 package com.tcay.slalom;
 
+import com.tcay.RS232.PhotoEyeListener;
+import com.tcay.slalom.UI.RaceTimingUI;
+import com.tcay.slalom.UI.http.SlalomRacerResultsHTTP;
+import com.tcay.slalom.UI.http.SlalomResultsHTTP;
+import com.tcay.slalom.timingDevices.PhotoCellAgent;
+import com.tcay.slalom.timingDevices.PhotoCellRaceRun;
 import com.tcay.util.DuplicateBibException;
 import com.tcay.util.Log;
-import com.tcay.RS232.TagHeuerCP520Listener;
 import com.tcay.slalom.UI.JudgingSection;
 import com.tcay.slalom.UI.tables.ResultsTableModel;
 import com.tcay.slalom.UI.tables.RunScoringTableModel;
-import com.tcay.slalom.tagHeuer.TagHeuerRaceRun;
-import com.tcay.util.XStreamRaceConverter;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
+///import com.tcay.util.XStreamRaceConverter;
+//import com.thoughtworks.xstream.XStream;
+//import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import javax.swing.*;
 import java.io.*;
@@ -44,12 +48,50 @@ public class Race extends RaceResources implements Serializable
 
 {
 
+
     private transient static Race instance = null;
-    private transient static final int MAX_RUNS_ALLOWED = 2;
+
+    private transient static final int trainingMode = 0;// todo If this is one then AUTO increment of runs happens, CANT USE IN RACE
+    //or last racer in first runs has thte run number in race set to 2 before they finish == NO MATCHING
+    // Run on FINISH//  e.g Run 1 for last racer doesn't == run 2 iteration for auto incremented  race 1;
+    private transient int MAX_RUNS_ALLOWED = 2; //99;//2;
 
 
     // Race Configuration
     private transient Calendar cal = Calendar.getInstance();
+
+    public PhotoCellAgent getPhotoCellAgent() {
+        return photoCellAgent;
+    }
+
+
+    public ImageIcon getPhotoCellTinyII() {
+        if (timyEnabled) {
+            return tagHeuerTinyII;
+        }
+        if (tagHeuerEnabled) {
+            return tagHeuerTinyII;
+        }
+        //      if (microgateEnabled) {
+        return microgateII;
+        //      }
+        //      return null;
+
+
+    }
+
+
+    private transient PhotoCellAgent photoCellAgent;//Calendar cal = Calendar.getInstance();
+    //private transient PhotoCellAgent agent;
+
+    public boolean isPHOTO_EYE_AUTOMATIC() {
+        return PHOTO_EYE_AUTOMATIC;
+    }
+
+    // PHOTO_EYE_AUTOMATIC mode requires only verification of timing device impulses, and doesn't use
+    // the START / FINISH button manual backup timing
+    private transient boolean PHOTO_EYE_AUTOMATIC = false;// TODO parameterize true;
+
     Date date = cal.getTime();
 
 
@@ -59,7 +101,6 @@ public class Race extends RaceResources implements Serializable
     private List<Integer> upstreamGates;
     private ArrayList<JudgingSection> judgingSections;
     private List<Racer> racers;
-    private boolean tagHeuerEmulation = false;
     private boolean icfPenalties = false;
 
 
@@ -73,42 +114,89 @@ public class Race extends RaceResources implements Serializable
 
 
     // Transient Objects
-    private transient Thread photoCellThread;     // Thread to get input from Photocells
-    private transient TagHeuerCP520Listener tagHeuerListener;   // Tag Heuer CP 520/540 listener/command processor
+
+    // Move these to SlalomApp or elsewhere in a device handler object
+    private transient Thread photoEyeThread;     // Thread to get input from Photocells
+    private transient PhotoEyeListener photoEyeListener;   // Tag Heuer CP 520/540 listener/command processor
+
+
     private transient ArrayList<Result> results = new ArrayList<Result>();
     private transient LastRace lastRace;
-    private transient Boolean tagHeuerConnected;
-    private transient Log log;
-    private transient XStream xstream;
 
-    private transient long demoModeFastestRun = 1;
+    public Boolean getTagHeuerEnabled() {
+        return tagHeuerEnabled;
+    }
+
+    public Boolean getMicrogateEnabled() {
+        return microgateEnabled;
+    }
+
+    public void setTagHeuerEnabled(Boolean tagHeuerEnabled) {
+        this.tagHeuerEnabled = tagHeuerEnabled;
+    }
+
+    public void setMicrogateEnabled(Boolean microgateEnabled) {
+        this.microgateEnabled = microgateEnabled;
+    }
+
+    public void setTimyEnabled(Boolean timyEnabled) {
+        this.timyEnabled = timyEnabled;
+    }
+
+    private Boolean tagHeuerEnabled = false;
+    private Boolean microgateEnabled = false;
+    private Boolean timyEnabled = false;
+
+    private transient Boolean tagHeuerConnected;
+    private transient Boolean microgateConnected;
+    private transient Log log;
+    //    private transient XStream xstream;
+    private transient SlalomResultsHTTP resultsHTTP;
+    private transient SlalomRacerResultsHTTP racerResultsHTTP;
 
 
     public synchronized static Race getInstance() {
-        if (instance==null)  {
+        if (instance == null) {
             instance = new Race();
         }
         return instance;
     }
 
-    public long getDemoModeFastestRun() {
-        return demoModeFastestRun;
+    public static int getTrainingMode() {
+        return trainingMode;
     }
 
-    public boolean isTagHeuerEmulation() {
-        return tagHeuerEmulation;
+    public int getMaxRunsAllowed() {
+        return MAX_RUNS_ALLOWED;
     }
 
-    public void setTagHeuerEmulation(boolean tagHeuerEmulation) {
-        this.tagHeuerEmulation = tagHeuerEmulation;
-    }
+//    public boolean isTagHeuerEmulation() {
+//        return tagHeuerEmulation;
+//    }
+//
+//    public void setTagHeuerEmulation(boolean tagHeuerEmulation) {
+//        this.tagHeuerEmulation = tagHeuerEmulation;
+//    }
 
     public Boolean getTagHeuerConnected() {
         return tagHeuerConnected;
     }
 
+    public Boolean getMicrogateConnected() {
+        return microgateConnected;
+    }
+
     public void setTagHeuerConnected(Boolean tagHeuerConnected) {
         this.tagHeuerConnected = tagHeuerConnected;
+    }
+
+
+    public void setPhotoCellAgent(PhotoCellAgent photoCellAgent) {
+        this.photoCellAgent = photoCellAgent;
+    }
+
+    public void setMicrogateConnected(Boolean microgateConnected) {
+        this.microgateConnected = microgateConnected;
     }
 
     public boolean isIcfPenalties() {
@@ -120,12 +208,33 @@ public class Race extends RaceResources implements Serializable
     }
 
 //    public Thread getPhotoCellThread() {
-//        return photoCellThread;
+//        return photoEyeThread;
 //    }
 
-//    public void setPhotoCellThread(Thread photoCellThread) {
-//        this.photoCellThread = photoCellThread;
+//    public void setPhotoCellThread(Thread photoEyeThread) {
+//        this.photoEyeThread = photoEyeThread;
 //    }
+
+
+    public boolean TODOKludgeStartFRomPhotoEye(String bibNumber) {
+        boolean started = false;
+        RaceTimingUI timingUI =  RaceTimingUI.getInstance();
+        if (timingUI.startButtonActionHandlerFromPhotoEye(bibNumber)) {
+            started = true;
+        }
+        return started;
+    }
+
+
+    public boolean TODOKludgeFinishFRomPhotoEye(String bibNumber) {
+        boolean stopped = false;
+        RaceTimingUI timingUI =  RaceTimingUI.getInstance();
+        if (timingUI.stopButtonActionHandlerFromPhotoEye(bibNumber)) {
+            stopped = true;
+        }
+        return stopped;
+    }
+
 
 
     public JudgingSection updateSectionOnline(Integer section) {
@@ -141,14 +250,16 @@ public class Race extends RaceResources implements Serializable
 
     }
 
-/*
-    public void startTagHeuerListener() {
 
-        if (photoCellThread == null) {
+    public void maybeStartPhotoCellInterface() {
 
-            tagHeuerListener  = new TagHeuerCP520Listener();
-            photoCellThread = new Thread(tagHeuerListener);
-            photoCellThread.start();
+        if (photoEyeThread == null) {
+
+            photoEyeListener = new PhotoEyeListener();
+            photoEyeThread = new Thread(photoEyeListener);
+            photoEyeThread.start();
+
+            photoCellAgent = photoEyeListener.getAgent();
 
         }
         else {
@@ -156,18 +267,18 @@ public class Race extends RaceResources implements Serializable
         }
 
     }
-*/
+
 
     public void setUpstreamGates(List<Integer> upstreamGates) {
         this.upstreamGates = upstreamGates;
     }
 
-    public TagHeuerCP520Listener getTagHeuerListener() {
-        return tagHeuerListener;
+    public PhotoEyeListener getPhotoEyeListener() {
+        return photoEyeListener;
     }
 
-    public void setTagHeuerListener(TagHeuerCP520Listener tagHeuerListener) {
-        this.tagHeuerListener = tagHeuerListener;
+    public void setPhotoEyeListener(PhotoEyeListener photoEyeListener) {
+        this.photoEyeListener = photoEyeListener;
     }
 
 
@@ -210,7 +321,9 @@ public class Race extends RaceResources implements Serializable
             case 2:
                 ordinal = SECOND;
                 break;
-
+            default:
+                ordinal =  new Integer(currentRunIteration).toString();
+                break;
         }
 
 
@@ -242,18 +355,29 @@ public class Race extends RaceResources implements Serializable
 
 
     private Race() {
+        if (trainingMode==1) {
+            MAX_RUNS_ALLOWED = 99;
+        }
+
         log = Log.getInstance();
-        xstream = initXML();
+      //  xstream = initXML();   D20160407 RIO CAUSING CRASH
         clearRace();
 
         lastRace = new LastRace();
         tagHeuerConnected = false;//new Boolean(false);
-
+        microgateConnected = false;
+        resultsHTTP = new SlalomResultsHTTP();
         // todo set up on timing page to test and then enable CP520
-        Thread t = new Thread( tagHeuerListener = new TagHeuerCP520Listener());
-        t.setName("TagHeuerListener");
-        t.start();
+//C160315        Thread t = new Thread( photoEyeListener = new PhotoEyeListener());
+//C160315        t.start();
+
+        //TODO - determine if any photo eyes in use, add appropriate handler/listener
+        //D20160305maybeStartPhotoCellInterface();  Was being called in ClietnPenalty App
+
+        racerResultsHTTP = new SlalomRacerResultsHTTP();
     }
+
+
 
 
 
@@ -380,11 +504,14 @@ public class Race extends RaceResources implements Serializable
         for (JudgingSection s:judgingSections) {
             if (section == currSection) {
                 if (iGate >= s.getFirstGate() && iGate <= s.getLastGate())  {
+//System.out.println(iGate + " is in section " + section);
                     return true;
                 }
             }
             currSection++;
         }
+//        System.out.println(iGate + " is NOT in section " + section);
+
         return false;
     }
 
@@ -471,6 +598,8 @@ public class Race extends RaceResources implements Serializable
         synchronized (activeRuns) {
             activeRuns.add(newRun);
             runsStartedOrCompletedCnt++;   /// count of total racer starts
+
+            System.out.println("CURRENTLY " + activeRuns.size() + " ACTIVE RUNS");
         }
     }
 
@@ -485,6 +614,64 @@ public class Race extends RaceResources implements Serializable
             completedRuns.add(run);
         }
     }
+
+    public boolean isDNF(String bibNumber, int runNumber) {boolean dnf = false;
+       for (RaceRun rr:completedRuns) {
+           if (rr.getBoat().getRacer().getBibNumber().equals(bibNumber) &&
+               rr.getRunNumber() == runNumber ) {
+               if (rr.isDnf()) {
+                   dnf = true;
+
+               }
+           }
+        }
+        return(dnf);
+    }
+
+
+
+    //A150009 (ajm) Start
+
+    public RaceRun getNewestCompletedRun() {
+        RaceRun run = null;
+    //    if (getActiveRuns().size() > 0) {
+    //        run = getActiveRuns().get(0);
+    //    }
+
+        int size = getCompletedRuns().size();
+        if ( size>0) {
+
+          run = getCompletedRuns().get(size-1);
+        }
+
+        return(run);
+
+    }
+
+    public RaceRun getNewestActiveRun() {
+        RaceRun run = null;
+        int size = getActiveRuns().size();
+        if (size > 0) {
+            run = getActiveRuns().get(size-1);
+        }
+        return(run);
+
+    }
+
+    public RaceRun getOldestActiveRun() {
+        RaceRun run = null;
+        int size = getActiveRuns().size();
+        if (size > 0) {
+            run = getActiveRuns().get(0);
+        }
+        return(run);
+
+    }
+
+
+
+    //A150009 (ajm) End
+
 
     public long getRunsStartedOrCompletedCnt() {
         return runsStartedOrCompletedCnt;
@@ -512,10 +699,8 @@ public class Race extends RaceResources implements Serializable
     public ArrayList<RaceRun> getScorableRuns() {
         ArrayList<RaceRun> scorable = new ArrayList<RaceRun>();
         addaFewCompletedRuns(scorable);
-        synchronized (activeRuns) {
-            for (RaceRun r:activeRuns) {       //fixme fix OK? ConcurrentModificationException when run with DemoMode runs < 2.0 seconds
-                scorable.add(r);
-            }
+        for (RaceRun r:activeRuns) {
+            scorable.add(r);
         }
 
         return scorable;
@@ -560,13 +745,14 @@ public class Race extends RaceResources implements Serializable
 
                 returnString = "Bib number " + boat.getRacer().getBibNumber() +  " occurs more than once in " + boat.getBoatClass();
                 System.out.println(returnString);
+                log.warn(returnString);
             }
         }
         return(returnString);
     }
 
 
-
+/*
     private XStream initXML() {
         XStream xstream = new XStream(new DomDriver());
         xstream.registerConverter(new XStreamRaceConverter());
@@ -579,9 +765,9 @@ public class Race extends RaceResources implements Serializable
 
         return(xstream);
     }
+*/
 
-
-
+/*
     private void saveXML() {
         String filename = getName() + ".xml";
 
@@ -602,7 +788,7 @@ public class Race extends RaceResources implements Serializable
             }
         }
 
-        //log.debug("Saved serialized data to " + filename);
+        log.trace("Saved XML to " + filename);
 
 
 
@@ -666,12 +852,12 @@ public class Race extends RaceResources implements Serializable
         //Race race  = (Race)xstream.fromXML(xml);
     }
 
-
+*/
 
     //fixme todo change all to XML serialization, so class versions are NOT an issue !
     public void saveSerializedData() {
 
-        saveXML();
+        //saveXML();
         try
         {
             lastRace.setName(getName());
@@ -680,10 +866,27 @@ public class Race extends RaceResources implements Serializable
 
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this);
+            out.writeObject(this);   //// This was line 869 in bwlow Log -->> Got CONCurrentMpdificationException ///20160727 in test
+            /*
+at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
+	at com.tcay.slalom.Race.saveSerializedData(Race.java:869)
+	at com.tcay.slalom.Race.updateResults(Race.java:1177)
+	at com.tcay.slalom.Race.updateResults(Race.java:1168)
+	at com.tcay.slalom.RaceRun.updateResults(RaceRun.java:535)
+	at com.tcay.slalom.RaceRun.setPhotoCellRaceRun(RaceRun.java:139)
+	at com.tcay.slalom.Race.associatePhotoCellRun(Race.java:1163)
+	at com.tcay.slalom.timingDevices.PhotoCellAgent.saveResult(PhotoCellAgent.java:57)
+	at com.tcay.slalom.timingDevices.tagHeuer.TagHeuerAgent.processDeviceOutput(TagHeuerAgent.java:174)
+	at com.tcay.RS232.PhotoEyeListener.readAndProcess(PhotoEyeListener.java:241)
+	at com.tcay.RS232.PhotoEyeListener.processPhotoEyeDataFromDevice(PhotoEyeListener.java:190)
+	at com.tcay.RS232.PhotoEyeListener.listenAndProcessPortOutput(PhotoEyeListener.java:304)
+	at com.tcay.RS232.PhotoEyeListener.run(PhotoEyeListener.java:76)
+            */
+
+
             out.close();
             fileOut.close();
-            //log.debug("Saved serialized data to " + filename);
+            log.trace("Saved serialized data to " + filename);
 
         }catch(IOException i)
         {
@@ -713,11 +916,12 @@ public class Race extends RaceResources implements Serializable
                 fileIn.close();
 
                 tagHeuerConnected = new Boolean(false);    /// make sure it exists - transient object
+                microgateConnected = new Boolean(false);   /// make sure it exists - transient object
 
             } catch ( InvalidClassException ice) {
                 log.info("Invalid Class from deserialization " + ice.classname);
             } catch (EOFException eof) {
-                //log.info("EOF on Serialized data");
+                log.info("EOF on Serialized data");
             } catch(IOException i) {
                 i.printStackTrace();
             //} catch (ClassNotFoundException cnf) {
@@ -726,7 +930,7 @@ public class Race extends RaceResources implements Serializable
                 e.printStackTrace();
             }
         } catch (FileNotFoundException fnf) {
-            ;  // Empty block OK - ignore this exception
+              // Empty block OK - ignore this exception
         }
 
         // load required transient members
@@ -792,7 +996,10 @@ public class Race extends RaceResources implements Serializable
                 this.runsStartedOrCompletedCnt = raceFromSerialized.runsStartedOrCompletedCnt;
                 this.currentRunIteration = raceFromSerialized.currentRunIteration;  // are we on 1st runs, or 2nd runs ?
                 this.racers = raceFromSerialized.racers;
-                this.tagHeuerEmulation = raceFromSerialized.tagHeuerEmulation;
+                this.tagHeuerEnabled = raceFromSerialized.tagHeuerEnabled; // todo REMOVE ->tagHeuerEmulation = raceFromSerialized.tagHeuerEmulation;
+                this.microgateEnabled = raceFromSerialized.microgateEnabled;
+                this.microgateEnabled = raceFromSerialized.timyEnabled;
+
                 this.icfPenalties = raceFromSerialized.icfPenalties;
             }
 
@@ -861,7 +1068,7 @@ public class Race extends RaceResources implements Serializable
         return(same);
     }
 
-    private boolean sameRun(RaceRun ourRun, TagHeuerRaceRun otherRun) {
+    private boolean sameRun(RaceRun ourRun, PhotoCellRaceRun otherRun) {
         boolean same = false;
         BoatEntry b;
         Racer racer;
@@ -888,7 +1095,7 @@ public class Race extends RaceResources implements Serializable
 
 
 
-    // fixme consolidate with saveTagHeuer() method
+    // fixme consolidate with associatePhotoCellRun() method
     public RaceRun findRun(RaceRun clientRaceRun) {
 
         RaceRun matchingRun = null;
@@ -919,16 +1126,33 @@ public class Race extends RaceResources implements Serializable
     }
 
 
+    private BoatEntry boatInStartingBlock=null;
+    public BoatEntry getBoatInStartingBlock() {
+        return boatInStartingBlock;
+    }
+    public void setBoatInStartingBlock(BoatEntry boat) {
+        boatInStartingBlock = boat;
+    }
 
 
-    public void saveTagHeuer(TagHeuerRaceRun tagHeuerRun) {
+
+    public BoatEntry getBoatReadyToFinish() {
+        RaceTimingUI timingUI =  RaceTimingUI.getInstance();
+        return    timingUI.boatReadyToFinish();
+    }
+
+
+
+    public void associatePhotoCellRun(PhotoCellRaceRun photoCellRun) {
 
         RaceRun matchingRun = null;
 
         for (RaceRun r:activeRuns) {
             try {
-                if (sameRun(r, tagHeuerRun)) {
+                if (sameRun(r, photoCellRun)) {
                     matchingRun = r;
+                   // log.info/*trace*/("Found bib#" + r.getBoat().getRacer().getBibNumber() + " r#"+ r.getRunNumber() +  " in Active Runs");
+
                 }
             }
             catch (Exception e) {
@@ -940,8 +1164,9 @@ public class Race extends RaceResources implements Serializable
         if (matchingRun == null) {
             for (RaceRun r:completedRuns) {
                 try {
-                    if (sameRun(r, tagHeuerRun)) {
+                    if (sameRun(r, photoCellRun)) {
                         matchingRun = r;
+                    //    log.trace("Found bib#" + r.getBoat().getRacer().getBibNumber() + " r#"+ r.getRunNumber() + " + in Completed Runs");
                     }
                 }
                 catch (Exception e) {
@@ -952,8 +1177,13 @@ public class Race extends RaceResources implements Serializable
         }
 
         if (matchingRun != null ) {
-            matchingRun.setTagHeuerRaceRun(tagHeuerRun);
+            matchingRun.setPhotoCellRaceRun(photoCellRun);
         }
+    }
+
+    public void updateResults(RaceRun run) {
+        updateResults();
+        racerResultsHTTP.outputWeb(run.getBoat());
     }
 
 
@@ -962,6 +1192,7 @@ public class Race extends RaceResources implements Serializable
         ResultsTableModel.getInstance().updateResults();
         RunScoringTableModel.getInstance().updateResults();
         saveSerializedData();
+        resultsHTTP.outputWeb("Sorted", getCompletedRunsByClassTime(), true);
     }
 
 
@@ -1043,9 +1274,13 @@ public class Race extends RaceResources implements Serializable
         int place = 1;
 
         for (Result r:sorted) {
-            r.getRun1().setGold(false);
-            r.getRun1().setSilver(false);
-            r.getRun1().setBronze(false);
+            try {
+                r.getRun1().setGold(false);                       /// TODO: if skipping 1st runs fro some reason, this will cause a null pointer reference
+                r.getRun1().setSilver(false);
+                r.getRun1().setBronze(false);
+            } catch (NullPointerException e) {
+                // Intentionally empty exception block
+            }
 
             try {
                 r.getRun2().setGold(false);
@@ -1055,31 +1290,55 @@ public class Race extends RaceResources implements Serializable
                 // Intentionally empty exception block
             }
 
+            // todo check this logic   20141122
+            try {
+                if (lastBoatClass.compareTo(r.getBoat().getBoatClass()) != 0 ) {
+                    lastBoatClass = r.getBoat().getBoatClass();
+                    place = 1;
+                }
+                switch (place) {
+                    case 1:
+                        r.getBestRun().setGold(true);
+                        break;
+                    case 2:
+                        r.getBestRun().setSilver(true);
+                        break;
+                    case 3:
+                        r.getBestRun().setBronze(true);
+                        break;
+                    default:
+                        break;
 
-            if (lastBoatClass.compareTo(r.getBoat().getBoatClass()) != 0 ) {
-                lastBoatClass = r.getBoat().getBoatClass();
-                place = 1;
+                }
+            } catch (NullPointerException e) {
+               // Intentionally empty exception block
             }
-            switch (place) {
-                case 1:
-                    r.getBestRun().setGold(true);
-                    break;
-                case 2:
-                    r.getBestRun().setSilver(true);
-                    break;
-                case 3:
-                    r.getBestRun().setBronze(true);
-                    break;
-                default:
-                    break;
-            }
+
             r.getBestRun().setPlaceInClass(place++);
         }
-
-
-
         return(sorted);
-
     }
+    public String getHTTPGateHeadersString() {
+        StringBuffer sb = new StringBuffer();
+
+        for (int iGate = 1; iGate<=Race.getInstance().getNbrGates(); iGate++) {
+            sb.append(String.format("<td>%d</td>", iGate));
+        }
+
+        return sb.toString();
+    }
+
+    public String getHTTPGateHeadersWidthString()
+    {
+        StringBuffer sb = new StringBuffer();
+
+        for (int iGate = 1; iGate<=Race.getInstance().getNbrGates(); iGate++) {
+            sb.append("<col span=\"1\" style=\"width: 3%;\">");
+        }
+
+        return sb.toString();
+    }
+
+
 }
 

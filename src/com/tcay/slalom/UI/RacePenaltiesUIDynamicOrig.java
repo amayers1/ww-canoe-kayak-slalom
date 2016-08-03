@@ -32,9 +32,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -194,11 +194,11 @@ public class RacePenaltiesUIDynamicOrig {
         doneBtn = new JButton();
 
         listCheckForUpdatesTimer
-                = new Timer(250,
+                = new Timer(2000,   // changed from 250 t0 25000
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
                         // don't change comboBox contents if it has focus - confuses the user
-                        if (activeOrRecentRunsComboBox.hasFocus() == false) {
+                        if (!activeOrRecentRunsComboBox.hasFocus()) {
                             if (getRunsStartedOrCompletedCnt != Race.getInstance().getRunsStartedOrCompletedCnt()) {
                                 getRunsStartedOrCompletedCnt = Race.getInstance().getRunsStartedOrCompletedCnt();
                                 activeOrRecentRunsComboBox.setModel(updateComboBoxModel());
@@ -210,7 +210,7 @@ public class RacePenaltiesUIDynamicOrig {
                         }
                     }
                 });
-        listCheckForUpdatesTimer.setInitialDelay(500);
+        listCheckForUpdatesTimer.setInitialDelay(2500);    //Changed to 5000
         listCheckForUpdatesTimer.start();
         raceRunLabel = new JLabel();
         createPenaltyButtons();

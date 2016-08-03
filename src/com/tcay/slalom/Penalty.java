@@ -36,13 +36,25 @@ public class Penalty implements Serializable {
     Boolean paddleHit;
     Boolean bodyHit;
     Boolean engagedOutOfSequence;
-    String summary;
+    StringBuffer summary;
 
     public String getSummary() {
-        return summary;
+        return summary.toString();
     }
 
-    public void setSummary(String summary) {
+/*
+    public String getLogString(RaceRun rr, int section) {
+        StringBuffer penaltyLog = new StringBuffer();
+
+        penaltyLog.append("PEN   B=" + rr.getBoat().getRacer().getBibNumber());
+        penaltyLog.append(" r=" + rr.getRunNumber());
+        penaltyLog.append(" s=" + section);
+
+        return penaltyLog.toString();
+    }
+
+*/
+    public void setSummary(StringBuffer summary) {
         this.summary = summary;
     }
 
@@ -62,7 +74,7 @@ public class Penalty implements Serializable {
 
 
     public Penalty(int gate, int seconds, boolean fromClient) {
-        summary = new String("-");
+        summary = new StringBuffer("PENALTY g:" + gate + " s:" + seconds + " Remote:" + (fromClient?"F":"T"));
         this.gate = gate;
         penaltySeconds = seconds;
         this.fromClient = fromClient;
@@ -77,7 +89,7 @@ public class Penalty implements Serializable {
     }
 
     public String toString() {
-        return new String(gate + " " + penaltySeconds + summary);
+        return summary.toString();
     }
 }
 

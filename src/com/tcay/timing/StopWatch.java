@@ -33,20 +33,81 @@ public class StopWatch implements Serializable
 //    private static final DecimalFormat secondsFormatter = new DecimalFormat("0");
 //    private static final DecimalFormat timeFormatter = new DecimalFormat("00");
     private long startTime;
+    private String name;
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
     private long endTime;
+
+
+    static private long nextId=1;
+
+    public long getId() {
+        return id;
+    }
+
+    private long id;
+
+
+
+    {
+        id = nextId++;
+    }
+
+    public StopWatch() {
+        //endTime =startTime = 0;   /// 20150521 (ajm)
+//        System.out.println("NEW STOPWATCH " + id);
+
+    }
+
+
+    public StopWatch(String name) {
+        this.name = name;
+//        System.out.println("NEW STOPWATCH " + name + " " + id);
+    }
 
     public boolean isStopped() {
         return stopped;
     }
 
-    boolean stopped = false;
+    boolean stopped;// = false;
 
     public static void main(String[] args)
     {
     }
 
+
+    public void setPassedInStartTime(Long startMillis) {
+        stopped = false;//todo NRC document
+        if (endTime==startTime && !stopped) {  // todo fix kludge
+            startTime = startMillis;
+            System.out.println("setPassedInStartTime @5 id=" + id + " Hash=" +System.identityHashCode(this));
+        }
+
+    }
+
+    public void setPassedInStopTime(Long stopMillis) {               //todo NRC document
+    // todo add protection    if (endTime==startTime && stopped==false) {  // todo fix kludge
+            endTime = stopMillis;
+        stopped = true;
+        id +=1000;
+        System.out.println("setPassedInStopTime @6 id="+ id+ " Hash=" +System.identityHashCode(this));
+   //     }
+
+    }
+
+
+
+
     public void start()
     {
+        stopped =false;
         startTime = System.currentTimeMillis();
         endTime = startTime;
     }
@@ -78,6 +139,8 @@ public class StopWatch implements Serializable
     {
         Long diff = new Long(System.currentTimeMillis() - startTime);
         double elapsed;
+
+//        System.out.println("@GetElapsed id="+ id + "  isStopped=" + stopped);
 
         if (stopped)
             diff = new Long(endTime - startTime);

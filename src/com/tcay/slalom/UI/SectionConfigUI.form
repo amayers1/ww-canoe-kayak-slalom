@@ -207,14 +207,34 @@
           <toolTipText resource-bundle="resources/SlalomAppMessages" key="sectionConfig.icfPenaltyDiagrams.tooltip"/>
         </properties>
       </component>
-      <component id="21585" class="javax.swing.JCheckBox" binding="tagHeuerEmulation" custom-create="true">
+      <component id="21585" class="javax.swing.JCheckBox" binding="useTAGHeuerPhotoEyes" custom-create="true">
         <constraints>
-          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
-          <text resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTagHeuerEmulation"/>
+          <text resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTagHeuerEmulation.tooltip"/>
           <toolTipText resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTagHeuerEmulation.tooltip"/>
+        </properties>
+      </component>
+      <component id="c438e" class="javax.swing.JCheckBox" binding="useMicrogatePhotoEyesCheckBox">
+        <constraints>
+          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useMicrogate"/>
+          <toolTipText resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useMicrogate.tooltip"/>
+        </properties>
+      </component>
+      <component id="585d0" class="javax.swing.JCheckBox">
+        <constraints>
+          <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTimy"/>
+          <toolTipText resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTimy.tooltip"/>
         </properties>
       </component>
     </children>

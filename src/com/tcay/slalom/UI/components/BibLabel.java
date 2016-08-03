@@ -21,9 +21,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -33,7 +33,7 @@ import java.awt.*;
  */
 public class BibLabel extends JLabel {
 
-    static final Font f = new Font("Dialog", Font.PLAIN, 24);
+    static final Font f = new Font("Dialog", Font.PLAIN, 24); //64);
 
     public BibLabel() {
         setFont(f);

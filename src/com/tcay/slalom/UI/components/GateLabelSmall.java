@@ -39,7 +39,7 @@ public class GateLabelSmall extends JLabel implements TableCellRenderer {
     protected GateLabelSmall rendererComponent;
     protected int column;
 
-    public GateLabelSmall(){;//ItemListener itemListener) {
+    public GateLabelSmall(){//ItemListener itemListener) {
         rendererComponent = this;
         //rendererComponent.addItemListener(itemListener);
     }

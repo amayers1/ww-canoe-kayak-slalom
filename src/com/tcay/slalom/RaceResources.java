@@ -22,15 +22,16 @@ import com.tcay.util.Log;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -46,7 +47,8 @@ public class RaceResources {
     protected static final int    DEFAULT_NBR_GATES = 25;
 
     private transient ImageIcon tagHeuerII;
-    private transient ImageIcon tagHeuerTinyII;
+    protected transient ImageIcon tagHeuerTinyII;
+    protected transient ImageIcon microgateII;
     private transient ImageIcon downstreamSmallII;
     private transient ImageIcon upstreamSmallII;
     private transient ImageIcon downstreamTinyII;
@@ -54,6 +56,10 @@ public class RaceResources {
     private transient ImageIcon slalomCourseSmall;
     private transient ImageIcon stopWatchII;
     private transient ImageIcon slalomBackgroundII;
+
+    private transient ImageIcon olympicTrialsBackgroundII;
+
+    private transient ImageIcon raceBackgroundII;
     private transient ImageIcon icfPenaltyDescripton;
     private transient ImageIcon icfPenaltyDiagram;
 
@@ -115,9 +121,7 @@ public class RaceResources {
         ImageIcon ii = blankII;
         URL imgURL;
         Class thisClass = getClass();
-        String fileName =   "images/Flags16/" + name;
-
-        imgURL = thisClass.getResource(fileName);     // todo From location of package of Race ???
+        imgURL = thisClass.getResource("/images/Flags16/" + name);     // todo From location of package of Race ???
         if (imgURL!=null)
             ii = new ImageIcon(imgURL, name);
         return ii;
@@ -163,7 +167,7 @@ public class RaceResources {
         flagImageName = "United States of America(USA).png";     // todo From location of package of Race ???
         countries.add(new Country("United States of America", "USA" , getImageIconFlag24(flagImageName), getImageIconFlag16(flagImageName)));
 
-        flagImageName = "NRC.png";     // todo From location of package of Race ???
+        flagImageName = "NRC-Logo.jpg";     // todo From location of package of Race ???
         countries.add(new Country("Nantahala Racing Club", "NRC" , getImageIconFlag24(flagImageName), getImageIconFlag16(flagImageName)));
     }
 
@@ -199,7 +203,10 @@ public class RaceResources {
             Class thisClass = getClass();
 
             URL imgURL;
+//todo If ImageIcons missing get runtime error 20151121
 
+
+            //todo 20160322 This is loading twice !    FIX
             // http://upload.wikimedia.org/wikipedia/de/d/de/TAG_Heuer_Logo.svg
             imgURL = thisClass.getResource("images/TAG_Heuer_Logo16.png");
             if (imgURL!=null)  {
@@ -209,6 +216,11 @@ public class RaceResources {
             imgURL = thisClass.getResource("images/TAG_Heuer_Logo25.png");
             if (imgURL!=null)  {
                 tagHeuerII = new ImageIcon(imgURL, "TagHeuer");
+            }
+
+            imgURL = thisClass.getResource("images/microGateLogo25px.png");
+            if (imgURL!=null)  {
+                microgateII = new ImageIcon(imgURL, "Microgate");
             }
 
             imgURL = thisClass.getResource("images/SlalomCourseCardiffSmall.jpg");
@@ -245,6 +257,37 @@ public class RaceResources {
             imgURL = thisClass.getResource("images/SlalomLogoYelCyan.png");     // todo From location of package of Race ???
             if (imgURL!=null)
                 slalomBackgroundII = new ImageIcon(imgURL, "slalomBkg");
+
+            imgURL = thisClass.getResource("images/2016_Trials_FHBG2.jpg");     // todo From location of package of Race ???
+            if (imgURL!=null)
+               olympicTrialsBackgroundII = new ImageIcon(imgURL, "olympicTrials");
+
+
+            //imgURL = thisClass.getResource("images/race.jpg");     // todo From location of package of Race ???
+            //if (imgURL!=null) {
+            //    raceBackgroundII = new ImageIcon(imgURL, "raceBkg");
+           // }
+
+
+            imgURL = thisClass.getResource("images/race.jpg");     // todo From location of package of Race ???
+            if (imgURL!=null) {
+                ImageIcon loadedII = new ImageIcon(imgURL, "raceBkg");
+                Image img = loadedII.getImage();
+
+
+                float width = loadedII.getIconWidth();
+                float height = loadedII.getIconHeight();
+
+                float scaleWidthFactor = 760/width;  //  400/800 = 0.5 //toto RIO 2016 CUSTOMIZATION
+                float scaleHeightFactor = 340/height;  //  400/800 = 0.5
+                int newWidth = (int)(scaleWidthFactor*width);
+                int newHeight = (int)(scaleHeightFactor*height);
+
+                Image newimg = img.getScaledInstance(newWidth, newHeight, java.awt.Image.SCALE_SMOOTH);
+
+                raceBackgroundII = new ImageIcon(newimg);
+
+            }
 
             imgURL = thisClass.getResource("images/ICFPenaltyLegend.png");     // todo From location of package of Race ???
             if (imgURL!=null)
@@ -355,6 +398,17 @@ public class RaceResources {
         return slalomBackgroundII;
     }
 
+    public ImageIcon getBackgroundImage() {
+       return olympicTrialsBackgroundII;
+    }
+
+
+
+
+    public ImageIcon getRaceBackgroundII() {
+        return raceBackgroundII;
+    }
+
     public ImageIcon getStopWatchII() {
         return stopWatchII;
     }
@@ -375,13 +429,18 @@ public class RaceResources {
         return downstreamSmallII;
     }
 
-    public ImageIcon getTagHeuerTinyII() {
+    public ImageIcon getPhotoCellTinyII() {
         return tagHeuerTinyII;
     }
 
     public ImageIcon getTagHeuerII() {
         return tagHeuerII;
     }
+    public ImageIcon getMicrogateII() {
+        return microgateII;
+    }
+
+
 
     public ImageIcon getSlalomCourseSmall() {
         // http://upload.wikimedia.org/wikipedia/commons/7/78/Cardiff_International_White_Water_%282012_gates%29.svg

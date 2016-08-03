@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.util.Log;
@@ -35,7 +52,7 @@ import java.util.StringTokenizer;
  * Time: 8:47 AM
  *
  */
-public class NRC_StartListImporter {
+public class NRC_StartListImporter2015 {
 
 
     // Hand import prep, remove all columns not used,  remove title row,  save as MS DOS delimited file
@@ -63,7 +80,7 @@ public class NRC_StartListImporter {
             String club;
             String ageGroup;
             String sex;
-            StringBuffer boatClass;
+            String boatClass;
 
             while ((line = reader.readLine()) != null) {
 
@@ -74,7 +91,7 @@ public class NRC_StartListImporter {
                  club = "USA";
                  ageGroup = "";
                  sex = "M";
-                 boatClass = new StringBuffer();
+                 boatClass = "";
 
                 String s;
                 StringTokenizer st = new StringTokenizer(line, ",\t");
@@ -85,53 +102,39 @@ public class NRC_StartListImporter {
                     s = st.nextToken();
 
                     switch (i) {
-
-
-
-
-
                         case 1:
+                            boatClass = s;
+                            if (boatClass.contains("W"))
+                                sex = "F";
+                            break;
+                        case 2:
+                            ageGroup = s;
+                            break;
+                        case 3:
                             bib = s.trim();
                             break;
-
-                        case 2:
-                            first = s;
-                            break;
-
-                        case 3:
-                            last = s;
-                            break;
-
-
                         case 4:
-                            if (s.contains("F"))
-                                sex = "F";
-                            else sex = "M";
-                            break;
-
-
-
-
-
-
-                        case 5:
+                            //String name = s;
                             String tok;
-                            StringTokenizer stName = new StringTokenizer(s, " (/");
-                            if (stName.hasMoreTokens()) {
+                            StringTokenizer stName = new StringTokenizer(s, " /");
+                            int j = 0;
+                            while(stName.hasMoreTokens()) {
+                                j++;
                                 tok = stName.nextToken();
-                                ageGroup = tok;
-                            }
-                            else ageGroup = "";
-                            break;
+                                switch(j) {
+                                    case 1:
+                                        first = tok;
+                                        break;
+                                    case 2:
+                                        last = tok;
+                                        break;
+                                    default:              // todo this is kludge to get Last when 3 or 4 part name 'Anna Marie Fergerson"
+                                        last = last + " "   + tok;
+                                        break;
 
-                        case 6:
-                            boatClass.append(s);
-                            break;
-
-                        case 7:
-                            if (s.toLowerCase().contains("rec")) {
-                                boatClass.append(" Rec");
+                                }
                             }
+
                             break;
 
                         default:
@@ -142,17 +145,12 @@ public class NRC_StartListImporter {
                 }
 
 
-                if ( !bib.toLowerCase().contains("bib")) {
-                    if (last != null && first != null) {
-                        if (i >= 7) {
-                            Racer racer = new Racer(bib, last, first, sex, club, ageGroup);
-                            race.addBoat(racer, boatClass.toString());
-                        }
-                        else {
-                            log.error("Invalid Format in NRC CSV file \"" + line + "\", " + "expected bib, first, last, sex, agegroup, boattype, super class (rec or race)");
+                if (last != null && first != null) {
+                    Racer racer = new Racer(bib, last, first, sex, club, ageGroup);
+//                    BoatEntry boat = new BoatEntry(racer, boatClass);
+//                boats.add(boat);
+                    race.addBoat(racer, boatClass);
 
-                        }
-                    }
                 }
             }
         }
@@ -163,7 +161,7 @@ public class NRC_StartListImporter {
 
 
     public static void main(String[] args) {
-        NRC_StartListImporter importer = new NRC_StartListImporter();
+        NRC_StartListImporter2015 importer = new NRC_StartListImporter2015();
         importer.readImportFile();
 
     }

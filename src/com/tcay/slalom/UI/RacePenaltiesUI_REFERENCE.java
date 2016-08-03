@@ -29,15 +29,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * SlalomApp
- *
- * Teton Cay Group Inc. 2013
- *
-
+ * ${PROJECT_NAME}
+ * <p/>
+ * Teton Cay Group Inc. ${YEAR}
+ * <p/>
+ * <p/>
  * User: allen
  * Date: 8/29/13
  * Time: 10:25 AM
- *
  */
 @Deprecated
 public class RacePenaltiesUI_REFERENCE {
@@ -279,7 +278,7 @@ public class RacePenaltiesUI_REFERENCE {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
                         // don't change comboBox contents if it has focus - confuses the user
-                        if (activeOrRecentRunsComboBox.hasFocus() == false) {
+                        if (!activeOrRecentRunsComboBox.hasFocus()) {
                             if (getRunsStartedOrCompletedCnt != Race.getInstance().getRunsStartedOrCompletedCnt()) {
                                 getRunsStartedOrCompletedCnt = Race.getInstance().getRunsStartedOrCompletedCnt();
                                 activeOrRecentRunsComboBox.setModel(updateComboBoxModel());

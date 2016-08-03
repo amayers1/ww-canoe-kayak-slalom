@@ -23,9 +23,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  *
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  *
 
  * User: allen
@@ -55,10 +55,15 @@ public class ListOfRaces {
                 files = listOfFiles[i].getName();
                 if (files.endsWith(".ser") || files.endsWith(".SER"))
                 {
+                    String fileName = null;
                     if (files.compareTo("last.ser") != 0 ) {
                         log.trace(files);
                         String s[]  = files.split("([\\.])");
+                        fileName = s[0];
                         fileList.add(s[0]);//files.toString());
+                    }
+                    if (fileName != null) {
+                        System.out.println(fileName);
                     }
                 }
             }

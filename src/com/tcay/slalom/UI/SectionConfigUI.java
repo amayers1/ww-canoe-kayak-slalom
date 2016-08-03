@@ -36,9 +36,9 @@ import java.util.List;
 import java.awt.*;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  * <p/>
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  * <p/>
  * <p/>
  * User: allen
@@ -60,7 +60,10 @@ public class SectionConfigUI extends JComponent {
     private JLabel section5Label;
     private JLabel section2Label;
     private JCheckBox icfPenaltyDiagrams;
-    private JCheckBox tagHeuerEmulation;
+    private JCheckBox useTAGHeuerPhotoEyes;
+    private JCheckBox useMicrogatePhotoEyesCheckBox;
+    private JCheckBox useTimyPhotoEyesCheckBox;
+
     //    private JComboBox comboBoxSelectUpstream;
 //    private JButton addButton;
 
@@ -186,7 +189,12 @@ public class SectionConfigUI extends JComponent {
         }
         Race.getInstance().setSectionEndingGates(sections);
         Race.getInstance().setIcfPenalties(icfPenaltyDiagrams.isSelected());
-        Race.getInstance().setTagHeuerEmulation(tagHeuerEmulation.isSelected());
+        // TODO REIMPLEMENT EMULATION Race.getInstance().setTagHeuerEmulation(useTAGHeuerPhotoEyes.isSelected());
+
+        Race.getInstance().setTagHeuerEnabled(useTAGHeuerPhotoEyes.isSelected());
+        Race.getInstance().setMicrogateEnabled(useMicrogatePhotoEyesCheckBox.isSelected());
+//        Race.getInstance().setMicrogateEnabled(useTimyPhotoEyesCheckBox.isSelected());
+
     }
 
 
@@ -305,8 +313,8 @@ public class SectionConfigUI extends JComponent {
         comboBoxSection5.setSelectedIndex(nbrGates - 1);
         icfPenaltyDiagrams = new JCheckBox();
         icfPenaltyDiagrams.setSelected(Race.getInstance().isIcfPenalties());
-        tagHeuerEmulation = new JCheckBox();
-        tagHeuerEmulation.setSelected(Race.getInstance().isTagHeuerEmulation());
+        useTAGHeuerPhotoEyes = new JCheckBox();
+        useTAGHeuerPhotoEyes.setSelected(Race.getInstance().getTagHeuerEnabled()); // TODO Reimplement ->isTagHeuerEmulation());
 
 
         ArrayList<JudgingSection> sections = Race.getInstance().getSectionEndingGates();
@@ -320,6 +328,9 @@ public class SectionConfigUI extends JComponent {
                     //fixme 18 gates total .... CRASH !!! when js.getLastGate > comboBox list
                     //fixme temporary mitigated with TestData bug fix 121104 (ajm) ... need more work to verify #of gates is NOT less than max section gate
                     comboBoxSection1.setSelectedIndex(js.getLastGate() - 1);                                 //fixme after new confg out of bounds
+/// 20141123 todo problem here after loading racers and going to configuration
+
+
                     break;
 
                 case 2:
@@ -556,9 +567,17 @@ public class SectionConfigUI extends JComponent {
         this.$$$loadButtonText$$$(icfPenaltyDiagrams, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useIcfPenalties"));
         icfPenaltyDiagrams.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.icfPenaltyDiagrams.tooltip"));
         panel1.add(icfPenaltyDiagrams, cc.xy(1, 7));
-        this.$$$loadButtonText$$$(tagHeuerEmulation, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation"));
-        tagHeuerEmulation.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation.tooltip"));
-        panel1.add(tagHeuerEmulation, cc.xy(1, 10));
+        this.$$$loadButtonText$$$(useTAGHeuerPhotoEyes, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation.tooltip"));
+        useTAGHeuerPhotoEyes.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation.tooltip"));
+        panel1.add(useTAGHeuerPhotoEyes, cc.xy(1, 12));
+        useMicrogatePhotoEyesCheckBox = new JCheckBox();
+        this.$$$loadButtonText$$$(useMicrogatePhotoEyesCheckBox, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useMicrogate"));
+        useMicrogatePhotoEyesCheckBox.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useMicrogate.tooltip"));
+        panel1.add(useMicrogatePhotoEyesCheckBox, cc.xy(1, 14));
+        final JCheckBox checkBox1 = new JCheckBox();
+        this.$$$loadButtonText$$$(checkBox1, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTimy"));
+        checkBox1.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTimy.tooltip"));
+        panel1.add(checkBox1, cc.xy(1, 16));
     }
 
     /**

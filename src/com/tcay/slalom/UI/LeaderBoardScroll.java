@@ -27,9 +27,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * SlalomApp
+ * ${PROJECT_NAME}
  * <p/>
- * Teton Cay Group Inc. 2013
+ * Teton Cay Group Inc. ${YEAR}
  * <p/>
  * <p/>
  * User: allen
@@ -53,7 +53,7 @@ public class LeaderBoardScroll {
 
         table = resultsTable.createTable();
         leaderScrollPane = new JScrollPane();
-        Race.getInstance().updateResults();
+        Race.getInstance().updateResults();  // TODO REALLY NEEDED ???
 
     }
 
