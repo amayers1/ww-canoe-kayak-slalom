@@ -1,0 +1,55 @@
+20160407 10:49:54.970  info:(t:16)Log Section3 begins
+20160407 10:51:59.678  info:(t:44)Execution ends
+20160407 11:02:16.801  info:(t:16)Log Section3 begins
+20160407 11:10:10.097  info:(t:42)Execution ends
+20160407 11:11:34.613  info:(t:16)Log Section3 begins
+20160407 11:14:26.198  info:(t:16)RPEN  B=10 r=1                                               2  2  2
+20160407 11:15:35.998  info:(t:44)Execution ends
+20160407 11:19:30.586  info:(t:16)Log Section3 begins
+20160407 11:19:54.377  info:(t:16)RPEN  B=1 r=1                                               0  0 50  0  0  0  0
+20160407 11:26:21.152  info:(t:43)Execution ends
+20160407 11:27:59.601  info:(t:16)Log Section3 begins
+20160407 11:28:55.170  info:(t:44)Execution ends
+20160407 11:29:26.871  info:(t:16)Log Section3 begins
+20160407 11:31:27.546  info:(t:43)Execution ends
+20160407 11:32:52.723  info:(t:16)Log Section3 begins
+20160407 11:35:48.167  info:(t:16)RPEN  B=3 r=1                                               2  0  0
+20160407 11:35:54.333  info:(t:16)RPEN  B=4 r=1                                              50  0  0
+20160407 11:39:20.137  info:(t:16)RPEN  B=6 r=2                                               2  0  0
+20160407 11:39:28.025  info:(t:16)RPEN  B=4 r=2                                               2  0  0
+20160407 11:47:31.700  info:(t:43)Execution ends
+20160407 11:49:35.016  info:(t:16)Log Section3 begins
+20160407 11:54:39.283  info:(t:44)Execution ends
+20160407 12:32:51.358  info:(t:16)Log Section3 begins
+20160407 12:33:59.924  info:(t:44)Execution ends
+20160407 12:38:30.903  info:(t:16)Log Section3 begins
+20160407 12:40:11.011  info:(t:45)Execution ends
+20160407 12:41:05.804  info:(t:16)Log Section3 begins
+20160407 12:42:25.769  info:(t:44)Execution ends
+20160407 12:42:44.586  info:(t:16)Log Section3 begins
+20160407 15:29:03.188  info:(t:43)Execution ends
+20160730 21:39:56.213  info:(t:26)Log Section3 begins
+20160730 21:41:52.606  info:(t:31)Execution ends
+20160730 22:24:01.198  info:(t:24)Log Section3 begins
+20160730 22:24:42.660  info:(t:24)RPEN  B=82 r=1                                             
+20160730 22:25:17.562  info:(t:24)RPEN  B=220 r=1                                             
+20160730 22:25:27.874  info:(t:24)RPEN  B=63 r=1                                             
+20160730 22:25:34.487  info:(t:24)RPEN  B=25 r=1                                             
+20160730 22:29:47.646  info:(t:24)RPEN  B=185 r=1                                             
+20160730 22:34:01.856  info:(t:28)Execution ends
+20160731 06:31:29.037  info:(t:29)Log Section3 begins
+20160731 06:33:44.025  info:(t:34)Execution ends
+20160731 08:28:51.678  info:(t:26)Log Section3 begins
+20160731 08:29:31.077  info:(t:26)RPEN  B=69 r=1                                             
+20160731 08:29:36.758  info:(t:26)RPEN  B=110 r=1                                             
+20160731 08:29:42.316  info:(t:26)RPEN  B=111 r=1                                             
+20160731 08:29:49.125  info:(t:26)RPEN  B=108 r=1                                             
+20160731 08:30:13.574  info:(t:30)Execution ends
+20160731 08:37:42.039  info:(t:26)Log Section3 begins
+20160731 10:10:48.001  info:(t:29)Execution ends
+20160731 10:12:18.307  info:(t:28)Log Section3 begins
+20160731 10:14:16.838  info:(t:33)Execution ends
+20160731 10:20:19.956  info:(t:26)Log Section3 begins
+20160731 10:21:32.620  info:(t:26)RPEN  B=82 r=1                                             
+20160731 10:21:41.787  info:(t:26)RPEN  B=220 r=1                                             
+20160802 20:01:04.079  info:(t:31)Execution ends

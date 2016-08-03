@@ -1,0 +1,187 @@
+20160407 10:49:48.662  info:(t:16)Log Section1 begins
+20160407 10:51:59.264  info:(t:16)RPEN  B=2 r=1                 2 50  0  0
+20160407 10:51:59.658  info:(t:31)Execution ends
+20160407 11:02:11.103  info:(t:16)Log Section1 begins
+20160407 11:03:12.332  info:(t:16)RPEN  B=1 r=1                 2  2  2  2  2
+20160407 11:10:10.057  info:(t:29)Execution ends
+20160407 11:11:29.041  info:(t:16)Log Section1 begins
+20160407 11:12:30.785  info:(t:16)RPEN  B=2 r=1                50  2 50  0  0
+20160407 11:13:11.134  info:(t:16)RPEN  B=9 r=1                 2  0  0  0  0
+20160407 11:13:25.715  info:(t:16)RPEN  B=10 r=1                 0  2 50  0  0
+20160407 11:15:35.892  info:(t:31)Execution ends
+20160407 11:19:23.680  info:(t:16)Log Section1 begins
+20160407 11:20:05.980  info:(t:16)RPEN  B=1 r=1                 2  0  0  0  0  0
+20160407 11:26:21.141  info:(t:30)Execution ends
+20160407 11:27:53.961  info:(t:16)Log Section1 begins
+20160407 11:28:42.557  info:(t:16)RPEN  B=1 r=1                 2  0  0  0  0
+20160407 11:28:42.559 warn:(t:16)Bad INDEX to activeOrRecentRunsComboBox itemcount = 1 index = 1
+20160407 11:28:55.140  info:(t:31)Execution ends
+20160407 11:29:21.308  info:(t:16)Log Section1 begins
+20160407 11:29:36.872 warn:(t:16)Bad INDEX to activeOrRecentRunsComboBox itemcount = 1 index = 1
+20160407 11:29:58.516  info:(t:16)RPEN  B=2 r=1                50  0 50  0  0
+20160407 11:29:58.521 warn:(t:16)Bad INDEX to activeOrRecentRunsComboBox itemcount = 2 index = 2
+20160407 11:31:27.395  info:(t:31)Execution ends
+20160407 11:32:47.105  info:(t:16)Log Section1 begins
+20160407 11:33:02.404 warn:(t:16)Bad INDEX to activeOrRecentRunsComboBox itemcount = 2 index = 2
+20160407 11:37:30.321  info:(t:16)RPEN  B=4 r=1                 0  0  0  0  0
+20160407 11:47:31.720  info:(t:31)Execution ends
+20160407 11:49:28.337  info:(t:16)Log Section1 begins
+20160407 11:54:39.344  info:(t:31)Execution ends
+20160407 12:32:45.731  info:(t:16)Log Section1 begins
+20160407 12:33:59.932  info:(t:31)Execution ends
+20160407 12:38:25.359  info:(t:16)Log Section1 begins
+20160407 12:39:02.799  info:(t:16)RPEN  B=1 r=1                 0  0  0  0  0
+20160407 12:39:09.965  info:(t:16)RPEN  B=2 r=1                 2  0  0  0  0
+20160407 12:40:11.010  info:(t:32)Execution ends
+20160407 12:41:00.055  info:(t:16)Log Section1 begins
+20160407 12:42:25.809  info:(t:31)Execution ends
+20160407 12:42:38.985  info:(t:16)Log Section1 begins
+20160407 12:44:37.389  info:(t:16)RPEN  B=3 r=1                50  0  0  0  0
+20160407 15:29:03.188  info:(t:31)Execution ends
+20160729 13:52:05.945  info:(t:25)Log Section1 begins
+20160729 13:52:31.269  info:(t:25)RPEN  B=128 r=2               
+20160729 13:52:59.990  info:(t:29)Execution ends
+20160729 13:56:16.918  info:(t:26)Log Section1 begins
+20160729 13:56:40.560  info:(t:26)RPEN  B=129 r=2               
+20160729 13:58:14.641  info:(t:30)Execution ends
+20160729 14:21:06.185  info:(t:23)Log Section1 begins
+20160730 11:11:08.253  info:(t:27)Execution ends
+20160730 21:33:42.284  info:(t:26)Log Section1 begins
+20160730 21:33:57.205  info:(t:26)RPEN  B=82 r=1               
+20160730 21:34:00.770  info:(t:26)RPEN  B=220 r=1               
+20160730 21:34:05.347  info:(t:26)RPEN  B=185 r=1               
+20160730 21:34:05.348 warn:(t:26)Bad INDEX to activeOrRecentRunsComboBox itemcount = 3 index = 3
+20160730 21:34:07.409 warn:(t:26)Bad INDEX to activeOrRecentRunsComboBox itemcount = 3 index = 3
+20160730 21:34:08.383 warn:(t:26)Bad INDEX to activeOrRecentRunsComboBox itemcount = 3 index = 3
+20160730 21:34:09.376 warn:(t:26)Bad INDEX to activeOrRecentRunsComboBox itemcount = 3 index = 3
+20160730 21:34:30.941  info:(t:26)RPEN  B=108 r=1               
+20160730 21:34:45.735  info:(t:26)RPEN  B=74 r=1               
+20160730 21:34:53.021  info:(t:29)Execution ends
+20160730 21:37:54.556  info:(t:24)Log Section1 begins
+20160730 21:42:27.589  info:(t:28)Execution ends
+20160730 21:47:25.848  info:(t:25)Log Section1 begins
+20160730 21:47:43.164  info:(t:25)RPEN  B=25 r=1               
+20160730 21:47:47.117  info:(t:25)RPEN  B=63 r=1               
+20160730 21:47:49.019  info:(t:25)RPEN  B=68 r=1               
+20160730 21:48:00.743  info:(t:28)Execution ends
+20160730 21:50:14.746  info:(t:25)Log Section1 begins
+20160730 21:50:25.849  info:(t:25)RPEN  B=69 r=1               
+20160730 21:50:26.934  info:(t:25)RPEN  B=110 r=1               
+20160730 21:50:27.470  info:(t:25)RPEN  B=111 r=1               
+20160730 21:50:27.944  info:(t:25)RPEN  B=91 r=1               
+20160730 21:50:27.945 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:50:28.266  info:(t:25)RPEN  B=91 r=1               
+20160730 21:50:28.267 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:50:28.834  info:(t:25)RPEN  B=91 r=1               
+20160730 21:50:28.836 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:50:34.897  info:(t:29)Execution ends
+20160730 21:51:35.903  info:(t:24)Log Section1 begins
+20160730 21:51:38.439 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:51:45.493  info:(t:24)RPEN  B=91 r=1               
+20160730 21:51:45.495 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:51:50.830  info:(t:28)Execution ends
+20160730 21:53:19.186  info:(t:25)Log Section1 begins
+20160730 21:53:30.261 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:53:38.083  info:(t:25)RPEN  B=91 r=1               
+20160730 21:53:38.084 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:53:44.002  info:(t:25)RPEN  B=91 r=1               
+20160730 21:53:44.003 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:53:44.452  info:(t:25)RPEN  B=91 r=1               
+20160730 21:53:44.453 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:53:44.758  info:(t:25)RPEN  B=91 r=1               
+20160730 21:53:44.759 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:53:45.086  info:(t:25)RPEN  B=91 r=1               
+20160730 21:53:45.087 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:53:45.392  info:(t:25)RPEN  B=91 r=1               
+20160730 21:53:45.393 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:53:48.188  info:(t:25)RPEN  B=91 r=1               
+20160730 21:53:48.189 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:54:32.969  info:(t:29)Execution ends
+20160730 21:54:47.248  info:(t:15)Log Section1 begins
+20160730 21:54:49.635 warn:(t:15)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:55:37.368  info:(t:25)Log Section1 begins
+20160730 21:55:43.764 warn:(t:25)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:56:21.340  info:(t:28)Execution ends
+20160730 21:58:03.131  info:(t:25)Execution ends
+20160730 21:58:26.873  info:(t:24)Log Section1 begins
+20160730 21:58:29.858 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:58:34.761  info:(t:24)RPEN  B=91 r=1               
+20160730 21:58:34.763 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 21:58:36.030  info:(t:24)RPEN  B=91 r=1               
+20160730 21:58:36.031 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 22:06:11.884  info:(t:26)Execution ends
+20160730 22:06:29.931  info:(t:27)Log Section1 begins
+20160730 22:07:13.235  info:(t:30)Execution ends
+20160730 22:07:29.139  info:(t:26)Log Section1 begins
+20160730 22:07:35.981 warn:(t:26)Bad INDEX to activeOrRecentRunsComboBox itemcount = 12 index = 12
+20160730 22:07:50.449  info:(t:29)Execution ends
+20160730 22:08:44.869  info:(t:26)Log Section1 begins
+20160730 22:11:18.826  info:(t:30)Execution ends
+20160730 22:12:46.389  info:(t:24)Log Section1 begins
+20160730 22:13:12.957  info:(t:27)Execution ends
+20160730 22:13:52.198  info:(t:24)Log Section1 begins
+20160730 22:14:21.823  info:(t:29)Execution ends
+20160730 22:18:02.658  info:(t:17)Log Section1 begins
+20160730 22:19:29.340  info:(t:17)RPEN  B=95 r=1               
+20160730 22:20:20.097  info:(t:17)RPEN  B=115 r=1               
+20160730 22:20:21.506  info:(t:17)RPEN  B=99 r=1               
+20160730 22:20:21.506 warn:(t:17)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:22:25.548  info:(t:27)Execution ends
+20160730 22:22:43.775  info:(t:24)Log Section1 begins
+20160730 22:22:50.551 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:23:01.518 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:23:02.986 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:23:04.200 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:23:05.550 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:24:49.052  info:(t:24)RPEN  B=99 r=1               
+20160730 22:24:49.054 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:24:50.605  info:(t:24)RPEN  B=99 r=1               
+20160730 22:24:50.614 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:24:52.908  info:(t:24)RPEN  B=99 r=1               
+20160730 22:24:52.909 warn:(t:24)Bad INDEX to activeOrRecentRunsComboBox itemcount = 15 index = 15
+20160730 22:28:25.391  info:(t:24)RPEN  B=174 r=1               
+20160730 22:33:10.375  info:(t:28)Execution ends
+20160731 06:30:34.465  info:(t:25)Log Section1 begins
+20160731 06:41:59.184  info:(t:28)Execution ends
+20160731 06:48:43.509  info:(t:27)Log Section1 begins
+20160731 06:48:54.705  info:(t:27)RPEN  B=174 r=1               
+20160731 06:49:53.625  info:(t:31)Execution ends
+20160731 06:50:13.186  info:(t:25)Log Section1 begins
+20160731 06:50:43.364  info:(t:25)RPEN  B=174 r=1               
+20160731 06:53:01.599  info:(t:28)Execution ends
+20160731 06:55:44.679  info:(t:24)Log Section1 begins
+20160731 06:56:00.251  info:(t:24)RPEN  B=174 r=1               
+20160731 06:56:06.440  info:(t:24)RPEN  B=184 r=1               
+20160731 06:56:10.032  info:(t:24)RPEN  B=141 r=1               
+20160731 06:56:38.297  info:(t:27)Execution ends
+20160731 06:59:37.602  info:(t:24)Log Section1 begins
+20160731 07:00:26.964  info:(t:27)Execution ends
+20160731 07:00:48.896  info:(t:25)Log Section1 begins
+20160731 07:01:28.750  info:(t:28)Execution ends
+20160731 07:03:56.325  info:(t:25)Log Section1 begins
+20160731 07:04:08.940  info:(t:25)RPEN  B=15 r=1               
+20160731 07:04:10.381  info:(t:25)RPEN  B=78 r=1               
+20160731 07:04:17.841  info:(t:25)RPEN  B=36 r=1               
+20160731 07:04:23.227  info:(t:25)RPEN  B=43 r=1               
+20160731 07:08:45.900  info:(t:28)Execution ends
+20160731 07:11:12.723  info:(t:26)Log Section1 begins
+20160731 07:12:19.007  info:(t:30)Execution ends
+20160731 08:17:26.154  info:(t:30)Log Section1 begins
+20160731 08:18:04.055  info:(t:30)RPEN  B=96 r=1               
+20160731 08:18:07.691  info:(t:30)RPEN  B=96 r=1               
+20160731 08:18:13.478  info:(t:30)RPEN  B=78 r=1               
+20160731 08:18:28.146  info:(t:34)Execution ends
+20160731 08:22:21.580  info:(t:22)Log Section1 begins
+20160731 08:23:52.246  info:(t:28)Execution ends
+20160731 08:24:36.233  info:(t:31)Log Section1 begins
+20160731 08:28:08.372  info:(t:34)Execution ends
+20160731 08:28:36.282  info:(t:29)Log Section1 begins
+20160731 08:30:19.637  info:(t:32)Execution ends
+20160731 08:37:29.173  info:(t:28)Log Section1 begins
+20160731 09:36:04.503  info:(t:30)Execution ends
+20160731 10:12:14.157  info:(t:25)Log Section1 begins
+20160731 10:14:06.572  info:(t:28)Execution ends
+20160731 10:20:02.927  info:(t:18)Log Section1 begins
+20160731 10:20:59.684  info:(t:18)RPEN  B=82 r=1               
+20160731 10:21:43.967  info:(t:18)RPEN  B=220 r=1               
+20160802 20:01:12.905  info:(t:27)Execution ends

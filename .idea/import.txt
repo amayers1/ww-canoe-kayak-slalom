@@ -1,0 +1,37 @@
+C1M	A	67	Ben Risk 
+C1M	A	64	Ian Soileau
+C1M	A	63	Elliot Bertrand
+C1M	A	65	Jordan Poffenberger
+C1M	A	69	Michal Smolen 
+C1M	A	68	Tyler Smith 
+C1M	A	72	Bug Lokken 
+C1M	A	70	Tad Dennis 
+C1M	A	71	Cameron Smedley 
+C1M	A	73	Casey Eichfeld 
+K1W	54	Natash O'Connell
+K1W	41	Sage Donnelly
+K1W	52	Lois Betteridge
+K1W	53	Maya Humeau
+K1W	58	Thea Froehlich
+K1W	55	Anna F
+K1W	56	Jazmyne Denhollande
+C2 103	Jordan/Tad
+C1W	21	Willa Mason
+C1W	22	Lois Betteridge
+K1M	82	Doug Fogartie
+K1M	86	Miller Kaderbek
+K1M	84	Wes Bolyard 
+K1M	85	Henry Bergen
+K1M	83	Joshua Joseph
+K1M	87	Micajah McCurry
+K1M	89	Rob Nelson
+K1M	91	Jeremy Tian
+K1M	88	Sheamus O'Connell 
+K1M	90	Cam Wells
+K1M	93	Andrew Musgrave
+K1M	92	Jordan Sherman
+K1M	96	Tyler Smith
+K1M	94	Michael Rudnitsky
+K1M	97	Aaron Mann 
+K1M	98	Rick Powell 
+K1M	99	Michal Smolen

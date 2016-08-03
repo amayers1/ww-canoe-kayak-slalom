@@ -1,0 +1,58 @@
+
+C1
+215, M. McCurry     ,  run1=    94.69   +10   104.69   >>94.69 man. vs. 94.69 'eye' time <<  run2=    92.42    +0    92.42   >>92.42 man. vs. 92.42 'eye' time <<    best=    92.42
+157, R. Healy       ,  run1=    95.92    +2    97.92   >>95.92 man. vs. 95.92 'eye' time <<  run2=    96.75    +0    96.75   >>96.75 man. vs. 96.75 'eye' time <<    best=    96.75
+ 29, M. Kaderabek   ,  run1=   110.32    +2   112.32   >>110.32 man. vs. 110.32 'eye' time <<  run2=   110.66    +2   112.66   >>110.66 man. vs. 110.66 'eye' time <<    best=   112.32
+ 67, W. Bolyard     ,  run1=   114.70    +8   122.70   >>114.7 man. vs. 114.7 'eye' time <<  run2=   112.83    +4   116.83   >>112.83 man. vs. 112.83 'eye' time <<    best=   116.83
+173, J. Yochim      ,  run1=   134.57    +4   138.57   >>134.57 man. vs. 134.57 'eye' time <<  run2=   126.77    +2   128.77   >>126.77 man. vs. 126.77 'eye' time <<    best=   128.77
+180, M. Suchy       ,  run1=   184.24   +14   198.24   >>184.24 man. vs. 184.24 'eye' time <<  run2=   183.11  +106   289.11   >>183.11 man. vs. 183.11 'eye' time <<    best=   198.24
+
+C2
+ 81, K. Bolyard     ,  run1=   114.23    +4   118.23   >>114.23 man. vs. 114.23 'eye' time <<  run2=   110.89    +2   112.89   >>110.89 man. vs. 110.89 'eye' time <<    best=   112.89
+194, H. Suchy       ,  run1=DNF      DNF   >>588.86 man. vs. 9999.0 'eye' time <<  diff= 9406.32 run2=   118.79  +308   426.79   >>118.79 man. vs. 118.79 'eye' time <<    best=   426.79
+
+K1
+Y159, M. Huvelin     ,  run1=DNS      DNS   >>2435.55 man. vs. 2435.55 'eye' time <<  run2=    70.47    +0    70.47   >>70.47 man. vs. 70.47 'eye' time <<    best=    70.47
+  6, M. McCurry     ,  run1=    82.27    +2    84.27   >>82.27 man. vs. 82.27 'eye' time <<  run2=    79.51    +2    81.51   >>79.51 man. vs. 79.51 'eye' time <<    best=    81.51
+ 78, R. Healy       ,  run1=    83.72    +0    83.72   >>83.72 man. vs. 83.72 'eye' time <<  run2=    82.00    +0    82.00   >>82.0 man. vs. 82.0 'eye' time <<    best=    82.00
+160, T. Mardany     ,  run1=    82.46    +2    84.46   >>82.46 man. vs. 82.46 'eye' time <<  run2=    82.62    +0    82.62   >>82.62 man. vs. 82.62 'eye' time <<    best=    82.62
+ 85, W. Bolyard     ,  run1=    83.40    +4    87.40   >>83.4 man. vs. 83.4 'eye' time <<  run2=    84.50    +4    88.50   >>84.5 man. vs. 84.5 'eye' time <<    best=    87.40
+ 65, M. Kaderabek   ,  run1=    88.32    +6    94.32   >>88.32 man. vs. 88.32 'eye' time <<  run2=    91.13    +0    91.13   >>91.13 man. vs. 91.13 'eye' time <<    best=    91.13
+141, J. Yochim      ,  run1=    94.70    +0    94.70   >>94.7 man. vs. 94.7 'eye' time <<  run2=    91.07    +2    93.07   >>91.07 man. vs. 91.07 'eye' time <<    best=    93.07
+ 15, N. Francis     ,  run1=   101.86    +6   107.86   >>101.86 man. vs. 101.86 'eye' time <<  run2=   100.42    +2   102.42   >>100.42 man. vs. 100.42 'eye' time <<    best=   102.42
+ 31, K. Hank        ,  run1=   101.84    +2   103.84   >>101.84 man. vs. 101.84 'eye' time <<  run2=    98.71    +6   104.71   >>98.71 man. vs. 98.71 'eye' time <<    best=   103.84
+ 25, D. Jung        ,  run1=   100.44    +6   106.44   >>100.44 man. vs. 100.44 'eye' time <<  run2=   123.92  +102   225.92   >>123.92 man. vs. 123.92 'eye' time <<    best=   106.44
+ 62, D. Wainer      ,  run1=   100.30   +58   158.30   >>100.3 man. vs. 100.3 'eye' time <<  run2=   105.25    +6   111.25   >>105.25 man. vs. 105.25 'eye' time <<    best=   111.25
+ 95, M. Suchy       ,  run1=   113.19    +4   117.19   >>113.19 man. vs. 113.19 'eye' time <<  run2=   108.68    +4   112.68   >>108.68 man. vs. 108.68 'eye' time <<    best=   112.68
+184, C. Henry       ,  run1=   115.48    +4   119.48   >>115.48 man. vs. 115.48 'eye' time <<  run2=   111.86    +4   115.86   >>111.86 man. vs. 111.86 'eye' time <<    best=   115.86
+ 68, J. Yochim      ,  run1=   109.17   +12   121.17   >>109.17 man. vs. 109.17 'eye' time <<  run2=   148.43   +60   208.43   >>148.43 man. vs. 148.43 'eye' time <<    best=   121.17
+110, A. Patel       ,  run1=   154.96    +0   154.96   >>154.96 man. vs. 154.96 'eye' time <<  run2=   141.21    +0   141.21   >>141.21 man. vs. 141.21 'eye' time <<    best=   141.21
+ 63, C. Christie Williams,  run1=   140.85    +4   144.85   >>140.85 man. vs. 140.85 'eye' time <<  run2=   145.85   +10   155.85   >>145.85 man. vs. 145.85 'eye' time <<    best=   144.85
+ 91, T. Loving      ,  run1=   162.23  +160   322.23   >>162.23 man. vs. 162.23 'eye' time <<  run2=   177.51    +2   179.51   >>177.51 man. vs. 177.51 'eye' time <<    best=   179.51
+ 69, M. Inman       ,  run1=   115.66  +204   319.66   >>115.66 man. vs. 115.66 'eye' time <<  run2=   149.68   +54   203.68   >>149.68 man. vs. 149.68 'eye' time <<    best=   203.68
+ 96, G. Taft        ,  run1=   138.14  +108   246.14   >>138.14 man. vs. 138.14 'eye' time <<  run2=   129.05  +106   235.05   >>129.05 man. vs. 129.05 'eye' time <<    best=   235.05
+111, m. smith       ,  run1=DNS      DNS   >>2435.56 man. vs. 2435.56 'eye' time <<  run2=DNS      DNS   >>2435.56 man. vs. 2435.56 'eye' time <<    best=DNS
+ Y9, L. Leibfarth   ,  run1=DNS      DNS   >>2435.56 man. vs. 2435.56 'eye' time <<  run2=                           best=DNS
+
+K1 Rec
+174, J. Nash        ,  run1=   130.24   +10   140.24   >>130.24 man. vs. 130.24 'eye' time <<  run2=   106.48    +8   114.48   >>106.48 man. vs. 106.48 'eye' time <<    best=   114.48
+ 37, R. Lancaster   ,  run1=   169.85   +12   181.85   >>169.85 man. vs. 169.85 'eye' time <<  run2=   175.82   +60   235.82   >>175.82 man. vs. 175.82 'eye' time <<    best=   181.85
+ 43, B. Cahoon      ,  run1=   143.68   +50   193.68   >>143.68 man. vs. 143.68 'eye' time <<  run2=   170.11  +108   278.11   >>170.11 man. vs. 170.11 'eye' time <<    best=   193.68
+ 12, C. Weems       ,  run1=   217.54  +108   325.54   >>217.54 man. vs. 217.54 'eye' time <<  run2=   180.42   +70   250.42   >>180.42 man. vs. 180.42 'eye' time <<    best=   250.42
+ 36, C. Weems       ,  run1=   146.87  +106   252.87   >>146.87 man. vs. 146.87 'eye' time <<  run2=   154.96  +212   366.96   >>154.96 man. vs. 154.96 'eye' time <<    best=   252.87
+ 99, S. Lancaster   ,  run1=   174.95  +104   278.95   >>174.95 man. vs. 174.95 'eye' time <<  run2=   194.71  +208   402.71   >>194.71 man. vs. 194.71 'eye' time <<    best=   278.95
+170, T. Upchurch    ,  run1=   149.01  +202   351.01   >>149.01 man. vs. 149.01 'eye' time <<  run2=DNS      DNS   >>2435.56 man. vs. 2435.56 'eye' time <<    best=   351.01
+ 74, C. Weemes      ,  run1=   109.85  +452   561.85   >>109.85 man. vs. 109.85 'eye' time <<  run2=   147.94  +402   549.94   >>147.94 man. vs. 147.94 'eye' time <<    best=   549.94
+ 10, L. Shaw        ,  run1=    92.87  +650   742.87   >>92.87 man. vs. 92.87 'eye' time <<  run2=DNS      DNS   >>2435.56 man. vs. 2435.56 'eye' time <<    best=   742.87
+ 88, T. Shaw        ,  run1=   100.89  +658   758.89   >>100.89 man. vs. 100.89 'eye' time <<  run2=DNF      DNF   >>2504.92 man. vs. 9999.0 'eye' time <<  diff= 7494.08   best=   758.89
+115, J. Mcconnell   ,  run1=DNS      DNS   >>2435.56 man. vs. 2435.56 'eye' time <<  run2=DNS      DNS   >>2435.56 man. vs. 2435.56 'eye' time <<    best=DNS
+
+K1W
+108, E. Leibfarth   ,  run1=    84.01    +0    84.01   >>84.01 man. vs. 84.01 'eye' time <<  run2=    81.56    +0    81.56   >>81.56 man. vs. 81.56 'eye' time <<    best=    81.56
+185, l. mojsiak     ,  run1=    99.01    +2   101.01   >>99.01 man. vs. 99.01 'eye' time <<  run2=    94.73    +2    96.73   >>94.73 man. vs. 94.73 'eye' time <<    best=    96.73
+220, L. Brandon     ,  run1=    98.65   +10   108.65   >>98.65 man. vs. 98.65 'eye' time <<  run2=    98.81    +0    98.81   >>98.81 man. vs. 98.81 'eye' time <<    best=    98.81
+ 82, M. Kimmel      ,  run1=   125.10    +4   129.10   >>125.1 man. vs. 125.1 'eye' time <<  run2=   131.67    +0   131.67   >>131.67 man. vs. 131.67 'eye' time <<    best=   129.10
+
+K1W C1W
+158, E. Leibfarth   ,  run1=    97.49    +0    97.49   >>97.49 man. vs. 97.49 'eye' time <<  run2=    92.32    +2    94.32   >>92.32 man. vs. 92.32 'eye' time <<    best=    94.32
+  5, L. Brandon     ,  run1=   125.84    +4   129.84   >>125.84 man. vs. 125.84 'eye' time <<  run2=   121.62    +8   129.62   >>121.62 man. vs. 121.62 'eye' time <<    best=   129.62

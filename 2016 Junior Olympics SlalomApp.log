@@ -1,0 +1,793 @@
+20160729 14:20:22.188  info:(t:1)SlalomApp Server Connected @127.0.0.1
+20160729 14:20:22.413  info:(t:1)Talking to SlalomApp server  Socket[addr=/127.0.0.1,port=9898,localport=49446]
+20160729 14:20:22.448  info:(t:1)Listening to SlalomApp server Socket[addr=/127.0.0.1,port=9898,localport=49446]
+20160729 14:20:30.466  info:(t:17)Execution ends
+20160729 14:21:00.683  info:(t:1)SlalomApp Server Connected @127.0.0.1
+20160729 14:21:00.719  info:(t:1)Talking to SlalomApp server  Socket[addr=/127.0.0.1,port=9898,localport=49456]
+20160729 14:21:00.720  info:(t:1)Listening to SlalomApp server Socket[addr=/127.0.0.1,port=9898,localport=49456]
+20160730 11:11:08.255  info:(t:18)Execution ends
+20160730 11:26:36.492  info:(t:25)Server is running.
+20160730 11:26:36.525  info:(t:24)2 Identifying possible serial ports for timing equipment interface:
+20160730 11:26:36.554 warn:(t:16)Slalom Race Organizer's Application width=760 Putting Window RightTop at 680, 0
+20160730 11:26:38.472  info:(t:16)en1 fe80:0:0:0:226:bbff:fe17:2fee%5
+20160730 11:26:38.473  info:(t:16)en1 192.168.1.2
+20160730 11:31:47.254 warn:(t:16)ScoringSheet width=700 Putting Window BottomLeft at 0, 550
+20160730 11:32:00.810 warn:(t:16)Scrolling Scoreboard width=600 Putting Window RightTop at 840, 0
+20160730 11:32:27.094  info:(t:16)en1 fe80:0:0:0:226:bbff:fe17:2fee%5
+20160730 11:32:27.094  info:(t:16)en1 192.168.1.2
+20160730 11:36:11.452  info:(t:20)Execution ends
+20160730 11:36:26.529  info:(t:24)2 Identifying possible serial ports for timing equipment interface:
+20160730 11:36:26.551  info:(t:25)Server is running.
+20160730 11:36:26.612 warn:(t:16)Slalom Race Organizer's Application width=760 Putting Window RightTop at 680, 0
+20160730 11:36:27.975  info:(t:16)en1 fe80:0:0:0:226:bbff:fe17:2fee%5
+20160730 11:36:27.975  info:(t:16)en1 192.168.1.2
+20160730 11:37:31.822  info:(t:16)en1 fe80:0:0:0:226:bbff:fe17:2fee%5
+20160730 11:37:31.822  info:(t:16)en1 192.168.1.2
+20160730 11:37:58.358 warn:(t:16)Scrolling Scoreboard width=600 Putting Window RightTop at 840, 0
+20160730 11:38:04.328 warn:(t:16)ScoringSheet width=700 Putting Window BottomLeft at 0, 550
+20160730 11:39:17.512 warn:(t:16)ScoringSheet width=700 Putting Window BottomLeft at 0, 550
+20160730 11:39:19.615 warn:(t:16)Scrolling Scoreboard width=600 Putting Window RightTop at 840, 0
+20160730 12:18:29.791  info:(t:16)NEW RaceRun(b)82run#1 M. Kimmel
+20160730 12:18:29.791  info:(t:16)VSTRT B=82 r=1
+20160730 12:19:12.767 warn:(t:32)Communication error client ... closing connection c=#2 s=1
+20160730 12:19:12.774  info:(t:32)connection closed
+20160730 12:19:56.563  info:(t:16)NEW RaceRun(b)220run#1 L. Brandon
+20160730 12:19:56.565  info:(t:16)VSTRT B=220 r=1
+20160730 12:20:34.893  info:(t:16)VSTOP B=82 r=1 rawElapsed=   125.10 rawMANUAL=   125.10
+20160730 12:21:01.900  info:(t:16)NEW RaceRun(b)185run#1 l. mojsiak
+20160730 12:21:01.901  info:(t:16)VSTRT B=185 r=1
+20160730 12:21:35.219  info:(t:16)VSTOP B=220 r=1 rawElapsed=    98.65 rawMANUAL=    98.65
+20160730 12:22:27.293  info:(t:16)NEW RaceRun(b)108run#1 E. Leibfarth
+20160730 12:22:27.294  info:(t:16)VSTRT B=108 r=1
+20160730 12:22:40.913  info:(t:16)VSTOP B=185 r=1 rawElapsed=    99.01 rawMANUAL=    99.01
+20160730 12:22:53.218  info:(t:34)SPEN B=82 r=1                 0  0  0  0  0  0
+20160730 12:23:23.000  info:(t:36)SPEN B=82 r=1                                0  2  2  0  0  0
+20160730 12:23:27.182  info:(t:38)SPEN B=82 r=1                                               0  0  0  0  0  0
+20160730 12:23:48.598  info:(t:34)SPEN B=220 r=1                 0  0  0  2  2  0
+20160730 12:23:51.311  info:(t:16)VSTOP B=108 r=1 rawElapsed=    84.01 rawMANUAL=    84.01
+20160730 12:24:02.639  info:(t:36)SPEN B=220 r=1                                0  2  0  0  0  0
+20160730 12:24:13.796  info:(t:38)SPEN B=220 r=1                                               2  0  0  0  0  2
+20160730 12:24:26.931  info:(t:34)SPEN B=185 r=1                 0  0  0  0  0  0
+20160730 12:24:34.276  info:(t:16)NEW RaceRun(b)74run#1 C. Weemes
+20160730 12:24:34.276  info:(t:16)VSTRT B=74 r=1
+20160730 12:24:36.840  info:(t:36)SPEN B=185 r=1                                2  0  0  0  0  0
+20160730 12:24:43.188  info:(t:38)SPEN B=185 r=1                                               0  0  0  0  0  0
+20160730 12:24:50.143  info:(t:34)SPEN B=108 r=1                 0  0  0  0  0  0
+20160730 12:24:56.438  info:(t:36)SPEN B=108 r=1                                0  0  0  0  0  0
+20160730 12:25:01.017  info:(t:38)SPEN B=108 r=1                                               0  0  0  0  0  0
+20160730 12:25:47.732  info:(t:34)SPEN B=74 r=1                 0 50 50  2 50  0
+20160730 12:26:22.437  info:(t:16)NEW RaceRun(b)25run#1 D. Jung
+20160730 12:26:22.438  info:(t:16)VSTRT B=25 r=1
+20160730 12:26:24.127  info:(t:16)VSTOP B=74 r=1 rawElapsed=   109.85 rawMANUAL=   109.85
+20160730 12:28:02.886  info:(t:16)VSTOP B=25 r=1 rawElapsed=   100.44 rawMANUAL=   100.44
+20160730 12:28:05.221  info:(t:16)NEW RaceRun(b)63run#1 C. Christie Williams
+20160730 12:28:05.221  info:(t:16)VSTRT B=63 r=1
+20160730 12:28:27.052  info:(t:38)SPEN B=74 r=1                                               0 50  0  0  0 50
+20160730 12:28:29.351  info:(t:36)SPEN B=74 r=1                               50 50  0 50  0 50
+20160730 12:28:58.472  info:(t:38)SPEN B=25 r=1                                               0  0  0  0  0  0
+20160730 12:29:06.197  info:(t:36)SPEN B=25 r=1                                0  2  0  0  0  0
+20160730 12:29:15.183  info:(t:16)NEW RaceRun(b)68run#1 J. Yochim
+20160730 12:29:15.183  info:(t:16)VSTRT B=68 r=1
+20160730 12:30:21.208  info:(t:34)SPEN B=25 r=1                 0  2  2  0  0  0
+20160730 12:30:26.071  info:(t:16)VSTOP B=63 r=1 rawElapsed=   140.85 rawMANUAL=   140.85
+20160730 12:30:35.191  info:(t:34)SPEN B=63 r=1                 0  0  0  2  0  0
+20160730 12:30:36.988  info:(t:16)NEW RaceRun(b)69run#1 M. Inman
+20160730 12:30:36.988  info:(t:16)VSTRT B=69 r=1
+20160730 12:30:40.156  info:(t:36)SPEN B=63 r=1                                0  0  0  0  0  0
+20160730 12:31:04.355  info:(t:16)VSTOP B=68 r=1 rawElapsed=   109.17 rawMANUAL=   109.17
+20160730 12:31:20.277  info:(t:36)SPEN B=68 r=1                                0  2  0  2  0  0
+20160730 12:31:33.015  info:(t:38)SPEN B=63 r=1                                               0  0  0  0  0  2
+20160730 12:31:53.429  info:(t:16)NEW RaceRun(b)110run#1 A. Patel
+20160730 12:31:53.429  info:(t:16)VSTRT B=110 r=1
+20160730 12:32:32.650  info:(t:16)VSTOP B=69 r=1 rawElapsed=   115.66 rawMANUAL=   115.66
+20160730 12:32:52.582  info:(t:16)NEW RaceRun(b)111run#1 m. smith
+20160730 12:33:24.574  info:(t:16)NEW RaceRun(b)91run#1 T. Loving
+20160730 12:33:24.574  info:(t:16)VSTRT B=91 r=1
+20160730 12:33:28.194  info:(t:36)SPEN B=69 r=1                                0 50  2 50  2 50
+20160730 12:33:49.758  info:(t:38)SPEN B=68 r=1                                               2  2  2  0  2  0
+20160730 12:34:28.396  info:(t:16)VSTOP B=110 r=1 rawElapsed=   154.96 rawMANUAL=   154.96
+20160730 12:36:06.806  info:(t:16)VSTOP B=91 r=1 rawElapsed=   162.23 rawMANUAL=   162.23
+20160730 12:36:40.078  info:(t:38)SPEN B=91 r=1                                              50  2  0  0  0  0
+20160730 12:36:50.099  info:(t:16)NEW RaceRun(b)115run#1 J. Mcconnell
+20160730 12:38:48.651  info:(t:34)SPEN B=82 r=1                 0  0  0  0  0  0
+20160730 12:39:20.985  info:(t:34)SPEN B=68 r=1                 0  0  0  0  0  0
+20160730 12:39:41.570  info:(t:38)SPEN B=110 r=1                                               0  0  0  0  0  0
+20160730 12:40:43.807  info:(t:34)SPEN B=69 r=1                 0  0  0  0  0  0
+20160730 12:41:27.150  info:(t:34)SPEN B=110 r=1                 0  0  0  0  0  0
+20160730 12:41:55.145  info:(t:34)SPEN B=91 r=1                 2  0  2 50  0 50
+20160730 12:43:57.180  info:(t:16)NEW RaceRun(b)95run#1 M. Suchy
+20160730 12:43:57.180  info:(t:16)VSTRT B=95 r=1
+20160730 12:44:40.031 warn:(t:38)Communication error client ... closing connection c=#5 s=1
+20160730 12:44:40.031  info:(t:38)connection closed
+20160730 12:44:48.326 warn:(t:36)Communication error client ... closing connection c=#4 s=1
+20160730 12:44:48.326  info:(t:36)connection closed
+20160730 12:44:53.535  info:(t:16)NEW RaceRun(b)99run#1 S. Lancaster
+20160730 12:44:53.535  info:(t:16)VSTRT B=99 r=1
+20160730 12:44:56.620 warn:(t:34)Communication error client ... closing connection c=#3 s=1
+20160730 12:44:56.620  info:(t:34)connection closed
+20160730 12:45:50.375  info:(t:16)VSTOP B=95 r=1 rawElapsed=   113.19 rawMANUAL=   113.19
+20160730 12:46:30.776  info:(t:16)NEW RaceRun(b)184run#1 C. Henry
+20160730 12:46:30.777  info:(t:16)VSTRT B=184 r=1
+20160730 12:47:18.494  info:(t:40)SPEN B=184 r=1                 0  0  0  0  0  0
+20160730 12:47:32.705  info:(t:16)NEW RaceRun(b)141run#1 J. Yochim
+20160730 12:47:32.705  info:(t:16)VSTRT B=141 r=1
+20160730 12:47:48.485  info:(t:16)VSTOP B=99 r=1 rawElapsed=   174.95 rawMANUAL=   174.95
+20160730 12:48:26.263  info:(t:16)VSTOP B=184 r=1 rawElapsed=   115.48 rawMANUAL=   115.48
+20160730 12:48:43.066  info:(t:16)NEW RaceRun(b)15run#1 N. Francis
+20160730 12:48:43.067  info:(t:16)VSTRT B=15 r=1
+20160730 12:49:07.413  info:(t:16)VSTOP B=141 r=1 rawElapsed=    94.70 rawMANUAL=    94.70
+20160730 12:49:39.656  info:(t:16)NEW RaceRun(b)78run#1 R. Healy
+20160730 12:49:39.656  info:(t:16)VSTRT B=78 r=1
+20160730 12:50:24.935  info:(t:16)VSTOP B=15 r=1 rawElapsed=   101.86 rawMANUAL=   101.86
+20160730 12:51:03.287  info:(t:42)SPEN B=99 r=1                                0  0  0  0  0  0
+20160730 12:51:03.376  info:(t:16)VSTOP B=78 r=1 rawElapsed=    83.72 rawMANUAL=    83.72
+20160730 12:51:07.055  info:(t:16)NEW RaceRun(b)36run#1 C. Weems
+20160730 12:51:07.055  info:(t:16)VSTRT B=36 r=1
+20160730 12:52:03.325  info:(t:40)SPEN B=184 r=1                 0  0  0  0  0  0
+20160730 12:52:10.089  info:(t:16)NEW RaceRun(b)43run#1 B. Cahoon
+20160730 12:52:10.089  info:(t:16)VSTRT B=43 r=1
+20160730 12:52:44.623  info:(t:44)SPEN B=141 r=1                                               0  0  0  0  0  0
+20160730 12:53:22.435  info:(t:44)SPEN B=36 r=1                                               2  0  0  0  0  0
+20160730 12:53:33.925  info:(t:16)VSTOP B=36 r=1 rawElapsed=   146.87 rawMANUAL=   146.87
+20160730 12:53:44.105  info:(t:16)NEW RaceRun(b)174run#1 J. Nash
+20160730 12:53:44.106  info:(t:16)VSTRT B=174 r=1
+20160730 12:54:06.999  info:(t:42)SPEN B=43 r=1                                0 50  0  0  0  0
+20160730 12:54:33.774  info:(t:16)VSTOP B=43 r=1 rawElapsed=   143.68 rawMANUAL=   143.68
+20160730 12:54:41.601  info:(t:40)SPEN B=95 r=1                 0  0  0  0  0  0
+20160730 12:54:49.264  info:(t:16)NEW RaceRun(b)96run#1 G. Taft
+20160730 12:54:49.265  info:(t:16)VSTRT B=96 r=1
+20160730 12:55:49.217  info:(t:40)SPEN B=96 r=1                 0  0  2 50  0  0
+20160730 12:55:54.346  info:(t:16)VSTOP B=174 r=1 rawElapsed=   130.24 rawMANUAL=   130.24
+20160730 12:56:09.515  info:(t:16)NEW RaceRun(b)62run#1 D. Wainer
+20160730 12:56:09.515  info:(t:16)VSTRT B=62 r=1
+20160730 12:56:29.643  info:(t:42)SPEN B=96 r=1                                2  0  0  0  0  0
+20160730 12:56:56.395  info:(t:40)SPEN B=62 r=1                 0  2  2  0  0  0
+20160730 12:57:07.407  info:(t:16)VSTOP B=96 r=1 rawElapsed=   138.14 rawMANUAL=   138.14
+20160730 12:57:12.175  info:(t:16)NEW RaceRun(b)31run#1 K. Hank
+20160730 12:57:12.175  info:(t:16)VSTRT B=31 r=1
+20160730 12:57:39.430  info:(t:42)SPEN B=62 r=1                                0  0  0  2  0  0
+20160730 12:57:49.821  info:(t:16)VSTOP B=62 r=1 rawElapsed=   100.30 rawMANUAL=   100.30
+20160730 12:57:56.528  info:(t:40)SPEN B=99 r=1                 0  0  0  0  2  0
+20160730 12:58:06.167  info:(t:44)SPEN B=96 r=1                                               2  0  0  2  0 50
+20160730 12:58:36.974  info:(t:42)SPEN B=31 r=1                                0  0  0  0  0  0
+20160730 12:58:54.017  info:(t:16)VSTOP B=31 r=1 rawElapsed=   101.84 rawMANUAL=   101.84
+20160730 12:58:54.798  info:(t:16)NEW RaceRun(b)160run#1 T. Mardany
+20160730 12:58:54.798  info:(t:16)VSTRT B=160 r=1
+20160730 12:59:08.526  info:(t:44)SPEN B=62 r=1                                               0 50  0  0  0  2
+20160730 12:59:16.767  info:(t:44)SPEN B=31 r=1                                               0  0  0  0  0  0
+20160730 12:59:34.242  info:(t:40)SPEN B=160 r=1                 0  0  0  0  0  0
+20160730 13:00:13.854  info:(t:42)SPEN B=160 r=1                                0  0  0  0  0  0
+20160730 13:00:17.258  info:(t:16)VSTOP B=160 r=1 rawElapsed=    82.46 rawMANUAL=    82.46
+20160730 13:00:27.532  info:(t:42)SPEN B=31 r=1                                0  0  0  0  0  0
+20160730 13:00:42.488  info:(t:44)SPEN B=160 r=1                                               2  0  0  0  0  0
+20160730 13:01:42.451  info:(t:44)SPEN B=31 r=1                                               0  0  0  0  0  0
+20160730 13:02:06.421  info:(t:16)NEW RaceRun(b)65run#1 M. Kaderabek
+20160730 13:02:06.421  info:(t:16)VSTRT B=65 r=1
+20160730 13:02:49.125  info:(t:40)SPEN B=65 r=1                 2  0  0  0  0  0
+20160730 13:03:21.002  info:(t:42)SPEN B=65 r=1                                2  0  0  2  0  0
+20160730 13:03:34.741  info:(t:16)VSTOP B=65 r=1 rawElapsed=    88.32 rawMANUAL=    88.32
+20160730 13:03:46.927  info:(t:44)SPEN B=65 r=1                                               0  0  0  0  0  0
+20160730 13:03:57.431  info:(t:44)SPEN B=31 r=1                                               0  0  0  0  0  0
+20160730 13:04:09.283  info:(t:16)NEW RaceRun(b)85run#1 W. Bolyard
+20160730 13:04:09.284  info:(t:16)VSTRT B=85 r=1
+20160730 13:04:42.753  info:(t:40)SPEN B=85 r=1                 0  0  0  0  0  0
+20160730 13:05:29.649  info:(t:42)SPEN B=85 r=1                                2  0  0  0  0  0
+20160730 13:05:32.693  info:(t:16)VSTOP B=85 r=1 rawElapsed=    83.40 rawMANUAL=    83.40
+20160730 13:05:45.603  info:(t:44)SPEN B=85 r=1                                               0  0  0  2  0  0
+20160730 13:06:04.828  info:(t:16)NEW RaceRun(b)6run#1 M. McCurry
+20160730 13:06:04.828  info:(t:16)VSTRT B=6 r=1
+20160730 13:06:41.845  info:(t:40)SPEN B=96 r=1                 0  0  2 50  0  0
+20160730 13:06:52.545  info:(t:16)NEW RaceRun(b)170run#1 T. Upchurch
+20160730 13:06:52.546  info:(t:16)VSTRT B=170 r=1
+20160730 13:06:55.526  info:(t:40)SPEN B=96 r=1                 0  0  2 50  0  0
+20160730 13:07:04.047  info:(t:40)SPEN B=6 r=1                 0  0  0  0  0  0
+20160730 13:07:27.101  info:(t:16)VSTOP B=6 r=1 rawElapsed=    82.27 rawMANUAL=    82.27
+20160730 13:07:35.323  info:(t:44)SPEN B=6 r=1                                               0  0  0  0  0  0
+20160730 13:07:53.636  info:(t:40)SPEN B=170 r=1                 0  0  0 50  0  0
+20160730 13:08:22.526  info:(t:16)NEW RaceRun(b)37run#1 R. Lancaster
+20160730 13:08:22.526  info:(t:16)VSTRT B=37 r=1
+20160730 13:08:53.523  info:(t:42)SPEN B=6 r=1                                0  0  0  0  0  0
+20160730 13:09:21.563  info:(t:16)VSTOP B=170 r=1 rawElapsed=   149.01 rawMANUAL=   149.01
+20160730 13:09:33.137  info:(t:40)SPEN B=37 r=1                 0  0  2  0  0  2
+20160730 13:09:38.900  info:(t:16)NEW RaceRun(b)12run#1 C. Weems
+20160730 13:09:38.900  info:(t:16)VSTRT B=12 r=1
+20160730 13:09:51.156  info:(t:42)SPEN B=170 r=1                                0  0  0  0  0  0
+20160730 13:10:21.715  info:(t:42)SPEN B=37 r=1                                0  0  2  0  0  2
+20160730 13:11:04.166  info:(t:40)SPEN B=12 r=1                 0  0  0 50  0  0
+20160730 13:11:12.379  info:(t:16)VSTOP B=37 r=1 rawElapsed=   169.85 rawMANUAL=   169.85
+20160730 13:11:13.077  info:(t:42)SPEN B=12 r=1                                0  0  0  0  0  0
+20160730 13:11:22.024  info:(t:44)SPEN B=12 r=1                                               0  0  0  0  0  0
+20160730 13:11:34.070  info:(t:44)SPEN B=37 r=1                                               0  0  2  0  2  0
+20160730 13:12:28.454  info:(t:42)SPEN B=12 r=1                                0  0  2  0  0 50
+20160730 13:13:16.448  info:(t:16)VSTOP B=12 r=1 rawElapsed=   217.54 rawMANUAL=   217.54
+20160730 13:14:29.040  info:(t:16)NEW RaceRun(b)67run#1 W. Bolyard
+20160730 13:14:29.040  info:(t:16)VSTRT B=67 r=1
+20160730 13:14:42.945  info:(t:44)SPEN B=12 r=1                                               2  0  2  0  2  0
+20160730 13:15:18.326  info:(t:40)SPEN B=67 r=1                 0  2  0  0  0  0
+20160730 13:15:31.355  info:(t:16)NEW RaceRun(b)29run#1 M. Kaderabek
+20160730 13:15:31.355  info:(t:16)VSTRT B=29 r=1
+20160730 13:16:12.904  info:(t:42)SPEN B=67 r=1                                0  0  2  2  0  0
+20160730 13:16:22.677  info:(t:40)SPEN B=29 r=1                 0  0  0  0  0  0
+20160730 13:16:23.741  info:(t:16)VSTOP B=67 r=1 rawElapsed=   114.70 rawMANUAL=   114.70
+20160730 13:16:30.255  info:(t:16)NEW RaceRun(b)180run#1 M. Suchy
+20160730 13:16:30.255  info:(t:16)VSTRT B=180 r=1
+20160730 13:16:31.569  info:(t:44)SPEN B=67 r=1                                               0  0  0  2  0  0
+20160730 13:17:09.273  info:(t:42)SPEN B=29 r=1                                2  0  0  0  0  0
+20160730 13:17:21.684  info:(t:16)VSTOP B=29 r=1 rawElapsed=   110.32 rawMANUAL=   110.32
+20160730 13:17:26.454  info:(t:40)SPEN B=180 r=1                 0  2  2  0  0  0
+20160730 13:17:28.571  info:(t:44)SPEN B=29 r=1                                               0  0  0  0  0  0
+20160730 13:18:10.150  info:(t:16)NEW RaceRun(b)173run#1 J. Yochim
+20160730 13:18:10.151  info:(t:16)VSTRT B=173 r=1
+20160730 13:18:21.256  info:(t:42)SPEN B=180 r=1                                2  2  0  0  0  0
+20160730 13:19:10.296  info:(t:40)SPEN B=173 r=1                 0  0  2  0  0  0
+20160730 13:19:34.500  info:(t:16)VSTOP B=180 r=1 rawElapsed=   184.24 rawMANUAL=   184.24
+20160730 13:19:40.777  info:(t:16)NEW RaceRun(b)215run#1 M. McCurry
+20160730 13:19:40.777  info:(t:16)VSTRT B=215 r=1
+20160730 13:20:02.883  info:(t:42)SPEN B=173 r=1                                0  2  0  0  0  0
+20160730 13:20:24.724  info:(t:16)VSTOP B=173 r=1 rawElapsed=   134.57 rawMANUAL=   134.57
+20160730 13:20:31.670  info:(t:40)SPEN B=215 r=1                 0  0  2  0  0  0
+20160730 13:20:50.632  info:(t:44)SPEN B=180 r=1                                               2  0  0  0  2  2
+20160730 13:20:58.765  info:(t:44)SPEN B=173 r=1                                               0  0  0  0  0  0
+20160730 13:21:15.473  info:(t:16)VSTOP B=215 r=1 rawElapsed=    94.69 rawMANUAL=    94.69
+20160730 13:21:34.973  info:(t:42)SPEN B=215 r=1                                2  0  2  0  0  0
+20160730 13:21:47.074  info:(t:44)SPEN B=215 r=1                                               2  0  0  0  0  2
+20160730 13:22:18.149  info:(t:16)NEW RaceRun(b)157run#1 R. Healy
+20160730 13:22:18.150  info:(t:16)VSTRT B=157 r=1
+20160730 13:22:52.714  info:(t:40)SPEN B=157 r=1                 0  0  0  0  0  0
+20160730 13:23:39.409  info:(t:42)SPEN B=157 r=1                                2  0  0  0  0  0
+20160730 13:23:54.078  info:(t:16)VSTOP B=157 r=1 rawElapsed=    95.92 rawMANUAL=    95.92
+20160730 13:24:07.663  info:(t:44)SPEN B=157 r=1                                               0  0  0  0  0  0
+20160730 13:24:40.943  info:(t:16)NEW RaceRun(b)5run#1 L. Brandon
+20160730 13:24:40.944  info:(t:16)VSTRT B=5 r=1
+20160730 13:25:58.872  info:(t:16)NEW RaceRun(b)158run#1 E. Leibfarth
+20160730 13:25:58.872  info:(t:16)VSTRT B=158 r=1
+20160730 13:26:10.071  info:(t:42)SPEN B=110 r=1                                0  0  0  0  0  0
+20160730 13:26:30.479  info:(t:42)SPEN B=5 r=1                                0  0  0  0  0  0
+20160730 13:26:43.773  info:(t:40)SPEN B=158 r=1                 0  0  0  0  0  0
+20160730 13:26:46.793  info:(t:16)VSTOP B=5 r=1 rawElapsed=   125.84 rawMANUAL=   125.84
+20160730 13:26:53.213  info:(t:40)SPEN B=5 r=1                 0  0  0  0  0  0
+20160730 13:27:07.622  info:(t:44)SPEN B=5 r=1                                               2  0  2  0  0  0
+20160730 13:27:22.304  info:(t:42)SPEN B=158 r=1                                0  0  0  0  0  0
+20160730 13:27:36.367  info:(t:16)VSTOP B=158 r=1 rawElapsed=    97.49 rawMANUAL=    97.49
+20160730 13:27:46.723  info:(t:44)SPEN B=158 r=1                                               0  0  0  0  0  0
+20160730 13:27:54.373  info:(t:42)SPEN B=158 r=1                                0  0  0  0  0  0
+20160730 13:28:05.115  info:(t:16)NEW RaceRun(b)88run#1 T. Shaw
+20160730 13:28:05.115  info:(t:16)VSTRT B=88 r=1
+20160730 13:29:01.226  info:(t:40)SPEN B=88 r=1                 2 50 50 50 50 50
+20160730 13:29:11.888  info:(t:16)NEW RaceRun(b)10run#1 L. Shaw
+20160730 13:29:11.889  info:(t:16)VSTRT B=10 r=1
+20160730 13:29:26.922  info:(t:42)SPEN B=88 r=1                               50 50 50  2 50 50
+20160730 13:29:46.012  info:(t:16)VSTOP B=88 r=1 rawElapsed=   100.89 rawMANUAL=   100.89
+20160730 13:29:51.395  info:(t:40)SPEN B=10 r=1                 0 50 50 50 50 50
+20160730 13:30:12.719  info:(t:44)SPEN B=88 r=1                                              50 50  2 50  2  0
+20160730 13:30:36.286  info:(t:42)SPEN B=10 r=1                               50 50 50  0 50 50
+20160730 13:30:42.871  info:(t:16)NEW RaceRun(b)194run#1 H. Suchy
+20160730 13:30:42.871  info:(t:16)VSTRT B=194 r=1
+20160730 13:30:44.764  info:(t:16)VSTOP B=10 r=1 rawElapsed=    92.87 rawMANUAL=    92.87
+20160730 13:31:03.587  info:(t:44)SPEN B=10 r=1                                              50 50  0  0 50  0
+20160730 13:31:48.744  info:(t:40)SPEN B=194 r=1                 2  0 50 50  0  0
+20160730 13:31:53.281  info:(t:16)NEW RaceRun(b)81run#1 K. Bolyard
+20160730 13:31:53.282  info:(t:16)VSTRT B=81 r=1
+20160730 13:32:45.577  info:(t:42)SPEN B=194 r=1                                0  0  0  0  0  0
+20160730 13:32:47.193  info:(t:44)SPEN B=194 r=1                                               0  0  0  0  0  0
+20160730 13:32:56.545  info:(t:40)SPEN B=81 r=1                 0  0  0  0  0  0
+20160730 13:33:47.521  info:(t:16)VSTOP B=81 r=1 rawElapsed=   114.23 rawMANUAL=   114.23
+20160730 13:34:05.349  info:(t:44)SPEN B=81 r=1                                               0  0  0  0  2  0
+20160730 13:34:31.559  info:(t:42)SPEN B=81 r=1                                0  2  0  0  0  0
+20160730 13:37:04.544  info:(t:40)SPEN B=141 r=1                 0  0  0  0  0  0
+20160730 13:39:47.695  info:(t:16)NEW RaceRun(b)Y159run#1 M. Huvelin
+20160730 13:39:48.976  info:(t:16)NEW RaceRun(b)Y9run#1 L. Leibfarth
+20160730 13:43:44.633  info:(t:40)SPEN B=15 r=1                 0  0  0  0  0  0
+20160730 13:44:10.060  info:(t:40)SPEN B=78 r=1                 0  0  0  0  0  0
+20160730 13:44:44.445  info:(t:40)SPEN B=36 r=1                 0  0  2 50  0  0
+20160730 13:44:50.294  info:(t:40)SPEN B=43 r=1                 0  0  0  0  0  0
+20160730 13:45:04.347  info:(t:40)SPEN B=174 r=1                 0  0  2  2  0  0
+20160730 13:45:13.022  info:(t:40)SPEN B=31 r=1                 0  0  0  0  2  0
+20160730 13:46:37.237  info:(t:42)SPEN B=6 r=1                                2  0  0  0  0  0
+20160730 13:47:48.157  info:(t:42)SPEN B=91 r=1                                0  2  0  2  0  0
+20160730 13:48:06.263  info:(t:42)SPEN B=95 r=1                                0  0  2  2  0  0
+20160730 13:48:49.945  info:(t:42)SPEN B=184 r=1                                0  2  0  0  0  0
+20160730 13:49:50.908  info:(t:42)SPEN B=141 r=1                                0  0  0  0  0  0
+20160730 13:50:01.013  info:(t:42)SPEN B=15 r=1                                0  0  0  0  0  0
+20160730 13:50:05.777  info:(t:42)SPEN B=78 r=1                                0  0  0  0  0  0
+20160730 13:50:26.098  info:(t:42)SPEN B=36 r=1                                2  0  0 50  0  0
+20160730 13:50:40.906  info:(t:42)SPEN B=174 r=1                                0  0  2  0  0  0
+20160730 13:53:45.974  info:(t:44)SPEN B=69 r=1                                               0 50  0  0  0  0
+20160730 13:54:02.359  info:(t:44)SPEN B=95 r=1                                               0  0  0  0  0  0
+20160730 13:54:17.993  info:(t:44)SPEN B=99 r=1                                               2  0 50  0  0 50
+20160730 13:54:33.108  info:(t:44)SPEN B=184 r=1                                               0  0  0  0  0  2
+20160730 13:54:43.075  info:(t:44)SPEN B=15 r=1                                               2  0  2  2  0  0
+20160730 13:54:51.830  info:(t:44)SPEN B=78 r=1                                               0  0  0  0  0  0
+20160730 13:55:11.835  info:(t:44)SPEN B=43 r=1                                               0  0  0  0  0  0
+20160730 13:55:34.649  info:(t:44)SPEN B=174 r=1                                               0  2  0  0  2  0
+20160730 13:55:53.515  info:(t:44)SPEN B=170 r=1                                              50  0 50  2  0 50
+20160730 13:59:57.732  info:(t:16)NEW RaceRun(b)Y159run#2 M. Huvelin
+20160730 13:59:57.733  info:(t:16)VSTRT B=Y159 r=2
+20160730 14:00:38.678  info:(t:40)SPEN B=Y159 r=2                 0  0  0  0  0  0
+20160730 14:01:08.203  info:(t:16)VSTOP B=Y159 r=2 rawElapsed=    70.47 rawMANUAL=    70.47
+20160730 14:01:12.300  info:(t:16)NEW RaceRun(b)82run#2 M. Kimmel
+20160730 14:01:12.300  info:(t:16)VSTRT B=82 r=2
+20160730 14:01:21.646  info:(t:42)SPEN B=Y159 r=2                                0  0  0  0  0  0
+20160730 14:01:24.470  info:(t:44)SPEN B=Y159 r=2                                               0  0  0  0  0  0
+20160730 14:02:12.612  info:(t:16)NEW RaceRun(b)220run#2 L. Brandon
+20160730 14:02:12.613  info:(t:16)VSTRT B=220 r=2
+20160730 14:02:51.035  info:(t:40)SPEN B=82 r=2                 0  0  0  0  0  0
+20160730 14:03:13.984  info:(t:16)NEW RaceRun(b)185run#2 l. mojsiak
+20160730 14:03:13.984  info:(t:16)VSTRT B=185 r=2
+20160730 14:03:23.972  info:(t:16)VSTOP B=82 r=2 rawElapsed=   131.67 rawMANUAL=   131.67
+20160730 14:03:51.428  info:(t:16)VSTOP B=220 r=2 rawElapsed=    98.81 rawMANUAL=    98.81
+20160730 14:04:18.071  info:(t:16)NEW RaceRun(b)108run#2 E. Leibfarth
+20160730 14:04:18.071  info:(t:16)VSTRT B=108 r=2
+20160730 14:04:48.721  info:(t:16)VSTOP B=185 r=2 rawElapsed=    94.73 rawMANUAL=    94.73
+20160730 14:04:52.597  info:(t:42)SPEN B=82 r=2                                0  0  0  0  0  0
+20160730 14:04:56.032  info:(t:40)SPEN B=220 r=2                 0  0  0  0  0  0
+20160730 14:05:02.218  info:(t:40)SPEN B=185 r=2                 0  0  0  0  0  0
+20160730 14:05:05.596  info:(t:40)SPEN B=108 r=2                 0  0  0  0  0  0
+20160730 14:05:11.701  info:(t:44)SPEN B=82 r=2                                               0  0  0  0  0  0
+20160730 14:05:19.576  info:(t:44)SPEN B=185 r=2                                               0  0  0  0  0  0
+20160730 14:05:30.765  info:(t:42)SPEN B=108 r=2                                0  0  0  0  0  0
+20160730 14:05:38.113  info:(t:16)NEW RaceRun(b)74run#2 C. Weemes
+20160730 14:05:38.113  info:(t:16)VSTRT B=74 r=2
+20160730 14:05:39.637  info:(t:16)VSTOP B=108 r=2 rawElapsed=    81.56 rawMANUAL=    81.56
+20160730 14:05:50.494  info:(t:44)SPEN B=108 r=2                                               0  0  0  0  0  0
+20160730 14:05:58.400  info:(t:42)SPEN B=108 r=2                                0  0  0  0  0  0
+20160730 14:06:13.751  info:(t:44)SPEN B=82 r=2                                               0  0  0  0  0  0
+20160730 14:06:31.663  info:(t:16)NEW RaceRun(b)25run#2 D. Jung
+20160730 14:06:31.663  info:(t:16)VSTRT B=25 r=2
+20160730 14:06:47.321  info:(t:40)SPEN B=74 r=2                 0  0  2 50  0  0
+20160730 14:07:15.498  info:(t:42)SPEN B=74 r=2                               50 50 50 50  0  0
+20160730 14:07:54.628  info:(t:16)NEW RaceRun(b)63run#2 C. Christie Williams
+20160730 14:07:54.628  info:(t:16)VSTRT B=63 r=2
+20160730 14:08:06.055  info:(t:16)VSTOP B=74 r=2 rawElapsed=   147.94 rawMANUAL=   147.94
+20160730 14:08:25.060  info:(t:42)SPEN B=25 r=2                               50 50  0  0  0  0
+20160730 14:08:35.586  info:(t:16)VSTOP B=25 r=2 rawElapsed=   123.92 rawMANUAL=   123.92
+20160730 14:08:41.961  info:(t:40)SPEN B=25 r=2                 0  0  0  0  0  0
+20160730 14:08:46.377  info:(t:40)SPEN B=63 r=2                 0  0  0  0  0  0
+20160730 14:08:49.818  info:(t:44)SPEN B=74 r=2                                              50  0  0 50  0 50
+20160730 14:08:59.347  info:(t:44)SPEN B=25 r=2                                               2  0  0  0  0  0
+20160730 14:09:11.655  info:(t:16)NEW RaceRun(b)68run#2 J. Yochim
+20160730 14:09:11.655  info:(t:16)VSTRT B=68 r=2
+20160730 14:09:16.477  info:(t:42)SPEN B=220 r=2                                0  0  0  0  0  0
+20160730 14:09:55.164  info:(t:42)SPEN B=63 r=2                                0  0  2  2  2  2
+20160730 14:10:01.387  info:(t:40)SPEN B=63 r=2                 0  0  0  0  0  0
+20160730 14:10:07.955  info:(t:40)SPEN B=68 r=2                 0  0  2  2  0  0
+20160730 14:10:13.364  info:(t:40)SPEN B=63 r=2                 0  0  0  0  0  0
+20160730 14:10:20.480  info:(t:16)VSTOP B=63 r=2 rawElapsed=   145.85 rawMANUAL=   145.85
+20160730 14:10:24.161  info:(t:16)NEW RaceRun(b)69run#2 M. Inman
+20160730 14:10:24.161  info:(t:16)VSTRT B=69 r=2
+20160730 14:10:27.676  info:(t:44)SPEN B=63 r=2                                               0  2  0  0  0  0
+20160730 14:11:16.728  info:(t:42)SPEN B=68 r=2                                2  2 50  2  0  0
+20160730 14:11:24.122  info:(t:40)SPEN B=69 r=2                 0  0  0  0  0  0
+20160730 14:11:40.088  info:(t:16)VSTOP B=68 r=2 rawElapsed=   148.43 rawMANUAL=   148.43
+20160730 14:11:55.674  info:(t:16)NEW RaceRun(b)110run#2 A. Patel
+20160730 14:11:55.674  info:(t:16)VSTRT B=110 r=2
+20160730 14:12:21.906  info:(t:16)NEW RaceRun(b)111run#2 m. smith
+20160730 14:12:34.423  info:(t:42)SPEN B=69 r=2                                2 50  2  0  0  0
+20160730 14:12:53.842  info:(t:16)VSTOP B=69 r=2 rawElapsed=   149.68 rawMANUAL=   149.68
+20160730 14:13:03.084  info:(t:44)SPEN B=68 r=2                                               0  0  0  0  0  0
+20160730 14:13:05.443  info:(t:16)NEW RaceRun(b)91run#2 T. Loving
+20160730 14:13:05.443  info:(t:16)VSTRT B=91 r=2
+20160730 14:14:16.884  info:(t:16)VSTOP B=110 r=2 rawElapsed=   141.21 rawMANUAL=   141.21
+20160730 14:14:22.859  info:(t:44)SPEN B=110 r=2                                               0  0  0  0  0  0
+20160730 14:14:34.935  info:(t:16)NEW RaceRun(b)95run#2 M. Suchy
+20160730 14:14:34.936  info:(t:16)VSTRT B=95 r=2
+20160730 14:15:09.346  info:(t:16)NEW RaceRun(b)115run#2 J. Mcconnell
+20160730 14:15:12.273  info:(t:42)SPEN B=110 r=2                                0  0  0  0  0  0
+20160730 14:15:39.521  info:(t:16)NEW RaceRun(b)99run#2 S. Lancaster
+20160730 14:15:39.521  info:(t:16)VSTRT B=99 r=2
+20160730 14:16:02.955  info:(t:16)VSTOP B=91 r=2 rawElapsed=   177.51 rawMANUAL=   177.51
+20160730 14:16:18.122  info:(t:42)SPEN B=95 r=2                                2  2  0  0  0  0
+20160730 14:16:23.623  info:(t:16)VSTOP B=95 r=2 rawElapsed=   108.68 rawMANUAL=   108.68
+20160730 14:16:56.145  info:(t:44)SPEN B=99 r=2                                               0  0  0  0  0  0
+20160730 14:17:05.283  info:(t:44)SPEN B=95 r=2                                               0  0  0  0  0  0
+20160730 14:17:58.068  info:(t:16)NEW RaceRun(b)184run#2 C. Henry
+20160730 14:17:58.068  info:(t:16)VSTRT B=184 r=2
+20160730 14:18:28.031  info:(t:42)SPEN B=99 r=2                                2 50  0  0 50  0
+20160730 14:18:36.562  info:(t:40)SPEN B=99 r=2                 0  0  0  0  0  0
+20160730 14:18:54.236  info:(t:16)VSTOP B=99 r=2 rawElapsed=   194.71 rawMANUAL=   194.71
+20160730 14:18:57.212  info:(t:16)NEW RaceRun(b)141run#2 J. Yochim
+20160730 14:18:57.213  info:(t:16)VSTRT B=141 r=2
+20160730 14:19:49.936  info:(t:16)VSTOP B=184 r=2 rawElapsed=   111.86 rawMANUAL=   111.86
+20160730 14:19:50.700  info:(t:40)SPEN B=141 r=2                 0  0  0  0  0  0
+20160730 14:19:55.003  info:(t:44)SPEN B=99 r=2                                               0  2 50  0 50  0
+20160730 14:20:01.559  info:(t:44)SPEN B=184 r=2                                               0  0  0  0  0  0
+20160730 14:20:03.514  info:(t:16)NEW RaceRun(b)15run#2 N. Francis
+20160730 14:20:03.517  info:(t:16)VSTRT B=15 r=2
+20160730 14:20:20.285  info:(t:42)SPEN B=141 r=2                                0  0  0  0  0  0
+20160730 14:20:28.290  info:(t:16)VSTOP B=141 r=2 rawElapsed=    91.07 rawMANUAL=    91.07
+20160730 14:20:29.512  info:(t:42)SPEN B=185 r=2                                0  0  0  0  2  0
+20160730 14:20:45.750  info:(t:44)SPEN B=141 r=2                                               0  0  0  2  0  0
+20160730 14:21:18.059  info:(t:16)NEW RaceRun(b)78run#2 R. Healy
+20160730 14:21:18.059  info:(t:16)VSTRT B=78 r=2
+20160730 14:21:22.827  info:(t:44)SPEN B=99 r=2                                               0  2 50  0  0  2
+20160730 14:21:42.432  info:(t:42)SPEN B=15 r=2                                0  0  0  0  0  0
+20160730 14:21:43.943  info:(t:16)VSTOP B=15 r=2 rawElapsed=   100.42 rawMANUAL=   100.42
+20160730 14:21:48.869  info:(t:40)SPEN B=99 r=2                 0  0  0  0  0  0
+20160730 14:22:05.149  info:(t:40)SPEN B=99 r=2                 0  0  0  2 50  0
+20160730 14:22:15.098  info:(t:44)SPEN B=15 r=2                                               0  0  0  0  0  0
+20160730 14:22:26.515  info:(t:42)SPEN B=78 r=2                                0  0  0  0  0  0
+20160730 14:22:40.064  info:(t:16)VSTOP B=78 r=2 rawElapsed=    82.00 rawMANUAL=    82.00
+20160730 14:22:46.470  info:(t:44)SPEN B=78 r=2                                               0  0  0  0  0  0
+20160730 14:22:49.278  info:(t:16)NEW RaceRun(b)36run#2 C. Weems
+20160730 14:22:49.278  info:(t:16)VSTRT B=36 r=2
+20160730 14:22:58.914  info:(t:44)SPEN B=220 r=2                                               0  0  0  0  0  0
+20160730 14:23:08.041  info:(t:44)SPEN B=78 r=2                                               0  0  0  0  0  0
+20160730 14:23:54.194  info:(t:40)SPEN B=36 r=2                 2  0  0 50  2  0
+20160730 14:24:01.736  info:(t:16)NEW RaceRun(b)43run#2 B. Cahoon
+20160730 14:24:01.736  info:(t:16)VSTRT B=43 r=2
+20160730 14:24:52.839  info:(t:42)SPEN B=36 r=2                                2  2  0  0 50  2
+20160730 14:25:23.179  info:(t:40)SPEN B=43 r=2                 0  0  0  0  0  0
+20160730 14:25:24.239  info:(t:16)VSTOP B=36 r=2 rawElapsed=   154.96 rawMANUAL=   154.96
+20160730 14:25:35.872  info:(t:16)NEW RaceRun(b)174run#2 J. Nash
+20160730 14:25:35.873  info:(t:16)VSTRT B=174 r=2
+20160730 14:26:12.254  info:(t:42)SPEN B=43 r=2                                2 50  2  0 50  2
+20160730 14:26:24.800  info:(t:40)SPEN B=174 r=2                 0  0  0  2  0  0
+20160730 14:26:51.851  info:(t:16)VSTOP B=43 r=2 rawElapsed=   170.11 rawMANUAL=   170.11
+20160730 14:26:53.664  info:(t:16)NEW RaceRun(b)96run#2 G. Taft
+20160730 14:26:53.665  info:(t:16)VSTRT B=96 r=2
+20160730 14:26:53.964  info:(t:44)SPEN B=36 r=2                                               0  0  0  0  0  0
+20160730 14:27:04.758  info:(t:44)SPEN B=43 r=2                                               0  0  0  0  0  0
+20160730 14:27:20.242  info:(t:42)SPEN B=174 r=2                                2  0  0  0  2  0
+20160730 14:27:22.353  info:(t:16)VSTOP B=174 r=2 rawElapsed=   106.48 rawMANUAL=   106.48
+20160730 14:27:41.893  info:(t:44)SPEN B=174 r=2                                               2  0  0  0  0  0
+20160730 14:27:48.609  info:(t:40)SPEN B=96 r=2                 0  0  0  0  0  0
+20160730 14:28:10.060  info:(t:44)SPEN B=43 r=2                                               0  0  0  0  0  0
+20160730 14:28:23.622  info:(t:44)SPEN B=36 r=2                                               0  2 50  0  0 50
+20160730 14:28:24.428  info:(t:16)NEW RaceRun(b)62run#2 D. Wainer
+20160730 14:28:24.428  info:(t:16)VSTRT B=62 r=2
+20160730 14:28:41.132  info:(t:42)SPEN B=96 r=2                                2  0  0  0  2 50
+20160730 14:29:02.718  info:(t:16)VSTOP B=96 r=2 rawElapsed=   129.05 rawMANUAL=   129.05
+20160730 14:29:05.654  info:(t:40)SPEN B=62 r=2                 0  2  0  0  0  0
+20160730 14:29:48.732  info:(t:16)NEW RaceRun(b)31run#2 K. Hank
+20160730 14:29:48.733  info:(t:16)VSTRT B=31 r=2
+20160730 14:30:09.679  info:(t:16)VSTOP B=62 r=2 rawElapsed=   105.25 rawMANUAL=   105.25
+20160730 14:30:22.711  info:(t:44)SPEN B=96 r=2                                               0  0  0  0  0  0
+20160730 14:31:00.357  info:(t:16)NEW RaceRun(b)160run#2 T. Mardany
+20160730 14:31:00.357  info:(t:16)VSTRT B=160 r=2
+20160730 14:31:03.327  info:(t:42)SPEN B=62 r=2                                0  0  0  0  0  0
+20160730 14:31:27.446  info:(t:16)VSTOP B=31 r=2 rawElapsed=    98.71 rawMANUAL=    98.71
+20160730 14:31:32.556  info:(t:40)SPEN B=31 r=2                 0  0  0  0  0  0
+20160730 14:31:47.112  info:(t:44)SPEN B=31 r=2                                               2  2  0  0  0  0
+20160730 14:31:51.601  info:(t:42)SPEN B=31 r=2                                2  0  0  0  0  0
+20160730 14:32:04.203  info:(t:42)SPEN B=160 r=2                                0  0  0  0  0  0
+20160730 14:32:09.231  info:(t:16)NEW RaceRun(b)65run#2 M. Kaderabek
+20160730 14:32:09.232  info:(t:16)VSTRT B=65 r=2
+20160730 14:32:22.984  info:(t:16)VSTOP B=160 r=2 rawElapsed=    82.62 rawMANUAL=    82.62
+20160730 14:32:44.968  info:(t:44)SPEN B=160 r=2                                               0  0  0  0  0  0
+20160730 14:33:13.342  info:(t:40)SPEN B=160 r=2                 0  0  0  0  0  0
+20160730 14:33:26.221  info:(t:42)SPEN B=65 r=2                                0  0  0  0  0  0
+20160730 14:33:34.518  info:(t:16)NEW RaceRun(b)85run#2 W. Bolyard
+20160730 14:33:34.518  info:(t:16)VSTRT B=85 r=2
+20160730 14:33:40.371  info:(t:16)VSTOP B=65 r=2 rawElapsed=    91.13 rawMANUAL=    91.13
+20160730 14:34:28.732  info:(t:40)SPEN B=65 r=2                 0  0  0  0  0  0
+20160730 14:34:35.094  info:(t:40)SPEN B=85 r=2                 0  0  0  0  0  0
+20160730 14:34:48.085  info:(t:16)NEW RaceRun(b)6run#2 M. McCurry
+20160730 14:34:48.086  info:(t:16)VSTRT B=6 r=2
+20160730 14:34:52.538  info:(t:42)SPEN B=85 r=2                                0  0  0  2  0  0
+20160730 14:34:59.026  info:(t:16)VSTOP B=85 r=2 rawElapsed=    84.50 rawMANUAL=    84.50
+20160730 14:35:04.276  info:(t:44)SPEN B=69 r=2                                               0  0  0  0  0  0
+20160730 14:35:15.347  info:(t:44)SPEN B=85 r=2                                               2  0  0  0  0  0
+20160730 14:35:34.470  info:(t:40)SPEN B=65 r=2                 0  0  0  0  0  0
+20160730 14:35:42.511  info:(t:16)NEW RaceRun(b)170run#2 T. Upchurch
+20160730 14:35:48.911  info:(t:40)SPEN B=110 r=2                 0  0  0  0  0  0
+20160730 14:36:07.603  info:(t:16)VSTOP B=6 r=2 rawElapsed=    79.51 rawMANUAL=    79.51
+20160730 14:36:13.220  info:(t:40)SPEN B=91 r=2                 0  0  0  0  0  0
+20160730 14:36:13.805  info:(t:16)NEW RaceRun(b)37run#2 R. Lancaster
+20160730 14:36:13.806  info:(t:16)VSTRT B=37 r=2
+20160730 14:36:28.842  info:(t:44)SPEN B=6 r=2                                               0  0  0  0  0  0
+20160730 14:36:44.873  info:(t:42)SPEN B=6 r=2                                0  0  0  0  0  0
+20160730 14:37:05.900  info:(t:40)SPEN B=6 r=2                 0  0  0  0  0  0
+20160730 14:37:29.536  info:(t:40)SPEN B=37 r=2                 0  0  0  2  0  2
+20160730 14:37:40.885  info:(t:40)SPEN B=65 r=2                 0  0  0  0  0  0
+20160730 14:37:57.569  info:(t:16)NEW RaceRun(b)12run#2 C. Weems
+20160730 14:37:57.569  info:(t:16)VSTRT B=12 r=2
+20160730 14:38:05.136  info:(t:40)SPEN B=6 r=2                 0  0  2  0  0  0
+20160730 14:38:36.491  info:(t:42)SPEN B=37 r=2                                2  0  2  0  0  0
+20160730 14:39:09.632  info:(t:16)VSTOP B=37 r=2 rawElapsed=   175.82 rawMANUAL=   175.82
+20160730 14:39:17.653  info:(t:40)SPEN B=12 r=2                 2  2  2  0  0 50
+20160730 14:39:49.601  info:(t:44)SPEN B=37 r=2                                               0  0  0  0  2 50
+20160730 14:40:14.793  info:(t:42)SPEN B=12 r=2                                0  2  0  2  0  0
+20160730 14:40:57.998  info:(t:16)VSTOP B=12 r=2 rawElapsed=   180.42 rawMANUAL=   180.42
+20160730 14:41:06.580  info:(t:44)SPEN B=12 r=2                                               2  2  2  2  2  0
+20160730 14:41:08.981  info:(t:16)NEW RaceRun(b)29run#2 M. Kaderabek
+20160730 14:41:08.981  info:(t:16)VSTRT B=29 r=2
+20160730 14:41:51.196  info:(t:40)SPEN B=29 r=2                 0  0  0  0  0  0
+20160730 14:42:39.753  info:(t:16)NEW RaceRun(b)67run#2 W. Bolyard
+20160730 14:42:39.753  info:(t:16)VSTRT B=67 r=2
+20160730 14:42:41.182  info:(t:42)SPEN B=29 r=2                                2  0  0  0  0  0
+20160730 14:42:59.646  info:(t:16)VSTOP B=29 r=2 rawElapsed=   110.66 rawMANUAL=   110.66
+20160730 14:43:10.251  info:(t:44)SPEN B=29 r=2                                               0  0  0  0  0  0
+20160730 14:43:45.261  info:(t:40)SPEN B=67 r=2                 2  0  0  0  0  0
+20160730 14:43:54.848  info:(t:16)NEW RaceRun(b)180run#2 M. Suchy
+20160730 14:43:54.848  info:(t:16)VSTRT B=180 r=2
+20160730 14:44:04.232  info:(t:42)SPEN B=67 r=2                                0  0  0  0  0  0
+20160730 14:44:32.583  info:(t:16)VSTOP B=67 r=2 rawElapsed=   112.83 rawMANUAL=   112.83
+20160730 14:44:42.404  info:(t:44)SPEN B=67 r=2                                               0  0  2  0  0  0
+20160730 14:45:19.079  info:(t:40)SPEN B=180 r=2                 0  0  2 50  2  2
+20160730 14:45:43.655  info:(t:16)NEW RaceRun(b)173run#2 J. Yochim
+20160730 14:45:43.655  info:(t:16)VSTRT B=173 r=2
+20160730 14:46:07.239  info:(t:16)NEW RaceRun(b)157run#2 R. Healy
+20160730 14:46:07.239  info:(t:16)VSTRT B=157 r=2
+20160730 14:46:11.110  info:(t:42)SPEN B=180 r=2                                2 50  0  0  0  0
+20160730 14:46:26.712  info:(t:40)SPEN B=173 r=2                 0  0  0  0  0  0
+20160730 14:46:57.959  info:(t:16)VSTOP B=180 r=2 rawElapsed=   183.11 rawMANUAL=   183.11
+20160730 14:47:04.004  info:(t:44)SPEN B=180 r=2                                               0  0  0  0  0  0
+20160730 14:47:17.810  info:(t:42)SPEN B=173 r=2                                0  0  0  0  0  0
+20160730 14:47:50.431  info:(t:16)VSTOP B=173 r=2 rawElapsed=   126.77 rawMANUAL=   126.77
+20160730 14:48:02.269  info:(t:44)SPEN B=173 r=2                                               2  0  0  0  0  0
+20160730 14:48:24.145  info:(t:16)NEW RaceRun(b)215run#2 M. McCurry
+20160730 14:48:24.145  info:(t:16)VSTRT B=215 r=2
+20160730 14:49:09.106  info:(t:40)SPEN B=157 r=2                 0  0  0  0  0  0
+20160730 14:49:50.685  info:(t:16)NEW RaceRun(b,r)157run#2 R. Healy
+20160730 14:49:56.566  info:(t:16)VSTOP B=215 r=2 rawElapsed=    92.42 rawMANUAL=    92.42
+20160730 14:51:06.359  info:(t:16)NEW RaceRun(b)157run#2 R. Healy
+20160730 14:51:06.359  info:(t:16)VSTRT B=157 r=2
+20160730 14:52:38.686  info:(t:16)NEW RaceRun(b)5run#2 L. Brandon
+20160730 14:52:38.686  info:(t:16)VSTRT B=5 r=2
+20160730 14:52:43.118  info:(t:16)VSTOP B=157 r=2 rawElapsed=    96.75 rawMANUAL=    96.75
+20160730 14:53:23.437  info:(t:40)SPEN B=215 r=2                 0  0  0  0  0  0
+20160730 14:53:31.859  info:(t:40)SPEN B=157 r=2                 0  0  0  0  0  0
+20160730 14:53:42.023  info:(t:42)SPEN B=157 r=2                                0  0  0  0  0  0
+20160730 14:54:11.516  info:(t:16)NEW RaceRun(b)158run#2 E. Leibfarth
+20160730 14:54:11.516  info:(t:16)VSTRT B=158 r=2
+20160730 14:54:29.132  info:(t:42)SPEN B=157 r=2                                0  0  0  0  0  0
+20160730 14:54:40.306  info:(t:16)VSTOP B=5 r=2 rawElapsed=   121.62 rawMANUAL=   121.62
+20160730 14:55:43.845  info:(t:16)VSTOP B=158 r=2 rawElapsed=    92.32 rawMANUAL=    92.32
+20160730 14:55:45.087  info:(t:16)NEW RaceRun(b)81run#2 K. Bolyard
+20160730 14:55:45.088  info:(t:16)VSTRT B=81 r=2
+20160730 14:55:54.248  info:(t:42)SPEN B=158 r=2                                0  0  0  0  0  0
+20160730 14:57:10.689  info:(t:16)NEW RaceRun(b)194run#2 H. Suchy
+20160730 14:57:10.689  info:(t:16)VSTRT B=194 r=2
+20160730 14:57:34.981  info:(t:46)SPEN B=158 r=2                                               0  0  0  0  0  2
+20160730 14:57:35.980  info:(t:16)VSTOP B=81 r=2 rawElapsed=   110.89 rawMANUAL=   110.89
+20160730 14:57:46.720  info:(t:42)SPEN B=81 r=2                                0  2  0  0  0  0
+20160730 14:58:18.772  info:(t:40)SPEN B=194 r=2                 0  0 50  0 50 50
+20160730 14:58:50.260  info:(t:40)SPEN B=194 r=2                 0  0 50  0 50 50
+20160730 14:58:50.636  info:(t:16)NEW RaceRun(b)88run#2 T. Shaw
+20160730 14:58:50.636  info:(t:16)VSTRT B=88 r=2
+20160730 14:59:09.482  info:(t:16)VSTOP B=194 r=2 rawElapsed=   118.79 rawMANUAL=   118.79
+20160730 14:59:23.127  info:(t:42)SPEN B=194 r=2                               50 50  0 50  0  0
+20160730 14:59:29.256  info:(t:46)SPEN B=81 r=2                                               0  0  0  0  0  0
+20160730 14:59:53.854  info:(t:16)NEW RaceRun(b)10run#2 L. Shaw
+20160730 15:00:32.731  info:(t:40)SPEN B=88 r=2                 0 50 50 50 50 50
+20160730 15:02:02.568  info:(t:40)SPEN B=220 r=1                 0  0  0  2  2  0
+20160730 15:02:53.376  info:(t:40)SPEN B=95 r=2                 0  0  0  0  0  0
+20160730 15:04:14.393  info:(t:40)SPEN B=184 r=2                 0  0  2  0  0  0
+20160730 15:04:48.998  info:(t:40)SPEN B=15 r=2                 0  0  2  0  0  0
+20160730 15:05:13.992  info:(t:40)SPEN B=78 r=2                 0  0  0  0  0  0
+20160730 15:05:50.091  info:(t:40)SPEN B=5 r=2                 0  0  0  0  0  0
+20160730 15:06:53.427  info:(t:42)SPEN B=91 r=2                                0  0  2  0  0  0
+20160730 15:07:06.378  info:(t:42)SPEN B=184 r=2                                0  0  2  0  0  0
+20160730 15:07:28.180  info:(t:42)SPEN B=215 r=2                                0  0  0  0  0  0
+20160730 15:09:42.173  info:(t:46)SPEN B=91 r=2                                               0  0  0  0  0  0
+20160730 15:10:31.922  info:(t:46)SPEN B=62 r=2                                               0  0  2  0  0  2
+20160730 15:10:51.576  info:(t:46)SPEN B=65 r=2                                               0  0  0  0  0  0
+20160730 15:11:05.831  info:(t:46)SPEN B=215 r=2                                               0  0  0  0  0  0
+20160730 15:11:39.346  info:(t:40)SPEN B=96 r=2                 0  0  0  0  0  0
+20160730 15:12:08.982  info:(t:42)SPEN B=96 r=2                                2  0  0  0  2 50
+20160730 15:12:32.006  info:(t:46)SPEN B=96 r=2                                               0  0  0  2  0 50
+20160730 15:12:59.034  info:(t:40)SPEN B=43 r=2                 0  0  0  2  0  0
+20160730 15:13:30.567  info:(t:40)SPEN B=65 r=2                 0  0  0  0  0  0
+20160730 15:15:02.838  info:(t:42)SPEN B=65 r=2                                0  0  0  0  0  0
+20160730 15:15:17.670  info:(t:46)SPEN B=65 r=2                                               0  0  0  0  0  0
+20160730 15:16:11.859  info:(t:40)SPEN B=160 r=2                 0  0  0  0  0  0
+20160730 15:16:49.373  info:(t:42)SPEN B=160 r=2                                0  0  0  0  0  0
+20160730 15:17:10.171  info:(t:46)SPEN B=160 r=2                                               0  0  0  0  0  0
+20160730 15:17:43.862  info:(t:40)SPEN B=96 r=2                 0  0  0  0  0  0
+20160730 15:18:03.737  info:(t:42)SPEN B=96 r=2                                2  0  0  0  2 50
+20160730 15:18:25.310  info:(t:46)SPEN B=96 r=2                                               0  0  0  2  0 50
+20160730 15:18:40.153  info:(t:40)SPEN B=85 r=2                 0  0  0  0  0  0
+20160730 15:20:46.017  info:(t:40)SPEN B=215 r=2                 0  0  0  0  0  0
+20160730 15:20:59.804  info:(t:42)SPEN B=215 r=2                                0  0  0  0  0  0
+20160730 15:22:02.170  info:(t:40)SPEN B=180 r=2                 0  0  2 50  2  0
+20160730 15:22:37.139  info:(t:40)SPEN B=5 r=2                 0  0  2  0  0  0
+20160730 15:22:47.848  info:(t:42)SPEN B=5 r=2                                2  2  0  0  0  0
+20160730 15:23:09.301  info:(t:46)SPEN B=5 r=2                                               0  0  2  0  0  0
+20160730 15:23:53.066  info:(t:46)SPEN B=158 r=2                                               0  0  0  0  0  2
+20160730 15:24:14.578  info:(t:40)SPEN B=158 r=2                 0  0  0  0  0  0
+20160730 15:24:56.351  info:(t:46)SPEN B=158 r=2                                               0  0  0  0  0  2
+20160730 15:25:27.582  info:(t:40)SPEN B=81 r=2                 0  0  0  0  0  0
+20160730 15:26:21.187  info:(t:42)SPEN B=81 r=2                                0  2  0  0  0  0
+20160730 15:26:32.425  info:(t:46)SPEN B=81 r=2                                               0  0  0  0  0  0
+20160730 15:27:05.997  info:(t:40)SPEN B=88 r=2                 0 50 50 50 50 50
+20160730 15:27:23.231  info:(t:42)SPEN B=88 r=2                                0  0  0  0  0  0
+20160730 15:28:44.073  info:(t:40)SPEN B=194 r=2                 0  0 50  0 50 50
+20160730 15:28:55.676  info:(t:42)SPEN B=194 r=2                               50 50  0 50  0  0
+20160730 15:29:01.843  info:(t:46)SPEN B=88 r=2                                               0  0  0  0  0  0
+20160730 15:29:18.457  info:(t:46)SPEN B=194 r=2                                               0  2  2  0  2  2
+20160730 15:30:07.018  info:(t:46)SPEN B=157 r=2                                               0  0  0  0  0  0
+20160730 15:40:21.827  info:(t:16)
+SortedCSV Results
+20160730 15:40:24.986  info:(t:16)
+Sorted Results
+20160730 15:40:24.987  info:(t:16)Run# 2  C1 M. McCurry                    92.42 +0      92.42
+20160730 15:40:24.987  info:(t:16)
+20160730 15:40:24.987  info:(t:16)Run# 2  C1 R. Healy                      96.75 +0      96.75
+20160730 15:40:24.987  info:(t:16)
+20160730 15:40:24.987  info:(t:16)Run# 1  C1 R. Healy                      95.92 +2      97.92
+20160730 15:40:24.988  info:(t:16)
+20160730 15:40:24.988  info:(t:16)Run# 1  C1 M. McCurry                    94.69 +10    104.69
+20160730 15:40:24.988  info:(t:16)
+20160730 15:40:24.988  info:(t:16)Run# 1  C1 M. Kaderabek                 110.32 +2     112.32
+20160730 15:40:24.988  info:(t:16)
+20160730 15:40:24.988  info:(t:16)Run# 2  C1 M. Kaderabek                 110.66 +2     112.66
+20160730 15:40:24.989  info:(t:16)
+20160730 15:40:24.989  info:(t:16)Run# 2  C1 W. Bolyard                   112.83 +4     116.83
+20160730 15:40:24.989  info:(t:16)
+20160730 15:40:24.989  info:(t:16)Run# 1  C1 W. Bolyard                   114.70 +8     122.70
+20160730 15:40:24.989  info:(t:16)
+20160730 15:40:24.989  info:(t:16)Run# 2  C1 J. Yochim                    126.77 +2     128.77
+20160730 15:40:24.990  info:(t:16)
+20160730 15:40:24.990  info:(t:16)Run# 1  C1 J. Yochim                    134.57 +4     138.57
+20160730 15:40:24.990  info:(t:16)
+20160730 15:40:24.990  info:(t:16)Run# 1  C1 M. Suchy                     184.24 +14    198.24
+20160730 15:40:24.990  info:(t:16)
+20160730 15:40:24.990  info:(t:16)Run# 2  C1 M. Suchy                     183.11 +106   289.11
+20160730 15:40:24.991  info:(t:16)
+20160730 15:40:31.664  info:(t:16)---
+20160730 15:40:31.664  info:(t:16)Run# 2  C2 K. Bolyard                   110.89 +2     112.89
+20160730 15:40:31.664  info:(t:16)
+20160730 15:40:31.665  info:(t:16)Run# 1  C2 K. Bolyard                   114.23 +4     118.23
+20160730 15:40:31.665  info:(t:16)
+20160730 15:40:31.665  info:(t:16)Run# 2  C2 H. Suchy                     118.79 +308   426.79
+20160730 15:40:31.665  info:(t:16)
+20160730 15:40:31.665  info:(t:16)Run# 1  C2 H. Suchy                      DNF +102 10101.00
+20160730 15:40:31.665  info:(t:16)
+20160730 15:40:31.665  info:(t:16)---
+20160730 15:40:31.665  info:(t:16)Run# 2  K1 M. Huvelin                    70.47 +0      70.47
+20160730 15:40:31.665  info:(t:16)
+20160730 15:40:31.666  info:(t:16)Run# 2  K1 M. McCurry                    79.51 +2      81.51
+20160730 15:40:31.666  info:(t:16)
+20160730 15:40:31.666  info:(t:16)Run# 2  K1 R. Healy                      82.00 +0      82.00
+20160730 15:40:31.666  info:(t:16)
+20160730 15:40:31.666  info:(t:16)Run# 2  K1 T. Mardany                    82.62 +0      82.62
+20160730 15:40:31.666  info:(t:16)
+20160730 15:40:31.666  info:(t:16)Run# 1  K1 R. Healy                      83.72 +0      83.72
+20160730 15:40:31.667  info:(t:16)
+20160730 15:40:31.667  info:(t:16)Run# 1  K1 M. McCurry                    82.27 +2      84.27
+20160730 15:40:31.667  info:(t:16)
+20160730 15:40:31.667  info:(t:16)Run# 1  K1 T. Mardany                    82.46 +2      84.46
+20160730 15:40:31.667  info:(t:16)
+20160730 15:40:31.667  info:(t:16)Run# 1  K1 W. Bolyard                    83.40 +4      87.40
+20160730 15:40:31.667  info:(t:16)
+20160730 15:40:31.667  info:(t:16)Run# 2  K1 W. Bolyard                    84.50 +4      88.50
+20160730 15:40:31.668  info:(t:16)
+20160730 15:40:31.668  info:(t:16)Run# 2  K1 M. Kaderabek                  91.13 +0      91.13
+20160730 15:40:31.668  info:(t:16)
+20160730 15:40:31.668  info:(t:16)Run# 2  K1 J. Yochim                     91.07 +2      93.07
+20160730 15:40:31.668  info:(t:16)
+20160730 15:40:31.668  info:(t:16)Run# 1  K1 M. Kaderabek                  88.32 +6      94.32
+20160730 15:40:31.668  info:(t:16)
+20160730 15:40:31.668  info:(t:16)Run# 1  K1 J. Yochim                     94.70 +0      94.70
+20160730 15:40:31.669  info:(t:16)
+20160730 15:40:31.669  info:(t:16)Run# 2  K1 N. Francis                   100.42 +2     102.42
+20160730 15:40:31.669  info:(t:16)
+20160730 15:40:31.669  info:(t:16)Run# 1  K1 K. Hank                      101.84 +2     103.84
+20160730 15:40:31.669  info:(t:16)
+20160730 15:40:31.669  info:(t:16)Run# 2  K1 K. Hank                       98.71 +6     104.71
+20160730 15:40:31.669  info:(t:16)
+20160730 15:40:31.669  info:(t:16)Run# 1  K1 D. Jung                      100.44 +6     106.44
+20160730 15:40:31.670  info:(t:16)
+20160730 15:40:31.670  info:(t:16)Run# 1  K1 N. Francis                   101.86 +6     107.86
+20160730 15:40:31.670  info:(t:16)
+20160730 15:40:31.670  info:(t:16)Run# 2  K1 D. Wainer                    105.25 +6     111.25
+20160730 15:40:31.670  info:(t:16)
+20160730 15:40:31.670  info:(t:16)Run# 2  K1 M. Suchy                     108.68 +4     112.68
+20160730 15:40:31.670  info:(t:16)
+20160730 15:40:31.670  info:(t:16)Run# 2  K1 C. Henry                     111.86 +4     115.86
+20160730 15:40:31.671  info:(t:16)
+20160730 15:40:31.671  info:(t:16)Run# 1  K1 M. Suchy                     113.19 +4     117.19
+20160730 15:40:31.671  info:(t:16)
+20160730 15:40:31.671  info:(t:16)Run# 1  K1 C. Henry                     115.48 +4     119.48
+20160730 15:40:31.671  info:(t:16)
+20160730 15:40:31.671  info:(t:16)Run# 1  K1 J. Yochim                    109.17 +12    121.17
+20160730 15:40:31.671  info:(t:16)
+20160730 15:40:31.671  info:(t:16)Run# 2  K1 A. Patel                     141.21 +0     141.21
+20160730 15:40:31.672  info:(t:16)
+20160730 15:40:31.672  info:(t:16)Run# 1  K1 C. Christie Williams         140.85 +4     144.85
+20160730 15:40:31.672  info:(t:16)
+20160730 15:40:31.672  info:(t:16)Run# 1  K1 A. Patel                     154.96 +0     154.96
+20160730 15:40:31.672  info:(t:16)
+20160730 15:40:31.672  info:(t:16)Run# 2  K1 C. Christie Williams         145.85 +10    155.85
+20160730 15:40:31.672  info:(t:16)
+20160730 15:40:31.672  info:(t:16)Run# 1  K1 D. Wainer                    100.30 +58    158.30
+20160730 15:40:31.673  info:(t:16)
+20160730 15:40:31.673  info:(t:16)Run# 2  K1 T. Loving                    177.51 +2     179.51
+20160730 15:40:31.673  info:(t:16)
+20160730 15:40:31.673  info:(t:16)Run# 2  K1 M. Inman                     149.68 +54    203.68
+20160730 15:40:31.673  info:(t:16)
+20160730 15:40:31.673  info:(t:16)Run# 2  K1 J. Yochim                    148.43 +60    208.43
+20160730 15:40:31.673  info:(t:16)
+20160730 15:40:31.673  info:(t:16)Run# 2  K1 D. Jung                      123.92 +102   225.92
+20160730 15:40:31.673  info:(t:16)
+20160730 15:40:31.674  info:(t:16)Run# 2  K1 G. Taft                      129.05 +106   235.05
+20160730 15:40:31.674  info:(t:16)
+20160730 15:40:31.674  info:(t:16)Run# 1  K1 G. Taft                      138.14 +108   246.14
+20160730 15:40:31.674  info:(t:16)
+20160730 15:40:31.674  info:(t:16)Run# 1  K1 M. Inman                     115.66 +204   319.66
+20160730 15:40:31.674  info:(t:16)
+20160730 15:40:31.674  info:(t:16)Run# 1  K1 T. Loving                    162.23 +160   322.23
+20160730 15:40:31.674  info:(t:16)
+20160730 15:40:31.675  info:(t:16)Run# 1  K1 m. smith                      DNS +0    2431.67
+20160730 15:40:31.675  info:(t:16)
+20160730 15:40:31.675  info:(t:16)Run# 1  K1 M. Huvelin                    DNS +0    2431.67
+20160730 15:40:31.675  info:(t:16)
+20160730 15:40:31.675  info:(t:16)Run# 1  K1 L. Leibfarth                  DNS +0    2431.67
+20160730 15:40:31.675  info:(t:16)
+20160730 15:40:31.675  info:(t:16)Run# 2  K1 m. smith                      DNS +0    2431.67
+20160730 15:40:31.675  info:(t:16)
+20160730 15:40:31.676  info:(t:16)---
+20160730 15:40:31.676  info:(t:16)Run# 2 K1 Rec J. Nash                      106.48 +8     114.48
+20160730 15:40:31.676  info:(t:16)
+20160730 15:40:31.676  info:(t:16)Run# 1 K1 Rec J. Nash                      130.24 +10    140.24
+20160730 15:40:31.676  info:(t:16)
+20160730 15:40:31.676  info:(t:16)Run# 1 K1 Rec R. Lancaster                 169.85 +12    181.85
+20160730 15:40:31.676  info:(t:16)
+20160730 15:40:31.677  info:(t:16)Run# 1 K1 Rec B. Cahoon                    143.68 +50    193.68
+20160730 15:40:31.677  info:(t:16)
+20160730 15:40:31.677  info:(t:16)Run# 2 K1 Rec R. Lancaster                 175.82 +60    235.82
+20160730 15:40:31.677  info:(t:16)
+20160730 15:40:31.677  info:(t:16)Run# 2 K1 Rec C. Weems                     180.42 +70    250.42
+20160730 15:40:31.679  info:(t:16)
+20160730 15:40:31.679  info:(t:16)Run# 1 K1 Rec C. Weems                     146.87 +106   252.87
+20160730 15:40:31.679  info:(t:16)
+20160730 15:40:31.679  info:(t:16)Run# 2 K1 Rec B. Cahoon                    170.11 +108   278.11
+20160730 15:40:31.679  info:(t:16)
+20160730 15:40:31.679  info:(t:16)Run# 1 K1 Rec S. Lancaster                 174.95 +104   278.95
+20160730 15:40:31.679  info:(t:16)
+20160730 15:40:31.680  info:(t:16)Run# 1 K1 Rec C. Weems                     217.54 +108   325.54
+20160730 15:40:31.680  info:(t:16)
+20160730 15:40:31.680  info:(t:16)Run# 1 K1 Rec T. Upchurch                  149.01 +202   351.01
+20160730 15:40:31.680  info:(t:16)
+20160730 15:40:31.680  info:(t:16)Run# 2 K1 Rec C. Weems                     154.96 +212   366.96
+20160730 15:40:31.680  info:(t:16)
+20160730 15:40:31.680  info:(t:16)Run# 2 K1 Rec S. Lancaster                 194.71 +208   402.71
+20160730 15:40:31.680  info:(t:16)
+20160730 15:40:31.681  info:(t:16)Run# 2 K1 Rec C. Weemes                    147.94 +402   549.94
+20160730 15:40:31.681  info:(t:16)
+20160730 15:40:31.681  info:(t:16)Run# 1 K1 Rec C. Weemes                    109.85 +452   561.85
+20160730 15:40:31.681  info:(t:16)
+20160730 15:40:31.681  info:(t:16)Run# 1 K1 Rec L. Shaw                       92.87 +650   742.87
+20160730 15:40:31.681  info:(t:16)
+20160730 15:40:31.681  info:(t:16)Run# 1 K1 Rec T. Shaw                      100.89 +658   758.89
+20160730 15:40:31.681  info:(t:16)
+20160730 15:40:31.682  info:(t:16)Run# 1 K1 Rec J. Mcconnell                  DNS +0    2431.68
+20160730 15:40:31.682  info:(t:16)
+20160730 15:40:31.682  info:(t:16)Run# 2 K1 Rec J. Mcconnell                  DNS +0    2431.68
+20160730 15:40:31.682  info:(t:16)
+20160730 15:40:31.682  info:(t:16)Run# 2 K1 Rec T. Upchurch                   DNS +0    2431.68
+20160730 15:40:31.682  info:(t:16)
+20160730 15:40:31.682  info:(t:16)Run# 2 K1 Rec L. Shaw                       DNS +0    2431.68
+20160730 15:40:31.682  info:(t:16)
+20160730 15:40:31.683  info:(t:16)Run# 2 K1 Rec T. Shaw                       DNF +250 10249.00
+20160730 15:40:31.683  info:(t:16)
+20160730 15:40:31.683  info:(t:16)---
+20160730 15:40:31.683  info:(t:16)Run# 2 K1W E. Leibfarth                  81.56 +0      81.56
+20160730 15:40:31.683  info:(t:16)
+20160730 15:40:31.683  info:(t:16)Run# 1 K1W E. Leibfarth                  84.01 +0      84.01
+20160730 15:40:31.683  info:(t:16)
+20160730 15:40:31.683  info:(t:16)Run# 2 K1W l. mojsiak                    94.73 +2      96.73
+20160730 15:40:31.684  info:(t:16)
+20160730 15:40:31.684  info:(t:16)Run# 2 K1W L. Brandon                    98.81 +0      98.81
+20160730 15:40:31.684  info:(t:16)
+20160730 15:40:31.684  info:(t:16)Run# 1 K1W l. mojsiak                    99.01 +2     101.01
+20160730 15:40:31.684  info:(t:16)
+20160730 15:40:31.684  info:(t:16)Run# 1 K1W L. Brandon                    98.65 +10    108.65
+20160730 15:40:31.684  info:(t:16)
+20160730 15:40:31.684  info:(t:16)Run# 1 K1W M. Kimmel                    125.10 +4     129.10
+20160730 15:40:31.684  info:(t:16)
+20160730 15:40:31.685  info:(t:16)Run# 2 K1W M. Kimmel                    131.67 +0     131.67
+20160730 15:40:31.685  info:(t:16)
+20160730 15:40:31.685  info:(t:16)---
+20160730 15:40:31.685  info:(t:16)Run# 2 K1W C1W E. Leibfarth                  92.32 +2      94.32
+20160730 15:40:31.685  info:(t:16)
+20160730 15:40:31.685  info:(t:16)Run# 1 K1W C1W E. Leibfarth                  97.49 +0      97.49
+20160730 15:40:31.685  info:(t:16)
+20160730 15:40:31.685  info:(t:16)Run# 2 K1W C1W L. Brandon                   121.62 +8     129.62
+20160730 15:40:31.686  info:(t:16)
+20160730 15:40:31.686  info:(t:16)Run# 1 K1W C1W L. Brandon                   125.84 +4     129.84
+20160730 15:40:31.686  info:(t:16)
+20160730 19:14:56.187 Exception:(t:42)Operation timed out
+20160730 19:14:59.776 Exception:(t:40)Operation timed out
+20160730 19:15:18.944 Exception:(t:46)Operation timed out
+20160730 20:02:50.213  info:(t:19)Execution ends

@@ -1,0 +1,6 @@
+PW Usnwc2014 or Usnwc2014
+
+MicroGate checkbox setting not saved in race XML or Serialized data
+
+implement Guava libraries for StringUtils etc.
+http://stackoverflow.com/questions/4542550/what-are-the-big-improvements-between-guava-and-apache-equivalent-libraries

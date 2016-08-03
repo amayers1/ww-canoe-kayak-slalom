@@ -1,0 +1,46 @@
+<component name="libraryTable">
+  <library name="lib">
+    <ANNOTATIONS>
+      <root url="jar://$PROJECT_DIR$/../SlalomScoring.jar!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" />
+      <root url="file://$PROJECT_DIR$/lib/rxtx" />
+      <root url="file://$PROJECT_DIR$/lib/xstream" />
+      <root url="file://$PROJECT_DIR$/lib/xstream-hibernate" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" />
+      <root url="jar://$PROJECT_DIR$/../SlalomScoring.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2/docs/api" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1/docs/api" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="jar://$PROJECT_DIR$/../SlalomScoring.jar!/" />
+    </NATIVE>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" />
+      <root url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" />
+      <root url="jar://$PROJECT_DIR$/../SlalomScoring.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/rxtx" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/xstream" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/xstream-hibernate" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" recursive="false" type="SOURCES" />
+  </library>
+</component>
