@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.socket;
 
 import com.tcay.util.Log;
@@ -110,9 +127,9 @@ public class Client {
 
         log.trace("   Waiting for response @1");
         while (response == null) {
-            while (responses.size() == 0) {
+            while (responses.size() == 0) {     /// Need Event Semaphore to continue, not sleep() 161005
                 try {
-                    Thread.sleep(0);//  C20160731 Changed to 50 with no performance effect, so changed back               0);//5);//0);
+                    Thread.sleep(20);//  C161005 changed to 20 from 0....  C20160731 Changed to 50 with no performance effect, so changed back               0);//5);//0);
                 } catch (InterruptedException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
@@ -201,7 +218,7 @@ public class Client {
                 }
             }
         }
-        log.info("SlalomApp Server Connected @"+serverAddress);
+        log.info("SlalomApp Server Connected @" + serverAddress);
 
         /// fixme loop on New Socket call until attached or an interrupt occurs
         ocw = new ObjectClientWriter(socket, this);
@@ -226,9 +243,7 @@ public class Client {
 
         /**
          * Services this thread's client by first sending the
-         * client a welcome message then repeatedly reading strings
-         * and sending back the capitalized version of the string.
-         */
+         * client a welcome message then sending Client Requests to SlalomApp server when Requests are queued */
         public void run() {
             try {
 
@@ -236,21 +251,21 @@ public class Client {
                 ObjectOutputStream oos = new ObjectOutputStream(os);
                 ClientRequest request;
                 while (true) {
+
+                    // Need signal semphore here ... WAIT
+                    // See queSignale.set();   wakeupSemaphore.release(); use in Server.java
+
                     for (request = sosc.retrieveRequest(); request != null; request = sosc.retrieveRequest()) {
                         oos.writeObject(request);
 
-// TODO 160731 PERFORMANCE BOTTLENECK HERE ! ????
-                        // WORKAROUND .... retrieveRequest() SHOIULD BLOCK UNTIL a request is queued !!
-try {
-
-Thread.sleep(500);
-} catch (InterruptedException e) {
-e.printStackTrace();
-}
-
-
-
-
+                        // TODO CRITICAL 20160731 PERFORMANCE BOTTLENECK HERE !
+                        // Sleep(500) is a WORKAROUND .... retrieveRequest() SHOIULD BLOCK UNTIL a request is queued !!
+                        // TODO CRITICAL - Add semaphore
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         //log.trace("Wrote requestCmd type " + request.getRequestCmd());
                     }
                     //Thread.sleep(500);

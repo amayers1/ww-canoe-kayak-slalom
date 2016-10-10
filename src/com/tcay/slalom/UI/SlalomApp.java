@@ -15,8 +15,26 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
+import com.tcay.slalom.UI.PDF.PDF_Results;
 import com.tcay.slalom.UI.client.ClientRacePenaltiesUIDynamic;
 import com.tcay.slalom.UI.components.StatusBar;
 import com.tcay.slalom.UI.http.SlalomResultsHTTP;
@@ -240,7 +258,8 @@ public class SlalomApp {
                     public void actionPerformed(ActionEvent e) {
 
 
-                        NRC_StartListImporter importer = new NRC_StartListImporter();
+//                        NRC_StartListImporter2016August importer = new NRC_StartListImporter2016August();
+                        NRCStartListImporter importer = new NRCStartListImporter();
                         importer.readImportFile();
                     }
                 }
@@ -366,6 +385,33 @@ public class SlalomApp {
 
         menu = new JMenu("Results");
         menuBar.add(menu);
+
+
+
+
+        //
+        menuItem = new JMenuItem("Mark Runs");
+        menuItem.getAccessibleContext().setAccessibleDescription(
+                "Mark Runs");
+        menu.add(menuItem);
+
+        menuItem.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+
+                        MarkRunStatus markRunsStatus = new MarkRunStatus();
+                        JFrame frame = new JFrame("Mark Runs Status");
+                        frame.setContentPane(markRunsStatus.$$$getRootComponent$$$());//.$$$getRootComponent$$$());
+                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        frame.pack();
+                        frame.setVisible(true);
+                        //Race.getInstance().getClassesRuns();
+                    }
+                });
+
+        //
+
+
         menuItem = new JMenuItem("Leaderboard");
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "Results dump to console");
@@ -453,6 +499,22 @@ public class SlalomApp {
         );
 
 
+
+
+        menuItem = new JMenuItem("Dump results to PDF file");
+        menuItem.getAccessibleContext().setAccessibleDescription(
+                "Results dump to file SlalomTestResults.pdf");
+        menu.add(menuItem);
+
+        menuItem.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        outputResultsPDF("Sorted", race.getCompletedRunsByClassTime(), true);
+                    }
+                }
+        );
+
+
         menuItem = new JMenuItem("Dump results to CSV file");
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "Results dump to file Results.CSV");
@@ -475,7 +537,9 @@ public class SlalomApp {
         menuItem.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        slalomHTTP.outputWeb("Sorted", race.getCompletedRunsByClassTime(), true);
+
+                        Race.getInstance().printResultsHTTP(null, 0);
+                        //slalomHTTP.outputWeb("Sorted", race.getCompletedRunsByClassTime(), true);
                     }
                 }
         );
@@ -537,7 +601,7 @@ public class SlalomApp {
             // }
 
             //frame.setContentPane(new ClientRacePenaltiesUIDynamic(i+1).getRootComponent());
-            f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, proxy).getRootComponent());
+            f.setContentPane(new ClientRacePenaltiesUIDynamic(i + 1, proxy).getRootComponent());// todo very through this call in race simulati
             f.pack();
             f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//JFrame.EXIT_ON_CLOSE);         // todo unhide, etc
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -547,7 +611,7 @@ public class SlalomApp {
             int y = (int) rect.getMaxY() - f.getHeight();
             f.setLocation(x, y);
             f.setVisible(true);
-
+//
         }
         return (proxies);
     }
@@ -574,6 +638,20 @@ public class SlalomApp {
         return (timingUI);
 
     }
+
+
+    private void outputResultsPDF(String title, ArrayList<RaceRun> runs, boolean breakOnClassChange) {
+        log.info("\n" + title + " ResultsPDF");
+
+        PDF_Results pdf_results = new PDF_Results();
+        pdf_results.doit( title, runs, breakOnClassChange);
+
+
+    }
+
+
+
+
 
     private void outputResults(String title, ArrayList<RaceRun> runs, boolean breakOnClassChange) {
         log.info("\n" + title + " Results");
@@ -654,6 +732,10 @@ public class SlalomApp {
                 output.newLine();
             }
 
+            output.write("\n\n\nlegend " + ResultsTable.TIMINGMODE_ADJUSTED + "=Corrected  " +
+                                           ResultsTable.TIMINGMODE_AUTOMATIC + "=photoEye  " +
+                                           ResultsTable.TIMINGMODE_MANUAL + "=Manual (virtual stopwatch)");
+;
             output.close();
         } catch (Exception e) {
             log.write(e);

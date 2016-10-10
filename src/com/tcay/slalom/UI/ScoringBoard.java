@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
 import com.jgoodies.forms.layout.CellConstraints;
@@ -57,7 +74,7 @@ public class ScoringBoard {
 
         runScoringTable = new RunScoringTable().createTable();
         leaderScrollPane = new JScrollPane();
-        Race.getInstance().updateResults();
+        Race.getInstance().updateResults(false);   //todo Why is this needed here ? 2016
 
 
     }

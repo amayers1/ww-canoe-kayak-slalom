@@ -13,6 +13,8 @@
       <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" />
       <root url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" />
       <root url="jar://$PROJECT_DIR$/../SlalomScoring.jar!/" />
+      <root url="file://$APPLICATION_HOME_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib/itext7-7.0.1" />
     </CLASSES>
     <JAVADOC>
       <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2/docs/api" />
@@ -28,8 +30,13 @@
       <root url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" />
       <root url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" />
       <root url="jar://$PROJECT_DIR$/../SlalomScoring.jar!/" />
+      <root url="file://$APPLICATION_HOME_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib/iText5" />
+      <root url="file://$PROJECT_DIR$/lib/itext7-7.0.1" />
     </SOURCES>
+    <jarDirectory url="file://$APPLICATION_HOME_DIR$/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/itext7-7.0.1" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" recursive="false" />
@@ -37,7 +44,10 @@
     <jarDirectory url="file://$PROJECT_DIR$/lib/rxtx" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/xstream" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/xstream-hibernate" recursive="false" />
+    <jarDirectory url="file://$APPLICATION_HOME_DIR$/lib" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/iText5" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/itext7-7.0.1" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-common-1.6.0 2" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/lib/jgoodies-forms-1.7.1" recursive="false" type="SOURCES" />

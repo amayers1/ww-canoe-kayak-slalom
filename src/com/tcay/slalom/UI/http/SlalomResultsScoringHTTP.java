@@ -48,7 +48,7 @@ import java.util.ArrayList;
 /**
  * Created by allen on 10/4/16.
  */
-public class SlalomResultsHTTP {   /// For scrolling scoreboard
+public class SlalomResultsScoringHTTP {   /// For scrolling scoreboard
 
 
     private Log log;
@@ -63,58 +63,79 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
 
     }
 
+    public String gateNrsTableHeader() {
+        StringBuffer sb = new StringBuffer();
+
+        for (int iGate = 1; iGate<=Race.getInstance().getNbrGates(); iGate++) {
+            sb.append("<td style=\"min-width:20px\" align=\"right\">"+iGate+"</td>");  /// empty table data not comnpatible with HTML scrolling JQuery code
+        }
+        return sb.toString();
+
+    }
+
 
     static StringBuffer webColumnHeader1 = null;
+    static StringBuffer webColumnHeader2 = null;
+
+    private String getMostRecentColumnHeader() {
+        if (webColumnHeader2 == null) {
+            webColumnHeader2 = new StringBuffer();
+            webColumnHeader2.append("<tr>");
+            webColumnHeader2.append("<td colspan=\"9\" style=\"min-width:300px\">");
+
+            webColumnHeader2.append("Most Recent Runs");
+            webColumnHeader2.append("</td></tr>\n");
+        }
+
+        return(webColumnHeader2.toString());
+    }
 
     private String getWebColumnHeader() {
-        if (webColumnHeader1 == null) {
+        return(getWebColumnHeader(true));
+
+    }
+
+    private String getWebColumnHeader(boolean showPercentage) {
+       // if (webColumnHeader1 == null) {
             webColumnHeader1 = new StringBuffer();
             webColumnHeader1.append(
                     "<tr>" +
                             "<td style=\"min-width:30px\">Rank</td>" +
                             "<td style=\"min-width:30px\">Bib</td>" +
-                            "<td style=\"min-width:220px\">Name</td>"+
+                            "<td style=\"min-width:200px\">Name</td>"+
                             "<td style=\"min-width:30px\" align=\"right\">Run</td>"+
                             "<td style=\"min-width:45px\" align=\"right\">Raw</td>");
             webColumnHeader1.append("<td style=\"min-width:45px\" align=\"right\">Pen</td>");
             webColumnHeader1.append("<td style=\"min-width:45px\" align=\"right\">Total</td>");
             webColumnHeader1.append("<td style=\"min-width:45px\" align=\"right\">Best</td>");
-            webColumnHeader1.append("<td style=\"min-width:45px\" align=\"right\">%Class</td>");
 
-   //         webColumnHeader1.append(gateNrsTableHeader());
+            webColumnHeader1.append(gateNrsTableHeader());
+
+            if (showPercentage) {
+                webColumnHeader1.append("<td style=\"min-width:45px\" align=\"right\">%Class</td>");
+                webColumnHeader1.append("<td style=\"min-width:45px\" align=\"right\">%All</td>");
+                webColumnHeader1.append("<td style=\"min-width:45px\">Status</td>");
+            }
+
+
             webColumnHeader1.append("</tr>\n");
-        }
+       // }
 
         return(webColumnHeader1.toString());
 
     }
 
 
-    private void outputWebColumnHeader(BufferedWriter output,String boatClass, String status) {
+    private void outputWebColumnHeader(BufferedWriter output,String boatClass) {
 
 
         String columnHeader = getWebColumnHeader();
         try {
 
             StringBuffer sb = new StringBuffer();
-            sb.append("<tr><td><br></td></tr><tr><td colspan=\"10\"><font size=\"+3\">" + Race.getInstance().getName() + "</font></td></tr>" +
-
-                    "<tr><td colspan=\"6\"><font size=\"+1\">" + " " + Race.getInstance().getDate() + "</font></td></tr>" );
-
-
-//                    "</font></td></tr>");
-
-            sb.append("<tr><td><br></td></tr><tr><td colspan=\"10\"><font size=\"+2\">"        + boatClass + " " + status + " Results</font></td></tr>");
-            output.write(sb.toString());
-            writeEmptyTableRow(output);
-            writeEmptyTableRow(output);
-
-
-            sb = new StringBuffer();
+            sb.append("<tr><td><br></td></tr><tr><td>" + boatClass + "</td></tr>");
             sb.append(columnHeader);
             output.write(sb.toString());
-            writeEmptyTableRow(output);
-
         } catch (Exception e) {
             log.write(e);
         }
@@ -122,34 +143,17 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
     }
 
 
-    private String ahref(String wrapMe) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("<a href=\"#");
 
-        sb.append("\">");
-        return sb.toString();
-    }
-
-
-
-    String httpFilePath = "/Library/Webserver/Documents/"; // + "Results_" + fileName + " .html");
-    String resultsFilePrefix = "Results_";
-
-
-
-    public void outputWeb(String title, ArrayList<RaceRun> runs, boolean breakOnClassChange, String boatClass, int runNbr) {
+    public void outputWeb(String title, ArrayList<RaceRun> runs, boolean breakOnClassChange) {
         //log.info("\n" + title + "Web Results to HTML");
         String lastBoatClass = null;
 
 
         BufferedWriter output = null;
-        //     StringBuffer links = new StringBuffer();
+   //     StringBuffer links = new StringBuffer();
         boolean firstTime = true;
-
-        String fileName = boatClass + "_Run_" + runNbr;
-
         try {
-            File file = new File(httpFilePath +  resultsFilePrefix + fileName + ".html");
+            File file = new File("/Library/Webserver/Documents/index.html");
             output = new BufferedWriter(new FileWriter(file));
 
             StringBuffer sb = new StringBuffer();
@@ -178,11 +182,10 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
 
                     ".even {" +
                     "background-color: #ffffff;" +
-
-                   // "border: 1px solid black" +
-                   // "border: solid thin" +
-
                     "}\n" +
+//                    ".narrow {width: 20px;}\n" +
+//                    ".mediumWide {width: 40px;}\n" +
+//                    ".racerName {width: 120px;}\n" +
                     "\n</style>\n");
 
             sb.append("</head>\n");
@@ -192,13 +195,43 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
 
 
             ArrayList<Result> sorted = Race.getInstance().getTempResults();
-//            RaceRun mostRecentRun = Race.getInstance().getNewestCompletedRun();
+            RaceRun mostRecentRun = Race.getInstance().getNewestCompletedRun();
             // Write links to classes
             // Accumulate all the classes that are now have at leat 1 result
 
 
 
             sb = new StringBuffer();
+//            sb.append("<table width="+width+">");//div class=\"table\">");
+            sb.append("<table>");//div class=\"table\">");
+            sb.append(getMostRecentColumnHeader());
+            sb.append(getWebColumnHeader(false));
+            output.write(sb.toString());
+
+            //writeRunResult(output, 0, mostRecentRun,true, false, 0, (float)0.0) ;
+
+            RaceRun recentRun;
+            for (int i=1; i<4;i++) {
+                recentRun = Race.getInstance().getRecentCompletedRun(i);
+                if (recentRun != null) {
+                    writeRunResult(output, 0, recentRun,true, false, 0, (float)0.0,(float)0.0) ;
+
+                }
+            }
+
+
+
+
+            writeEmptyTableRow(output);
+            sb = new StringBuffer();
+            sb.append("</table>");
+            output.write(sb.toString());
+
+
+            sb = new StringBuffer();
+            sb.append("<div class=\"b\" id=\"b1\">");  //A161003
+            sb.append("<div class=\"b-con\">\n"); //A161003
+
             sb.append("<table>");//div class=\"table\">");
             output.write(sb.toString());
 
@@ -213,7 +246,7 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
 
             for (Result r : sorted) {
                 bestTimeSoFar = r.getBestRun().getTotalPenalties() + r.getBestRun().getElapsed();
-                if ((bestTimeSoFar == 0) || bestTimeSoFar < bestTimeOverall) {
+                if ((bestTimeOverall == 0) || bestTimeSoFar < bestTimeOverall) {
                     bestTimeOverall = bestTimeSoFar;
                 }
             }
@@ -231,60 +264,38 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
                 if (true || breakOnClassChange) {     //Fixme  constant true
 
                     if (lastBoatClass == null || lastBoatClass.compareTo(r.getBoat().getBoatClass()) != 0) {
-/*161004*/
+/*161004*/              writeEmptyTableRow(output);
+                        outputWebColumnHeader(output, r.getBoat().getBoatClass());  /// Added
 
-                        if (boatClass.compareTo(r.getBoat().getBoatClass()) == 0) {
-
-
-                          //  HTML for page break on printer  <p><!-- pagebreak --></p>
-
-                                    writeEmptyTableRow(output);
-
-                            StringBuffer status = new StringBuffer();
-
-                            if (runNbr ==0 || runNbr==1 && r.getRun1() != null) {
-                                if (runNbr == 0) {
-                                    status.append("Run 1 ");
-                                }
-                                status.append(r.getRun1().getStatusString());
-                            }
-
-                            if (runNbr==2 && r.getRun2() != null) {
-                                if (runNbr == 0) {
-                                    status.append(" Run 2 ");
-                                }
-
-                                status.append(r.getRun2().getStatusString());
-                            }
-
-
-                            outputWebColumnHeader(output, r.getBoat().getBoatClass(), status.toString());  /// Added
-
-                            rank = 1;
-                            bestTimeForClass = r.getBestRun().getTotalPenalties() + r.getBestRun().getElapsed();
-
-                        }
+                        rank = 1;
+                        bestTimeForClass = r.getBestRun().getTotalPenalties() + r.getBestRun().getElapsed();
                     }
                     lastBoatClass = r.getBoat().getBoatClass();
                 }
 
-                if (boatClass.compareTo(r.getBoat().getBoatClass()) == 0) {
 
-                    int runCnt = (r.getRun1() != null ? 1 : 0) + (r.getRun2() != null ? 1 : 0);
-                    if (r.getRun1() != null && (runNbr >= 1 || runNbr == 0)) {
-                        writeRunResult(output, rank, r.getRun1(), true, r.getBestRun() == r.getRun1(), runCnt, bestTimeForClass, bestTimeOverall);
-                    }
-                    if (r.getRun2() != null && (runNbr == 2 || runNbr == 0)) {
-                        writeRunResult(output, rank, r.getRun2(), false, r.getBestRun() == r.getRun2(), runCnt, bestTimeForClass, bestTimeOverall);
-                    }
-                    rank++;  /// todo Fix this for 1st run display only ... after 2nd runs have occured (1st run ranking will differ from after 2 runs)
+                int runCnt = (r.getRun1()!=null?1:0) + (r.getRun2()!=null?1:0);
+                if (r.getRun1()!=null) {
+
+                    writeRunResult(output, rank, r.getRun1(),true, r.getBestRun()==r.getRun1(), runCnt, bestTimeForClass, bestTimeOverall) ;
                 }
+                if (r.getRun2()!=null) {
+                    writeRunResult(output, rank, r.getRun2(),false, r.getBestRun()==r.getRun2(), runCnt, bestTimeForClass, bestTimeOverall) ;
+                }
+                rank++;
             }
 
+
 // add blank rows for jquery scrolling bug
+            for (int i=0;i<20;i++) {
+                writeEmptyTableRow(output);
+            }
+
             // todo accumulate in SB and then output
 
             output.write("</table>\n");//div>");
+            output.write("</div>\n");  //A161003
+            output.write("</div>\n"); //A161003
 
             writeScrollBodyTrailer(output);
 
@@ -302,106 +313,21 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
 
             }
         }
-
-        updateTableOfContents();
-
-
     }
 
 
 
-
-
-    private void updateTableOfContents() {
-
-            ArrayList<String> fileList = new ArrayList();
-
-            //String path = ".";
-
-            String files;
-            File folder = new File(httpFilePath);
-            File[] listOfFiles = folder.listFiles();
-
-            for (int i = 0; i < listOfFiles.length; i++)
-            {
-
-                if (listOfFiles[i].isFile())
-                {
-                    files = listOfFiles[i].getName();
-                    if (files.startsWith(resultsFilePrefix))
-                    {
-                        String fileName = null;
-                      //  if (files.compareTo("last.ser") != 0 ) {
-                            log.trace(files);
-                            String s[]  = files.split("([\\.])");
-                            fileName = s[0];
-                            fileList.add(s[0]);//files.toString());
-                    //    }
-                        if (fileName != null) {
-                            System.out.println(fileName);
-                        }
-                    }
-                }
-            }
-
-
-        BufferedWriter output=null;
-
-        File file = new File(httpFilePath + "list.html");
-
-
-        try {
-            output = new BufferedWriter(new FileWriter(file));
-            StringBuffer sb = new StringBuffer();
-
-            sb.append("<!DOCTYPE html>");
-            sb.append("<html>");
-            sb.append("<head>");
-            sb.append("</head>");
-
-            sb.append("<body><ul>");
-
-            output.write(sb.toString());
-
-            for (String s:fileList) {
-                sb = new StringBuffer();
-
-                s.trim();
-
-                sb.append("<li><a href=\"" +  s  + ".html\">"   + s  +  "</a></li>" );
-
-                output.write(sb.toString());
-            }
-
-
-            sb = new StringBuffer();
-            sb.append("</ul></body>");
-            sb.append("</html>");
-            output.write(sb.toString());
-
-
-            output.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-        try {
-            output.close();
-        } catch (Exception ex) {
-            log.write(ex);
-
-        }
+    private String ahref(String link, String linkText) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("<a href=\"");
+        sb.append(link).append(".html");
+        sb.append("\">" +linkText + "</a>");
+        return sb.toString();
     }
-
-
-//            return fileList;
-
-    }
+ //   <a href="http://www.w3schools.com">Visit W3Schools</a>
 
 
     private static String emptyRow = "<tr><td>&nbsp;</td></tr>";// +
-    // "<td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td></tr>";
     private String tableEmptyRow() {
         return(emptyRow);
     }
@@ -422,13 +348,20 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
                 sb.append("<td align=\"right\">" + (rank>0?rank:"") + "</td>\n");
 
                 sb.append("<td align=\"right\">");
+
+
+
+
                 bib = r.getBoat().getRacer().getBibNumber();
                 sb.append(bib);
                 sb.append("</td>\n");
 
-                sb.append("<td style=\"min-width:220px\">");
+                sb.append("<td style=\"min-width:200px\">");
                 s1 = r.getBoat().getRacer().getShortName();
-                sb.append(s1);
+
+
+                sb.append(ahref(bib, s1));
+                //sb.append(s1);
 
                 sb.append("</td>\n");
             } else {
@@ -441,18 +374,18 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
 
             if (r!= null) {
 
-                sb.append("<td>" + (firstRun?"1":"2") + "</td>");
+//                sb.append("<td>" + (firstRun?"1":"2") + "</td>");
+
+                sb.append("<td>" + r.getRunNumber() + "</td>");
+
+
                 sb.append("<td align=\"right\">");
                 sb.append(" " + r.getResultString() + " ");
                 sb.append("</td>");
 
-//                sb.append("<td align=\"right\">");
-//                sb.append(r.getTotalPenaltiesHTML_BR());
-//                sb.append("</td>\n");
-
-                sb.append("<td align=\"right\">"+r.getTotalPenaltiesHTML_BR()+"</td>");
-
-
+                sb.append("<td align=\"right\">");
+                sb.append(r.getTotalPenaltiesHTML_BR());
+                sb.append("</td>\n");
 
                 sb.append("<td align=\"right\">");
                 sb.append(" " +r.getTotalTimeString() + " ");
@@ -461,7 +394,7 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
                 sb.append("<td align=\"right\">");
                 sb.append(best&&runCnt>1?r.getTotalTimeString():"<br>");
                 sb.append("</td>\n");
-//                sb.append(r.penaltyStringHTMLExtendedForScroll());
+                sb.append(r.penaltyStringHTMLExtendedForScroll());
 
 
                 try {
@@ -469,7 +402,7 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
                         percentage = (r.getElapsed() + r.getTotalPenalties()) / bestTimeForClass;
 
 
-                        sb.append("<td>" + String.format("%.3f", percentage) + "</td>\n");
+                        sb.append("<td align=\"right\">" + String.format("%.3f", percentage) + "</td>\n");
                     }
                     else {
                         sb.append("<td><br></td>\n");
@@ -483,7 +416,7 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
                 try {
                     if (bestTimeOverall != 0.0) {  /// We don't know on the most recent run, send 0.0 TODO FIX THIS TO GET bestTime
                         percentage = (r.getElapsed() + r.getTotalPenalties()) / bestTimeOverall;
-                        sb.append("<td>" + String.format("%.3f", percentage) + "</td>\n");
+                        sb.append("<td align=\"right\">" + String.format("%.3f", percentage) + "</td>\n");
                     }
                     else {
                         sb.append("<td><br></td>\n");
@@ -542,7 +475,7 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
 
     }
 
-    int width = 1200;   //todo determine width appropriate
+    int width = 1280;   //todo determine width appropriate
 
     private void writeScrollHeader(BufferedWriter output) {
 
@@ -555,8 +488,28 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
             sb.append("* {margin: 1; padding: 2;}\n");
             sb.append("ul { list-style: none; }\n");
 
+
+            sb.append(".b {\n");
+            sb.append("    height: 800px;\n");
+            sb.append("overflow: hidden;\n");
+            sb.append("width: "+ width +"px;\n");
+         //   sb.append("    margin-left: auto;\n");
+         //   sb.append("    margin-right: auto;\n");
+            sb.append("}\n");
+
+            sb.append(".b-con div {\n");
+            sb.append("    width: " + (width-2) + "px;\n");
+//            sb.append("    height: 2798px;\n");
+            sb.append("    height: 60px;\n");
+            sb.append("    border: 1px solid #ddd;\n");
+            sb.append("    line-height: 2.4;\n");
+            sb.append("    font-size: 30px;\n");
+            sb.append("    text-align: center;\n");
+            sb.append("}\n");
+
+
             sb.append("</style>\n");
-            output.write(sb.toString());
+                output.write(sb.toString());
 
 
         } catch (IOException e) {
@@ -568,16 +521,16 @@ public class SlalomResultsHTTP {   /// For scrolling scoreboard
     private void writeScrollBodyTrailer(BufferedWriter output) {
         try {
 
-            output.write("<script src = \"http://code.jquery.com/jquery-1.11.1.min.js\" ></script >\n");
-            output.write("<script type = \"text/javascript\" src = \"scrollForever.js\" ></script >\n");
-            output.write("<script type = \"text/javascript\" >\n");
-            output.write("    $(function() {");
-            // var time1 = new Date;
-            //output.write("$(\"#b1\").scrollForever({dir:\"top\", container:\".b-con\", inner:\"div\"});");
-            output.write("$(\"#b1\").scrollForever({dir:\"top\", container:\".b-con\", inner:\"tr\", delayTime: 40});\n");
+                output.write("<script src = \"http://code.jquery.com/jquery-1.11.1.min.js\" ></script >\n");
+                output.write("<script type = \"text/javascript\" src = \"scrollForever.js\" ></script >\n");
+                output.write("<script type = \"text/javascript\" >\n");
+                output.write("    $(function() {");
+                // var time1 = new Date;
+                //output.write("$(\"#b1\").scrollForever({dir:\"top\", container:\".b-con\", inner:\"div\"});");
+                output.write("$(\"#b1\").scrollForever({dir:\"top\", container:\".b-con\", inner:\"tr\", delayTime: 40});\n");
 
-            output.write("});\n");
-            output.write("</script>\n");
+                output.write("});\n");
+                output.write("</script>\n");
 
 
         } catch (IOException e) {

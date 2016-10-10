@@ -15,12 +15,30 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.RS232.PhotoEyeListener;
 import com.tcay.slalom.UI.RaceTimingUI;
 import com.tcay.slalom.UI.http.SlalomRacerResultsHTTP;
 import com.tcay.slalom.UI.http.SlalomResultsHTTP;
+import com.tcay.slalom.UI.http.SlalomResultsScoringHTTP;
 import com.tcay.slalom.timingDevices.PhotoCellAgent;
 import com.tcay.slalom.timingDevices.PhotoCellRaceRun;
 import com.tcay.util.DuplicateBibException;
@@ -106,6 +124,7 @@ public class Race extends RaceResources implements Serializable
 
     // Race Status
     private RaceRun pendingRerun;// = null;
+    private RaceRun pendingAdjustment;
     private List<BoatEntry> startList = null;     // todo on Crash recovery don't have an yet-to-be-started list, only all racers
     private ArrayList<RaceRun> activeRuns = null;
     private long runsStartedOrCompletedCnt = 0;
@@ -151,8 +170,11 @@ public class Race extends RaceResources implements Serializable
     private transient Boolean microgateConnected;
     private transient Log log;
     //    private transient XStream xstream;
-    private transient SlalomResultsHTTP resultsHTTP;
+   // private transient SlalomResultsHTTP_Save resultsHTTP;
+//D161004
     private transient SlalomRacerResultsHTTP racerResultsHTTP;
+    private transient SlalomResultsScoringHTTP scoreboardResultsHTTP_New;
+    private transient SlalomResultsHTTP someResultsHTTP;
 
 
     public synchronized static Race getInstance() {
@@ -311,6 +333,23 @@ public class Race extends RaceResources implements Serializable
     }
 
 
+    public void setPendingAdjustment(RaceRun adjustRun) {
+
+        pendingAdjustment = adjustRun;
+
+    }
+
+    public RaceRun getPendingAdjustment() {
+        RaceRun r = pendingAdjustment;
+
+        pendingAdjustment = null;
+        return r;
+    }
+
+
+
+
+
     public String getCurrentRunIterationOrdinal() {
         String ordinal = " ?? ";
         switch (currentRunIteration)       {
@@ -366,7 +405,7 @@ public class Race extends RaceResources implements Serializable
         lastRace = new LastRace();
         tagHeuerConnected = false;//new Boolean(false);
         microgateConnected = false;
-        resultsHTTP = new SlalomResultsHTTP();
+//D161004        resultsHTTP = new SlalomResultsHTTP_Save();
         // todo set up on timing page to test and then enable CP520
 //C160315        Thread t = new Thread( photoEyeListener = new PhotoEyeListener());
 //C160315        t.start();
@@ -374,7 +413,10 @@ public class Race extends RaceResources implements Serializable
         //TODO - determine if any photo eyes in use, add appropriate handler/listener
         //D20160305maybeStartPhotoCellInterface();  Was being called in ClietnPenalty App
 
+//D161004
         racerResultsHTTP = new SlalomRacerResultsHTTP();
+        scoreboardResultsHTTP_New = new SlalomResultsScoringHTTP();
+        someResultsHTTP = new SlalomResultsHTTP();
     }
 
 
@@ -648,6 +690,26 @@ public class Race extends RaceResources implements Serializable
 
     }
 
+    public RaceRun getRecentCompletedRun(int which) {
+        RaceRun run = null;
+        //    if (getActiveRuns().size() > 0) {
+        //        run = getActiveRuns().get(0);
+        //    }
+
+        int size = getCompletedRuns().size();
+        if ( size>=which ) {
+            run = getCompletedRuns().get(size-which);
+        }
+
+        return(run);
+
+    }
+
+
+
+
+
+
     public RaceRun getNewestActiveRun() {
         RaceRun run = null;
         int size = getActiveRuns().size();
@@ -865,9 +927,10 @@ public class Race extends RaceResources implements Serializable
             String filename = getName() + ".ser";
 
             FileOutputStream fileOut = new FileOutputStream(filename);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this);   //// This was line 869 in bwlow Log -->> Got CONCurrentMpdificationException ///20160727 in test
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);  ///MUST FIX 2016 Nationals ERROR CONCurrentMpdificationException
+            out.writeObject(this); // See   Ref#20161008 This was Line 913 BELOW on 20161008   //// This was line 869 in bwlow Log -->> Got CONCurrentMpdificationException ///20160727 in test
             /*
+            PRIOR CRASH  Prior to 20161008  See bottom of source file for new carsh dump
 at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
 	at com.tcay.slalom.Race.saveSerializedData(Race.java:869)
 	at com.tcay.slalom.Race.updateResults(Race.java:1177)
@@ -882,7 +945,6 @@ at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
 	at com.tcay.RS232.PhotoEyeListener.listenAndProcessPortOutput(PhotoEyeListener.java:304)
 	at com.tcay.RS232.PhotoEyeListener.run(PhotoEyeListener.java:76)
             */
-
 
             out.close();
             fileOut.close();
@@ -1177,24 +1239,36 @@ at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
         }
 
         if (matchingRun != null ) {
-            matchingRun.setPhotoCellRaceRun(photoCellRun);
+            matchingRun.setPhotoCellRaceRun(photoCellRun);      ///MUST FIX 2016 Nationals ERROR CONCurrentMpdificationException
         }
     }
 
-    public void updateResults(RaceRun run) {
-        updateResults();
+
+
+    public void updateResults(RaceRun run, boolean saveSerialized) {
+        updateResults(saveSerialized);       ///MUST FIX 2016 Nationals ERROR CONCurrentMpdificationException
         racerResultsHTTP.outputWeb(run.getBoat());
+    //M161006    scoreboardResultsHTTP_New.outputWeb("Sorted", getCompletedRunsByClassTime(), true);
     }
 
 
-    public void updateResults() {
+    public void updateResults(boolean saveSerialized) {
         results = accumulateResults(getCompletedRuns());
         ResultsTableModel.getInstance().updateResults();
         RunScoringTableModel.getInstance().updateResults();
-        saveSerializedData();
-        resultsHTTP.outputWeb("Sorted", getCompletedRunsByClassTime(), true);
+if (saveSerialized)      {  saveSerializedData();   }            ///MUST FIX 2016 Nationals ERROR CONCurrentMpdificationException
+//D161004        resultsHTTP.outputWeb("Sorted", getCompletedRunsByClassTime(), true);
+
+//M161006
+        scoreboardResultsHTTP_New.outputWeb("Sorted", getCompletedRunsByClassTime(), true);
+
+
     }
 
+
+    public void printResultsHTTP(String boatClass, int runNbr) {
+        someResultsHTTP.outputWeb("", getCompletedRunsByClassTime(), true, boatClass, runNbr);
+    }
 
     private Result findRacer(RaceRun run){
         Result result = null;
@@ -1340,5 +1414,127 @@ at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
     }
 
 
+
+    public void markClassRun(String boatClass, int runNbr, RaceRun.Status status) {
+        for (RaceRun r : getCompletedRunsByClassTime()) {
+            if (r.getRunNumber() == runNbr) {
+                if (r.getBoat().getBoatClass().compareTo(boatClass) == 0) {
+                    r.setStatus(status);
+                }
+            }
+        }
+        updateResults(true);
+    }
+
+
+
+
+
+        ArrayList<String> classesRuns;
+    public ArrayList getClassesRuns() {
+        classesRuns = new ArrayList<String>();
+
+        StringBuffer classRun = new StringBuffer();
+        StringBuffer testClassRun;
+
+        for (int run = 1; run < 3; run++) {
+            for (RaceRun r : getCompletedRunsByClassTime()) {
+                if (r.getRunNumber() == run) {
+                    testClassRun = new StringBuffer();
+                    testClassRun.append(r.getBoat().getBoatClass());
+                    testClassRun.append(":");
+                    testClassRun.append(run);
+                    testClassRun.append(":");
+                    testClassRun.append(r.getStatusString());
+
+                    if (testClassRun.toString().compareTo(classRun.toString()) != 0) {
+                        classRun = testClassRun;
+                        classesRuns.add(classRun.toString());
+                    }
+
+                }
+            }
+        }
+        return(classesRuns);
+
+
+    }
+
+
+
+
 }
+/*
+
+
+20161008 US Nationals Crash Start
+        SPEN B=237 r=2                                0  0  0  0  0
+        VSTOP B=238 r=2 rawElapsed=   134.01 rawMANUAL=   134.01
+        Exception in thread "Thread-8" java.util.ConcurrentModificationException
+        at java.util.ArrayList.writeObject(ArrayList.java:766)
+        at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at java.io.ObjectStreamClass.invokeWriteObject(ObjectStreamClass.java:1028)
+        at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1496)
+        at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1432)
+        at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1178)
+        at java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1548)
+        at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1509)
+        at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1432)
+        at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1178)
+        at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)
+        at com.tcay.slalom.Race.saveSerializedData(Race.java:913)
+        at com.tcay.slalom.Race.updateResults(Race.java:1239)
+        at com.tcay.slalom.Race.updateResults(Race.java:1229)
+        at com.tcay.slalom.socket.Server$ObjectServerReader.addPenaltiesFromClient(Server.java:407)
+        at com.tcay.slalom.socket.Server$ObjectServerReader.run(Server.java:464)
+        at java.lang.Thread.run(Thread.java:745)
+        SPEN B=239 r=2
+
+
+        VSTOP B=238 r=2 rawElapsed=   134.01 rawMANUAL=   134.01
+        Exception in thread "Thread-8" java.util.ConcurrentModificationException
+        at java.util.ArrayList.writeObject(ArrayList.java:766)
+        at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at java.io.ObjectStreamClass.invokeWriteObject(ObjectStreamClass.java:1028)
+        at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1496)
+        at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1432)
+        at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1178)
+        at java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1548)
+        at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1509)
+        at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1432)
+        at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1178)
+        at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)
+        at com.tcay.slalom.Race.saveSerializedData(Race.java:913)
+        at com.tcay.slalom.Race.updateResults(Race.java:1239)
+        at com.tcay.slalom.Race.updateResults(Race.java:1229)
+        at com.tcay.slalom.socket.Server$ObjectServerReader.addPenaltiesFromClient(Server.java:407)
+        at com.tcay.slalom.socket.Server$ObjectServerReader.run(Server.java:464)
+        at java.lang.Thread.run(Thread.java:745)
+        SPEN B=239 r=2
+
+
+
+
+        20161008 US Nationals Crash End
+
+
+
+
+Ref#20161008
+
+the writeObject is causing concurrency issues coming from both the Race Timing Thread and the Client Penalty Thread
+20161008 - short term resolve by removing the saveSerializedData call from the Client.  The penalties will get saved with the next timer object
+
+ FileOutputStream fileOut = new FileOutputStream(filename);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);  ///MUST FIX 2016 Nationals ERROR CONCurrentMpdificationException
+            out.writeObject(this); // See   Ref#20161008 This was Line 913 BELOW on 20161008   //// This was line 869 in bwlow Log -->> Got CONCurrentMpdificationException ///20160727 in test
+            /*
+
+
+
+*/
 

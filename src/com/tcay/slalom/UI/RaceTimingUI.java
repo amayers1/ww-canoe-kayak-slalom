@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
 import com.intellij.uiDesigner.core.GridConstraints;
@@ -95,6 +112,7 @@ public class RaceTimingUI {
 
     private JLabel waitingForAFinishLabel;
     private JLabel bibLabel;
+    private JButton adjustButton;
 
     // State members
     private BoatEntry boatReadyToStart = null;
@@ -179,6 +197,23 @@ public class RaceTimingUI {
             }
         });
         updateButtonVisibility();
+        adjustButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                adjustButtonHandler();
+
+            }
+
+
+        });
+    }
+
+
+    private void adjustButtonHandler() {
+        SelectAdjustRun doAdjust = new SelectAdjustRun();
+        doAdjust.pack();
+        doAdjust.setVisible(true);
+
     }
 
 
@@ -691,12 +726,12 @@ public class RaceTimingUI {
         nextRacerToStartingBlock();  // A20150521
     }
 
-    static final long FAST_FORWARD_FACTOR = 10;
+    static final long FAST_FORWARD_FACTOR = 1;//5;//;10;//100;//C161004  10;
     static final long fastestRun = 90;
 
 
     public void simulateRaceRunDuration() {
-        long slowestRunPercentageFactor = 40;
+        long slowestRunPercentageFactor = 55;
         long maxAdditionalTimeOverFastest = slowestRunPercentageFactor * fastestRun / 100;
         long runLength;
 
@@ -722,7 +757,7 @@ public class RaceTimingUI {
         //innerFinishPanel3;
 
 
-        SlalomApp.getInstance().menuSectionScoringAction();
+// TODO run the scoring stations        SlalomApp.getInstance().menuSectionScoringAction();
         SlalomApp.getInstance().menuScrollingScoreBoardAction();
         SlalomApp.getInstance().menuVirtualScoringSheetAction();
 
@@ -761,7 +796,7 @@ public class RaceTimingUI {
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayoutManager(6, 1, new Insets(0, 0, 0, 0), -1, -1));
         selectRacerPanel = new JPanel();
-        selectRacerPanel.setLayout(new FormLayout("fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:267px:noGrow,left:12dlu:noGrow,fill:max(d;4px):noGrow,left:51dlu:noGrow,fill:85px:noGrow", "top:29px:grow,top:6dlu:noGrow,center:32px:noGrow"));
+        selectRacerPanel.setLayout(new FormLayout("fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:267px:noGrow,left:12dlu:noGrow,fill:max(d;4px):noGrow,left:51dlu:noGrow,fill:85px:noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow", "top:29px:grow,top:6dlu:noGrow,center:32px:noGrow"));
         selectRacerPanel.setToolTipText("Start list contains all boats that are registered and have not yet compoleted the current run in progress");
         mainPanel.add(selectRacerPanel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(658, 84), null, 0, false));
         selectRacerPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Start List"));
@@ -795,6 +830,11 @@ public class RaceTimingUI {
         final JLabel label1 = new JLabel();
         label1.setText("Boats that have not started this run");
         selectRacerPanel.add(label1, cc.xy(3, 1, CellConstraints.DEFAULT, CellConstraints.BOTTOM));
+        adjustButton = new JButton();
+        adjustButton.setBackground(new Color(-1178868));
+        adjustButton.setOpaque(true);
+        adjustButton.setText("Adjust");
+        selectRacerPanel.add(adjustButton, cc.xy(9, 3));
         startPanel = new JPanel();
         startPanel.setLayout(new FormLayout("fill:53px:noGrow,left:4dlu:noGrow,fill:219px:noGrow,left:12dlu:noGrow,fill:118px:noGrow,left:52dlu:noGrow,fill:85px:noGrow", "center:30px:noGrow,top:7dlu:noGrow,center:max(d;4px):noGrow"));
         startPanel.setToolTipText("Starting block is the boat that is about to begin racing");

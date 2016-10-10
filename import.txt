@@ -1,1 +1,58 @@
-,,,Provisional Start List,,,,,,,,,,,,,,,,,,,,Run 1,Run 2Bib,Name,,Sex,Age Group,Boat,Race or Rec,Start Time,K1W,,,,,,,,82,Maddie,Kimmel,Female,U12 (born 2004 or later),K1W,Race,12:00,1:42220,Lili,Brandon,Female,U16 (born 2000 or later),K1W,Race,12:06,1:48185,lena,mojsiak,Female,U16 (born 2000 or later),K1W,Race,12:02,1:44108,Evy,Leibfarth,Female,U12 (born 2004 or later),K1W,Race,12:04,1:46K1 U12,,,,,,,,74,Carson,Weemes,Male,U12 (born 2004 or later),K1,Rec,12:12,1:5425,Davis,Jung,Male,U12 (born 2004 or later),K1,Race,12:14,1:5663,Coleman,Christie Williams,Male,U12 (born 2004 or later),K1,Race,12:16,1:5868,Justin,Yochim,Male,U12 (born 2004 or later),K1,Race,12:18,2:0069,Michael,Inman,Male,U12 (born 2004 or later),K1,Race,12:20,2:02110,Avi,Patel,Male,U12 (born 2004 or later),K1,Race,12:22,2:04111,malcolm,smith,Male,U12 (born 2004 or later),K1,Race,12:24,2:0691,Thomas,Loving,Male,U12 (born 2004 or later),K1,Race,12:26,2:08K1 U14,,,,,,,,95,Marko,Suchy,Male,U14 (born 2002 or later),K1,Race,12:30,2:12115,Jacob,Mcconnell,Male,U14 (born 2002 or later),K1,Rec,12:32,2:1499,Stan,Lancaster,Male,U14 (born 2002 or later),K1,Rec,12:34,2:16184,Caleb,Henry,Male,U14 (born 2002 or later),K1,Race,12:36,2:18141,Jason,Yochim,Male,U14 (born 2002 or later),K1,Race,12:38,2:2015,Nathaniel,Francis,Male,U14 (born 2002 or later),K1,Race,12:40,2:2278,Robert,Healy,Male,U14 (born 2002 or later),K1,Race,12:42,2:24K1 U16,,,,,,,,36,Cobey,Weems,Male,U16 (born 2000 or later),K1,Rec,12:46,2:2843,Baron,Cahoon,Male,U16 (born 2000 or later),K1,Rec,12:48,2:30174,Jeremy,Nash,Male,U16 (born 2000 or later),K1,Rec,12:50,2:3296,Greg,Taft,Male,U16 (born 2000 or later),K1,Race,12:52,2:3462,Devon,Wainer,Male,U16 (born 2000 or later),K1,Race,12:54,2:3631,Kenny,Hank,Male,U16 (born 2000 or later),K1,Race,12:56,2:38160,Thomas,Mardany,Male,U16 (born 2000 or later),K1,Race,12:58,2:4065,Miller,Kaderabek,Male,U16 (born 2000 or later),K1,Race,1:00,2:4285,Wesley,Bolyard,Male,U16 (born 2000 or later),K1,Race,1:02,2:44K1 U18,,,,,,,,6,Micajah,McCurry,Male,U18 (born 1998 or later),K1,Race,1:04,2:46170,Tiger,Upchurch,Male,U18 (born 1998 or later),K1,Rec,1:06,2:4837,Ray,Lancaster,Male,U18 (born 1998 or later),K1,Rec,1:08,2:5012,Connor,Weems,Male,U18 (born 1998 or later),K1,Rec,1:10,2:52C1 ,,,,,,,,67,Wesley,Bolyard,Male,U16 (born 2000 or later),C1,Race,1:14,2:5629,Miller,Kaderabek,Male,U16 (born 2000 or later),C1,Race,1:16,2:58180,Marko,Suchy,Male,U14 (born 2002 or later),C1,Race,1:18,3:00173,Jason,Yochim,Male,U14 (born 2002 or later),C1,Race,1:20,3:02157,Robert,Healy,Male,U14 (born 2002 or later),C1,Race,1:22,3:04215,Micajah,McCurry,Male,U18 (born 1998 or later),C1,Race,1:24,3:06C2,,,,,,,,194,Henry,Suchy,Male,U14 (born 2002 or later),C2,Race,1:26,3:0881,Kaderabek,Bolyard,Male,U16 (born 2000 or later),C2,Race,1:28,3:10C1W,,,,,,,,5,Lili,Brandon,Female,U16 (born 2000 or later),K1W C1W,Race,1:30,3:12158,Evy,Leibfarth,Female,U14 (born 2002 or later),K1W C1W,Race,1:32,3:14Rec,,,,,,,,10,Landon,Shaw,Male,U12 (born 2004 or later),K1,Rec,,88,Traveler,Shaw,Male,U14 (born 2002 or later),K1,Rec,,,,,,,,,,Y159,Mathys,Huvelin,Male,Forerunner ,K1,Race,,Y9,Lee,Leibfarth,Male,Forerunner,K1,Race,,
+2016 NRC Fall Slalom  Startlist				
+				
+Bib	Class		First Run 	Second Run 
+274,	K1M,	Scott, Mann	11:00 AM	1:00 PM
+298,	K1W,	Dana, Mann	11:01 AM	1:01 PM
+265,	C2,	     Eichfeld/McEwan,C	11:04 AM	1:04 PM
+263,	C1W,	Harriet, Rollins	11:06 AM	1:06 PM
+262,	C1W,	Sierra, Wainer	11:07 AM	1:07 PM
+261,	C1W,	Barrett, Phillips	11:08 AM	1:08 PM
+260,	C1W,	Lili, Brandan	11:09 AM	1:09 PM
+259,	C1W,	Evy, Leibfarth	11:10 AM	1:10 PM
+258,	C1W,	Ashley, Nee	11:11 AM	1:11 PM
+257,	C1M,    Nick, Lomas	11:15 AM	1:15 PM
+266,	C1M,	Miller, Kaderabek	11:16 AM	1:16 PM
+255,	C1M,	Kaelin, Friedenson	11:17 AM	1:17 PM
+254,	C1M,	Bruce, Holt	11:18 AM	1:18 PM
+253,	C1M,	Will, Coggin	11:19 AM	1:19 PM
+252,	C1M,	Micajah, McCurry	11:20 AM	1:20 PM
+251,	C1M,	Robert, Healy	11:21 AM	1:21 PM
+250,	C1M,	Richard, Powell	11:22 AM	1:22 PM
+249,	C1M,	Devin, McEwan	11:23 AM	1:23 PM
+248,	C1M,	Tyler, Smith	11:24 AM	1:24 PM
+246,	C1M,	Zach, Lokken	11:25 AM	1:25 PM
+245,	C1M,	Casey, Eichfeld	11:26 AM	1:26 PM
+2740,	K1M,	Scott, Mann	11:00 AM	1:00 PM
+2980,	K1W,	Dana, Mann	11:01 AM	1:01 PM
+244,	K1W,	Juliet, Jacobson Kastorff	11:32 AM	1:32 PM
+243,	K1W,	Emma Morgan, Joseph	11:33 AM	1:33 PM
+242,	K1W,	Sierra, Wainer	11:34 AM	1:34 PM
+241,	K1W,	Madeline, Kimmel	11:35 AM	1:35 PM
+240,	K1W,	Barrett, Phillips	11:36 AM	1:36 PM
+239,	K1W,	Lili, Brandon	11:37 AM	1:37 PM
+238,	K1W,	Lena, Mojsiak	11:38 AM	1:38 PM
+237,	K1W,	Maddy, Corcoran	11:39 AM	1:39 PM
+236,	K1W,	Michaela, Corcoran	11:40 AM	1:40 PM
+235,	K1W,	Avery, Davis	11:41 AM	1:41 PM
+234,	K1W,	Evy, Leibfarth	11:42 AM	1:42 PM
+300,	K1W,	Maya, Humeau	11:43 AM	1:43 PM
+299,	K1W,	Anna, Ifarraguerri	11:44 AM	1:44 PM
+297,	K1W,	Ashley, Nee	11:45 AM	1:45 PM
+293,	K1M,	Devon, Wainer	11:49 AM	1:49 PM
+292,	K1M,	Davis, Jung	11:50 AM	1:50 PM
+290,	K1M,	Adam, Van Grack	11:51 AM	1:51 PM
+289,	K1M,	Kenny, Hank	11:52 AM	1:52 PM
+288,	K1M,	Marcus, Loving	11:53 AM	1:53 PM
+287,	K1M,	Tyger, Vollrath	11:54 AM	1:54 PM
+286,	K1M,	Nathaniel, Francis	11:55 AM	1:55 PM
+285,	K1M,	Kaelin, Friedenson	11:56 AM	1:56 PM
+282,	K1M,	Robert, Healy	11:57 AM	1:57 PM
+281,	K1M,	Miller, Kaderabek	11:58 AM	1:58 PM
+280,	K1M,	Joshua, Joseph	11:59 AM	1:59 PM
+279,	K1M,	Henry, Bergen	12:00 PM	2:00 PM
+278,	K1M,	Taylor, Pittman	12:01 PM	2:01 PM
+276,	K1M,	Micajah, McCurry	12:02 PM	2:02 PM
+275,	K1M,	Mathys, Huevelin	12:03 PM	2:03 PM
+273,	K1M,	Tyler, Smith	12:04 PM	2:04 PM
+270,	K1M,	Richard, Powell	12:05 PM	2:05 PM
+296,    K1M     Malcolm, Smith

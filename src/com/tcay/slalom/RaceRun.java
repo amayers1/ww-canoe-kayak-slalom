@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.slalom.timingDevices.PhotoCellRaceRun;
@@ -44,6 +61,19 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
     private BoatEntry boat;
 
+
+    public enum Status {LIVE,        // Live results, subject to changes
+                        UNOFFICIAL,  // Results which are on period of inquiry
+                        OFFICIAL};   //  period of inquiry/protest is over
+
+
+
+
+    private Status status;
+
+
+
+
     /// To support NRC race timer and other trining devices
     public void setStartMillis(Long startMillis) {    //todo change access to protected or other improvement
         stopWatch.setPassedInStartTime(startMillis);
@@ -59,6 +89,20 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
     }
 
     private StopWatch stopWatch = null;     /// implement splits in stopWatch
+
+    public void setAdjustedTime(double adjustedTime) {
+
+        float oldTime = getElapsed();
+        this.adjustedTime = adjustedTime;
+
+        log.info("ADJ> " + getLogString() + " " +oldTime + " ADJUSTED TO -> " + getElapsed());//getBoat().getRacer().getBibNumber() + " r=" + getRunNumber());
+
+
+
+    }
+
+    private double adjustedTime = 0.0;     /// implement splits in stopWatch
+
     private ArrayList<Penalty> penaltyList = null;
     private boolean dnf = false;
 
@@ -113,11 +157,11 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
 
 
-
-
     public void setLog(Log log) {
         this.log = log;
     }
+
+
 
     /**
      *
@@ -136,7 +180,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
      */
     public void setPhotoCellRaceRun(PhotoCellRaceRun photoCellRaceRun) {//PhotoCellRaceRun photoCellRaceRun) {
         this.photoCellRaceRun = photoCellRaceRun;
-        updateResults();
+        updateResults(false);    // DO NOT save serialized data here, causes concurrency issue for manual start / finish buttons   ///MUST FIX 2016 Nationals ERROR CONCurrentMpdificationException
     }
 
     /**
@@ -175,6 +219,8 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
 
     private void init(BoatEntry boat) {
+        status = Status.LIVE;
+
         log = Log.getInstance();
         this.boat = boat;
         stopWatch = new StopWatch("Bib#" + boat.getRacer().getBibNumber());
@@ -223,7 +269,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
         stopWatch.start();
         log.info("VSTRT " + getLogString());//getBoat().getRacer().getBibNumber() + " r=" + getRunNumber());
         Race.getInstance().addRun(this);
-        updateResults();
+        updateResults(true);
 
     }
 
@@ -243,7 +289,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
         dnf = true;
         //stopWatch.setDNF();
         Race.getInstance().finishedRun(this);
-        updateResults();
+        updateResults(true);
 
 
     }
@@ -262,7 +308,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
         dns = true;
         //stopWatch.setDNF();
         Race.getInstance().finishedRun(this);
-        updateResults();
+        updateResults(true);
 
     }
 
@@ -280,7 +326,7 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
         Race race = Race.getInstance();
         race.finishedRun(this);
 
-        updateResults();
+        updateResults(true);
 
 
     }
@@ -426,12 +472,18 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
 
         float result = (float)9999.0;
         if (!dnf) {
-            if (photoCellRaceRun != null && photoCellRaceRun.getElapsedTime() != 0) {
-                result = (float)photoCellRaceRun.getElapsedTime();
+
+            if (adjustedTime > 0.0) {
+                result = (float)adjustedTime;
             }
             else {
-                result = stopWatch.getElapsed();   /// todo investigate EYE Start with APP FINISH gives stopwatch time until we get EYE finish
 
+                if (photoCellRaceRun != null && photoCellRaceRun.getElapsedTime() != 0) {
+                    result = (float) photoCellRaceRun.getElapsedTime();
+                } else {
+                    result = stopWatch.getElapsed();   /// todo investigate EYE Start with APP FINISH gives stopwatch time until we get EYE finish
+
+                }
             }
         }
 
@@ -537,8 +589,8 @@ float eTime=0.0f;
     }
 
 
-    private void updateResults() {
-        Race.getInstance().updateResults(this);
+    private void updateResults(boolean saveSerialized) {
+        Race.getInstance().updateResults(this, saveSerialized);        ///MUST FIX 2016 Nationals ERROR CONCurrentMpdificationException
         //Race.getInstance().updateResults();
     }
 
@@ -557,7 +609,17 @@ float eTime=0.0f;
 
         String suffix = " ";
         if (getPhotoCellRaceRun() != null) {
-            suffix = getPhotoCellRaceRun() != null ? ResultsTable.TIMINGMODE_AUTOMATIC: ResultsTable.TIMINGMODE_MANUAL;
+            if (adjustedTime > 0.0) {
+                suffix = ResultsTable.TIMINGMODE_ADJUSTED;
+            }
+            else if (getPhotoCellRaceRun() != null) {
+                suffix = ResultsTable.TIMINGMODE_AUTOMATIC;
+            }
+            else {
+                suffix = ResultsTable.TIMINGMODE_MANUAL;
+            }
+
+
         }
         sb.append(suffix);
 
@@ -694,12 +756,81 @@ float eTime=0.0f;
             if (p!=null) {
                 sb.append(String.format("<td>%2d</td>", p.getPenaltySeconds()));
             } else {
-                sb.append("<td></td>");
+                sb.append("<td></td>");  /// empty table data not comnpatible with HTML scrolling JQuery code
             }
 
 
         }
         return sb.toString();
+    }
+
+
+
+    static String upstreamBG = " bgcolor=#ff7d66";//\"MISTYROSE\"";
+
+    public String penaltyStringHTMLExtendedForScroll()
+    {
+        StringBuffer sb = new StringBuffer();
+        Penalty p;
+
+
+
+        for (int iGate = 1; iGate<=Race.getInstance().getNbrGates(); iGate++) {
+            p = getPenalty(iGate);
+
+
+            if (p!=null) {
+                sb.append(String.format("<td align=\"right\"" + (Race.getInstance().isUpstream(iGate)?upstreamBG:"") +    ">%2d</td>", p.getPenaltySeconds()));
+            } else {
+                sb.append("<td "+(Race.getInstance().isUpstream(iGate)?upstreamBG:"")+ ">&nbsp;</td>");  /// empty table data not comnpatible with HTML scrolling JQuery code
+            }
+
+
+        }
+
+
+
+
+        return sb.toString();
+    }
+
+
+    public String getTotalPenaltiesHTML_BR() {
+        String s = getPenaltyString();
+        if (s.trim().length()==0) {
+            return("&nbsp:");
+        }
+        else {
+            return(s);
+        }
+    }
+
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+
+    public String getStatusString() {
+        String statusString = null;
+
+        switch (status) {
+            case UNOFFICIAL:
+                statusString = "Unofficial";
+                break;
+            case OFFICIAL:
+                statusString = "Official";
+                break;
+            case LIVE:
+            default:
+                statusString = "Live";
+                break;
+        }
+        return statusString;
     }
 
 
