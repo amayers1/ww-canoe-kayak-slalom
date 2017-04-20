@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.RS232;
 
 /**
@@ -31,14 +48,13 @@ package com.tcay.RS232;
 
 
 import com.tcay.slalom.Race;
-import com.tcay.slalom.timingDevices.MicrogateREI2.MicrogateAgent;
 import com.tcay.slalom.timingDevices.PhotoCellAgent;
-import com.tcay.slalom.timingDevices.alge.AlgeTimy;
 import com.tcay.slalom.timingDevices.tagHeuer.TagHeuerAgent;
 import com.tcay.util.Log;
 import j.extensions.comm.SerialComm;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -53,14 +69,23 @@ import java.util.ArrayList;
  *      Microgate/ALGE devices
  *
  */
-public class PhotoEyeListener implements Runnable {
+public class PhotoEyePortListener implements Runnable, Serializable {
 
     private Log log;
-    //private PhotoCellAgent photoCellAgent;
+    private PhotoCellAgent photoCellAgent;
 
 
-    public PhotoEyeListener() {
+
+    public PhotoEyePortListener() {  // Added for XMLEncoder
+
+    }
+
+
+    public PhotoEyePortListener(PhotoCellAgent agent) {
+
+        photoCellAgent = agent;
         log = Log.getInstance();
+
     }
 
 
@@ -82,14 +107,11 @@ public class PhotoEyeListener implements Runnable {
     //TagHeuerAgent
 
     public PhotoCellAgent getAgent() {
-        return agent;
+        return photoCellAgent;
     }
 
-//    PhotoCellAgent agent = new AlgeTimy();//MicrogateAgent(); /// TODO TagHeuerAgent();
-    PhotoCellAgent agent = new TagHeuerAgent();
 
-   // photoCellAgent = agent;
-    //new PhotoCellAgent();// TagHeuerAgent();
+
 
 
    // TODO  PhotoCellAgent agent = null;   //  TODO !!!!!!!!!!   new TagHeuerAgent();
@@ -123,7 +145,7 @@ public class PhotoEyeListener implements Runnable {
      * @param ourPort
      * @return
      */
-    private boolean isPortOK(PhotoEyeEquipmentPort ourPort) {  /// MOVE TO RS232 classes
+    private boolean isPortOK(SerialPort ourPort) {  /// MOVE TO RS232 classes
         byte[] readBuffer = new byte[2048];
 
         SerialComm ubxPort = ourPort.getPort();
@@ -147,7 +169,7 @@ public class PhotoEyeListener implements Runnable {
                         log.info("Read " + numRead + " bytes.");
                     }
                     in.close();
-                    log.info("Closing " + ubxPort.getDescriptivePortName() + ": " + ubxPort.closePort());
+                    log.info("Timing equipment port selected: " + ubxPort.getDescriptivePortName() + ": " + ubxPort.closePort());
                     return true;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -167,15 +189,15 @@ public class PhotoEyeListener implements Runnable {
     }
 
 
-    ArrayList<PhotoEyeEquipmentPort> ourPorts;
+    ArrayList<SerialPort> ourPorts;
 
 
     private void getPorts() {
-        ourPorts =  new ArrayList<PhotoEyeEquipmentPort>();
+        ourPorts =  new ArrayList<SerialPort>();
 
         SerialComm[] ports =SerialComm.getCommPorts();
         for (SerialComm port:ports) {
-            ourPorts.add(new PhotoEyeEquipmentPort(port));
+            ourPorts.add(new SerialPort(port));
         }
     }
 
@@ -185,7 +207,7 @@ public class PhotoEyeListener implements Runnable {
 
         log.info("2 Identifying possible serial ports for timing equipment interface:");
 
-        for (PhotoEyeEquipmentPort p:ourPorts) {
+        for (SerialPort p:ourPorts) {
             if (isPortOK(p)) {         // see if it a CP520 is attached
                 readAndProcess(p, nbrOfCommandToProcess);  // Process 1 command
             }
@@ -204,7 +226,7 @@ public class PhotoEyeListener implements Runnable {
         return connected;
     }
 
-    private void readAndProcess(PhotoEyeEquipmentPort p, int commandsToProcess) {
+    private void readAndProcess(SerialPort p, int commandsToProcess) {
 
         int commandsProcessed = 0;
 
@@ -220,13 +242,13 @@ public class PhotoEyeListener implements Runnable {
             ubxPort.setComPortTimeouts(SerialComm.TIMEOUT_READ_BLOCKING/*1000*/, 1000, 0);
             InputStream in = ubxPort.getInputStream();
             for (commandsProcessed = 0; commandsProcessed < commandsToProcess; ) {
-                for (int j = 0; j < agent.getCommandSize(); ) {//NBR_BYTES_TO_READ; )  {
+                for (int j = 0; j < photoCellAgent.getCommandSize(); ) {//NBR_BYTES_TO_READ; )  {
 
                     c = (char) in.read();              // todo check for port disconnection and reconnection IOException
                     // On disconnect we get
                     //java.io.IOException: This port appears to have been shutdown or disconnected.
                     //        at j.extensions.comm.SerialComm$SerialCommInputStream.read(SerialComm.java:512)
-                    //at com.tcay.RS232.PhotoEyeListener.readAndProcess(PhotoEyeListener.java:221)
+                    //at com.tcay.RS232.PhotoEyePortListener.readAndProcess(PhotoEyePortListener.java:221)
 
 
 
@@ -238,7 +260,7 @@ public class PhotoEyeListener implements Runnable {
                     // When we get a line of input, direct it to the appropriate timing boxes protocol converter
                     //if (c == '\r') {  / todo \r vs \n
                         if (c == '\r') {
-                        if (agent.processDeviceOutput(sb.toString())) {        // If one of these recognized then it's a CP520
+                        if (photoCellAgent.processDeviceOutput(sb.toString())) {        // If one of these recognized then it's a CP520
                             //p.setCP520(true);
                             //agent.setConnected();
                             connected = true;
@@ -303,7 +325,7 @@ public class PhotoEyeListener implements Runnable {
 
         processPhotoEyeDataFromDevice(nbrOfCommandToProcess);
 
-//        `PhotoEyeListener newListener = new PhotoEyeListener();
+//        `PhotoEyePortListener newListener = new PhotoEyePortListener();
 
         // See if it's CP520 attached
 
@@ -319,7 +341,7 @@ public class PhotoEyeListener implements Runnable {
     /// Serial-Comm sample code
     static public void main(String[] args)
     {
-        new PhotoEyeListener().listenAndProcessPortOutput(20);
+        new PhotoEyePortListener(new TagHeuerAgent()).listenAndProcessPortOutput(20);
     }
 
 }

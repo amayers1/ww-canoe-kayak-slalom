@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
 import com.tcay.slalom.UI.PDF.PDF_Results;
@@ -53,6 +70,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import com.PrintUIWindow;
 
 /**
  * Teton Cay Group, Inc.
@@ -261,6 +279,7 @@ public class SlalomApp {
 //                        NRC_StartListImporter2016August importer = new NRC_StartListImporter2016August();
                         NRCStartListImporter importer = new NRCStartListImporter();
                         importer.readImportFile();
+                        importer.readImportFile();
                     }
                 }
         );
@@ -424,12 +443,14 @@ public class SlalomApp {
 
                         //outputResults("", race.getCompletedRuns(), false);
                         //outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
-                        LeaderBoard leaderBoard = new LeaderBoard(null);
                         JFrame frame = new JFrame("Leader Board");
+                        LeaderBoard leaderBoard = new LeaderBoard(null, frame);
+
                         frame.setContentPane(leaderBoard.$$$getRootComponent$$$());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
                         frame.setVisible(true);
+
                     }
                 }
         );
@@ -447,10 +468,10 @@ public class SlalomApp {
                         //outputResults("", race.getCompletedRuns(), false);
                         //outputResults("Sorted", race.getCompletedRunsByClassTime(), true);
                         ResultsTable rt = new ResultsTableSpectator();
-                        LeaderBoard leaderBoard = new LeaderBoard(rt);
+                        JFrame frame = new JFrame("Spectator Leaderboard");
+                        LeaderBoard leaderBoard = new LeaderBoard(rt, frame);
                         ((ResultsTableSpectator) rt).removeDetailColumns();
 
-                        JFrame frame = new JFrame("Spectator Leaderboard");
                         frame.setContentPane(leaderBoard.$$$getRootComponent$$$());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
@@ -546,6 +567,7 @@ public class SlalomApp {
 
 
         appFrame.setJMenuBar(menuBar);
+
         JPanel statusBar = new StatusBar().getPanel(appFrame);
         appFrame.add(statusBar, BorderLayout.SOUTH);
 
@@ -862,10 +884,10 @@ public class SlalomApp {
                 s1 = r.getBestRun() != null ? r.getBestRun().formatTimeTotalOnly() : RaceRun.TIME_ONLY_FILL;
                 output.write(s1);
 
-
-                if (r.getBestRun().getPhotoCellRaceRun() != null) {    /// todo must integrate TH results before sort
-                    output.write(ResultsTable.TIMINGMODE_AUTOMATIC);
-                }
+// C20170416 (ajm)  Remove 'e' from Best Time Output
+         //       if (r.getBestRun().getPhotoCellRaceRun() != null) {    /// todo must integrate TH results before sort
+         //           output.write(ResultsTable.TIMINGMODE_AUTOMATIC);
+         //       }
                 output.newLine();
             }
 

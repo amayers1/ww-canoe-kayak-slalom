@@ -32,25 +32,49 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
-import com.tcay.RS232.PhotoEyeListener;
+import com.tcay.VirtualLED;
+import com.tcay.RS232.PhotoEyePortListener;
 import com.tcay.slalom.UI.RaceTimingUI;
+import com.tcay.slalom.UI.components.LedIndicator;
 import com.tcay.slalom.UI.http.SlalomRacerResultsHTTP;
 import com.tcay.slalom.UI.http.SlalomResultsHTTP;
 import com.tcay.slalom.UI.http.SlalomResultsScoringHTTP;
+import com.tcay.slalom.timingDevices.MicrogateREI2.MicrogateAgent;
 import com.tcay.slalom.timingDevices.PhotoCellAgent;
 import com.tcay.slalom.timingDevices.PhotoCellRaceRun;
+import com.tcay.slalom.timingDevices.TimingImpulse;
+import com.tcay.slalom.timingDevices.alge.AlgeTimy;
+import com.tcay.slalom.timingDevices.tagHeuer.TagHeuerAgent;
 import com.tcay.util.DuplicateBibException;
 import com.tcay.util.Log;
 import com.tcay.slalom.UI.JudgingSection;
 import com.tcay.slalom.UI.tables.ResultsTableModel;
 import com.tcay.slalom.UI.tables.RunScoringTableModel;
-///import com.tcay.util.XStreamRaceConverter;
-//import com.thoughtworks.xstream.XStream;
-//import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.tcay.util.XStreamRaceConverter;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import javax.swing.*;
+//import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.*;
 
@@ -68,6 +92,11 @@ public class Race extends RaceResources implements Serializable
 
 
     private transient static Race instance = null;
+    private transient ArrayList<TimingImpulse>finishPulses;
+    private transient ArrayList<TimingImpulse>startPulses;
+    private transient LedIndicator finishEyeLED = new LedIndicator(VirtualLED.RED);
+    private transient LedIndicator startEyeLED = new LedIndicator(VirtualLED.GREEN);
+
 
     private transient static final int trainingMode = 0;// todo If this is one then AUTO increment of runs happens, CANT USE IN RACE
     //or last racer in first runs has thte run number in race set to 2 before they finish == NO MATCHING
@@ -90,14 +119,19 @@ public class Race extends RaceResources implements Serializable
         if (tagHeuerEnabled) {
             return tagHeuerTinyII;
         }
-        //      if (microgateEnabled) {
         return microgateII;
-        //      }
-        //      return null;
-
-
     }
 
+
+// Only allow REAL EYE pulses ... not those done by buttons from the timing box.  Make configurable
+
+    public void addStopImpulse( TimingImpulse impulse) {
+         finishPulses.add(impulse);
+    }
+
+    public void addStartImpulse( TimingImpulse impulse) {
+        startPulses.add(impulse);
+    }
 
     private transient PhotoCellAgent photoCellAgent;//Calendar cal = Calendar.getInstance();
     //private transient PhotoCellAgent agent;
@@ -136,7 +170,7 @@ public class Race extends RaceResources implements Serializable
 
     // Move these to SlalomApp or elsewhere in a device handler object
     private transient Thread photoEyeThread;     // Thread to get input from Photocells
-    private transient PhotoEyeListener photoEyeListener;   // Tag Heuer CP 520/540 listener/command processor
+    private transient PhotoEyePortListener photoEyeListener;   // Tag Heuer CP 520/540 listener/command processor
 
 
     private transient ArrayList<Result> results = new ArrayList<Result>();
@@ -150,6 +184,9 @@ public class Race extends RaceResources implements Serializable
         return microgateEnabled;
     }
 
+    public Boolean getAlgeTimyEnabled() {
+        return timyEnabled;
+    }
     public void setTagHeuerEnabled(Boolean tagHeuerEnabled) {
         this.tagHeuerEnabled = tagHeuerEnabled;
     }
@@ -158,7 +195,7 @@ public class Race extends RaceResources implements Serializable
         this.microgateEnabled = microgateEnabled;
     }
 
-    public void setTimyEnabled(Boolean timyEnabled) {
+    public void setAlgeTimyEnabled(Boolean timyEnabled) {
         this.timyEnabled = timyEnabled;
     }
 
@@ -169,7 +206,10 @@ public class Race extends RaceResources implements Serializable
     private transient Boolean tagHeuerConnected;
     private transient Boolean microgateConnected;
     private transient Log log;
-    //    private transient XStream xstream;
+
+    private transient XStream xstream;
+
+
    // private transient SlalomResultsHTTP_Save resultsHTTP;
 //D161004
     private transient SlalomRacerResultsHTTP racerResultsHTTP;
@@ -213,9 +253,9 @@ public class Race extends RaceResources implements Serializable
     }
 
 
-    public void setPhotoCellAgent(PhotoCellAgent photoCellAgent) {
-        this.photoCellAgent = photoCellAgent;
-    }
+   // public void setPhotoCellAgent(PhotoCellAgent photoCellAgent) {
+   //     this.photoCellAgent = photoCellAgent;
+   // }
 
     public void setMicrogateConnected(Boolean microgateConnected) {
         this.microgateConnected = microgateConnected;
@@ -229,15 +269,8 @@ public class Race extends RaceResources implements Serializable
         this.icfPenalties = icfPenalties;
     }
 
-//    public Thread getPhotoCellThread() {
-//        return photoEyeThread;
-//    }
 
-//    public void setPhotoCellThread(Thread photoEyeThread) {
-//        this.photoEyeThread = photoEyeThread;
-//    }
-
-
+// TODO 170418 Figure this out and optimize
     public boolean TODOKludgeStartFRomPhotoEye(String bibNumber) {
         boolean started = false;
         RaceTimingUI timingUI =  RaceTimingUI.getInstance();
@@ -248,6 +281,7 @@ public class Race extends RaceResources implements Serializable
     }
 
 
+    // TODO 170418 Figure this out and optimize
     public boolean TODOKludgeFinishFRomPhotoEye(String bibNumber) {
         boolean stopped = false;
         RaceTimingUI timingUI =  RaceTimingUI.getInstance();
@@ -275,13 +309,25 @@ public class Race extends RaceResources implements Serializable
 
     public void maybeStartPhotoCellInterface() {
 
+        //PhotoCellAgent agent = null;
         if (photoEyeThread == null) {
 
-            photoEyeListener = new PhotoEyeListener();
+            // Todo - change Configuration form checkbox to radio buttons - mutually exclusive
+
+            if (timyEnabled) {
+                photoCellAgent = new AlgeTimy();
+            } else if (tagHeuerEnabled) {
+                photoCellAgent = new TagHeuerAgent();
+            } else if (microgateEnabled) {
+                photoCellAgent = new MicrogateAgent();
+            }
+
+
+            photoEyeListener = new PhotoEyePortListener(photoCellAgent);
             photoEyeThread = new Thread(photoEyeListener);
             photoEyeThread.start();
 
-            photoCellAgent = photoEyeListener.getAgent();
+            //photoCellAgent = photoEyeListener.getAgent();
 
         }
         else {
@@ -290,20 +336,9 @@ public class Race extends RaceResources implements Serializable
 
     }
 
-
     public void setUpstreamGates(List<Integer> upstreamGates) {
         this.upstreamGates = upstreamGates;
     }
-
-    public PhotoEyeListener getPhotoEyeListener() {
-        return photoEyeListener;
-    }
-
-    public void setPhotoEyeListener(PhotoEyeListener photoEyeListener) {
-        this.photoEyeListener = photoEyeListener;
-    }
-
-
     public ArrayList<Result> getTempResults() {
         return results;
     }
@@ -370,13 +405,35 @@ public class Race extends RaceResources implements Serializable
     }
 
 
+
+    /**
+     * Clears racers / boat list, active runs, completed runs and startlist
+     * <p>
+     * This method used when importing a startlist from an external source
+     *
+     * @param  none
+     * @return none     the image at the specified URL
+     */
+  //  protected void clearRacers() {
+  //      racers = new ArrayList<Racer>();
+  //      startList = new ArrayList<BoatEntry>();
+  //      activeRuns = new ArrayList<RaceRun>();
+  //      completedRuns = new ArrayList<RaceRun>();
+  //  }
+
+
     protected void clearRace() {
         racers = new ArrayList<Racer>();
         startList = new ArrayList<BoatEntry>();
         activeRuns = new ArrayList<RaceRun>();
         completedRuns = new ArrayList<RaceRun>();
+        //clearRacers();
         judgingSections = new ArrayList<JudgingSection>();
         upstreamGates = new ArrayList<Integer>();
+
+        finishPulses = new ArrayList<TimingImpulse>();
+        startPulses = new ArrayList<TimingImpulse>();
+
         location = "";
         pendingRerun = null;
         name = UNNAMED_RACE;
@@ -393,13 +450,19 @@ public class Race extends RaceResources implements Serializable
 
 
 
-    private Race() {
+    /*private Changed for XMLEncoder .... SUCKS !!! 170418*/
+    public Race() {
         if (trainingMode==1) {
             MAX_RUNS_ALLOWED = 99;
         }
 
         log = Log.getInstance();
-      //  xstream = initXML();   D20160407 RIO CAUSING CRASH
+
+
+        xstream = initXML(); //  D20160407 RIO CAUSING CRASH
+
+
+
         clearRace();
 
         lastRace = new LastRace();
@@ -407,7 +470,7 @@ public class Race extends RaceResources implements Serializable
         microgateConnected = false;
 //D161004        resultsHTTP = new SlalomResultsHTTP_Save();
         // todo set up on timing page to test and then enable CP520
-//C160315        Thread t = new Thread( photoEyeListener = new PhotoEyeListener());
+//C160315        Thread t = new Thread( photoEyeListener = new PhotoEyePortListener());
 //C160315        t.start();
 
         //TODO - determine if any photo eyes in use, add appropriate handler/listener
@@ -636,7 +699,12 @@ public class Race extends RaceResources implements Serializable
     }
 
 
+
+
     public void addRun(RaceRun newRun) {
+        triggerStartEyeLedIndicator(); /// todo 201704 Hook from PhotoEyes
+
+
         synchronized (activeRuns) {
             activeRuns.add(newRun);
             runsStartedOrCompletedCnt++;   /// count of total racer starts
@@ -647,6 +715,9 @@ public class Race extends RaceResources implements Serializable
 
 
     public void finishedRun(RaceRun run) {
+
+
+        triggerFinishEyeLedIndicator();  /// todo 201704 Hook from PhotoEyes
         synchronized (activeRuns) {
             activeRuns.remove(run);
             runsStartedOrCompletedCnt++;
@@ -814,22 +885,22 @@ public class Race extends RaceResources implements Serializable
     }
 
 
-/*
+
     private XStream initXML() {
         XStream xstream = new XStream(new DomDriver());
         xstream.registerConverter(new XStreamRaceConverter());
 
         xstream.alias("race", Race.class);
-//        xstream.alias("run", RaceRun.class);
-//        xstream.alias("section", JudgingSection.class);
-//        xstream.alias("boatEntry", BoatEntry.class);
-//        xstream.alias("racer", Racer.class);
+        xstream.alias("run", RaceRun.class);
+        xstream.alias("section", JudgingSection.class);
+        xstream.alias("boatEntry", BoatEntry.class);
+        xstream.alias("racer", Racer.class);
 
         return(xstream);
     }
-*/
 
-/*
+
+
     private void saveXML() {
         String filename = getName() + ".xml";
 
@@ -914,12 +985,29 @@ public class Race extends RaceResources implements Serializable
         //Race race  = (Race)xstream.fromXML(xml);
     }
 
+
+
+/*
+    private void saveXMLEncoder() {
+        XMLEncoder encoder=null;
+        try{
+            encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream("Race.XML")));
+        }catch(FileNotFoundException fileNotFound){
+            System.out.println("ERROR: While Creating or Opening the File dvd.xml");
+        }
+        encoder.writeObject(this);
+        encoder.close();
+
+    }
 */
 
     //fixme todo change all to XML serialization, so class versions are NOT an issue !
     public void saveSerializedData() {
 
-        //saveXML();
+
+  //      saveXMLEncoder();
+
+        saveXML();
         try
         {
             lastRace.setName(getName());
@@ -940,10 +1028,10 @@ at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
 	at com.tcay.slalom.Race.associatePhotoCellRun(Race.java:1163)
 	at com.tcay.slalom.timingDevices.PhotoCellAgent.saveResult(PhotoCellAgent.java:57)
 	at com.tcay.slalom.timingDevices.tagHeuer.TagHeuerAgent.processDeviceOutput(TagHeuerAgent.java:174)
-	at com.tcay.RS232.PhotoEyeListener.readAndProcess(PhotoEyeListener.java:241)
-	at com.tcay.RS232.PhotoEyeListener.processPhotoEyeDataFromDevice(PhotoEyeListener.java:190)
-	at com.tcay.RS232.PhotoEyeListener.listenAndProcessPortOutput(PhotoEyeListener.java:304)
-	at com.tcay.RS232.PhotoEyeListener.run(PhotoEyeListener.java:76)
+	at com.tcay.RS232.PhotoEyePortListener.readAndProcess(PhotoEyePortListener.java:241)
+	at com.tcay.RS232.PhotoEyePortListener.processPhotoEyeDataFromDevice(PhotoEyePortListener.java:190)
+	at com.tcay.RS232.PhotoEyePortListener.listenAndProcessPortOutput(PhotoEyePortListener.java:304)
+	at com.tcay.RS232.PhotoEyePortListener.run(PhotoEyePortListener.java:76)
             */
 
             out.close();
@@ -1060,14 +1148,14 @@ at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
                 this.racers = raceFromSerialized.racers;
                 this.tagHeuerEnabled = raceFromSerialized.tagHeuerEnabled; // todo REMOVE ->tagHeuerEmulation = raceFromSerialized.tagHeuerEmulation;
                 this.microgateEnabled = raceFromSerialized.microgateEnabled;
-                this.microgateEnabled = raceFromSerialized.timyEnabled;
+                this.timyEnabled = raceFromSerialized.timyEnabled;
 
                 this.icfPenalties = raceFromSerialized.icfPenalties;
             }
 
 
         }
-        catch (InvalidClassException ice) {
+        catch (InvalidClassException ice) {      // todo - change top XML race data to avoid cversion problems
             clearRace();
             System.out.println("All data cleared, incompatible race object version information");
         }
@@ -1204,7 +1292,10 @@ at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:329)
     }
 
 
-
+    /**
+     * Joins PhotoCellRaceRun (Start Eye and Finish Eye time) with the associated RaceRun in the system
+     * @param photoCellRun
+     */
     public void associatePhotoCellRun(PhotoCellRaceRun photoCellRun) {
 
         RaceRun matchingRun = null;
@@ -1430,7 +1521,7 @@ if (saveSerialized)      {  saveSerializedData();   }            ///MUST FIX 201
 
 
 
-        ArrayList<String> classesRuns;
+    ArrayList<String> classesRuns;
     public ArrayList getClassesRuns() {
         classesRuns = new ArrayList<String>();
 
@@ -1459,6 +1550,88 @@ if (saveSerialized)      {  saveSerializedData();   }            ///MUST FIX 201
 
 
     }
+
+
+    long startEyeTripped = 0;
+    long finishEyeTripped = 0;
+
+    static int LED_ON_TIME = 1000;
+
+    // Todo - Hook to the photo eye  code 170419
+    public void triggerStartEyeLedIndicator() {
+        startEyeTripped = System.currentTimeMillis();
+    }
+
+
+    public void triggerFinishEyeLedIndicator() {
+        finishEyeTripped = System.currentTimeMillis();
+    }
+
+
+
+    public void checkLEDs() {
+        isStartEyeTripped();
+        isFinishEyeTripped();
+    }
+
+
+    // todo refactor into photoEyeListener or photoCellAgent
+    private boolean isFinishEyeTripped() {
+
+        boolean tripped = false;
+        if (finishEyeTripped>0) {
+            if (System.currentTimeMillis() - finishEyeTripped <= LED_ON_TIME) {
+                tripped = true;
+            }
+        }
+        if (System.currentTimeMillis() - finishEyeTripped > LED_ON_TIME) {
+            finishEyeTripped = 0;
+        }
+
+        if (tripped) {
+            finishEyeLED.setIsOn(true);
+        } else {
+            finishEyeLED.setIsOn(false);
+        }
+
+        return tripped;
+    }
+
+
+    // todo refactor into photoEyeListener or photoCellAgent
+    private boolean isStartEyeTripped() {
+
+        boolean tripped = false;
+        if (startEyeTripped>0) {
+            if (System.currentTimeMillis() - startEyeTripped <= LED_ON_TIME) {
+                tripped = true;
+            }
+        }
+        if (System.currentTimeMillis() - startEyeTripped > LED_ON_TIME) {
+            startEyeTripped = 0;
+        }
+
+
+        if (tripped) {
+            startEyeLED.setIsOn(true);
+        } else {
+            startEyeLED.setIsOn(false);
+        }
+
+        return tripped;
+    }
+
+    // todo refactor into photoEyeListener or photoCellAgent
+    public LedIndicator getStartEyeLED() {
+        return(startEyeLED);
+    }
+
+    // todo refactor into photoEyeListener or photoCellAgent
+    public LedIndicator getFinishEyeLED() {
+        return(finishEyeLED);
+    }
+
+
 
 
 

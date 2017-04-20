@@ -2055,3 +2055,1093 @@
 20160726 15:26:23.670  info:(t:16)Log TIMY_RAW begins
 20160726 15:27:24.586  info:(t:25)Execution ends
 20160726 15:27:28.800  info:(t:24)Execution ends
+20170414 17:20:31.742  info:(t:11)Log TIMY_RAW begins
+20170414 17:20:37.655  info:(t:18)Execution ends
+20170414 17:20:51.741  info:(t:13)Log TIMY_RAW begins
+20170414 17:21:01.164  info:(t:22)                                         12345678901234567890123456789
+20170414 17:21:01.164  info:(t:22)TIMY Extended Protocol Converter: input>> 0003 C0M 17:19:50.53   00
+20170414 17:21:01.165  info:(t:22)TIMY ESTRT B=3  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:21:10.969  info:(t:22)TIMY Extended Protocol Converter: input>> 0004 C0M 17:20:00.27   00
+20170414 17:21:10.970  info:(t:22)TIMY ESTRT B=5  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:21:12.808  info:(t:22)TIMY Extended Protocol Converter: input>> 0005 C0M 17:20:02.16   00
+20170414 17:21:12.809  info:(t:22)New EStarting time for # (RERUN?)5
+20170414 17:21:12.809  info:(t:22)TIMY ESTRT B=5  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:21:33.748  info:(t:22)TIMY Extended Protocol Converter: input>> 0006 C0M 17:20:23.02   00
+20170414 17:21:33.748  info:(t:22)New EStarting time for # (RERUN?)5
+20170414 17:21:33.749  info:(t:22)TIMY ESTRT B=5  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:21:59.199  info:(t:22)TIMY Extended Protocol Converter: input>> 0007 C0M 17:20:48.57   00
+20170414 17:21:59.199  info:(t:22)TIMY ESTRT B=8  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:22:42.822  info:(t:22)TIMY Extended Protocol Converter: input>> 0009 C0M 17:21:32.14   00
+20170414 17:22:42.822  info:(t:22)TIMY ESTRT B=10  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:24:06.951  info:(t:22)TIMY Extended Protocol Converter: input>> 0010 C0M 17:23:22.68   00
+20170414 17:24:06.951  info:(t:22)TIMY ESTRT B=30  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:25:45.561  info:(t:22)TIMY Extended Protocol Converter: input>> 0001 C0M 17:25:06.97   00
+20170414 17:25:45.561  info:(t:22)New EStarting time for # (RERUN?)30
+20170414 17:25:45.561  info:(t:22)TIMY ESTRT B=30  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:25:52.519  info:(t:22)TIMY Extended Protocol Converter: input>> 0002 C1M 17:25:13.94   00
+20170414 17:25:52.522  info:(t:22)TIMY ESTOP B=3 Elapsed=323.4100000000035
+20170414 17:26:16.514  info:(t:22)TIMY Extended Protocol Converter: input>> 0003 C1M 17:25:37.93   00
+20170414 17:26:16.520  info:(t:22)TIMY ESTOP B=5 Elapsed=314.9100000000035
+20170414 17:26:27.393  info:(t:22)TIMY Extended Protocol Converter: input>> 0004 C0M 17:25:48.82   00
+20170414 17:26:27.393  info:(t:22)TIMY ESTRT B=31  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:26:37.246  info:(t:22)TIMY Extended Protocol Converter: input>> 0005 C1M 17:25:58.66   00
+20170414 17:26:37.250  info:(t:22)TIMY ESTOP B=8 Elapsed=310.0900000000038
+20170414 17:26:46.093  info:(t:22)TIMY Extended Protocol Converter: input>> 0006 C1M 17:26:07.51   00
+20170414 17:26:46.097  info:(t:22)TIMY ESTOP B=10 Elapsed=275.3700000000026
+20170414 17:26:49.388  info:(t:22)TIMY Extended Protocol Converter: input>> 0007 C0M 17:26:10.80   00
+20170414 17:26:49.388  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:26:51.516  info:(t:22)TIMY Extended Protocol Converter: input>> 0008 C1M 17:26:12.94   00
+20170414 17:26:51.519  info:(t:22)TIMY ESTOP B=30 Elapsed=65.97000000000116
+20170414 17:26:52.747  info:(t:22)TIMY Extended Protocol Converter: input>> 0009 C1M 17:26:14.17   00
+20170414 17:26:52.752  info:(t:22)TIMY ESTOP B=31 Elapsed=25.349999999998545
+20170414 17:26:54.043  info:(t:22)TIMY Extended Protocol Converter: input>> 0010 C0M 17:26:15.46   00
+20170414 17:26:54.043  info:(t:22)New EStarting time for # (RERUN?)32
+20170414 17:26:54.043  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:26:55.147  info:(t:22)TIMY Extended Protocol Converter: input>> 0011 C1M 17:26:16.57   00
+20170414 17:26:55.147  info:(t:22)TIMY ESTOP B=32 Elapsed=1.110000000000582
+20170414 17:26:57.515  info:(t:22)TIMY Extended Protocol Converter: input>> 0012 C0M 17:26:18.94   00
+20170414 17:26:57.527  info:(t:22)New EStarting time for # (RERUN?)32
+20170414 17:26:57.527  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:26:58.858  info:(t:22)TIMY Extended Protocol Converter: input>> 0013 C1M 17:26:20.28   00
+20170414 17:26:58.859 err:(t:22)null
+20170414 17:27:01.018  info:(t:22)                                         12345678901234567890123456789
+20170414 17:27:01.018  info:(t:22)TIMY Extended Protocol Converter: input>> 0014 C0M 17:26:22.44   00
+20170414 17:27:01.018  info:(t:22)New EStarting time for # (RERUN?)32
+20170414 17:27:01.019  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:27:03.242  info:(t:22)TIMY Extended Protocol Converter: input>> 0015 C0M 17:26:24.66   00
+20170414 17:27:03.242  info:(t:22)New EStarting time for # (RERUN?)32
+20170414 17:27:03.242  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:27:07.512  info:(t:22)TIMY Extended Protocol Converter: input>> 0016 C1M 17:26:28.93   00
+20170414 17:27:07.513 err:(t:22)null
+20170414 17:27:33.379  info:(t:22)TIMY Extended Protocol Converter: input>> 0017 C0M 17:26:54.80   00
+20170414 17:27:33.379  info:(t:22)New EStarting time for # (RERUN?)32
+20170414 17:27:33.380  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:27:35.139  info:(t:22)TIMY Extended Protocol Converter: input>> 0018 C1M 17:26:56.56   00
+20170414 17:27:35.140 err:(t:22)null
+20170414 17:27:36.195  info:(t:22)TIMY Extended Protocol Converter: input>> 0019 C0M 17:26:57.61   00
+20170414 17:27:36.196  info:(t:22)New EStarting time for # (RERUN?)32
+20170414 17:27:36.196  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:27:36.963  info:(t:22)TIMY Extended Protocol Converter: input>> 0020 C1M 17:26:58.38   00
+20170414 17:27:36.964 err:(t:22)null
+20170414 17:27:42.034  info:(t:22)TIMY Extended Protocol Converter: input>> 0021 C0M 17:27:03.46   00
+20170414 17:27:42.034  info:(t:22)New EStarting time for # (RERUN?)32
+20170414 17:27:42.034  info:(t:22)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:27:43.714  info:(t:22)TIMY Extended Protocol Converter: input>> 0022 C1M 17:27:05.13   00
+20170414 17:27:43.714 err:(t:22)null
+20170414 17:28:47.524  info:(t:22)TIMY Extended Protocol Converter: input>> 0023 C1M 17:28:08.95   00
+20170414 17:28:47.524 err:(t:22)null
+20170414 17:29:33.647  info:(t:21)Execution ends
+20170414 17:29:44.023  info:(t:13)Log TIMY_RAW begins
+20170414 17:30:23.460  info:(t:20)Execution ends
+20170414 17:30:51.958  info:(t:13)Log TIMY_RAW begins
+20170414 17:31:05.359  info:(t:22)                                         12345678901234567890123456789
+20170414 17:31:05.359  info:(t:22)TIMY Extended Protocol Converter: input>> 0001 C0M 17:30:43.05   00
+20170414 17:31:18.037  info:(t:22)TIMY ESTRT B=1  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:31:22.875  info:(t:22)TIMY Extended Protocol Converter: input>> 0002 C1M 17:31:00.56   00
+20170414 17:31:30.111  info:(t:22)TIMY ESTOP B=1 Elapsed=17.50999999999476
+20170414 17:33:06.853  info:(t:22)TIMY Extended Protocol Converter: input>> 0003 C0M 17:32:44.53   00
+20170414 17:33:13.035  info:(t:22)TIMY ESTRT B=2  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:33:18.194  info:(t:22)TIMY Extended Protocol Converter: input>> 0004 C1M 17:32:55.87   00
+20170414 17:33:18.198  info:(t:22)TIMY ESTOP B=2 Elapsed=11.340000000003783
+20170414 17:36:06.598  info:(t:22)TIMY Extended Protocol Converter: input>> 0005 C0M 17:35:44.27   00
+20170414 17:36:06.600  info:(t:22)TIMY ESTRT B=3  NOT FOUND FOR FINISH (DNF?) !
+20170414 17:36:11.970  info:(t:22)TIMY Extended Protocol Converter: input>> 0006 C1M 17:35:49.65   00
+20170414 17:36:11.974  info:(t:22)TIMY ESTOP B=3 Elapsed=5.380000000004657
+20170414 17:39:59.014  info:(t:21)Execution ends
+20170414 18:46:17.836  info:(t:11)Log TIMY_RAW begins
+20170414 18:48:34.343  info:(t:19)                                         12345678901234567890123456789
+20170414 18:48:34.344  info:(t:19)TIMY Extended Protocol Converter: input>> 0007 C1M 18:48:34.41   00
+20170414 18:48:34.345 err:(t:19)null
+20170414 18:48:37.958  info:(t:19)TIMY Extended Protocol Converter: input>> 0008 C0  18:48:38.0343 00
+20170414 18:48:37.959  info:(t:19)TIMY ESTRT B=2  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:49:22.684  info:(t:19)TIMY Extended Protocol Converter: input>> 0009 C0  18:49:22.7523 00
+20170414 18:49:22.684  info:(t:19)TIMY ESTRT B=3  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:50:07.825  info:(t:19)TIMY Extended Protocol Converter: input>> 0010 C0  18:50:07.8966 00
+20170414 18:50:07.826  info:(t:19)TIMY ESTRT B=5  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:50:38.300  info:(t:19)TIMY Extended Protocol Converter: input>> 0011 C1M 18:50:38.38   00
+20170414 18:50:38.305  info:(t:19)TIMY ESTOP B=2 Elapsed=120.35000000000582
+20170414 18:51:02.841  info:(t:19)TIMY Extended Protocol Converter: input>> 0012 C0  18:51:02.9130 00
+20170414 18:51:02.842  info:(t:19)New EStarting time for # (RERUN?)5
+20170414 18:51:02.842  info:(t:19)TIMY ESTRT B=5  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:51:51.187  info:(t:19)TIMY Extended Protocol Converter: input>> 0013 C1M 18:51:51.26   00
+20170414 18:51:51.189  info:(t:19)TIMY ESTOP B=3 Elapsed=148.50999999999476
+20170414 18:51:52.659  info:(t:19)TIMY Extended Protocol Converter: input>> 0014 C0  18:51:52.7281 00
+20170414 18:51:52.659  info:(t:19)TIMY ESTRT B=6  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:52:35.709  info:(t:19)TIMY Extended Protocol Converter: input>> 0015 C0  18:52:35.7769 00
+20170414 18:52:35.709  info:(t:19)New EStarting time for # (RERUN?)6
+20170414 18:52:35.710  info:(t:19)TIMY ESTRT B=6  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:53:17.254  info:(t:19)TIMY Extended Protocol Converter: input>> 0016 C1M 18:53:17.31   00
+20170414 18:53:17.258  info:(t:19)TIMY ESTOP B=5 Elapsed=134.39999999999418
+20170414 18:54:31.963  info:(t:19)TIMY Extended Protocol Converter: input>> 0017 C1M 18:54:32.01   00
+20170414 18:54:31.966  info:(t:19)TIMY ESTOP B=6 Elapsed=116.23999999999069
+20170414 18:56:10.445  info:(t:19)TIMY Extended Protocol Converter: input>> 0018 C1M 18:56:10.49   00
+20170414 18:56:10.446 err:(t:19)null
+20170414 18:56:41.537  info:(t:19)TIMY Extended Protocol Converter: input>> 0001 C0M 18:56:41.31   00
+20170414 18:56:41.538  info:(t:19)TIMY ESTRT B=7  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:56:47.969  info:(t:19)TIMY Extended Protocol Converter: input>> 0002 C1M 18:56:47.76   00
+20170414 18:56:47.970  info:(t:19)TIMY ESTOP B=7 Elapsed=6.44999999999709
+20170414 18:57:39.386  info:(t:19)TIMY Extended Protocol Converter: input>> 0003 C0M 18:57:39.17   00
+20170414 18:57:39.387  info:(t:19)New EStarting time for # (RERUN?)7
+20170414 18:57:39.387  info:(t:19)TIMY ESTRT B=7  NOT FOUND FOR FINISH (DNF?) !
+20170414 18:57:48.602  info:(t:19)TIMY Extended Protocol Converter: input>> 0004 C1M 18:57:48.39   00
+20170414 18:57:48.602 err:(t:19)null
+20170414 18:57:54.121  info:(t:19)TIMY Extended Protocol Converter: input>> 0005 C1M 18:57:53.90   00
+20170414 18:57:54.121 err:(t:19)null
+20170414 19:01:30.785  info:(t:19)TIMY Extended Protocol Converter: input>> 0001 C0M 19:01:44.64   00
+20170414 19:01:30.785  info:(t:19)New EStarting time for # (RERUN?)7
+20170414 19:01:30.785  info:(t:19)TIMY ESTRT B=7  NOT FOUND FOR FINISH (DNF?) !
+20170414 19:01:36.688  info:(t:19)TIMY Extended Protocol Converter: input>> 0002 C1M 19:01:50.55   00
+20170414 19:01:36.688 err:(t:19)null
+20170414 19:01:50.766  info:(t:19)TIMY Extended Protocol Converter: input>> 0003 C0M 19:02:04.62   00
+20170414 19:01:50.766  info:(t:19)TIMY ESTRT B=8  NOT FOUND FOR FINISH (DNF?) !
+20170414 19:02:01.132  info:(t:19)                                         12345678901234567890123456789
+20170414 19:02:01.132  info:(t:19)TIMY Extended Protocol Converter: input>> 0004 C1M 19:02:14.98   00
+20170414 19:02:01.135  info:(t:19)TIMY ESTOP B=8 Elapsed=10.360000000000582
+20170415 07:30:27.699  info:(t:18)Execution ends
+20170415 07:31:03.698  info:(t:11)Log TIMY_RAW begins
+20170415 07:51:56.042  info:(t:18)Execution ends
+20170415 08:17:14.598  info:(t:11)Log TIMY_RAW begins
+20170415 08:17:48.375  info:(t:18)Execution ends
+20170415 08:18:12.489  info:(t:11)Log TIMY_RAW begins
+20170415 08:34:16.943  info:(t:18)Execution ends
+20170415 08:34:28.168  info:(t:11)Log TIMY_RAW begins
+20170415 08:36:27.830  info:(t:18)Execution ends
+20170415 08:36:36.505  info:(t:11)Log TIMY_RAW begins
+20170415 08:37:02.472  info:(t:18)Execution ends
+20170415 08:37:11.457  info:(t:13)Log TIMY_RAW begins
+20170415 08:38:49.607  info:(t:21)Execution ends
+20170415 08:39:04.876  info:(t:13)Log TIMY_RAW begins
+20170415 08:40:07.172  info:(t:21)Execution ends
+20170415 08:40:22.815  info:(t:13)Log TIMY_RAW begins
+20170415 08:42:18.571  info:(t:20)Execution ends
+20170415 08:42:31.054  info:(t:13)Log TIMY_RAW begins
+20170415 08:42:37.892  info:(t:13)Log TIMY_RAW begins
+20170415 08:42:40.624  info:(t:21)Execution ends
+20170415 08:42:45.244  info:(t:20)Execution ends
+20170415 08:42:54.087  info:(t:13)Log TIMY_RAW begins
+20170415 08:43:11.022  info:(t:22)                                         12345678901234567890123456789
+20170415 08:43:11.023  info:(t:22)TIMY Extended Protocol Converter: input>> 0108 C0M 08:43:11.20   00
+20170415 08:43:11.023 err:(t:22)null
+20170415 08:43:12.894  info:(t:22)TIMY Extended Protocol Converter: input>> 0109 C1M 08:43:13.08   00
+20170415 08:43:12.895 err:(t:22)null
+20170415 08:43:19.079  info:(t:21)Execution ends
+20170415 08:43:31.061  info:(t:11)Log TIMY_RAW begins
+20170415 08:57:02.773  info:(t:19)                                         12345678901234567890123456789
+20170415 08:57:02.774  info:(t:19)TIMY Extended Protocol Converter: input>> 0110 C0  08:57:02.9480 00
+20170415 08:57:02.775  info:(t:19)TIMY ESTRT B=103  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:20:02.746  info:(t:19)TIMY Extended Protocol Converter: input>> 0111 C0  09:20:02.9218 00
+20170415 09:20:02.747  info:(t:19)New EStarting time for # (RERUN?)103
+20170415 09:20:02.747  info:(t:19)TIMY ESTRT B=103  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:21:52.785  info:(t:19)TIMY Extended Protocol Converter: input>> 0112 C1  09:21:52.9515 00
+20170415 09:21:52.795  info:(t:19)TIMY ESTOP B=103 Elapsed=110.02999999999884
+20170415 09:21:52.961  info:(t:19)TIMY Extended Protocol Converter: input>> 0113 C1M 09:21:53.14   00
+20170415 09:21:52.962 err:(t:19)null
+20170415 09:22:04.319  info:(t:19)TIMY Extended Protocol Converter: input>> 0114 C0  09:22:04.4971 00
+20170415 09:22:04.319  info:(t:19)TIMY ESTRT B=102  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:23:52.360  info:(t:19)TIMY Extended Protocol Converter: input>> 0115 C1  09:23:52.5249 00
+20170415 09:23:52.365  info:(t:19)TIMY ESTOP B=102 Elapsed=108.02999999999884
+
+
+
+20170415 09:30:06.047  info:(t:19)TIMY Extended Protocol Converter: input>> 0116 C0  09:30:06.2072 00
+20170415 09:30:06.048  info:(t:19)TIMY ESTRT B=67  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:32:03.203  info:(t:19)TIMY Extended Protocol Converter: input>> 0117 C0  09:32:03.3737 00
+20170415 09:32:03.208  info:(t:19)TIMY ESTRT B=66  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:32:43.594  info:(t:19)TIMY Extended Protocol Converter: input>> 0118 C1  09:32:43.7679 00
+20170415 09:32:43.597  info:(t:19)TIMY ESTOP B=67 Elapsed=157.56000000000495
+20170415 09:33:19.955  info:(t:19)TIMY Extended Protocol Converter: input>> 0119 C1  09:33:20.1395 00
+20170415 09:33:19.957  info:(t:19)TIMY ESTOP B=66 Elapsed=76.75999999999476
+
+
+
+
+20170415 09:34:04.299  info:(t:19)TIMY Extended Protocol Converter: input>> 0120 C0  09:34:04.4611 00
+20170415 09:34:04.299  info:(t:19)TIMY ESTRT B=65  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:34:15.287  info:(t:19)TIMY Extended Protocol Converter: input>> 0121 C1  09:34:15.4619 00
+20170415 09:34:15.290  info:(t:19)TIMY ESTOP B=65 Elapsed=11.0
+20170415 09:36:06.706  info:(t:19)TIMY Extended Protocol Converter: input>> 0122 C0  09:36:06.8834 00
+20170415 09:36:06.707  info:(t:19)TIMY ESTRT B=64  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:36:42.778  info:(t:19)TIMY Extended Protocol Converter: input>> 0123 C1  09:36:42.9455 00
+20170415 09:36:42.781  info:(t:19)TIMY ESTOP B=64 Elapsed=36.06000000000495
+20170415 09:38:03.291  info:(t:19)TIMY Extended Protocol Converter: input>> 0124 C0  09:38:03.4661 00
+20170415 09:38:03.291  info:(t:19)TIMY ESTRT B=63  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:40:01.777  info:(t:19)TIMY Extended Protocol Converter: input>> 0125 C0  09:40:01.9427 00
+20170415 09:40:01.777  info:(t:19)TIMY ESTRT B=62  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:40:05.169  info:(t:19)TIMY Extended Protocol Converter: input>> 0126 C1  09:40:05.3362 00
+20170415 09:40:05.173  info:(t:19)TIMY ESTOP B=63 Elapsed=121.87000000000262
+20170415 09:40:10.416  info:(t:19)TIMY Extended Protocol Converter: input>> 0127 C1M 09:40:10.59   00
+20170415 09:40:10.419  info:(t:19)TIMY ESTOP B=62 Elapsed=8.64999999999418
+20170415 09:41:59.145  info:(t:19)TIMY Extended Protocol Converter: input>> 0128 C0  09:41:59.3192 00
+20170415 09:41:59.145  info:(t:19)TIMY ESTRT B=61  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:43:40.019  info:(t:19)TIMY Extended Protocol Converter: input>> 0129 C1  09:43:40.1955 00
+20170415 09:43:40.032  info:(t:19)TIMY ESTOP B=61 Elapsed=100.88000000000466
+20170415 09:45:23.934  info:(t:19)                                         12345678901234567890123456789
+20170415 09:45:23.935  info:(t:19)TIMY Extended Protocol Converter: input>> 0130 C1  09:45:24.1143 00
+20170415 09:45:23.935 err:(t:19)null
+20170415 09:45:28.717  info:(t:19)TIMY Extended Protocol Converter: input>> 0131 C1  09:45:28.8817 00
+20170415 09:45:28.718 err:(t:19)null
+20170415 09:45:35.676  info:(t:19)TIMY Extended Protocol Converter: input>> 0132 C1  09:45:35.8494 00
+20170415 09:45:35.677 err:(t:19)null
+20170415 09:47:05.035  info:(t:19)TIMY Extended Protocol Converter: input>> 0133 C0  09:47:05.2075 00
+20170415 09:47:05.036  info:(t:19)TIMY ESTRT B=59  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:48:59.139  info:(t:19)TIMY Extended Protocol Converter: input>> 0134 C1  09:48:59.3036 00
+20170415 09:48:59.145  info:(t:19)TIMY ESTOP B=59 Elapsed=114.10000000000582
+20170415 09:49:03.010  info:(t:19)TIMY Extended Protocol Converter: input>> 0135 C0  09:49:03.1895 00
+20170415 09:49:03.010  info:(t:19)TIMY ESTRT B=58  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:51:05.816  info:(t:19)TIMY Extended Protocol Converter: input>> 0136 C0  09:51:05.9808 00
+20170415 09:51:05.816  info:(t:19)TIMY ESTRT B=57  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:51:41.744  info:(t:19)TIMY Extended Protocol Converter: input>> 0137 C1  09:51:41.9104 00
+20170415 09:51:41.750  info:(t:19)TIMY ESTOP B=58 Elapsed=158.7300000000032
+20170415 09:53:04.079  info:(t:19)TIMY Extended Protocol Converter: input>> 0138 C0  09:53:04.2531 00
+20170415 09:53:04.080  info:(t:19)TIMY ESTRT B=56  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:53:34.808  info:(t:19)TIMY Extended Protocol Converter: input>> 0139 C1M 09:53:34.97   00
+20170415 09:53:34.812  info:(t:19)TIMY ESTOP B=57 Elapsed=148.98999999999796
+20170415 09:55:02.645  info:(t:19)TIMY Extended Protocol Converter: input>> 0140 C0  09:55:02.8202 00
+20170415 09:55:02.645  info:(t:19)TIMY ESTRT B=55  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:55:33.422  info:(t:19)TIMY Extended Protocol Converter: input>> 0141 C1M 09:55:33.60   00
+20170415 09:55:33.427  info:(t:19)TIMY ESTOP B=56 Elapsed=149.34999999999854
+20170415 09:57:01.482  info:(t:19)TIMY Extended Protocol Converter: input>> 0142 C0  09:57:01.6572 00
+20170415 09:57:01.483  info:(t:19)TIMY ESTRT B=54  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:57:20.326  info:(t:19)TIMY Extended Protocol Converter: input>> 0143 C1M 09:57:20.50   00
+20170415 09:57:20.330  info:(t:19)TIMY ESTOP B=55 Elapsed=137.6800000000003
+20170415 09:59:04.638  info:(t:19)TIMY Extended Protocol Converter: input>> 0144 C0  09:59:04.8106 00
+20170415 09:59:04.639  info:(t:19)TIMY ESTRT B=53  NOT FOUND FOR FINISH (DNF?) !
+20170415 09:59:34.472  info:(t:19)TIMY Extended Protocol Converter: input>> 0145 C1  09:59:34.6436 00
+20170415 09:59:34.480  info:(t:19)TIMY ESTOP B=54 Elapsed=152.98999999999796
+20170415 10:01:01.300  info:(t:19)TIMY Extended Protocol Converter: input>> 0146 C1  10:01:01.4693 00
+20170415 10:01:01.305  info:(t:19)TIMY ESTOP B=53 Elapsed=116.65000000000146
+20170415 10:01:06.851  info:(t:19)TIMY Extended Protocol Converter: input>> 0147 C0  10:01:07.0222 00
+20170415 10:01:06.851  info:(t:19)TIMY ESTRT B=52  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:02:03.285  info:(t:19)TIMY Extended Protocol Converter: input>> 0148 C1  10:02:03.4580 00
+20170415 10:02:03.291  info:(t:19)TIMY ESTOP B=52 Elapsed=56.43000000000029
+20170415 10:03:09.464  info:(t:19)TIMY Extended Protocol Converter: input>> 0149 C0  10:03:09.6431 00
+20170415 10:03:09.464  info:(t:19)TIMY ESTRT B=51  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:04:59.006  info:(t:19)                                         12345678901234567890123456789
+20170415 10:04:59.007  info:(t:19)TIMY Extended Protocol Converter: input>> 0150 C1  10:04:59.1722 00
+20170415 10:04:59.012  info:(t:19)TIMY ESTOP B=51 Elapsed=109.52999999999884
+20170415 10:08:05.751  info:(t:19)TIMY Extended Protocol Converter: input>> 0151 C0  10:08:05.9271 00
+20170415 10:08:05.751  info:(t:19)TIMY ESTRT B=41  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:10:04.491  info:(t:19)TIMY Extended Protocol Converter: input>> 0152 C1  10:10:04.6648 00
+20170415 10:10:04.500  info:(t:19)TIMY ESTOP B=41 Elapsed=118.74000000000524
+20170415 10:10:56.817  info:(t:19)TIMY Extended Protocol Converter: input>> 0153 C1  10:10:56.9871 00
+20170415 10:10:56.818 err:(t:19)null
+20170415 10:17:16.895  info:(t:19)TIMY Extended Protocol Converter: input>> 0154 C1  10:17:17.0787 00
+20170415 10:17:16.955 err:(t:19)null
+20170415 10:20:04.348  info:(t:19)TIMY Extended Protocol Converter: input>> 0155 C0  10:20:04.5229 00
+20170415 10:20:04.349  info:(t:19)TIMY ESTRT B=33  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:22:05.824  info:(t:19)TIMY Extended Protocol Converter: input>> 0156 C0  10:22:05.9984 00
+20170415 10:22:05.824  info:(t:19)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:24:06.547  info:(t:19)TIMY Extended Protocol Converter: input>> 0157 C0  10:24:06.7042 00
+20170415 10:24:06.547  info:(t:19)TIMY ESTRT B=31  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:24:21.503  info:(t:19)TIMY Extended Protocol Converter: input>> 0158 C1  10:24:21.6880 00
+20170415 10:24:21.511  info:(t:19)TIMY ESTOP B=33 Elapsed=257.1600000000035
+20170415 10:26:03.000  info:(t:19)TIMY Extended Protocol Converter: input>> 0159 C1M 10:26:03.17   00
+20170415 10:26:03.006  info:(t:19)TIMY ESTOP B=32 Elapsed=237.1800000000003
+20170415 10:29:06.707  info:(t:19)TIMY Extended Protocol Converter: input>> 0160 C0  10:29:06.8868 00
+20170415 10:29:06.708  info:(t:19)TIMY ESTRT B=27  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:31:03.047  info:(t:19)TIMY Extended Protocol Converter: input>> 0161 C0  10:31:03.2213 00
+20170415 10:31:03.047  info:(t:19)TIMY ESTRT B=26  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:32:10.454  info:(t:19)TIMY Extended Protocol Converter: input>> 0162 C1  10:32:10.6218 00
+20170415 10:32:10.466  info:(t:19)TIMY ESTOP B=31 Elapsed=483.92000000000553
+20170415 10:33:04.410  info:(t:19)TIMY Extended Protocol Converter: input>> 0163 C0  10:33:04.5817 00
+20170415 10:33:04.416  info:(t:19)TIMY ESTRT B=25  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:33:24.518  info:(t:19)TIMY Extended Protocol Converter: input>> 0164 C1M 10:33:24.69   00
+20170415 10:33:24.525  info:(t:19)TIMY ESTOP B=27 Elapsed=257.81000000000495
+20170415 10:35:05.646  info:(t:19)TIMY Extended Protocol Converter: input>> 0165 C0  10:35:05.8033 00
+20170415 10:35:05.650  info:(t:19)TIMY ESTRT B=24  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:35:17.772  info:(t:19)TIMY Extended Protocol Converter: input>> 0166 C1  10:35:17.9495 00
+20170415 10:35:17.782  info:(t:19)TIMY ESTOP B=26 Elapsed=254.72000000000116
+20170415 10:35:17.995  info:(t:19)TIMY Extended Protocol Converter: input>> 0167 C1M 10:35:18.17   00
+20170415 10:35:18.003  info:(t:19)TIMY ESTOP B=25 Elapsed=133.5899999999965
+20170415 10:37:07.746  info:(t:19)TIMY Extended Protocol Converter: input>> 0168 C0  10:37:07.9013 00
+20170415 10:37:07.746  info:(t:19)TIMY ESTRT B=23  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:37:24.301  info:(t:19)TIMY Extended Protocol Converter: input>> 0169 C1M 10:37:24.48   00
+20170415 10:37:24.310  info:(t:19)TIMY ESTOP B=24 Elapsed=138.6800000000003
+20170415 10:39:04.006  info:(t:19)                                         12345678901234567890123456789
+20170415 10:39:04.006  info:(t:19)TIMY Extended Protocol Converter: input>> 0170 C0  10:39:04.1705 00
+20170415 10:39:04.007  info:(t:19)TIMY ESTRT B=22  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:39:13.556  info:(t:19)TIMY Extended Protocol Converter: input>> 0171 C1M 10:39:13.74   00
+20170415 10:39:13.563  info:(t:19)TIMY ESTOP B=23 Elapsed=125.83999999999651
+20170415 10:41:05.002  info:(t:19)TIMY Extended Protocol Converter: input>> 0172 C0  10:41:05.1736 00
+20170415 10:41:05.002  info:(t:19)TIMY ESTRT B=21  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:41:08.826  info:(t:19)TIMY Extended Protocol Converter: input>> 0173 C1M 10:41:08.99   00
+20170415 10:41:08.834  info:(t:19)TIMY ESTOP B=22 Elapsed=124.81999999999971
+20170415 10:42:56.226  info:(t:19)TIMY Extended Protocol Converter: input>> 0174 C1M 10:42:56.40   00
+20170415 10:42:56.236  info:(t:19)TIMY ESTOP B=21 Elapsed=111.2300000000032
+20170415 10:43:03.967  info:(t:19)TIMY Extended Protocol Converter: input>> 0175 C0  10:43:04.1390 00
+20170415 10:43:03.968  info:(t:19)TIMY ESTRT B=20  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:45:02.404  info:(t:19)TIMY Extended Protocol Converter: input>> 0176 C0  10:45:02.5873 00
+20170415 10:45:02.404  info:(t:19)TIMY ESTRT B=19  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:45:05.907  info:(t:19)TIMY Extended Protocol Converter: input>> 0177 C1M 10:45:06.09   00
+20170415 10:45:05.914  info:(t:19)TIMY ESTOP B=20 Elapsed=121.95999999999913
+20170415 10:47:03.576  info:(t:19)TIMY Extended Protocol Converter: input>> 0178 C0  10:47:03.7513 00
+20170415 10:47:03.576  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:47:13.814  info:(t:19)TIMY Extended Protocol Converter: input>> 0179 C1M 10:47:13.99   00
+20170415 10:47:13.821  info:(t:19)TIMY ESTOP B=19 Elapsed=131.40999999999622
+20170415 10:49:00.476  info:(t:19)TIMY Extended Protocol Converter: input>> 0180 C0  10:49:00.6593 00
+20170415 10:49:00.477  info:(t:19)TIMY ESTRT B=17  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:49:05.131  info:(t:19)TIMY Extended Protocol Converter: input>> 0181 C1M 10:49:05.32   00
+20170415 10:49:05.142  info:(t:19)TIMY ESTOP B=18 Elapsed=121.56999999999971
+20170415 10:50:48.275  info:(t:19)TIMY Extended Protocol Converter: input>> 0182 C1M 10:50:48.46   00
+20170415 10:50:48.284  info:(t:19)TIMY ESTOP B=17 Elapsed=107.80999999999767
+20170415 10:51:04.896  info:(t:19)TIMY Extended Protocol Converter: input>> 0183 C0  10:51:05.0748 00
+20170415 10:51:04.896  info:(t:19)TIMY ESTRT B=16  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:52:52.694  info:(t:19)TIMY Extended Protocol Converter: input>> 0184 C1M 10:52:52.87   00
+20170415 10:52:52.703  info:(t:19)TIMY ESTOP B=16 Elapsed=107.80000000000291
+20170415 10:53:03.540  info:(t:19)TIMY Extended Protocol Converter: input>> 0185 C0  10:53:03.7123 00
+20170415 10:53:03.541  info:(t:19)TIMY ESTRT B=15  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:54:45.421  info:(t:19)TIMY Extended Protocol Converter: input>> 0186 C1M 10:54:45.60   00
+20170415 10:54:45.429  info:(t:19)TIMY ESTOP B=15 Elapsed=101.88999999999942
+20170415 10:55:08.825  info:(t:19)TIMY Extended Protocol Converter: input>> 0187 C0  10:55:08.9900 00
+20170415 10:55:08.825  info:(t:19)TIMY ESTRT B=14  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:57:00.943  info:(t:19)TIMY Extended Protocol Converter: input>> 0188 C1M 10:57:01.12   00
+20170415 10:57:00.956  info:(t:19)TIMY ESTOP B=14 Elapsed=112.13000000000466
+20170415 10:57:03.183  info:(t:19)TIMY Extended Protocol Converter: input>> 0189 C0  10:57:03.3636 00
+20170415 10:57:03.184  info:(t:19)TIMY ESTRT B=13  NOT FOUND FOR FINISH (DNF?) !
+20170415 10:58:39.673  info:(t:19)                                         12345678901234567890123456789
+20170415 10:58:39.673  info:(t:19)TIMY Extended Protocol Converter: input>> 0190 C1M 10:58:39.85   00
+20170415 10:58:39.690  info:(t:19)TIMY ESTOP B=13 Elapsed=96.48999999999796
+20170415 10:59:10.754  info:(t:19)TIMY Extended Protocol Converter: input>> 0191 C0  10:59:10.9332 00
+20170415 10:59:10.755  info:(t:19)TIMY ESTRT B=12  NOT FOUND FOR FINISH (DNF?) !
+20170415 11:00:50.491  info:(t:19)TIMY Extended Protocol Converter: input>> 0192 C1M 11:00:50.67   00
+20170415 11:00:50.499  info:(t:19)TIMY ESTOP B=12 Elapsed=99.73999999999796
+20170415 11:01:03.992  info:(t:19)TIMY Extended Protocol Converter: input>> 0193 C0  11:01:04.1601 00
+20170415 11:01:03.992  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170415 11:02:38.610  info:(t:19)TIMY Extended Protocol Converter: input>> 0194 C1M 11:02:38.79   00
+20170415 11:02:38.624  info:(t:19)TIMY ESTOP B=11 Elapsed=94.62999999999738
+20170415 12:00:07.412  info:(t:19)TIMY Extended Protocol Converter: input>> 0195 C0  12:00:07.5826 00
+20170415 12:00:07.493  info:(t:19)TIMY ESTRT B=67  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:02:03.304  info:(t:19)TIMY Extended Protocol Converter: input>> 0196 C0  12:02:03.4702 00
+20170415 12:02:03.305  info:(t:19)TIMY ESTRT B=66  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:03:06.618  info:(t:19)TIMY Extended Protocol Converter: input>> 0197 C1M 12:03:06.80   00
+20170415 12:03:06.630  info:(t:19)TIMY ESTOP B=67 Elapsed=179.22000000000116
+20170415 12:04:02.173  info:(t:19)TIMY Extended Protocol Converter: input>> 0198 C1M 12:04:02.36   00
+20170415 12:04:02.181  info:(t:19)TIMY ESTOP B=66 Elapsed=118.88999999999942
+20170415 12:04:03.997  info:(t:19)TIMY Extended Protocol Converter: input>> 0199 C0  12:04:04.1683 00
+20170415 12:04:03.997  info:(t:19)TIMY ESTRT B=65  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:06:05.600  info:(t:19)TIMY Extended Protocol Converter: input>> 0200 C0  12:06:05.7737 00
+20170415 12:06:05.600  info:(t:19)TIMY ESTRT B=64  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:06:50.902  info:(t:19)TIMY Extended Protocol Converter: input>> 0201 C1M 12:06:51.09   00
+20170415 12:06:50.911  info:(t:19)TIMY ESTOP B=65 Elapsed=166.92999999999302
+20170415 12:08:01.637  info:(t:19)TIMY Extended Protocol Converter: input>> 0202 C0  12:08:01.8176 00
+20170415 12:08:01.637  info:(t:19)TIMY ESTRT B=63  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:09:09.716  info:(t:19)TIMY Extended Protocol Converter: input>> 0203 C1M 12:09:09.90   00
+20170415 12:09:09.728  info:(t:19)TIMY ESTOP B=64 Elapsed=184.13000000000466
+20170415 12:09:55.002  info:(t:19)TIMY Extended Protocol Converter: input>> 0204 C1M 12:09:55.19   00
+20170415 12:09:55.012  info:(t:19)TIMY ESTOP B=63 Elapsed=113.38000000000466
+20170415 12:09:57.353  info:(t:19)TIMY Extended Protocol Converter: input>> 0205 C0  12:09:57.5212 00
+20170415 12:09:57.354  info:(t:19)TIMY ESTRT B=62  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:12:03.356  info:(t:19)TIMY Extended Protocol Converter: input>> 0206 C0  12:12:03.5317 00
+20170415 12:12:03.356  info:(t:19)TIMY ESTRT B=61  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:12:11.674  info:(t:19)TIMY Extended Protocol Converter: input>> 0207 C1M 12:12:11.85   00
+20170415 12:12:11.684  info:(t:19)TIMY ESTOP B=62 Elapsed=134.33000000000175
+20170415 12:13:42.356  info:(t:19)TIMY Extended Protocol Converter: input>> 0208 C1M 12:13:42.54   00
+20170415 12:13:42.370  info:(t:19)TIMY ESTOP B=61 Elapsed=99.01000000000204
+20170415 12:17:00.556  info:(t:19)TIMY Extended Protocol Converter: input>> 0209 C0  12:17:00.7341 00
+20170415 12:17:00.560  info:(t:19)TIMY ESTRT B=59  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:18:53.250  info:(t:19)                                         12345678901234567890123456789
+20170415 12:18:53.250  info:(t:19)TIMY Extended Protocol Converter: input>> 0210 C1M 12:18:53.44   00
+20170415 12:18:53.265  info:(t:19)TIMY ESTOP B=59 Elapsed=112.70999999999913
+20170415 12:19:02.240  info:(t:19)TIMY Extended Protocol Converter: input>> 0211 C0  12:19:02.4133 00
+20170415 12:19:02.240  info:(t:19)TIMY ESTRT B=58  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:21:02.357  info:(t:19)TIMY Extended Protocol Converter: input>> 0212 C0  12:21:02.5383 00
+20170415 12:21:02.357  info:(t:19)TIMY ESTRT B=57  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:21:47.099  info:(t:19)TIMY Extended Protocol Converter: input>> 0213 C1M 12:21:47.28   00
+20170415 12:21:47.110  info:(t:19)TIMY ESTOP B=58 Elapsed=164.86999999999534
+20170415 12:23:05.782  info:(t:19)TIMY Extended Protocol Converter: input>> 0214 C0  12:23:05.9526 00
+20170415 12:23:05.782  info:(t:19)TIMY ESTRT B=56  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:23:38.605  info:(t:19)TIMY Extended Protocol Converter: input>> 0215 C1M 12:23:38.78   00
+20170415 12:23:38.614  info:(t:19)TIMY ESTOP B=57 Elapsed=156.25
+20170415 12:25:01.334  info:(t:19)TIMY Extended Protocol Converter: input>> 0216 C0  12:25:01.5036 00
+20170415 12:25:01.334  info:(t:19)TIMY ESTRT B=55  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:25:08.596  info:(t:19)TIMY Extended Protocol Converter: input>> 0217 C1M 12:25:08.77   00
+20170415 12:25:08.608  info:(t:19)TIMY ESTOP B=56 Elapsed=122.81999999999971
+20170415 12:26:59.814  info:(t:19)TIMY Extended Protocol Converter: input>> 0218 C0  12:26:59.9870 00
+20170415 12:26:59.877  info:(t:19)TIMY ESTRT B=54  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:27:09.588  info:(t:19)TIMY Extended Protocol Converter: input>> 0219 C1M 12:27:09.77   00
+20170415 12:27:09.601  info:(t:19)TIMY ESTOP B=55 Elapsed=128.2699999999968
+20170415 12:29:01.610  info:(t:19)TIMY Extended Protocol Converter: input>> 0220 C0  12:29:01.7816 00
+20170415 12:29:01.688  info:(t:19)TIMY ESTRT B=53  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:29:06.185  info:(t:19)TIMY Extended Protocol Converter: input>> 0221 C1M 12:29:06.37   00
+20170415 12:29:06.199  info:(t:19)TIMY ESTOP B=54 Elapsed=126.38999999999942
+20170415 12:30:55.244  info:(t:19)TIMY Extended Protocol Converter: input>> 0222 C1M 12:30:55.41   00
+20170415 12:30:55.255  info:(t:19)TIMY ESTOP B=53 Elapsed=113.63000000000466
+20170415 12:31:05.257  info:(t:19)TIMY Extended Protocol Converter: input>> 0223 C0  12:31:05.4356 00
+20170415 12:31:05.257  info:(t:19)TIMY ESTRT B=52  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:32:53.838  info:(t:19)TIMY Extended Protocol Converter: input>> 0224 C1M 12:32:54.01   00
+20170415 12:32:53.849  info:(t:19)TIMY ESTOP B=52 Elapsed=108.58000000000175
+20170415 12:32:59.004  info:(t:19)TIMY Extended Protocol Converter: input>> 0225 C0  12:32:59.1798 00
+20170415 12:32:59.004  info:(t:19)TIMY ESTRT B=51  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:34:49.500  info:(t:19)TIMY Extended Protocol Converter: input>> 0226 C1M 12:34:49.68   00
+20170415 12:34:49.509  info:(t:19)TIMY ESTOP B=51 Elapsed=110.51000000000204
+20170415 12:37:58.208  info:(t:19)TIMY Extended Protocol Converter: input>> 0227 C0  12:37:58.3829 00
+20170415 12:37:58.208  info:(t:19)TIMY ESTRT B=41  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:40:44.811  info:(t:19)TIMY Extended Protocol Converter: input>> 0228 C1M 12:40:44.98   00
+20170415 12:40:44.829  info:(t:19)TIMY ESTOP B=41 Elapsed=166.60000000000582
+20170415 12:50:02.724  info:(t:19)TIMY Extended Protocol Converter: input>> 0229 C0  12:50:02.8929 00
+20170415 12:50:02.797  info:(t:19)TIMY ESTRT B=33  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:52:05.937  info:(t:19)                                         12345678901234567890123456789
+20170415 12:52:05.937  info:(t:19)TIMY Extended Protocol Converter: input>> 0230 C0  12:52:06.1197 00
+20170415 12:52:05.937  info:(t:19)TIMY ESTRT B=32  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:53:58.100  info:(t:19)TIMY Extended Protocol Converter: input>> 0231 C0  12:53:58.2760 00
+20170415 12:53:58.100  info:(t:19)TIMY ESTRT B=31  NOT FOUND FOR FINISH (DNF?) !
+20170415 12:54:14.224  info:(t:19)TIMY Extended Protocol Converter: input>> 0232 C1M 12:54:14.40   00
+20170415 12:54:14.234  info:(t:19)TIMY ESTOP B=33 Elapsed=251.51000000000204
+20170415 12:55:58.897  info:(t:19)TIMY Extended Protocol Converter: input>> 0233 C1M 12:55:59.08   00
+20170415 12:55:58.908  info:(t:19)TIMY ESTOP B=32 Elapsed=232.97000000000116
+20170415 12:56:21.033  info:(t:19)TIMY Extended Protocol Converter: input>> 0234 C1  12:56:21.2148 00
+20170415 12:56:21.043  info:(t:19)TIMY ESTOP B=31 Elapsed=142.94000000000233
+20170415 12:56:32.902  info:(t:19)TIMY Extended Protocol Converter: input>> 0235 C1  12:56:33.0731 00
+20170415 12:56:32.902 err:(t:19)null
+20170415 12:59:02.615  info:(t:19)TIMY Extended Protocol Converter: input>> 0236 C0  12:59:02.7931 00
+20170415 12:59:02.616  info:(t:19)TIMY ESTRT B=27  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:01:00.085  info:(t:19)TIMY Extended Protocol Converter: input>> 0237 C0  13:01:00.2635 00
+20170415 13:01:00.144  info:(t:19)TIMY ESTRT B=26  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:02:14.034  info:(t:19)TIMY Extended Protocol Converter: input>> 0238 C1M 13:02:14.21   00
+20170415 13:02:14.110  info:(t:19)TIMY ESTOP B=27 Elapsed=191.41999999999825
+20170415 13:02:59.400  info:(t:19)TIMY Extended Protocol Converter: input>> 0239 C0  13:02:59.5822 00
+20170415 13:02:59.487  info:(t:19)TIMY ESTRT B=25  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:03:14.661  info:(t:19)TIMY Extended Protocol Converter: input>> 0240 C1M 13:03:14.84   00
+20170415 13:03:14.742  info:(t:19)TIMY ESTOP B=26 Elapsed=134.57999999999447
+20170415 13:05:00.637  info:(t:19)TIMY Extended Protocol Converter: input>> 0241 C0  13:05:00.8108 00
+20170415 13:05:00.638  info:(t:19)TIMY ESTRT B=24  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:05:34.934  info:(t:19)TIMY Extended Protocol Converter: input>> 0242 C1M 13:05:35.12   00
+20170415 13:05:34.946  info:(t:19)TIMY ESTOP B=25 Elapsed=155.54000000000087
+20170415 13:07:00.579  info:(t:19)TIMY Extended Protocol Converter: input>> 0243 C0  13:07:00.7576 00
+20170415 13:07:00.579  info:(t:19)TIMY ESTRT B=23  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:07:32.924  info:(t:19)TIMY Extended Protocol Converter: input>> 0244 C1M 13:07:33.10   00
+20170415 13:07:32.937  info:(t:19)TIMY ESTOP B=24 Elapsed=152.29000000000087
+20170415 13:09:00.584  info:(t:19)TIMY Extended Protocol Converter: input>> 0245 C0  13:09:00.7677 00
+20170415 13:09:00.585  info:(t:19)TIMY ESTRT B=22  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:09:25.635  info:(t:19)TIMY Extended Protocol Converter: input>> 0246 C1M 13:09:25.81   00
+20170415 13:09:25.648  info:(t:19)TIMY ESTOP B=23 Elapsed=145.05999999999767
+20170415 13:11:01.054  info:(t:19)TIMY Extended Protocol Converter: input>> 0247 C0  13:11:01.2374 00
+20170415 13:11:01.054  info:(t:19)TIMY ESTRT B=21  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:11:10.460  info:(t:19)TIMY Extended Protocol Converter: input>> 0248 C1M 13:11:10.65   00
+20170415 13:11:10.474  info:(t:19)TIMY ESTOP B=22 Elapsed=129.88999999999942
+20170415 13:12:45.478  info:(t:19)TIMY Extended Protocol Converter: input>> 0249 C1M 13:12:45.66   00
+20170415 13:12:45.493  info:(t:19)TIMY ESTOP B=21 Elapsed=104.43000000000029
+20170415 13:12:57.684  info:(t:19)                                         12345678901234567890123456789
+20170415 13:12:57.684  info:(t:19)TIMY Extended Protocol Converter: input>> 0250 C0  13:12:57.8673 00
+20170415 13:12:57.685  info:(t:19)TIMY ESTRT B=20  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:14:54.777  info:(t:19)TIMY Extended Protocol Converter: input>> 0251 C1M 13:14:54.96   00
+20170415 13:14:54.791  info:(t:19)TIMY ESTOP B=20 Elapsed=117.09999999999854
+20170415 13:14:59.688  info:(t:19)TIMY Extended Protocol Converter: input>> 0252 C0  13:14:59.8604 00
+20170415 13:14:59.688  info:(t:19)TIMY ESTRT B=19  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:16:54.144  info:(t:19)TIMY Extended Protocol Converter: input>> 0253 C1M 13:16:54.33   00
+20170415 13:16:54.154  info:(t:19)TIMY ESTOP B=19 Elapsed=114.47000000000116
+20170415 13:55:03.690  info:(t:19)TIMY Extended Protocol Converter: input>> 0254 C0  13:55:03.8720 00
+20170415 13:55:04.041  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:57:00.095  info:(t:19)TIMY Extended Protocol Converter: input>> 0255 C0  13:57:00.2796 00
+20170415 13:57:00.095  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 13:57:00.095  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:58:19.069  info:(t:19)TIMY Extended Protocol Converter: input>> 0256 C1M 13:58:19.25   00
+20170415 13:58:19.069  info:(t:19)TIMY ESTOP B=18 Elapsed=78.9800000000032
+20170415 13:58:59.093  info:(t:19)TIMY Extended Protocol Converter: input>> 0257 C0  13:58:59.2618 00
+20170415 13:58:59.093  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 13:58:59.094  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:59:57.128  info:(t:19)TIMY Extended Protocol Converter: input>> 0258 C0  13:59:57.3042 00
+20170415 13:59:57.128  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 13:59:57.128  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 13:59:58.040  info:(t:19)TIMY Extended Protocol Converter: input>> 0259 C1M 13:59:58.22   00
+20170415 13:59:58.040 err:(t:19)null
+20170415 14:01:06.008  info:(t:19)TIMY Extended Protocol Converter: input>> 0260 C0  14:01:06.1895 00
+20170415 14:01:06.009  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 14:01:06.009  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:01:19.525  info:(t:19)TIMY Extended Protocol Converter: input>> 0261 C1M 14:01:19.72   00
+20170415 14:01:19.525 err:(t:19)null
+20170415 14:03:02.319  info:(t:19)TIMY Extended Protocol Converter: input>> 0262 C0  14:03:02.4916 00
+20170415 14:03:02.396  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 14:03:02.397  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:03:15.420  info:(t:19)TIMY Extended Protocol Converter: input>> 0263 C1M 14:03:15.60   00
+20170415 14:03:15.420 err:(t:19)null
+20170415 14:05:00.212  info:(t:19)TIMY Extended Protocol Converter: input>> 0264 C0  14:05:00.3915 00
+20170415 14:05:00.212  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 14:05:00.213  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:05:09.522  info:(t:19)TIMY Extended Protocol Converter: input>> 0265 C1M 14:05:09.70   00
+20170415 14:05:09.522 err:(t:19)null
+20170415 14:07:00.138  info:(t:19)TIMY Extended Protocol Converter: input>> 0266 C0  14:07:00.3124 00
+20170415 14:07:00.139  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 14:07:00.139  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:07:00.938  info:(t:19)TIMY Extended Protocol Converter: input>> 0267 C1M 14:07:01.13   00
+20170415 14:07:00.938 err:(t:19)null
+20170415 14:08:46.337  info:(t:19)TIMY Extended Protocol Converter: input>> 0268 C1M 14:08:46.52   00
+20170415 14:08:46.338 err:(t:19)null
+20170415 14:08:58.959  info:(t:19)TIMY Extended Protocol Converter: input>> 0269 C0  14:08:59.1324 00
+20170415 14:08:58.959  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 14:08:58.960  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:11:00.325  info:(t:19)                                         12345678901234567890123456789
+20170415 14:11:00.325  info:(t:19)TIMY Extended Protocol Converter: input>> 0270 C0  14:11:00.5003 00
+20170415 14:11:00.325  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 14:11:00.325  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:11:00.820  info:(t:19)TIMY Extended Protocol Converter: input>> 0271 C1M 14:11:01.00   00
+20170415 14:11:00.821 err:(t:19)null
+20170415 14:12:59.130  info:(t:19)TIMY Extended Protocol Converter: input>> 0272 C0  14:12:59.3148 00
+20170415 14:12:59.130  info:(t:19)New EStarting time for # (RERUN?)18
+20170415 14:12:59.130  info:(t:19)TIMY ESTRT B=18  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:13:00.266  info:(t:19)TIMY Extended Protocol Converter: input>> 0273 C1M 14:13:00.45   00
+20170415 14:13:00.266 err:(t:19)null
+20170415 14:14:58.288  info:(t:19)TIMY Extended Protocol Converter: input>> 0274 C1M 14:14:58.48   00
+20170415 14:14:58.288 err:(t:19)null
+20170415 14:14:59.856  info:(t:19)TIMY Extended Protocol Converter: input>> 0275 C0  14:15:00.0428 00
+20170415 14:14:59.856  info:(t:19)TIMY ESTRT B=17  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:16:45.975  info:(t:19)TIMY Extended Protocol Converter: input>> 0276 C1M 14:16:46.16   00
+20170415 14:16:45.989  info:(t:19)TIMY ESTOP B=17 Elapsed=106.12000000000262
+20170415 14:17:00.501  info:(t:19)TIMY Extended Protocol Converter: input>> 0277 C0  14:17:00.6833 00
+20170415 14:17:00.501  info:(t:19)TIMY ESTRT B=16  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:18:47.437  info:(t:19)TIMY Extended Protocol Converter: input>> 0278 C1M 14:18:47.63   00
+20170415 14:18:47.453  info:(t:19)TIMY ESTOP B=16 Elapsed=106.94999999999709
+20170415 14:18:56.187  info:(t:19)TIMY Extended Protocol Converter: input>> 0279 C0  14:18:56.3631 00
+20170415 14:18:56.187  info:(t:19)TIMY ESTRT B=15  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:20:39.459  info:(t:19)TIMY Extended Protocol Converter: input>> 0280 C1M 14:20:39.64   00
+20170415 14:20:39.474  info:(t:19)TIMY ESTOP B=15 Elapsed=103.27999999999884
+20170415 14:21:06.654  info:(t:19)TIMY Extended Protocol Converter: input>> 0281 C0  14:21:06.8447 00
+20170415 14:21:06.654  info:(t:19)TIMY ESTRT B=14  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:22:52.118  info:(t:19)TIMY Extended Protocol Converter: input>> 0282 C1M 14:22:52.30   00
+20170415 14:22:52.132  info:(t:19)TIMY ESTOP B=14 Elapsed=105.4600000000064
+20170415 14:23:03.940  info:(t:19)TIMY Extended Protocol Converter: input>> 0283 C0  14:23:04.1247 00
+20170415 14:23:03.940  info:(t:19)TIMY ESTRT B=13  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:24:46.573  info:(t:19)TIMY Extended Protocol Converter: input>> 0284 C1M 14:24:46.76   00
+20170415 14:24:46.587  info:(t:19)TIMY ESTOP B=13 Elapsed=102.63999999999942
+20170415 14:25:06.937  info:(t:19)TIMY Extended Protocol Converter: input>> 0285 C0  14:25:07.1067 00
+20170415 14:25:06.938  info:(t:19)TIMY ESTRT B=12  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:26:43.507  info:(t:19)TIMY Extended Protocol Converter: input>> 0286 C1M 14:26:43.70   00
+20170415 14:26:43.519  info:(t:19)TIMY ESTOP B=12 Elapsed=96.59999999999854
+20170415 14:27:01.120  info:(t:19)TIMY Extended Protocol Converter: input>> 0287 C0  14:27:01.2939 00
+20170415 14:27:01.120  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:28:32.700  info:(t:19)TIMY Extended Protocol Converter: input>> 0288 C1M 14:28:32.88   00
+20170415 14:28:32.715  info:(t:19)TIMY ESTOP B=11 Elapsed=91.58999999999651
+20170415 14:35:30.567  info:(t:19)TIMY Extended Protocol Converter: input>> 0289 C0  14:35:30.7402 00
+20170415 14:35:30.567  info:(t:19)New EStarting time for # (RERUN?)11
+20170415 14:35:30.567  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:37:49.116  info:(t:19)                                         12345678901234567890123456789
+20170415 14:37:49.116  info:(t:19)TIMY Extended Protocol Converter: input>> 0290 C0  14:37:49.2946 00
+20170415 14:37:49.116  info:(t:19)New EStarting time for # (RERUN?)11
+20170415 14:37:49.117  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:37:50.907  info:(t:19)TIMY Extended Protocol Converter: input>> 0291 C0  14:37:51.0970 00
+20170415 14:37:50.907  info:(t:19)New EStarting time for # (RERUN?)11
+20170415 14:37:50.907  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:37:52.459  info:(t:19)TIMY Extended Protocol Converter: input>> 0292 C0  14:37:52.6344 00
+20170415 14:37:52.459  info:(t:19)New EStarting time for # (RERUN?)11
+20170415 14:37:52.459  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:37:53.787  info:(t:19)TIMY Extended Protocol Converter: input>> 0293 C0  14:37:53.9726 00
+20170415 14:37:53.787  info:(t:19)New EStarting time for # (RERUN?)11
+20170415 14:37:53.787  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170415 14:38:00.969  info:(t:19)TIMY Extended Protocol Converter: input>> 0294 C0  14:38:01.1588 00
+20170415 14:38:00.969  info:(t:19)New EStarting time for # (RERUN?)11
+20170415 14:38:00.969  info:(t:19)TIMY ESTRT B=11  NOT FOUND FOR FINISH (DNF?) !
+20170416 06:58:02.534  info:(t:18)Execution ends
+20170416 08:09:33.050  info:(t:11)Log TIMY_RAW begins
+20170416 08:10:41.819  info:(t:19)                                         12345678901234567890123456789
+20170416 08:10:41.820  info:(t:19)TIMY Extended Protocol Converter: input>> 0001 C1  08:10:42.3981 00
+20170416 08:10:41.821 err:(t:19)null
+20170416 08:10:45.322  info:(t:19)TIMY Extended Protocol Converter: input>> 0002 C1  08:10:45.8981 00
+20170416 08:10:45.323 err:(t:19)null
+20170416 08:10:47.706  info:(t:19)TIMY Extended Protocol Converter: input>> 0003 C1  08:10:48.2891 00
+20170416 08:10:47.707 err:(t:19)null
+20170416 08:11:56.635  info:(t:19)TIMY Extended Protocol Converter: input>> 0004 C1  08:11:57.2063 00
+20170416 08:11:56.635 err:(t:19)null
+20170416 08:12:00.394  info:(t:19)TIMY Extended Protocol Converter: input>> 0005 C1  08:12:00.9736 00
+20170416 08:12:00.394 err:(t:19)null
+20170416 08:27:22.421  info:(t:19)TIMY Extended Protocol Converter: input>> 0006 C0  08:27:22.9938 00
+20170416 08:27:22.423 err:(t:19)null
+20170416 08:27:30.244  info:(t:19)TIMY Extended Protocol Converter: input>> 0007 C0  08:27:30.8390 00
+20170416 08:27:30.244 err:(t:19)null
+20170416 08:27:52.959  info:(t:19)TIMY Extended Protocol Converter: input>> 0008 C0M 08:27:53.55   00
+20170416 08:27:52.960  info:(t:19)TIMY ESTRT B=1 
+20170416 08:27:53.439  info:(t:19)TIMY Extended Protocol Converter: input>> 0009 C0  08:27:54.0385 00
+20170416 08:27:53.439  info:(t:19)New EStarting time for # (RERUN?)1
+20170416 08:27:53.440  info:(t:19)TIMY ESTRT B=1 
+20170416 08:27:57.198  info:(t:19)TIMY Extended Protocol Converter: input>> 0010 C1M 08:27:57.80   00
+20170416 08:27:57.201  info:(t:19)TIMY ESTOP B=1 Elapsed=3.7700000000004366
+20170416 08:28:46.146  info:(t:19)TIMY Extended Protocol Converter: input>> 0011 C0  08:28:46.7325 00
+20170416 08:28:46.146  info:(t:19)TIMY ESTRT B=6 
+20170416 08:28:52.880  info:(t:19)TIMY Extended Protocol Converter: input>> 0012 C0  08:28:53.4758 00
+20170416 08:28:52.881  info:(t:19)New EStarting time for # (RERUN?)6
+20170416 08:28:52.881  info:(t:19)TIMY ESTRT B=6 
+20170416 08:29:08.269  info:(t:19)TIMY Extended Protocol Converter: input>> 0013 C0  08:29:08.8688 00
+20170416 08:29:08.269  info:(t:19)New EStarting time for # (RERUN?)6
+20170416 08:29:08.270  info:(t:19)TIMY ESTRT B=6 
+20170416 08:29:26.680  info:(t:19)TIMY Extended Protocol Converter: input>> 0014 C0  08:29:27.2612 00
+20170416 08:29:26.680  info:(t:19)TIMY ESTRT B=8 
+20170416 08:29:57.055  info:(t:19)TIMY Extended Protocol Converter: input>> 0015 C0M 08:29:57.65   00
+20170416 08:29:57.055  info:(t:19)New EStarting time for # (RERUN?)8
+20170416 08:29:57.056  info:(t:19)TIMY ESTRT B=8 
+20170416 08:30:04.062  info:(t:19)TIMY Extended Protocol Converter: input>> 0016 C1M 08:30:04.66   00
+20170416 08:30:04.065  info:(t:19)TIMY ESTOP B=6 Elapsed=55.79999999999927
+20170416 08:30:06.045  info:(t:19)TIMY Extended Protocol Converter: input>> 0017 C0M 08:30:06.64   00
+20170416 08:30:06.045  info:(t:19)New EStarting time for # (RERUN?)8
+20170416 08:30:06.045  info:(t:19)TIMY ESTRT B=8 
+20170416 08:30:29.879  info:(t:19)TIMY Extended Protocol Converter: input>> 0003 C0M 08:30:30.47   00
+20170416 08:30:29.879  info:(t:19)New EStarting time for # (RERUN?)8
+20170416 08:30:29.880  info:(t:19)TIMY ESTRT B=8 
+20170416 08:30:31.110  info:(t:19)TIMY Extended Protocol Converter: input>> 0004 C1M 08:30:31.70   00
+20170416 08:30:31.110  info:(t:19)TIMY ESTOP B=8 Elapsed=1.2299999999995634
+20170416 08:30:31.622  info:(t:19)TIMY Extended Protocol Converter: input>> 0005 C0M 08:30:32.22   00
+20170416 08:30:31.622  info:(t:19)New EStarting time for # (RERUN?)8
+20170416 08:30:31.623  info:(t:19)TIMY ESTRT B=8 
+20170416 08:30:38.229  info:(t:19)                                         12345678901234567890123456789
+20170416 08:30:38.229  info:(t:19)TIMY Extended Protocol Converter: input>> 0006 C0M 08:30:38.81   00
+20170416 08:30:38.229  info:(t:19)New EStarting time for # (RERUN?)8
+20170416 08:30:38.230  info:(t:19)TIMY ESTRT B=8 
+20170416 08:30:39.348  info:(t:19)TIMY Extended Protocol Converter: input>> 0007 C1M 08:30:39.95   00
+20170416 08:30:39.351 err:(t:19)null
+20170416 08:30:42.324  info:(t:19)TIMY Extended Protocol Converter: input>> 0008 C1M 08:30:42.92   00
+20170416 08:30:42.324 err:(t:19)null
+20170416 08:30:43.204  info:(t:19)TIMY Extended Protocol Converter: input>> 0009 C1M 08:30:43.80   00
+20170416 08:30:43.204 err:(t:19)null
+20170416 08:30:44.147  info:(t:19)TIMY Extended Protocol Converter: input>> 0010 C1M 08:30:44.74   00
+20170416 08:30:44.147 err:(t:19)null
+20170416 08:30:45.427  info:(t:19)TIMY Extended Protocol Converter: input>> 0011 C0M 08:30:46.03   00
+20170416 08:30:45.427  info:(t:19)New EStarting time for # (RERUN?)8
+20170416 08:30:45.427  info:(t:19)TIMY ESTRT B=8 
+20170416 08:30:56.208  info:(t:19)TIMY Extended Protocol Converter: input>> 0012 C0M 08:30:56.80   00
+20170416 08:30:56.209  info:(t:19)New EStarting time for # (RERUN?)8
+20170416 08:30:56.209  info:(t:19)TIMY ESTRT B=8 
+20170416 08:30:59.967  info:(t:19)TIMY Extended Protocol Converter: input>> 0013 C1M 08:31:00.56   00
+20170416 08:30:59.968 err:(t:19)null
+20170416 08:31:00.766  info:(t:19)TIMY Extended Protocol Converter: input>> 0014 C1M 08:31:01.36   00
+20170416 08:31:00.767 err:(t:19)null
+20170416 08:31:02.046  info:(t:19)TIMY Extended Protocol Converter: input>> 0015 C1M 08:31:02.65   00
+20170416 08:31:02.047 err:(t:19)null
+20170416 08:31:03.374  info:(t:19)TIMY Extended Protocol Converter: input>> 0016 C0M 08:31:03.97   00
+20170416 08:31:03.375  info:(t:19)TIMY ESTRT B=9 
+20170416 08:31:11.580  info:(t:19)TIMY Extended Protocol Converter: input>> 0017 C1M 08:31:12.18   00
+20170416 08:31:11.581  info:(t:19)TIMY ESTOP B=9 Elapsed=8.209999999999127
+20170416 08:31:13.788  info:(t:19)TIMY Extended Protocol Converter: input>> 0018 C1M 08:31:14.38   00
+20170416 08:31:13.788 err:(t:19)null
+20170416 08:32:11.020  info:(t:19)TIMY Extended Protocol Converter: input>> 0001 C0M 08:32:11.76   00
+20170416 08:32:11.020  info:(t:19)New EStarting time for # (RERUN?)9
+20170416 08:32:11.021  info:(t:19)TIMY ESTRT B=9 
+20170416 08:32:13.180  info:(t:19)TIMY Extended Protocol Converter: input>> 0002 C1M 08:32:13.92   00
+20170416 08:32:13.181 err:(t:19)null
+20170416 08:32:20.778  info:(t:19)TIMY Extended Protocol Converter: input>> 0003 C0M 08:32:21.51   00
+20170416 08:32:20.778  info:(t:19)New EStarting time for # (RERUN?)9
+20170416 08:32:20.779  info:(t:19)TIMY ESTRT B=9 
+20170416 08:32:24.554  info:(t:19)TIMY Extended Protocol Converter: input>> 0004 C1M 08:32:25.30   00
+20170416 08:32:24.554 err:(t:19)null
+20170416 08:32:27.993  info:(t:19)TIMY Extended Protocol Converter: input>> 0005 C0M 08:32:28.73   00
+20170416 08:32:27.993  info:(t:19)New EStarting time for # (RERUN?)9
+20170416 08:32:27.993  info:(t:19)TIMY ESTRT B=9 
+20170416 08:32:30.249  info:(t:19)TIMY Extended Protocol Converter: input>> 0006 C1M 08:32:30.99   00
+20170416 08:32:30.249 err:(t:19)null
+20170416 08:32:54.067  info:(t:19)TIMY Extended Protocol Converter: input>> 0007 C0M 08:32:54.80   00
+20170416 08:32:54.067  info:(t:19)New EStarting time for # (RERUN?)9
+20170416 08:32:54.067  info:(t:19)TIMY ESTRT B=9 
+20170416 08:32:58.178  info:(t:19)                                         12345678901234567890123456789
+20170416 08:32:58.178  info:(t:19)TIMY Extended Protocol Converter: input>> 0008 C0M 08:32:58.91   00
+20170416 08:32:58.178  info:(t:19)New EStarting time for # (RERUN?)9
+20170416 08:32:58.179  info:(t:19)TIMY ESTRT B=9 
+20170416 08:33:48.337  info:(t:18)Execution ends
+20170416 08:34:16.357  info:(t:11)Log TIMY_RAW begins
+20170416 08:34:48.776  info:(t:19)Execution ends
+20170416 08:35:15.984  info:(t:11)Log TIMY_RAW begins
+20170416 08:37:24.485  info:(t:18)Execution ends
+20170416 08:37:48.079  info:(t:11)Log TIMY_RAW begins
+20170416 08:39:40.182  info:(t:18)Execution ends
+20170416 08:40:36.071  info:(t:13)Log TIMY_RAW begins
+20170416 08:40:41.433  info:(t:20)Execution ends
+20170416 08:40:48.158  info:(t:11)Log TIMY_RAW begins
+20170416 08:41:07.515  info:(t:19)Execution ends
+20170416 08:41:14.114  info:(t:11)Log TIMY_RAW begins
+20170416 08:42:31.707  info:(t:19)Execution ends
+20170416 08:42:50.860  info:(t:11)Log TIMY_RAW begins
+20170416 08:52:18.994  info:(t:20)                                         12345678901234567890123456789
+20170416 08:52:18.994  info:(t:20)TIMY Extended Protocol Converter: input>> 0035 C0  08:52:19.7307 00
+20170416 08:52:18.995  info:(t:20)TIMY ESTRT B=103 
+20170416 08:54:03.483  info:(t:20)TIMY Extended Protocol Converter: input>> 0036 C1M 08:54:04.24   00
+20170416 08:54:03.485  info:(t:20)TIMY ESTOP B=103 Elapsed=104.51000000000204
+20170416 08:55:14.941  info:(t:20)TIMY Extended Protocol Converter: input>> 0037 C0  08:55:15.6803 00
+20170416 08:55:14.942  info:(t:20)TIMY ESTRT B=102 
+20170416 08:56:39.834  info:(t:20)TIMY Extended Protocol Converter: input>> 0038 C0  08:56:40.5715 00
+20170416 08:56:39.835  info:(t:20)TIMY ESTRT B=101 
+20170416 08:57:00.038  info:(t:20)TIMY Extended Protocol Converter: input>> 0039 C1M 08:57:00.79   00
+20170416 08:57:00.040  info:(t:20)TIMY ESTOP B=102 Elapsed=105.11000000000058
+20170416 08:58:52.349  info:(t:20)TIMY Extended Protocol Converter: input>> 0040 C1M 08:58:53.10   00
+20170416 08:58:52.527  info:(t:20)TIMY ESTOP B=101 Elapsed=132.52999999999884
+20170416 09:00:06.990  info:(t:20)TIMY Extended Protocol Converter: input>> 0041 C0  09:00:07.7384 00
+20170416 09:00:06.991  info:(t:20)TIMY ESTRT B=67 
+20170416 09:02:12.706  info:(t:20)TIMY Extended Protocol Converter: input>> 0042 C1M 09:02:13.45   00
+20170416 09:02:12.710  info:(t:20)TIMY ESTOP B=67 Elapsed=125.72000000000116
+20170416 09:02:16.385  info:(t:20)TIMY Extended Protocol Converter: input>> 0043 C0  09:02:17.1349 00
+20170416 09:02:16.385  info:(t:20)TIMY ESTRT B=66 
+20170416 09:04:06.823  info:(t:20)TIMY Extended Protocol Converter: input>> 0044 C1M 09:04:07.57   00
+20170416 09:04:06.831  info:(t:20)TIMY ESTOP B=66 Elapsed=110.43999999999869
+20170416 09:04:14.998  info:(t:20)TIMY Extended Protocol Converter: input>> 0045 C0  09:04:15.7430 00
+20170416 09:04:14.999  info:(t:20)TIMY ESTRT B=65 
+20170416 09:11:32.589  info:(t:19)Execution ends
+20170416 09:11:56.997  info:(t:11)Log TIMY_RAW begins
+20170416 09:19:09.845  info:(t:19)                                         12345678901234567890123456789
+20170416 09:19:09.846  info:(t:19)TIMY Extended Protocol Converter: input>> 0046 C1M 09:19:10.59   00
+20170416 09:19:09.847 err:(t:19)null
+20170416 09:19:50.797  info:(t:19)TIMY Extended Protocol Converter: input>> 0047 C0  09:19:51.5457 00
+20170416 09:19:50.798  info:(t:19)TIMY ESTRT B=103 
+20170416 09:21:35.877  info:(t:19)TIMY Extended Protocol Converter: input>> 0048 C1M 09:21:36.63   00
+20170416 09:21:35.880  info:(t:19)TIMY ESTOP B=103 Elapsed=105.08999999999651
+20170416 09:22:19.292  info:(t:19)TIMY Extended Protocol Converter: input>> 0049 C0M 09:22:20.04   00
+20170416 09:22:19.293  info:(t:19)TIMY ESTRT B=102 
+20170416 09:22:25.035  info:(t:19)TIMY Extended Protocol Converter: input>> 0050 C1M 09:22:25.78   00
+20170416 09:22:25.036  info:(t:19)TIMY ESTOP B=102 Elapsed=5.739999999997963
+20170416 09:22:50.070  info:(t:19)TIMY Extended Protocol Converter: input>> 0051 C0M 09:22:50.82   00
+20170416 09:22:50.070  info:(t:19)TIMY ESTRT B=101 
+20170416 09:23:06.481  info:(t:19)TIMY Extended Protocol Converter: input>> 0052 C1M 09:23:07.22   00
+20170416 09:23:06.485  info:(t:19)TIMY ESTOP B=101 Elapsed=16.400000000001455
+20170416 09:29:56.942  info:(t:19)TIMY Extended Protocol Converter: input>> 0053 C0  09:29:57.6778 00
+20170416 09:29:56.942  info:(t:19)TIMY ESTRT B=67 
+20170416 09:31:59.920  info:(t:19)TIMY Extended Protocol Converter: input>> 0054 C1M 09:32:00.67   00
+20170416 09:31:59.923  info:(t:19)TIMY ESTOP B=67 Elapsed=123.0
+20170416 09:32:05.855  info:(t:19)TIMY Extended Protocol Converter: input>> 0055 C0  09:32:06.5902 00
+20170416 09:32:05.855  info:(t:19)TIMY ESTRT B=66 
+20170416 09:34:09.409  info:(t:19)TIMY Extended Protocol Converter: input>> 0056 C1M 09:34:10.15   00
+20170416 09:34:09.411  info:(t:19)TIMY ESTOP B=66 Elapsed=123.56000000000495
+20170416 09:34:11.329  info:(t:19)TIMY Extended Protocol Converter: input>> 0057 C0  09:34:12.0645 00
+20170416 09:34:11.330  info:(t:19)TIMY ESTRT B=64 
+20170416 09:36:11.284  info:(t:19)TIMY Extended Protocol Converter: input>> 0058 C0  09:36:12.0165 00
+20170416 09:36:11.284  info:(t:19)TIMY ESTRT B=63 
+20170416 09:36:34.302  info:(t:19)TIMY Extended Protocol Converter: input>> 0059 C1M 09:36:35.05   00
+20170416 09:36:34.306  info:(t:19)TIMY ESTOP B=64 Elapsed=142.99000000000524
+20170416 09:38:11.174  info:(t:19)TIMY Extended Protocol Converter: input>> 0060 C0  09:38:11.9117 00
+20170416 09:38:11.175  info:(t:19)TIMY ESTRT B=62 
+20170416 09:38:14.213  info:(t:19)TIMY Extended Protocol Converter: input>> 0061 C1M 09:38:14.96   00
+20170416 09:38:14.216  info:(t:19)TIMY ESTOP B=63 Elapsed=122.94999999999709
+20170416 09:40:04.810  info:(t:19)TIMY Extended Protocol Converter: input>> 0062 C0  09:40:05.5416 00
+20170416 09:40:04.810  info:(t:19)TIMY ESTRT B=61 
+20170416 09:40:23.078  info:(t:19)TIMY Extended Protocol Converter: input>> 0063 C1M 09:40:23.82   00
+20170416 09:40:23.081  info:(t:19)TIMY ESTOP B=62 Elapsed=131.90999999999622
+20170416 09:41:50.736  info:(t:19)TIMY Extended Protocol Converter: input>> 0064 C1M 09:41:51.48   00
+20170416 09:41:50.739  info:(t:19)TIMY ESTOP B=61 Elapsed=105.94000000000233
+20170416 09:44:15.059  info:(t:19)TIMY Extended Protocol Converter: input>> 0065 C0  09:44:15.7915 00
+20170416 09:44:15.059  info:(t:19)TIMY ESTRT B=65 
+20170416 09:46:34.669  info:(t:19)                                         12345678901234567890123456789
+20170416 09:46:34.669  info:(t:19)TIMY Extended Protocol Converter: input>> 0066 C1M 09:46:35.41   00
+20170416 09:46:34.673  info:(t:19)TIMY ESTOP B=65 Elapsed=139.62000000000262
+20170416 09:50:07.138  info:(t:19)TIMY Extended Protocol Converter: input>> 0067 C0  09:50:07.8773 00
+20170416 09:50:07.138  info:(t:19)TIMY ESTRT B=59 
+20170416 09:51:53.703  info:(t:19)TIMY Extended Protocol Converter: input>> 0068 C1M 09:51:54.45   00
+20170416 09:51:53.707  info:(t:19)TIMY ESTOP B=59 Elapsed=106.57999999999447
+20170416 09:52:09.556  info:(t:19)TIMY Extended Protocol Converter: input>> 0069 C0  09:52:10.2963 00
+20170416 09:52:09.556  info:(t:19)TIMY ESTRT B=58 
+20170416 09:54:06.391  info:(t:19)TIMY Extended Protocol Converter: input>> 0070 C0  09:54:07.1313 00
+20170416 09:54:06.392  info:(t:19)TIMY ESTRT B=57 
+20170416 09:54:30.609  info:(t:19)TIMY Extended Protocol Converter: input>> 0071 C1M 09:54:31.35   00
+20170416 09:54:30.612  info:(t:19)TIMY ESTOP B=58 Elapsed=141.05999999999767
+20170416 09:56:07.243  info:(t:19)TIMY Extended Protocol Converter: input>> 0072 C0  09:56:07.9848 00
+20170416 09:56:07.243  info:(t:19)TIMY ESTRT B=56 
+20170416 09:56:16.936  info:(t:19)TIMY Extended Protocol Converter: input>> 0073 C1M 09:56:17.69   00
+20170416 09:56:16.940  info:(t:19)TIMY ESTOP B=57 Elapsed=130.56000000000495
+20170416 09:58:05.071  info:(t:19)TIMY Extended Protocol Converter: input>> 0074 C0  09:58:05.8072 00
+20170416 09:58:05.071  info:(t:19)TIMY ESTRT B=55 
+20170416 09:58:10.286  info:(t:19)TIMY Extended Protocol Converter: input>> 0075 C1M 09:58:11.04   00
+20170416 09:58:10.289  info:(t:19)TIMY ESTOP B=56 Elapsed=123.05999999999767
+20170416 10:00:04.289  info:(t:19)TIMY Extended Protocol Converter: input>> 0076 C0  10:00:05.0184 00
+20170416 10:00:04.355  info:(t:19)TIMY ESTRT B=54 
+20170416 10:00:07.393  info:(t:19)TIMY Extended Protocol Converter: input>> 0077 C1M 10:00:08.14   00
+20170416 10:00:07.398  info:(t:19)TIMY ESTOP B=55 Elapsed=122.33999999999651
+20170416 10:02:05.220  info:(t:19)TIMY Extended Protocol Converter: input>> 0078 C0  10:02:05.9550 00
+20170416 10:02:05.524  info:(t:19)TIMY ESTRT B=53 
+20170416 10:02:13.299  info:(t:19)TIMY Extended Protocol Converter: input>> 0079 C1M 10:02:14.05   00
+20170416 10:02:13.303  info:(t:19)TIMY ESTOP B=54 Elapsed=129.04000000000087
+20170416 10:03:57.017  info:(t:19)TIMY Extended Protocol Converter: input>> 0080 C1M 10:03:57.76   00
+20170416 10:03:57.023  info:(t:19)TIMY ESTOP B=53 Elapsed=111.81000000000495
+20170416 10:04:04.103  info:(t:19)TIMY Extended Protocol Converter: input>> 0081 C0  10:04:04.8463 00
+20170416 10:04:04.104  info:(t:19)TIMY ESTRT B=52 
+20170416 10:05:51.052  info:(t:19)TIMY Extended Protocol Converter: input>> 0082 C1M 10:05:51.80   00
+20170416 10:05:51.056  info:(t:19)TIMY ESTOP B=52 Elapsed=106.9600000000064
+20170416 10:06:03.897  info:(t:19)TIMY Extended Protocol Converter: input>> 0083 C0  10:06:04.6466 00
+20170416 10:06:03.897  info:(t:19)TIMY ESTRT B=51 
+20170416 10:07:52.879  info:(t:19)TIMY Extended Protocol Converter: input>> 0084 C1M 10:07:53.62   00
+20170416 10:07:52.884  info:(t:19)TIMY ESTOP B=51 Elapsed=108.9800000000032
+20170416 10:11:06.071  info:(t:19)TIMY Extended Protocol Converter: input>> 0085 C0  10:11:06.8125 00
+20170416 10:11:06.072  info:(t:19)TIMY ESTRT B=41 
+20170416 10:13:12.361  info:(t:19)                                         12345678901234567890123456789
+20170416 10:13:12.361  info:(t:19)TIMY Extended Protocol Converter: input>> 0086 C1M 10:13:13.10   00
+20170416 10:13:12.366  info:(t:19)TIMY ESTOP B=41 Elapsed=126.29000000000087
+20170416 10:23:06.577  info:(t:19)TIMY Extended Protocol Converter: input>> 0087 C0  10:23:07.3177 00
+20170416 10:23:06.577  info:(t:19)TIMY ESTRT B=33 
+20170416 10:29:06.000  info:(t:19)TIMY Extended Protocol Converter: input>> 0088 C0  10:29:06.7402 00
+20170416 10:29:06.001  info:(t:19)TIMY ESTRT B=32 
+20170416 10:31:04.642  info:(t:19)TIMY Extended Protocol Converter: input>> 0089 C0  10:31:05.3721 00
+20170416 10:31:04.643  info:(t:19)TIMY ESTRT B=31 
+20170416 10:31:13.728  info:(t:19)TIMY Extended Protocol Converter: input>> 0090 C1M 10:31:14.48   00
+20170416 10:31:13.734  info:(t:19)TIMY ESTOP B=33 Elapsed=487.17000000000553
+20170416 10:32:55.208  info:(t:19)TIMY Extended Protocol Converter: input>> 0091 C1M 10:32:55.96   00
+20170416 10:32:55.217  info:(t:19)TIMY ESTOP B=32 Elapsed=229.22000000000116
+20170416 10:35:23.880  info:(t:19)TIMY Extended Protocol Converter: input>> 0092 C1M 10:35:24.62   00
+20170416 10:35:23.888  info:(t:19)TIMY ESTOP B=31 Elapsed=259.25
+20170416 10:36:07.806  info:(t:19)TIMY Extended Protocol Converter: input>> 0093 C0  10:36:08.5467 00
+20170416 10:36:07.806  info:(t:19)TIMY ESTRT B=27 
+20170416 10:38:04.177  info:(t:19)TIMY Extended Protocol Converter: input>> 0094 C0  10:38:04.9217 00
+20170416 10:38:04.178  info:(t:19)TIMY ESTRT B=26 
+20170416 10:39:07.169  info:(t:19)TIMY Extended Protocol Converter: input>> 0095 C1M 10:39:07.91   00
+20170416 10:39:07.176  info:(t:19)TIMY ESTOP B=27 Elapsed=179.37000000000262
+20170416 10:40:05.314  info:(t:19)TIMY Extended Protocol Converter: input>> 0096 C0  10:40:06.0546 00
+20170416 10:40:05.315  info:(t:19)TIMY ESTRT B=25 
+20170416 10:40:13.328  info:(t:19)TIMY Extended Protocol Converter: input>> 0097 C1M 10:40:14.08   00
+20170416 10:40:13.335  info:(t:19)TIMY ESTOP B=26 Elapsed=129.1600000000035
+20170416 10:42:05.526  info:(t:19)TIMY Extended Protocol Converter: input>> 0098 C0  10:42:06.2614 00
+20170416 10:42:05.526  info:(t:19)TIMY ESTRT B=24 
+20170416 10:42:11.732  info:(t:19)TIMY Extended Protocol Converter: input>> 0099 C1M 10:42:12.47   00
+20170416 10:42:11.740  info:(t:19)TIMY ESTOP B=25 Elapsed=126.41999999999825
+20170416 10:44:02.953  info:(t:19)TIMY Extended Protocol Converter: input>> 0100 C0  10:44:03.6950 00
+20170416 10:44:02.954  info:(t:19)TIMY ESTRT B=23 
+20170416 10:44:09.064  info:(t:19)TIMY Extended Protocol Converter: input>> 0101 C1M 10:44:09.80   00
+20170416 10:44:09.073  info:(t:19)TIMY ESTOP B=24 Elapsed=123.54000000000087
+20170416 10:45:51.007  info:(t:19)TIMY Extended Protocol Converter: input>> 0102 C1M 10:45:51.75   00
+20170416 10:45:51.016  info:(t:19)TIMY ESTOP B=23 Elapsed=108.05999999999767
+20170416 10:46:03.197  info:(t:19)TIMY Extended Protocol Converter: input>> 0103 C0  10:46:03.9470 00
+20170416 10:46:03.197  info:(t:19)TIMY ESTRT B=22 
+20170416 10:47:55.953  info:(t:19)TIMY Extended Protocol Converter: input>> 0104 C1M 10:47:56.70   00
+20170416 10:47:55.965  info:(t:19)TIMY ESTOP B=22 Elapsed=112.75999999999476
+20170416 10:48:03.951  info:(t:19)TIMY Extended Protocol Converter: input>> 0105 C0  10:48:04.7000 00
+20170416 10:48:03.951  info:(t:19)TIMY ESTRT B=21 
+20170416 10:49:47.190  info:(t:19)                                         12345678901234567890123456789
+20170416 10:49:47.191  info:(t:19)TIMY Extended Protocol Converter: input>> 0106 C1M 10:49:47.94   00
+20170416 10:49:47.201  info:(t:19)TIMY ESTOP B=21 Elapsed=103.24000000000524
+20170416 10:50:05.155  info:(t:19)TIMY Extended Protocol Converter: input>> 0107 C0  10:50:05.8982 00
+20170416 10:50:05.155  info:(t:19)TIMY ESTRT B=20 
+20170416 10:51:55.368  info:(t:19)TIMY Extended Protocol Converter: input>> 0108 C1M 10:51:56.12   00
+20170416 10:51:55.378  info:(t:19)TIMY ESTOP B=20 Elapsed=110.2300000000032
+20170416 10:52:03.943  info:(t:19)TIMY Extended Protocol Converter: input>> 0109 C0  10:52:04.6751 00
+20170416 10:52:03.943  info:(t:19)TIMY ESTRT B=19 
+20170416 10:53:53.659  info:(t:19)TIMY Extended Protocol Converter: input>> 0110 C1M 10:53:54.40   00
+20170416 10:53:53.672  info:(t:19)TIMY ESTOP B=19 Elapsed=109.7300000000032
+20170416 10:54:03.801  info:(t:19)TIMY Extended Protocol Converter: input>> 0111 C0  10:54:04.5426 00
+20170416 10:54:03.801  info:(t:19)TIMY ESTRT B=18 
+20170416 10:55:49.696  info:(t:19)TIMY Extended Protocol Converter: input>> 0112 C1M 10:55:50.44   00
+20170416 10:55:49.705  info:(t:19)TIMY ESTOP B=18 Elapsed=105.90000000000146
+20170416 10:57:03.649  info:(t:19)TIMY Extended Protocol Converter: input>> 0113 C0  10:57:04.3812 00
+20170416 10:57:03.650  info:(t:19)TIMY ESTRT B=17 
+20170416 10:58:45.318  info:(t:19)TIMY Extended Protocol Converter: input>> 0114 C1M 10:58:46.06   00
+20170416 10:58:45.326  info:(t:19)TIMY ESTOP B=17 Elapsed=101.68000000000029
+20170416 10:59:04.946  info:(t:19)TIMY Extended Protocol Converter: input>> 0115 C0  10:59:05.6879 00
+20170416 10:59:04.946  info:(t:19)TIMY ESTRT B=16 
+20170416 11:00:46.906  info:(t:19)TIMY Extended Protocol Converter: input>> 0116 C1M 11:00:47.65   00
+20170416 11:00:46.913  info:(t:19)TIMY ESTOP B=16 Elapsed=101.97000000000116
+20170416 11:01:02.471  info:(t:19)TIMY Extended Protocol Converter: input>> 0117 C0  11:01:03.2160 00
+20170416 11:01:02.472  info:(t:19)TIMY ESTRT B=15 
+20170416 11:02:58.699  info:(t:19)TIMY Extended Protocol Converter: input>> 0118 C1M 11:02:59.44   00
+20170416 11:02:58.775  info:(t:19)TIMY ESTOP B=15 Elapsed=116.2300000000032
+20170416 11:03:06.040  info:(t:19)TIMY Extended Protocol Converter: input>> 0119 C0  11:03:06.7774 00
+20170416 11:03:06.041  info:(t:19)TIMY ESTRT B=14 
+20170416 11:04:52.495  info:(t:19)TIMY Extended Protocol Converter: input>> 0120 C1M 11:04:53.25   00
+20170416 11:04:52.507  info:(t:19)TIMY ESTOP B=14 Elapsed=106.4800000000032
+20170416 11:05:03.405  info:(t:19)TIMY Extended Protocol Converter: input>> 0121 C0  11:05:04.1460 00
+20170416 11:05:03.405  info:(t:19)TIMY ESTRT B=13 
+20170416 11:06:33.175  info:(t:19)TIMY Extended Protocol Converter: input>> 0122 C1M 11:06:33.93   00
+20170416 11:06:33.186  info:(t:19)TIMY ESTOP B=13 Elapsed=89.79000000000087
+20170416 11:07:04.577  info:(t:19)TIMY Extended Protocol Converter: input>> 0123 C0  11:07:05.3033 00
+20170416 11:07:04.578  info:(t:19)TIMY ESTRT B=12 
+20170416 11:08:42.939  info:(t:19)TIMY Extended Protocol Converter: input>> 0124 C1M 11:08:43.68   00
+20170416 11:08:42.950  info:(t:19)TIMY ESTOP B=12 Elapsed=98.37999999999738
+20170416 11:09:01.989  info:(t:19)TIMY Extended Protocol Converter: input>> 0125 C0  11:09:02.7245 00
+20170416 11:09:01.989  info:(t:19)TIMY ESTRT B=11 
+20170416 11:10:36.174  info:(t:19)                                         12345678901234567890123456789
+20170416 11:10:36.174  info:(t:19)TIMY Extended Protocol Converter: input>> 0126 C1M 11:10:36.92   00
+20170416 11:10:36.183  info:(t:19)TIMY ESTOP B=11 Elapsed=94.19999999999709
+20170416 11:45:05.194  info:(t:19)TIMY Extended Protocol Converter: input>> 0127 C0  11:45:05.9363 00
+20170416 11:45:05.491  info:(t:19)TIMY ESTRT B=67 
+20170416 11:47:03.992  info:(t:19)TIMY Extended Protocol Converter: input>> 0128 C0  11:47:04.7312 00
+20170416 11:47:03.992  info:(t:19)TIMY ESTRT B=66 
+20170416 11:47:31.440  info:(t:19)TIMY Extended Protocol Converter: input>> 0129 C1M 11:47:32.18   00
+20170416 11:47:31.455  info:(t:19)TIMY ESTOP B=67 Elapsed=146.25
+20170416 11:49:02.502  info:(t:19)TIMY Extended Protocol Converter: input>> 0130 C1M 11:49:03.24   00
+20170416 11:49:02.512  info:(t:19)TIMY ESTOP B=66 Elapsed=118.50999999999476
+20170416 11:49:07.012  info:(t:19)TIMY Extended Protocol Converter: input>> 0131 C0  11:49:07.7452 00
+20170416 11:49:07.013  info:(t:19)TIMY ESTRT B=65 
+20170416 11:51:57.800  info:(t:19)TIMY Extended Protocol Converter: input>> 0132 C1M 11:51:58.55   00
+20170416 11:51:57.814  info:(t:19)TIMY ESTOP B=65 Elapsed=170.81000000000495
+20170416 11:59:06.690  info:(t:19)TIMY Extended Protocol Converter: input>> 0133 C0  11:59:07.4285 00
+20170416 11:59:06.690  info:(t:19)TIMY ESTRT B=64 
+20170416 12:01:03.124  info:(t:19)TIMY Extended Protocol Converter: input>> 0134 C0  12:01:03.8652 00
+20170416 12:01:03.191  info:(t:19)TIMY ESTRT B=63 
+20170416 12:01:20.239  info:(t:19)TIMY Extended Protocol Converter: input>> 0135 C1M 12:01:20.97   00
+20170416 12:01:20.251  info:(t:19)TIMY ESTOP B=64 Elapsed=133.5500000000029
+20170416 12:03:02.931  info:(t:19)TIMY Extended Protocol Converter: input>> 0136 C0  12:03:03.6620 00
+20170416 12:03:02.998  info:(t:19)TIMY ESTRT B=62 
+20170416 12:03:07.330  info:(t:19)TIMY Extended Protocol Converter: input>> 0137 C1M 12:03:08.07   00
+20170416 12:03:07.342  info:(t:19)TIMY ESTOP B=63 Elapsed=124.20999999999913
+20170416 12:05:00.916  info:(t:19)TIMY Extended Protocol Converter: input>> 0138 C0  12:05:01.6586 00
+20170416 12:05:00.986  info:(t:19)TIMY ESTRT B=61 
+20170416 12:05:02.756  info:(t:19)TIMY Extended Protocol Converter: input>> 0139 C1M 12:05:03.50   00
+20170416 12:05:02.769  info:(t:19)TIMY ESTOP B=62 Elapsed=119.83999999999651
+20170416 12:06:38.857  info:(t:19)TIMY Extended Protocol Converter: input>> 0140 C1M 12:06:39.60   00
+20170416 12:06:38.868  info:(t:19)TIMY ESTOP B=61 Elapsed=97.94999999999709
+20170416 12:10:02.542  info:(t:19)TIMY Extended Protocol Converter: input>> 0141 C0  12:10:03.2790 00
+20170416 12:10:02.542  info:(t:19)TIMY ESTRT B=59 
+20170416 12:11:54.977  info:(t:19)TIMY Extended Protocol Converter: input>> 0142 C1M 12:11:55.73   00
+20170416 12:11:54.990  info:(t:19)TIMY ESTOP B=59 Elapsed=112.4600000000064
+20170416 12:14:03.943  info:(t:19)TIMY Extended Protocol Converter: input>> 0143 C0  12:14:04.6843 00
+20170416 12:14:03.943  info:(t:19)TIMY ESTRT B=57 
+20170416 12:16:04.935  info:(t:19)TIMY Extended Protocol Converter: input>> 0144 C0  12:16:05.6631 00
+20170416 12:16:04.935  info:(t:19)TIMY ESTRT B=56 
+20170416 12:16:19.172  info:(t:19)TIMY Extended Protocol Converter: input>> 0145 C1M 12:16:19.91   00
+20170416 12:16:19.186  info:(t:19)TIMY ESTOP B=57 Elapsed=135.2300000000032
+20170416 12:18:04.839  info:(t:19)                                         12345678901234567890123456789
+20170416 12:18:04.840  info:(t:19)TIMY Extended Protocol Converter: input>> 0146 C0  12:18:05.5822 00
+20170416 12:18:04.840  info:(t:19)TIMY ESTRT B=55 
+20170416 12:18:13.781  info:(t:19)TIMY Extended Protocol Converter: input>> 0147 C1M 12:18:14.51   00
+20170416 12:18:13.792  info:(t:19)TIMY ESTOP B=56 Elapsed=128.84999999999854
+20170416 12:20:03.129  info:(t:19)TIMY Extended Protocol Converter: input>> 0148 C0  12:20:03.8769 00
+20170416 12:20:03.129  info:(t:19)TIMY ESTRT B=54 
+20170416 12:20:11.831  info:(t:19)TIMY Extended Protocol Converter: input>> 0149 C1M 12:20:12.57   00
+20170416 12:20:11.843  info:(t:19)TIMY ESTOP B=55 Elapsed=126.98999999999796
+20170416 12:22:06.425  info:(t:19)TIMY Extended Protocol Converter: input>> 0150 C0  12:22:07.1649 00
+20170416 12:22:06.425  info:(t:19)TIMY ESTRT B=53 
+20170416 12:22:18.134  info:(t:19)TIMY Extended Protocol Converter: input>> 0151 C1M 12:22:18.87   00
+20170416 12:22:18.146  info:(t:19)TIMY ESTOP B=54 Elapsed=135.0
+20170416 12:23:56.907  info:(t:19)TIMY Extended Protocol Converter: input>> 0152 C1M 12:23:57.66   00
+20170416 12:23:56.921  info:(t:19)TIMY ESTOP B=53 Elapsed=110.5
+20170416 12:24:05.001  info:(t:19)TIMY Extended Protocol Converter: input>> 0153 C0  12:24:05.7426 00
+20170416 12:24:05.001  info:(t:19)TIMY ESTRT B=52 
+20170416 12:25:55.821  info:(t:19)TIMY Extended Protocol Converter: input>> 0154 C1M 12:25:56.57   00
+20170416 12:25:55.838  info:(t:19)TIMY ESTOP B=52 Elapsed=110.83000000000175
+20170416 12:26:01.547  info:(t:19)TIMY Extended Protocol Converter: input>> 0155 C0  12:26:02.2805 00
+20170416 12:26:01.547  info:(t:19)TIMY ESTRT B=51 
+20170416 12:27:51.295  info:(t:19)TIMY Extended Protocol Converter: input>> 0156 C1M 12:27:52.04   00
+20170416 12:27:51.305  info:(t:19)TIMY ESTOP B=51 Elapsed=109.76000000000204
+20170416 12:31:03.369  info:(t:19)TIMY Extended Protocol Converter: input>> 0157 C0  12:31:04.1120 00
+20170416 12:31:03.370  info:(t:19)TIMY ESTRT B=41 
+20170416 12:33:36.738  info:(t:19)TIMY Extended Protocol Converter: input>> 0158 C1M 12:33:37.48   00
+20170416 12:33:36.753  info:(t:19)TIMY ESTOP B=41 Elapsed=153.37000000000262
+20170416 12:43:08.673  info:(t:19)TIMY Extended Protocol Converter: input>> 0159 C0  12:43:09.4007 00
+20170416 12:43:08.674  info:(t:19)TIMY ESTRT B=33 
+20170416 12:45:10.050  info:(t:19)TIMY Extended Protocol Converter: input>> 0160 C1M 12:45:10.79   00
+20170416 12:45:10.065  info:(t:19)TIMY ESTOP B=33 Elapsed=121.38999999999942
+20170416 12:47:04.604  info:(t:19)TIMY Extended Protocol Converter: input>> 0161 C0  12:47:05.3406 00
+20170416 12:47:04.604  info:(t:19)TIMY ESTRT B=32 
+20170416 12:49:03.310  info:(t:19)TIMY Extended Protocol Converter: input>> 0162 C0  12:49:04.0457 00
+20170416 12:49:03.311  info:(t:19)TIMY ESTRT B=31 
+20170416 12:49:11.468  info:(t:19)TIMY Extended Protocol Converter: input>> 0163 C1M 12:49:12.21   00
+20170416 12:49:11.482  info:(t:19)TIMY ESTOP B=32 Elapsed=126.87000000000262
+20170416 12:51:21.899  info:(t:19)TIMY Extended Protocol Converter: input>> 0164 C1M 12:51:22.65   00
+20170416 12:51:21.913  info:(t:19)TIMY ESTOP B=31 Elapsed=138.61000000000058
+20170416 12:55:07.711  info:(t:19)TIMY Extended Protocol Converter: input>> 0165 C0  12:55:08.4554 00
+20170416 12:55:07.712  info:(t:19)TIMY ESTRT B=27 
+20170416 12:57:03.186  info:(t:19)                                         12345678901234567890123456789
+20170416 12:57:03.186  info:(t:19)TIMY Extended Protocol Converter: input>> 0166 C0  12:57:03.9355 00
+20170416 12:57:03.186  info:(t:19)TIMY ESTRT B=26 
+20170416 12:58:57.188  info:(t:19)TIMY Extended Protocol Converter: input>> 0167 C1M 12:58:57.93   00
+20170416 12:58:57.199  info:(t:19)TIMY ESTOP B=27 Elapsed=229.4800000000032
+20170416 12:59:05.826  info:(t:19)TIMY Extended Protocol Converter: input>> 0168 C0  12:59:06.5678 00
+20170416 12:59:05.826  info:(t:19)TIMY ESTRT B=25 
+20170416 12:59:53.846  info:(t:19)TIMY Extended Protocol Converter: input>> 0169 C1M 12:59:54.59   00
+20170416 12:59:53.859  info:(t:19)TIMY ESTOP B=26 Elapsed=170.65999999999622
+20170416 13:01:05.077  info:(t:19)TIMY Extended Protocol Converter: input>> 0170 C0  13:01:05.8277 00
+20170416 13:01:05.077  info:(t:19)TIMY ESTRT B=24 
+20170416 13:01:06.100  info:(t:19)TIMY Extended Protocol Converter: input>> 0171 C1M 13:01:06.84   00
+20170416 13:01:06.115  info:(t:19)TIMY ESTOP B=25 Elapsed=120.27999999999884
+20170416 13:03:01.977  info:(t:19)TIMY Extended Protocol Converter: input>> 0172 C0  13:03:02.7246 00
+20170416 13:03:01.977  info:(t:19)TIMY ESTRT B=23 
+20170416 13:03:13.798  info:(t:19)TIMY Extended Protocol Converter: input>> 0173 C1M 13:03:14.54   00
+20170416 13:03:13.811  info:(t:19)TIMY ESTOP B=24 Elapsed=128.72000000000116
+20170416 13:05:03.739  info:(t:19)TIMY Extended Protocol Converter: input>> 0174 C0  13:05:04.4754 00
+20170416 13:05:03.807  info:(t:19)TIMY ESTRT B=22 
+20170416 13:05:12.297  info:(t:19)TIMY Extended Protocol Converter: input>> 0175 C1M 13:05:13.04   00
+20170416 13:05:12.312  info:(t:19)TIMY ESTOP B=23 Elapsed=130.3199999999997
+20170416 13:06:53.841  info:(t:19)TIMY Extended Protocol Converter: input>> 0176 C1M 13:06:54.59   00
+20170416 13:06:53.855  info:(t:19)TIMY ESTOP B=22 Elapsed=110.11999999999534
+20170416 13:07:03.823  info:(t:19)TIMY Extended Protocol Converter: input>> 0177 C0  13:07:04.5614 00
+20170416 13:07:03.823  info:(t:19)TIMY ESTRT B=21 
+20170416 13:08:50.148  info:(t:19)TIMY Extended Protocol Converter: input>> 0178 C1M 13:08:50.89   00
+20170416 13:08:50.162  info:(t:19)TIMY ESTOP B=21 Elapsed=106.33000000000175
+20170416 13:09:04.866  info:(t:19)TIMY Extended Protocol Converter: input>> 0179 C0  13:09:05.6154 00
+20170416 13:09:04.866  info:(t:19)TIMY ESTRT B=20 
+20170416 13:10:49.992  info:(t:19)TIMY Extended Protocol Converter: input>> 0180 C1M 13:10:50.74   00
+20170416 13:10:50.006  info:(t:19)TIMY ESTOP B=20 Elapsed=105.12999999999738
+20170416 13:11:03.252  info:(t:19)TIMY Extended Protocol Converter: input>> 0181 C0  13:11:03.9836 00
+20170416 13:11:03.253  info:(t:19)TIMY ESTRT B=19 
+20170416 13:12:56.457  info:(t:19)TIMY Extended Protocol Converter: input>> 0182 C1M 13:12:57.20   00
+20170416 13:12:56.474  info:(t:19)TIMY ESTOP B=19 Elapsed=113.21999999999389
+20170416 13:13:03.575  info:(t:19)TIMY Extended Protocol Converter: input>> 0183 C0  13:13:04.3163 00
+20170416 13:13:03.575  info:(t:19)TIMY ESTRT B=18 
+20170416 13:14:47.198  info:(t:19)TIMY Extended Protocol Converter: input>> 0184 C1M 13:14:47.94   00
+20170416 13:14:47.213  info:(t:19)TIMY ESTOP B=18 Elapsed=103.63000000000466
+20170416 13:15:02.379  info:(t:19)TIMY Extended Protocol Converter: input>> 0185 C0  13:15:03.1267 00
+20170416 13:15:02.380  info:(t:19)TIMY ESTRT B=17 
+20170416 13:17:00.076  info:(t:19)                                         12345678901234567890123456789
+20170416 13:17:00.077  info:(t:19)TIMY Extended Protocol Converter: input>> 0186 C1M 13:17:00.81   00
+20170416 13:17:00.091  info:(t:19)TIMY ESTOP B=17 Elapsed=117.68999999999505
+20170416 13:17:03.580  info:(t:19)TIMY Extended Protocol Converter: input>> 0187 C0  13:17:04.3158 00
+20170416 13:17:03.581  info:(t:19)TIMY ESTRT B=16 
+20170416 13:18:55.536  info:(t:19)TIMY Extended Protocol Converter: input>> 0188 C1M 13:18:56.29   00
+20170416 13:18:55.548  info:(t:19)TIMY ESTOP B=16 Elapsed=111.9800000000032
+20170416 13:19:01.391  info:(t:19)TIMY Extended Protocol Converter: input>> 0189 C0  13:19:02.1313 00
+20170416 13:19:01.391  info:(t:19)TIMY ESTRT B=15 
+20170416 13:20:41.670  info:(t:19)TIMY Extended Protocol Converter: input>> 0190 C1M 13:20:42.41   00
+20170416 13:20:41.684  info:(t:19)TIMY ESTOP B=15 Elapsed=100.28000000000611
+20170416 13:21:04.930  info:(t:19)TIMY Extended Protocol Converter: input>> 0191 C0  13:21:05.6738 00
+20170416 13:21:04.930  info:(t:19)TIMY ESTRT B=14 
+20170416 13:23:00.997  info:(t:19)TIMY Extended Protocol Converter: input>> 0192 C1M 13:23:01.74   00
+20170416 13:23:01.012  info:(t:19)TIMY ESTOP B=14 Elapsed=116.06999999999971
+20170416 13:23:02.837  info:(t:19)TIMY Extended Protocol Converter: input>> 0193 C0  13:23:03.5731 00
+20170416 13:23:02.837  info:(t:19)TIMY ESTRT B=12 
+20170416 13:24:38.750  info:(t:19)TIMY Extended Protocol Converter: input>> 0194 C1M 13:24:39.50   00
+20170416 13:24:38.750  info:(t:19)TIMY ESTOP B=12 Elapsed=95.93000000000029
+20170416 13:25:04.824  info:(t:19)TIMY Extended Protocol Converter: input>> 0195 C0  13:25:05.5653 00
+20170416 13:25:04.825  info:(t:19)New EStarting time for # (RERUN?)12
+20170416 13:25:04.825  info:(t:19)TIMY ESTRT B=12 
+20170416 13:26:38.834  info:(t:19)TIMY Extended Protocol Converter: input>> 0196 C1M 13:26:39.57   00
+20170416 13:26:38.835 err:(t:19)null
+20170416 13:27:02.013  info:(t:19)TIMY Extended Protocol Converter: input>> 0197 C0  13:27:02.7600 00
+20170416 13:27:02.013  info:(t:19)TIMY ESTRT B=11 
+20170416 13:28:34.967  info:(t:19)TIMY Extended Protocol Converter: input>> 0198 C1M 13:28:35.71   00
+20170416 13:28:34.981  info:(t:19)TIMY ESTOP B=11 Elapsed=92.94999999999709
+20170417 06:11:33.912  info:(t:18)Execution ends
+20170417 06:12:05.573  info:(t:11)Log TIMY_RAW begins
+20170417 07:36:08.964  info:(t:11)Log TIMY_RAW begins
+20170417 07:36:15.212  info:(t:18)Execution ends
+20170417 07:36:18.283  info:(t:18)Execution ends
+20170417 07:36:35.906  info:(t:11)Log TIMY_RAW begins
+20170417 07:42:59.973  info:(t:18)Execution ends
+20170417 07:47:34.104  info:(t:11)Log TIMY_RAW begins
+20170417 07:51:28.025  info:(t:18)Execution ends
+20170417 07:52:24.343  info:(t:11)Log TIMY_RAW begins
+20170417 07:53:38.585  info:(t:18)Execution ends
+20170417 07:56:36.636  info:(t:13)Log TIMY_RAW begins
+20170417 16:49:18.962  info:(t:21)Execution ends
+20170417 16:49:35.009  info:(t:11)Log TIMY_RAW begins
+20170417 17:02:15.448  info:(t:18)Execution ends
+20170417 17:02:29.883  info:(t:11)Log TIMY_RAW begins
+20170417 17:04:07.256  info:(t:18)Execution ends
+20170417 17:04:36.694  info:(t:13)Log TIMY_RAW begins
+20170417 17:25:52.063  info:(t:22)Execution ends
+20170417 17:26:09.521  info:(t:13)Log TIMY_RAW begins
+20170417 17:35:57.759  info:(t:20)Execution ends
+20170417 17:36:11.088  info:(t:13)Log TIMY_RAW begins
+20170417 17:36:38.367  info:(t:20)Execution ends
+20170417 17:36:46.980  info:(t:13)Log TIMY_RAW begins
+20170417 17:38:11.341  info:(t:20)Execution ends
+20170417 17:38:25.964  info:(t:13)Log TIMY_RAW begins
+20170417 18:02:11.075  info:(t:20)Execution ends
+20170417 18:04:36.260  info:(t:11)Log TIMY_RAW begins
+20170417 18:05:52.398  info:(t:18)Execution ends
+20170417 18:06:08.631  info:(t:13)Log TIMY_RAW begins
+20170417 18:08:47.348  info:(t:20)Execution ends
+20170417 18:09:02.043  info:(t:11)Log TIMY_RAW begins
+20170417 18:11:47.267  info:(t:18)Execution ends
+20170417 18:12:36.513  info:(t:13)Log TIMY_RAW begins
+20170417 18:15:53.124  info:(t:13)Log TIMY_RAW begins
+20170417 18:15:57.702  info:(t:20)Execution ends
+20170417 18:16:00.795  info:(t:21)Execution ends
+20170417 18:16:10.332  info:(t:13)Log TIMY_RAW begins
+20170417 18:19:44.274  info:(t:20)Execution ends
+20170417 18:19:59.573  info:(t:11)Log TIMY_RAW begins
+20170417 18:49:20.831  info:(t:18)Execution ends
+20170417 18:50:41.297  info:(t:11)Log TIMY_RAW begins
+20170417 18:53:20.585  info:(t:18)Execution ends
+20170417 18:56:36.976  info:(t:11)Log TIMY_RAW begins
+20170417 19:00:19.895  info:(t:18)Execution ends
+20170417 19:05:07.406  info:(t:11)Log TIMY_RAW begins
+20170417 19:15:00.817  info:(t:18)Execution ends
+20170417 19:16:53.704  info:(t:11)Log TIMY_RAW begins
+20170417 19:18:25.991  info:(t:18)Execution ends
+20170417 19:18:40.362  info:(t:13)Log TIMY_RAW begins
+20170417 19:20:29.504  info:(t:20)Execution ends
+20170417 19:21:33.641  info:(t:13)Log TIMY_RAW begins
+20170417 19:22:09.898  info:(t:20)Execution ends
+20170417 19:22:26.475  info:(t:11)Log TIMY_RAW begins
+20170417 19:22:47.756  info:(t:18)Execution ends
+20170417 19:24:07.731  info:(t:11)Log TIMY_RAW begins
+20170418 12:17:15.652  info:(t:18)Execution ends
+20170420 08:01:24.089  info:(t:11)Log TIMY_RAW begins
+20170420 08:37:00.260  info:(t:18)Execution ends

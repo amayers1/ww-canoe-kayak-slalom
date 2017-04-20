@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.util.Log;
@@ -64,13 +81,24 @@ public class USNWC_StartListImporter {
     }
 
 
+    static final int bibOffset = 2;
+    static final int classOffset = 1;
+    static final int firstNameOffset = 3;
+    static final int lastNameOffset = 4;
+
+
+
     public void readImportFile() {
         String line = null;
+        int importedCnt = 0;
 
         ArrayList<BoatEntry> boats = new  ArrayList<BoatEntry>();
         Race race = Race.getInstance();
-        race.clearRace();
+        race.clearRace();  // TODO Make Conditional, clear racers not race parameters Issue#38
         race.setName("USNWC Race");
+ //       race.clearRacers();   // A170417 (ajm) TODO Make Conditional, clear racers not race parameters Issue#38
+
+
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader("USNWC.csv"));
@@ -110,16 +138,16 @@ public class USNWC_StartListImporter {
                     s = st.nextToken();
 
                     switch (i) {
-                        case 1:
+                        case bibOffset:
                             bib = s;
                             break;
-                        case 2:
+                        case firstNameOffset:
                             first = s;
                             break;
-                        case 3:
+                        case lastNameOffset:
                             last=s;
                             break;
-                        case 4:
+                        case classOffset:
                             boatClass = s;
                             if (boatClass.contains("M")) {
 
@@ -178,13 +206,16 @@ public class USNWC_StartListImporter {
 //                    BoatEntry boat = new BoatEntry(racer, boatClass);
 //                boats.add(boat);
                     race.addBoat(racer, boatClass);
-
+                    System.out.println("Importing " + boatClass + " " + racer);
+                    importedCnt++;
                 }
             }
         }
         catch (Exception e) {
             log.write(e);
         }
+        System.out.println("Imported " + importedCnt + " entries");
+
     }
 
 

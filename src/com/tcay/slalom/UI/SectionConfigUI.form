@@ -217,7 +217,7 @@
           <toolTipText resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useTagHeuerEmulation.tooltip"/>
         </properties>
       </component>
-      <component id="c438e" class="javax.swing.JCheckBox" binding="useMicrogatePhotoEyesCheckBox">
+      <component id="c438e" class="javax.swing.JCheckBox" binding="useMicrogatePhotoEyesCheckBox" custom-create="true">
         <constraints>
           <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
@@ -227,7 +227,7 @@
           <toolTipText resource-bundle="resources/SlalomAppMessages" key="sectionConfig.useMicrogate.tooltip"/>
         </properties>
       </component>
-      <component id="585d0" class="javax.swing.JCheckBox">
+      <component id="585d0" class="javax.swing.JCheckBox" binding="useTimyPhotoEyesCheckBox" custom-create="true">
         <constraints>
           <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>

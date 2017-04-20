@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
 //import com.intellij.ui.table.JBTable;
@@ -62,6 +79,7 @@ public class SectionConfigUI extends JComponent {
     private JCheckBox icfPenaltyDiagrams;
     private JCheckBox useTAGHeuerPhotoEyes;
     private JCheckBox useMicrogatePhotoEyesCheckBox;
+    //private JCheckBox useAlgeTimyCheckBox;
     private JCheckBox useTimyPhotoEyesCheckBox;
 
     //    private JComboBox comboBoxSelectUpstream;
@@ -193,7 +211,7 @@ public class SectionConfigUI extends JComponent {
 
         Race.getInstance().setTagHeuerEnabled(useTAGHeuerPhotoEyes.isSelected());
         Race.getInstance().setMicrogateEnabled(useMicrogatePhotoEyesCheckBox.isSelected());
-//        Race.getInstance().setMicrogateEnabled(useTimyPhotoEyesCheckBox.isSelected());
+        Race.getInstance().setAlgeTimyEnabled(useTimyPhotoEyesCheckBox.isSelected());
 
     }
 
@@ -315,6 +333,10 @@ public class SectionConfigUI extends JComponent {
         icfPenaltyDiagrams.setSelected(Race.getInstance().isIcfPenalties());
         useTAGHeuerPhotoEyes = new JCheckBox();
         useTAGHeuerPhotoEyes.setSelected(Race.getInstance().getTagHeuerEnabled()); // TODO Reimplement ->isTagHeuerEmulation());
+        useTimyPhotoEyesCheckBox = new JCheckBox();
+        useTimyPhotoEyesCheckBox.setSelected(Race.getInstance().getAlgeTimyEnabled());
+        useMicrogatePhotoEyesCheckBox = new JCheckBox();
+        useMicrogatePhotoEyesCheckBox.setSelected(Race.getInstance().getMicrogateEnabled());
 
 
         ArrayList<JudgingSection> sections = Race.getInstance().getSectionEndingGates();
@@ -570,14 +592,12 @@ public class SectionConfigUI extends JComponent {
         this.$$$loadButtonText$$$(useTAGHeuerPhotoEyes, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation.tooltip"));
         useTAGHeuerPhotoEyes.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTagHeuerEmulation.tooltip"));
         panel1.add(useTAGHeuerPhotoEyes, cc.xy(1, 12));
-        useMicrogatePhotoEyesCheckBox = new JCheckBox();
         this.$$$loadButtonText$$$(useMicrogatePhotoEyesCheckBox, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useMicrogate"));
         useMicrogatePhotoEyesCheckBox.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useMicrogate.tooltip"));
         panel1.add(useMicrogatePhotoEyesCheckBox, cc.xy(1, 14));
-        final JCheckBox checkBox1 = new JCheckBox();
-        this.$$$loadButtonText$$$(checkBox1, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTimy"));
-        checkBox1.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTimy.tooltip"));
-        panel1.add(checkBox1, cc.xy(1, 16));
+        this.$$$loadButtonText$$$(useTimyPhotoEyesCheckBox, ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTimy"));
+        useTimyPhotoEyesCheckBox.setToolTipText(ResourceBundle.getBundle("resources/SlalomAppMessages").getString("sectionConfig.useTimy.tooltip"));
+        panel1.add(useTimyPhotoEyesCheckBox, cc.xy(1, 16));
     }
 
     /**

@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.util.Log;
@@ -61,8 +78,12 @@ public class NRCStartListImporter {
 
         ArrayList<BoatEntry> boats = new  ArrayList<BoatEntry>();
         Race race = Race.getInstance();
+
         race.clearRace();
         race.setName("Imported Race");
+        //race.clearRacers();   // A170417 (ajm) TODO Make Conditional, clear racers not race parameters Issue#38
+
+
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader("import.txt"));

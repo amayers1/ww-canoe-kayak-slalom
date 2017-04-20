@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI.client;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
@@ -78,6 +95,7 @@ public class ClientRacePenaltiesUIDynamic {
     private BibLabel bibLabel;
     private JButton doneBtn;
     private JButton cancelBtn;
+    private JCheckBox autoScroll;
 
 
     private long getRunsStartedOrCompletedCnt = 0;    // current total number of runs (either on course or completed)
@@ -284,6 +302,28 @@ if (isGateInOurSection(iGate)) {
 
 
 
+
+
+    private void newUpdateComboBoxContents() {
+
+        int selection  = activeOrRecentRunsComboBox.getSelectedIndex();
+        activeOrRecentRunsComboBox.removeAllItems();
+
+        ArrayList<RaceRun> scorableList = raceProxy.getScorableRuns();
+       // ComboBoxModel model = new DefaultCom
+
+
+        for (RaceRun r:scorableList) {
+            activeOrRecentRunsComboBox.addItem(r);
+        }
+        if (activeOrRecentRunsComboBox.getItemCount() == 1 || selection < 0 ) {
+            selection = 0;
+        }
+        activeOrRecentRunsComboBox.setSelectedIndex(selection);
+
+    }
+
+
     private ComboBoxModel updateComboBoxModel() {
         log.trace("updateComboBoxModel::Requesting new SCORABLE RUNS !");
         // this list has to be a copy for each window, as they are potentially all on separate devices
@@ -301,18 +341,38 @@ if (isGateInOurSection(iGate)) {
         if (!activeOrRecentRunsComboBox.isPopupVisible()) {
             log.trace("refreshComboModelIfAppropriate->YES");
 
-            if (getRunsStartedOrCompletedCnt != raceProxy.getRunsStartedOrCompletedCnt()) {
-                getRunsStartedOrCompletedCnt = raceProxy.getRunsStartedOrCompletedCnt();
-                activeOrRecentRunsComboBox.setModel(updateComboBoxModel());
-                activeOrRecentRunsComboBox.setSelectedIndex(getFirstUnJudgedEntry());
+
+            // This is OK to prevent auto updates ONLY when the combobox is has focus and is expanded
+            //if (!activeOrRecentRunsComboBox.isFocusOwner()) { /*20170413 (ajm)*/
+//            if (!noAutoSelect.isSelected()) {   // A20170413 (ajm)
+
+                if (getRunsStartedOrCompletedCnt != raceProxy.getRunsStartedOrCompletedCnt()) {
+                    getRunsStartedOrCompletedCnt = raceProxy.getRunsStartedOrCompletedCnt();
+
+
+                    // Todo UPDATE MODEL ... DO NOT REPLACE IT
+//temp 20170413     activeOrRecentRunsComboBox.setModel(updateComboBoxModel());
+                    newUpdateComboBoxContents();
+
+
+//                    //   if (false /*todo ADD MODE TO NOT AUTO UPDATE CURRENT SELECTION 20170413 (ajm)*/) {
+// Allow auto select ONLY after Doen or Cancel
+//                    if (!noAutoSelect.isSelected()) {
+//                        activeOrRecentRunsComboBox.setSelectedIndex(getFirstUnJudgedEntry());
+//                    }
+                    //    }
+
+//                }
+            //}
             }
+
         }
     }
 
     Timer listCheckForUpdatesTimer;           // timer to trigger anjto update of activeOrRecentRunsComboBox
 
     private void createUIComponents() {
-        listCheckForUpdatesTimer
+        listCheckForUpdatesTimer   // todo 201704  Maybe set to 5000 for 5 second refresh
                 = new Timer(500, // C160731 changed back to 500 from 2500 // C20160730 Performance Problems CPU pegged at 100%   C20160329 was 500
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
@@ -321,20 +381,38 @@ if (isGateInOurSection(iGate)) {
 
 //log.info("Going to SLEEP!");
                                 Thread.sleep(100);  /// C20160329   was 250  TODO Evaluate
-System.out.println("AWAKE!!!!");
+//System.out.println("AWAKE!!!!");
 //Thread.sleep(200);  /// C20160329   was 250  TODO Evaluate
 //log.info("AWAKE!");
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
                         }
-
+                        maybeScroll();
                         refreshComboModelIfAppropriate();
                     }
                 });
         listCheckForUpdatesTimer.setInitialDelay(500);   // C20160329 was 500
         listCheckForUpdatesTimer.start();     // TODO PERFORMANCE - REMOVING This start did NOT affect performance still pegged 160731
     }
+
+
+
+
+
+    // 20170413 This has an odd appearance, in that if you go back to edit a previous run, after hitting "Select Boat"
+    // in aiutoScroll mode you will get advanced to the first unscored entry.  The selection made will work,  just
+    // has bad UI appearance
+
+    private void maybeScroll() {
+        int firstUnjudgedIndex =  getFirstUnJudgedEntry();
+        if (autoScroll.isSelected() && !activeOrRecentRunsComboBox.hasFocus()) {
+            if (activeOrRecentRunsComboBox.getSelectedIndex() < firstUnjudgedIndex) {
+                activeOrRecentRunsComboBox.setSelectedIndex(firstUnjudgedIndex);
+            }
+        }
+    }
+
 
 
     public static void main(String[] args) {
@@ -395,6 +473,7 @@ System.out.println("AWAKE!!!!");
 
         doneBtn = new JButton();
         cancelBtn = new JButton();
+        autoScroll = new JCheckBox();
         raceRunLabel = new JLabel();
         bibLabel = new BibLabel();
 
@@ -479,6 +558,11 @@ System.out.println("AWAKE!!!!");
 
         innerPanel.add(doneBtn, cc.xy(3, 3));//(maxRow*2) + 5));  //1,3
         innerPanel.add(cancelBtn, cc.xy(3, 5));//(maxRow*2) + 5));  //1,3
+
+        autoScroll.setText("Auto Scroll");
+        autoScroll.setToolTipText("When selected automatically advance to next run needing scoring after 'Done' or 'Cancel' Buttons");
+        autoScroll.setSelected(false);
+        innerPanel.add(autoScroll, cc.xy(3, ROW_OFFSET+(maxRow*2)+2));   /// 20170413 (ajm)
 
     }
 
@@ -677,7 +761,7 @@ System.out.println("AWAKE!!!!");
 
 
     public void cancelButtonActionHandler() {
-        getBoatToScore(); /// ??? will this work
+            getBoatToScore(autoScroll.isSelected()); /// ??? will this work /// C20170413 (ajm) Kludge to prevent comboBox from Auto Selecting oldest unscored entry
     }
 
     public void doneButtonActionHandler() {
@@ -691,14 +775,15 @@ System.out.println("AWAKE!!!!");
         selectedRun.clearPenaltyList();        //TODO 2016 INVESTIGATE !!!        //fixme A131028 (ajm) problems resetting penalties
 
         for (GatePenaltyButton pb:penaltyButtons) {
-            selectedRun.setPenalty( pb.getGate(), pb.getPenalty(), true );
+            selectedRun.setPenalty(pb.getGate(), pb.getPenalty(), true );
         }
 
         raceProxy.updateResults(log,selectedRun,onlyThisSection);
 
 
 
-        getBoatToScore();
+            getBoatToScore(autoScroll.isSelected());   /// C20170413 (ajm) Kludge to prevent comboBox from Auto Selecting oldest unscored entry
+
 /*        selectedRun = null;
         selectRaceRun.setEnabled(true);
         selectRaceRun.setVisible(true);
@@ -717,14 +802,15 @@ System.out.println("AWAKE!!!!");
     }
 
 
-    private void getBoatToScore() {
+    private void getBoatToScore(boolean setFirstUnjudged) {
         selectedRun = null;
         selectRaceRun.setEnabled(true);
         selectRaceRun.setVisible(true);
 
         int firstUnjudgedIndex =  getFirstUnJudgedEntry();
-
-        activeOrRecentRunsComboBox.setSelectedIndex(firstUnjudgedIndex);
+        if (setFirstUnjudged) {
+            activeOrRecentRunsComboBox.setSelectedIndex(firstUnjudgedIndex);
+        }
         activeOrRecentRunsComboBox.setEnabled(true);
         raceRunLabel.setText(null);
         bibLabel.setText(null);

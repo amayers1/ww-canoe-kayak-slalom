@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.util.Log;
@@ -29,7 +46,7 @@ import java.util.ArrayList;
  * Date: Aug 21, 2013
  * Time: 5:11:06 PM
  */
-public class BoatEntry implements Serializable{
+public class BoatEntry implements Serializable {
     //private BoatClass boatClass = null;
     private String boatClass;
     private ArrayList<Racer> racerList = null;   // List of racers for this BoatEntry
@@ -42,6 +59,12 @@ public class BoatEntry implements Serializable{
 //            racerList.add(racer);
 //            boatClass = bc;
 //    }
+
+    public BoatEntry(){   /// Added for XMLEncoder 170418
+
+    }
+
+
 
     public BoatEntry(Racer racer, String bc)
     {

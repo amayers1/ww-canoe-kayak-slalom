@@ -15,6 +15,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.Country;
@@ -49,6 +66,7 @@ public class RaceResources {
     private transient ImageIcon tagHeuerII;
     protected transient ImageIcon tagHeuerTinyII;
     protected transient ImageIcon microgateII;
+    protected transient ImageIcon algeII;
     private transient ImageIcon downstreamSmallII;
     private transient ImageIcon upstreamSmallII;
     private transient ImageIcon downstreamTinyII;
@@ -76,6 +94,11 @@ public class RaceResources {
     private transient ImageIcon medalGoldSmall;
     private transient ImageIcon medalSilverSmall;
     private transient ImageIcon medalBronzeSmall;
+    private transient ImageIcon ledRed;
+    private transient ImageIcon ledGreen;
+    private transient ImageIcon ledRedOff;
+    private transient ImageIcon ledGreenOff;
+    private transient ImageIcon ledDisabled;
 
     //fixme Need empty and blank ??? Consolidate !!!
     private transient ImageIcon emptyII = new ImageIcon();  // needed for table cell renderer, can't have null value for cell renderer
@@ -223,6 +246,15 @@ public class RaceResources {
                 microgateII = new ImageIcon(imgURL, "Microgate");
             }
 
+
+
+
+            imgURL = thisClass.getResource("images/AlgeTiming_Logo25x43.jpg");
+            if (imgURL!=null)  {
+                algeII = new ImageIcon(imgURL, "Alge");
+            }
+
+
             imgURL = thisClass.getResource("images/SlalomCourseCardiffSmall.jpg");
             if (imgURL!=null)
                 slalomCourseSmall = new ImageIcon(imgURL, "slalomCourse");
@@ -352,6 +384,34 @@ public class RaceResources {
             if (imgURL!=null)
                 medalBronzeSmall = new ImageIcon(imgURL, "medalBronzeSmall");
 
+
+
+            imgURL = thisClass.getResource("images/ledredSmall16.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                ledRed = new ImageIcon(imgURL, "ledRed");
+
+            imgURL = thisClass.getResource("images/ledgreenSmall16.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                ledGreen = new ImageIcon(imgURL, "ledGreen");
+
+
+
+            imgURL = thisClass.getResource("images/ledredSmall16Off.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                ledRedOff = new ImageIcon(imgURL, "ledRedOff");
+
+            imgURL = thisClass.getResource("images/ledgreenSmall16Off.png");     // todo From location of package of Race ???
+            if (imgURL!=null)
+                ledGreenOff = new ImageIcon(imgURL, "ledGreenOff");
+
+
+            imgURL = thisClass.getResource("images/ledDisabledSmall16.png");
+            if (imgURL!=null)
+                ledDisabled = new ImageIcon(imgURL, "ledDisabled");
+
+
+
+
             // todo implement Mediamanager lazy load
             //http://vectormagic.com/home - make vector images out of bitmaps
 
@@ -440,7 +500,9 @@ public class RaceResources {
         return microgateII;
     }
 
-
+    public ImageIcon getAlgeII() {
+        return algeII;
+    }
 
     public ImageIcon getSlalomCourseSmall() {
         // http://upload.wikimedia.org/wikipedia/commons/7/78/Cardiff_International_White_Water_%282012_gates%29.svg
@@ -473,5 +535,27 @@ public class RaceResources {
     public ImageIcon getMedalBronzeSmall() {
         return medalBronzeSmall;
     }
+
+    public ImageIcon getLedRed() {
+        return ledRed;
+    }
+    public ImageIcon getLedGreen() {
+        return ledGreen;
+    }
+
+    public ImageIcon getLedRedOff() {
+        return ledRedOff;
+    }
+    public ImageIcon getLedGreenOff() {
+        return ledGreenOff;
+    }
+
+    public ImageIcon getLedDisabled() {
+        return ledDisabled;
+    }
+
+
+
+
 
 }

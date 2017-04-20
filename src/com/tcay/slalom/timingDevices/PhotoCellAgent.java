@@ -32,8 +32,26 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.timingDevices;
 
+import com.intellij.execution.ui.layout.impl.TabImpl;
 import com.tcay.slalom.BoatEntry;
 import com.tcay.slalom.Race;
 import com.tcay.slalom.RaceRun;
@@ -43,6 +61,8 @@ import java.util.ArrayList;
 
 /**
  * Created by allen on 3/14/16.
+ *
+ * the 'agent' is a translator for photo cell timing boxes.  A protocol converter.
  */
 public abstract class PhotoCellAgent {
 
@@ -61,7 +81,7 @@ public abstract class PhotoCellAgent {
     public abstract boolean processDeviceOutput(String s);
 
 
-    public void saveResult(String bibNumber, double elapsed) {
+    protected void saveResult(String bibNumber, double elapsed) {
         PhotoCellRaceRun found = findRun(bibNumber, Race.getInstance().getCurrentRunIteration());
 
         if (found != null)  {
@@ -120,7 +140,11 @@ public abstract class PhotoCellAgent {
     }
 
 
-
+    /**
+     * Need work here to make sure DNF on prior racer doesn't cause problems
+     * issue#42
+     * @return
+     */
 
 
     private PhotoCellRaceRun findRunToStop(){//int runNumber) {
@@ -283,15 +307,19 @@ public abstract class PhotoCellAgent {
     public PhotoCellRaceRun stopRun(String stopTime) {
         PhotoCellRaceRun found = findRunToStop();// Race.getInstance().getCurrentRunIteration());
 
+        // A20170419 (ajm)  Enabling code for enhancement - issue#61
+        TimingImpulse impulse = new TimingImpulse(TimingImpulse.PhotoEyePosition.FINISH, stopTime);
+        Race.getInstance().addStopImpulse(impulse);
+
         if (found!=null ) {
 
             if (Race.getInstance().isPHOTO_EYE_AUTOMATIC()) {
-                if (Race.getInstance().TODOKludgeFinishFRomPhotoEye(found.getBibNumber())) {
+                if (Race.getInstance().TODOKludgeFinishFRomPhotoEye(found.getBibNumber())) {  /// TODO 2017 - INVESTGATE
                     //startRun(bibNumber, startTime);
                     System.out.println("EStart=" + found.getStartTime() + "  EFinish= " + stopTime);
                     found.setStopTime(stopTime);
                 } else
-                    {  // This Handles bug with fals finish 20160417
+                    {  // This Handles bug with false finish 20160417
                         found = null;
                     }
 
@@ -308,7 +336,7 @@ public abstract class PhotoCellAgent {
 
 
         }   else {
-            System.out.println("PhotoCellAgent:StopRun():  NULL HERE!!!!!");
+            System.out.println("PhotoCellAgent:StopRun():  Could not find run to STOP!  NULL HERE!");
 
         }
 

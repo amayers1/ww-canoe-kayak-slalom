@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.slalom.timingDevices.PhotoCellRaceRun;
@@ -490,25 +507,6 @@ public class  RaceRun implements Comparable<RaceRun>,Serializable {
         return result; //stopWatch.getElapsed();
     }
 
-/*
-    public String getElapsedLogString() {
-float eTime=0.0f;
-        String result=null;//(float)9999.0;
-        if (!dnf) {
-            if (photoCellRaceRun != null && photoCellRaceRun.getElapsedTime() != 0) {
-                eTime = (float)photoCellRaceRun.getElapsedTime();
-                result = new String("+"+eTime);
-            }
-            else {
-                result = new String("*" + stopWatch.getElapsed());
-            }
-        }
-
-        return result;
-    }
-
-
-*/
     public String toString() {
 //        return( //boat.getRacer().getBibNumber() +
 //                "run#" + getRunNumber() + " " + boat.getRacer().getShortName() );

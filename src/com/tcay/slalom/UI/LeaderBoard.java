@@ -34,6 +34,7 @@
 
 package com.tcay.slalom.UI;
 
+import com.PrintUIWindow;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 import com.tcay.slalom.Race;
@@ -41,6 +42,9 @@ import com.tcay.slalom.UI.tables.ResultsTable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
 
 /**
  * ${PROJECT_NAME}
@@ -56,12 +60,25 @@ public class LeaderBoard {
     private JPanel panel1;
     private JScrollPane leaderScrollPane;
     private JTable table;
+    private JButton printButton;
     private ResultsTable resultsTable;
 
-    public LeaderBoard(ResultsTable resultsTable) {
+    public LeaderBoard(ResultsTable resultsTable, JFrame frame) {
         this.resultsTable = resultsTable;
         $$$setupUI$$$();
 //        table = resultsTable.createTable();
+
+        printButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    table.print();
+                } catch (PrinterException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     //public LeaderBoard() {
@@ -109,11 +126,14 @@ public class LeaderBoard {
     private void $$$setupUI$$$() {
         createUIComponents();
         panel1 = new JPanel();
-        panel1.setLayout(new FormLayout("fill:d:grow", "center:d:grow"));
+        panel1.setLayout(new FormLayout("fill:d:grow", "center:max(d;4px):noGrow,top:3dlu:noGrow,center:d:grow"));
         leaderScrollPane.setPreferredSize(new Dimension(800, 600));
         CellConstraints cc = new CellConstraints();
-        panel1.add(leaderScrollPane, cc.xy(1, 1, CellConstraints.FILL, CellConstraints.FILL));
+        panel1.add(leaderScrollPane, cc.xy(1, 3, CellConstraints.FILL, CellConstraints.FILL));
         leaderScrollPane.setViewportView(table);
+        printButton = new JButton();
+        printButton.setText("Print");
+        panel1.add(printButton, cc.xy(1, 1));
     }
 
     /**

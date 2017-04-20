@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
 import com.tcay.slalom.ListOfRaces;
@@ -55,7 +72,7 @@ public class MarkRunStatus {
     private JButton liveButton;
     private JButton officialButton;
     private JButton unofficialButton;
-   // private JButton cancelButton;
+    // private JButton cancelButton;
     private JComboBox RunsStatus;
 
 
@@ -83,10 +100,10 @@ public class MarkRunStatus {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
 
- //               close();
+        //               close();
 
 //            }
-  //      });
+        //      });
 
 
         unofficialButton.addActionListener(new ActionListener() {
@@ -122,7 +139,6 @@ public class MarkRunStatus {
         String s;
 
 
-
         StringTokenizer st = new StringTokenizer(statusString, ":");
 
         int i = 0;
@@ -147,8 +163,20 @@ public class MarkRunStatus {
         }
 
         Race.getInstance().markClassRun(boatClass, runNbr, status);
+        Race.getInstance().updateResults(true);  // A170417 Issue#49
 
+        updateRunsStatus();
 
+    }
+
+    private void updateRunsStatus() {
+        Object[] classes = Race.getInstance().getClassesRuns().toArray();
+        RunsStatus.removeAllItems();
+        for (Object aClass : classes) {
+            RunsStatus.addItem(aClass);
+        }
+
+        System.out.println("OK");
     }
 
 

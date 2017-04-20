@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.slalom.UI.JudgingSection;
@@ -83,18 +100,18 @@ public class TestData {
             race.addBoat( new Racer("3",   "DOERFLER",    "Fabian",	   "M","GER"), boatClass);
             race.addBoat( new Racer("5",   "KAUZER",      "Peter",	   "M","SLO"), boatClass);
 
-/*
+
             race.addBoat( new Racer("6",   "MOLMENTI",    "Daniele",   "M","ITA"), boatClass);
             race.addBoat( new Racer("7",   "AIGNER",      "Hannes",	   "M","GER"), boatClass);
             race.addBoat( new Racer("8",   "BOECKELMANN", "Paul",	   "M","GER"), boatClass);
             race.addBoat( new Racer("9",   "NEVEU",       "Boris",	   "M","FRA"), boatClass);
             race.addBoat( new Racer("10",  "HRADILEK",    "Vavrinec",  "M","CZE"), boatClass);
-*/
+
             boatClass = "K1W";
-            race.addBoat( new Racer("70",  "LIEBFARTH",  "Evy",     "F", "NRC"), boatClass);
+/*            race.addBoat( new Racer("70",  "LIEBFARTH",  "Evy",     "F", "NRC"), boatClass);
             race.addBoat( new Racer("71",  "DAVIS",      "Avery",   "F", "NRC"), boatClass);
             race.addBoat( new Racer("72",  "VANHA",      "Zuzana",  "F", "NRC"), boatClass);
-/*
+*/
             race.addBoat( new Racer("30",  "HILGERTOVA", "Stepanka","F", "CZE"), boatClass);
             race.addBoat( new Racer("31",  "FER",        "Emilie",  "F", "FRA"), boatClass);
             race.addBoat( new Racer("32",  "CHOURRAUT",  "Maialen", "F", "ESP"), boatClass);
@@ -107,7 +124,7 @@ public class TestData {
             race.addBoat( new Racer("40",  "TERCELJ",    "Eva",     "F", "SLO"), boatClass);
             race.addBoat( new Racer("41",  "SCHORNBERG", "Jasmin",  "F", "GER"), boatClass);
             race.addBoat( new Racer("42",  "PFEIFER",    "Melanie", "F", "GER"), boatClass);
-*/
+
 
 
             boatClass = "C1";
@@ -115,7 +132,7 @@ public class TestData {
             race.addBoat( new Racer("22", "FLORENCE",       "David",	"M", "GBR"), boatClass);
             race.addBoat( new Racer("23", "BENUS",          "Matej",	"M", "SVK"), boatClass);
 
-/*
+
             race.addBoat( new Racer("24", "SLAFKOVSKY",     "Alexander","M","SVK"), boatClass);
 
             race.addBoat( new Racer("25", "TASIADIS",       "Sideris",	"M","GER"), boatClass);
@@ -125,7 +142,7 @@ public class TestData {
 
 
 
-
+/*
             race.addBoat( new Racer("100",  "PFEIFER",    "Aelanie", "F", "GER"), boatClass);
             race.addBoat( new Racer("101",  "PFEIFER",    "Belanie", "F", "GER"), boatClass);
             race.addBoat( new Racer("102",  "PFEIFER",    "Celanie", "F", "GER"), boatClass);
