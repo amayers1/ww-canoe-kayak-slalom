@@ -66,6 +66,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
 
 import com.tcay.slalom.UI.PDF.PDF_Results;
@@ -147,9 +164,7 @@ import java.util.ArrayList;
  */
 public class SlalomApp {
 
-
     //http://www.loc.gov/standards/iso639-2/php/code_list.php Country Codes
-
 
     public static final Color RED = new Color(255, 0, 0);
     public static final Color LIGHT_RED = new Color(255, 204, 204);
