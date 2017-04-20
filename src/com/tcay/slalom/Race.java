@@ -49,6 +49,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom;
 
 import com.tcay.VirtualLED;
@@ -414,20 +431,18 @@ public class Race extends RaceResources implements Serializable
      * @param  none
      * @return none     the image at the specified URL
      */
-  //  protected void clearRacers() {
-  //      racers = new ArrayList<Racer>();
-  //      startList = new ArrayList<BoatEntry>();
-  //      activeRuns = new ArrayList<RaceRun>();
-  //      completedRuns = new ArrayList<RaceRun>();
-  //  }
 
-
-    protected void clearRace() {
+    // Issue#38 Importing of start list should not erase race configuration parameters
+    protected void clearRacers() {
         racers = new ArrayList<Racer>();
         startList = new ArrayList<BoatEntry>();
         activeRuns = new ArrayList<RaceRun>();
         completedRuns = new ArrayList<RaceRun>();
-        //clearRacers();
+    }
+
+
+    protected void clearRace() {
+        clearRacers();
         judgingSections = new ArrayList<JudgingSection>();
         upstreamGates = new ArrayList<Integer>();
 

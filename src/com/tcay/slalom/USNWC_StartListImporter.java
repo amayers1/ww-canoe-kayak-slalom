@@ -32,22 +32,6 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * This file is part of SlalomApp.
- *
- *     SlalomApp is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     SlalomApp is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
- */
 
 package com.tcay.slalom;
 
@@ -89,15 +73,10 @@ public class USNWC_StartListImporter {
 
 
     public void readImportFile() {
-        String line = null;
+        String line;
         int importedCnt = 0;
-
-        ArrayList<BoatEntry> boats = new  ArrayList<BoatEntry>();
         Race race = Race.getInstance();
-        race.clearRace();  // TODO Make Conditional, clear racers not race parameters Issue#38
-        race.setName("USNWC Race");
- //       race.clearRacers();   // A170417 (ajm) TODO Make Conditional, clear racers not race parameters Issue#38
-
+        race.clearRacers();   // A170417 (ajm)  Issue#38
 
 
         try {
@@ -203,8 +182,6 @@ public class USNWC_StartListImporter {
 
                 if (last != null && first != null) {
                     Racer racer = new Racer(bib, last, first, sex, club, ageGroup);
-//                    BoatEntry boat = new BoatEntry(racer, boatClass);
-//                boats.add(boat);
                     race.addBoat(racer, boatClass);
                     System.out.println("Importing " + boatClass + " " + racer);
                     importedCnt++;
