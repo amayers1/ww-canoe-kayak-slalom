@@ -66,7 +66,25 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.UI;
+
 
 import com.tcay.slalom.UI.PDF.PDF_Results;
 import com.tcay.slalom.UI.client.ClientRacePenaltiesUIDynamic;
@@ -189,7 +207,8 @@ public class SlalomApp {
         new Thread(soss).start();
     }
 
-    public /*rivate*/ synchronized static SlalomApp getInstance() {
+    public /*rivate*/  static SlalomApp getInstance() {
+
         if (instance == null)
             instance = new SlalomApp();
         return instance;
@@ -201,7 +220,7 @@ public class SlalomApp {
         System.out.println("Loading");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                ((SlalomApp) getInstance()).createAndShowGUI();
+                 getInstance().createAndShowGUI();
             }
         });
     }
@@ -212,7 +231,7 @@ public class SlalomApp {
         //Create and set up the window.
         appFrame = new JFrame("Slalom Main Menu Frame");
         appFrame.setLayout(new BorderLayout());
-        appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        appFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         appFrame.setTitle("Slalom Race Organizer's Application");
 //TODO CUSTOMIZE 2016 RIO
         //JLabel picLabel = new JLabel(Race.getInstance().getSlalomBackgroundII());
