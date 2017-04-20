@@ -32,6 +32,23 @@
  *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * This file is part of SlalomApp.
+ *
+ *     SlalomApp is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     SlalomApp is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with SlalomApp.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.tcay.slalom.socket;
 
 import com.tcay.util.Log;
@@ -252,23 +269,21 @@ public class Client {
                 ClientRequest request;
                 while (true) {
 
-                    // Need signal semphore here ... WAIT
-                    // See queSignale.set();   wakeupSemaphore.release(); use in Server.java
-
-                    for (request = sosc.retrieveRequest(); request != null; request = sosc.retrieveRequest()) {
+                        for (request = sosc.retrieveRequest(); request != null; request = sosc.retrieveRequest()) {
                         oos.writeObject(request);
-
-                        // TODO CRITICAL 20160731 PERFORMANCE BOTTLENECK HERE !
-                        // Sleep(500) is a WORKAROUND .... retrieveRequest() SHOIULD BLOCK UNTIL a request is queued !!
-                        // TODO CRITICAL - Add semaphore
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                         //log.trace("Wrote requestCmd type " + request.getRequestCmd());
                     }
-                    //Thread.sleep(500);
+                    // Need signal semphore here ... WAIT
+                    // See queSignale.set();   wakeupSemaphore.release(); use in Server.java
+                    // TODO CRITICAL 20160731 PERFORMANCE BOTTLENECK HERE !
+                    // Sleep(500) is a WORKAROUND .... retrieveRequest() SHOIULD BLOCK UNTIL a request is queued !!
+                    // TODO CRITICAL - Add semaphore
+                    // 20170420 (ajm) Issue#58 Moved sleep to outer loop to adress performance problem.
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 //} catch (InterruptedException e) {
                 //    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
